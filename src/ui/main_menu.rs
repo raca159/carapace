@@ -12,7 +12,7 @@ pub fn spawn_ui(mut commands: Commands, mut ui: ResMut<UiEntities>) {
                 justify_content: JustifyContent::Center,
                 ..default()
             },
-            BackgroundColor(Color::srgba(0.05, 0.05, 0.05, 0.95)),
+            BackgroundColor(Color::srgb(0.1, 0.1, 0.15)),
         ))
         .with_children(|parent| {
             parent.spawn((

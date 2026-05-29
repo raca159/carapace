@@ -45,6 +45,7 @@ impl AppScreen {
                 | (AppScreen::MainMenu, AppScreen::NewCharacter)
                 | (AppScreen::MainMenu, AppScreen::WorldOverview)
                 | (AppScreen::CreateWorld, AppScreen::WorldGenProgress)
+                | (AppScreen::CreateWorld, AppScreen::NewCharacter)
                 | (AppScreen::CreateWorld, AppScreen::MainMenu)
                 | (AppScreen::WorldGenProgress, AppScreen::NewCharacter)
                 | (AppScreen::WorldGenProgress, AppScreen::CreateWorld)

@@ -24,6 +24,7 @@ bevy = { version = "0.16", default-features = false, features = [
     "bevy_ui",
     "bevy_winit",
     "bevy_state",
+    "default_font",
     "x11",
 ] }
 crossterm = "0.29"

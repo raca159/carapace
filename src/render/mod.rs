@@ -77,6 +77,7 @@ impl Plugin for RenderPlugin {
             .add_systems(OnEnter(AppScreen::Dead), spawn_death_screen)
             .add_systems(OnExit(AppScreen::Dead), despawn_death_screen)
             .add_systems(Startup, setup_atlas)
+            .add_systems(Startup, setup_camera)
             .add_systems(OnEnter(AppScreen::Boot), boot_sequence)
             .add_systems(Startup, setup_hud)
             .add_systems(Update, (
@@ -89,6 +90,10 @@ impl Plugin for RenderPlugin {
                 render_disambiguation_panel.run_if(in_state(AppScreen::InWorld)),
             ).chain());
     }
+}
+
+fn setup_camera(mut commands: Commands) {
+    commands.spawn(Camera2d);
 }
 
 fn setup_atlas(
@@ -182,8 +187,8 @@ fn render_terrain(
             let wx = cx + sx;
             let wy = cy + sy;
 
-            let px = (wx as f32 - cx as f32) * TILE_SIZE;
-            let py = -(wy as f32 - cy as f32) * TILE_SIZE;
+            let px = wx as f32 * TILE_SIZE;
+            let py = -(wy as f32) * TILE_SIZE;
 
             if wx >= map.width || wy >= map.height {
                 commands.entity(entity).insert((
@@ -277,8 +282,8 @@ fn render_entities(
                     glyph.color.2 as f32 / 255.0,
                 );
                 screen_entities.push((
-                    sx as f32 * TILE_SIZE,
-                    -(sy as f32) * TILE_SIZE,
+                    pos.x as f32 * TILE_SIZE,
+                    -(pos.y as f32) * TILE_SIZE,
                     z, gi, sc, is_player,
                 ));
             }
