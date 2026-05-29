@@ -2,7 +2,7 @@ use bevy_ecs::prelude::{Entity, Resource, World};
 
 use game_tags::{TagRegistry, TagValue, Tags};
 
-use crate::biome::{BiomeClassifier, BiomeEnvironment};
+use crate::biome::BiomeClassifier;
 use crate::latitude::apply_latitude_modifier;
 use crate::loader::WorldGenConfig;
 use crate::map::WorldMap;

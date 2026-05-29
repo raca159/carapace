@@ -12,6 +12,7 @@ const TILE_SIZE: f32 = 16.0;
 pub struct GameCamera {
     pub x: u32,
     pub y: u32,
+    #[allow(dead_code)]
     pub z: u32,
 }
 
@@ -55,6 +56,7 @@ pub struct RenderPlugin;
 impl Plugin for RenderPlugin {
     fn build(&self, app: &mut App) {
         app
+            .init_state::<AppScreen>()
             .init_resource::<GameCamera>()
             .init_resource::<GameWorld>()
             .init_resource::<TileSprites>()
@@ -122,7 +124,7 @@ fn boot_to_main_menu(
 
 fn render_terrain(
     mut commands: Commands,
-    mut game_world: ResMut<GameWorld>,
+    game_world: ResMut<GameWorld>,
     atlas: Option<Res<SpriteAtlas>>,
     mut tile_sprites: ResMut<TileSprites>,
     camera: Res<GameCamera>,
@@ -489,7 +491,7 @@ fn lerp_camera(
         None => return,
     };
 
-    let mut cam_transform = match camera_query.get_single_mut() {
+    let mut cam_transform = match camera_query.single_mut() {
         Ok(t) => t,
         Err(_) => return,
     };

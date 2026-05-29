@@ -78,6 +78,7 @@ pub fn handle_equip(ecs_world: &mut World, cursor: usize) {
     }
 }
 
+#[allow(dead_code)]
 pub fn handle_unequip(ecs_world: &mut World, slot: EquipmentSlot) {
     use bevy_ecs::query::With;
 

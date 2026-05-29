@@ -70,7 +70,7 @@ npc = "npc"
 # Glyph bitmap definitions for characters not in the built-in set.
 # Each entry maps a glyph character to 7 rows of 5-bit pixel masks
 # (1 = opaque white, 0 = transparent; left-to-right, MSB to LSB).
-[sprites.glyph_bitmaps]
+[glyph_bitmaps]
 '^' = [0b00100, 0b01010, 0b01010, 0b10001, 0b10001, 0b00000, 0b00000]
 'T' = [0b11111, 0b00100, 0b00100, 0b00100, 0b00100, 0b00000, 0b00000]
 'w' = [0b10001, 0b10001, 0b01110, 0b00100, 0b01010, 0b10001, 0b00000]

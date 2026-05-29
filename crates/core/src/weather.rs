@@ -2,7 +2,6 @@ use bevy_ecs::prelude::*;
 use rand::Rng;
 
 use crate::weather_def::{load_all_weathers, WeatherDef};
-use crate::turn::TurnCounter;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum TimeOfDay {

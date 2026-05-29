@@ -4,7 +4,7 @@ use bevy_ecs::prelude::World;
 use game_core::{WeatherState, WeatherContext};
 use game_core::crafting::load_crafting_recipes;
 use game_core::encounters::{Encounters, load_encounters};
-use game_core::npc_action::{NpcActionWeights, load_npc_action_weights};
+use game_core::npc_action::load_npc_action_weights;
 use game_core::weather_tags_for_context;
 use game_world::{
     cascade::CascadeEngine, load_behavior_rules, load_biome_rules, load_factions,

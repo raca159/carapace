@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use game_core::screen::AppScreen;
 use game_core::world_overview::WorldOverviewState;
 use game_world::cascade::LocationMap;
 use crate::render::GameWorld;
@@ -9,12 +8,12 @@ pub struct OverviewOverlay(pub Option<Entity>);
 
 pub fn update_world_overview(
     mut commands: Commands,
-    mut game_world: ResMut<GameWorld>,
+    game_world: ResMut<GameWorld>,
     mut overlay: ResMut<OverviewOverlay>,
 ) {
     if let Some(old) = overlay.0.take() { commands.entity(old).despawn(); }
 
-    let active = match game_world.0.get_resource::<WorldOverviewState>() {
+    let _active = match game_world.0.get_resource::<WorldOverviewState>() {
         Some(s) if s.active => true,
         _ => return,
     };

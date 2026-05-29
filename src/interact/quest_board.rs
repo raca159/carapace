@@ -1,6 +1,5 @@
 use bevy::prelude::*;
-use game_core::quest::{QuestBoardState, QuestBoardEntry};
-use game_core::{EventBus, GameEvent};
+use game_core::quest::QuestBoardState;
 use crate::interact::{InteractState, InteractMode};
 
 #[derive(Resource, Default)]
@@ -56,6 +55,7 @@ pub fn update_quest_board_panel(
     panel.0 = Some(root);
 }
 
+#[allow(dead_code)]
 pub fn start_quest_giver(
     _ecs_world: &mut World,
     _npc_entity: bevy_ecs::entity::Entity,

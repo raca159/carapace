@@ -7,7 +7,6 @@ use serde::Deserialize;
 use game_core::{BehaviorState, Creature, Equipment, Glyph, Health, Item, Name, PersonalityScores, Position, QuestBoard, QuestGiver, NpcEmotionalState, WeatherSensitive, tags_from_personality};
 use game_tags::{TagRegistry, TagValue, Tags};
 
-use crate::faction::{Faction, FactionRelationships};
 use crate::map::WorldMap;
 use crate::tile::TilePos;
 

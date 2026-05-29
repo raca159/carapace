@@ -15,7 +15,7 @@ pub fn build_npc_context(ecs_world: &World, npc_entity: Entity) -> NpcContext {
         .map(|_| ecs_world.get::<game_core::PersonalityScores>(npc_entity).cloned().unwrap_or_default())
         .unwrap_or_default();
     let tags = ecs_world.get::<game_tags::Tags>(npc_entity).cloned().unwrap_or(Tags::new(0));
-    let faction_id: Option<game_tags::TagId> = ecs_world.get::<Faction>(npc_entity).map(|f| f.faction_id)
+    let _faction_id: Option<game_tags::TagId> = ecs_world.get::<Faction>(npc_entity).map(|f| f.faction_id)
         .and_then(|_fid| None);
     let health = ecs_world.get::<game_core::Health>(npc_entity).copied().unwrap_or(game_core::Health { current: 1, max: 1 });
     let can_barter = ecs_world.get_resource::<TagRegistry>()
@@ -163,7 +163,7 @@ pub fn handle_talk_input(
         .collect();
     scored.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
 
-    let top_action = scored.first().map(|(id, _)| id.as_str()).unwrap_or("end_conversation");
+    let _top_action = scored.first().map(|(id, _)| id.as_str()).unwrap_or("end_conversation");
 
     // Handle player input
     if keyboard.just_pressed(KeyCode::Escape) {
@@ -233,13 +233,13 @@ pub fn handle_talk_input(
         let attack_score = score_action("attack", &npc, None, &env, &weights, &registry);
         if attack_score > 5.0 {
             // Handle combat
-            let player_entity = match ecs_world
+            if ecs_world
                 .query_filtered::<bevy_ecs::entity::Entity, bevy_ecs::query::With<Player>>()
                 .single(ecs_world)
+                .is_err()
             {
-                Ok(e) => e,
-                Err(_) => return,
-            };
+                return;
+            }
             crate::game::resolve_combat(ecs_world, npc_entity, String::new(), game_core::Health { current: 1, max: 1 });
             if let Some(mut state) = ecs_world.get_mut::<NpcEmotionalState>(npc_entity) {
                 state.apply_event(0.5);

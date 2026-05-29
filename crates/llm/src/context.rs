@@ -293,6 +293,7 @@ mod tests {
                     None,
                     None,
                     None,
+                    None,
                 )
                 .unwrap();
             builder
@@ -301,6 +302,7 @@ mod tests {
                     "CanTalk",
                     vec![],
                     vec![],
+                    None,
                     None,
                     None,
                     None,
@@ -323,6 +325,7 @@ mod tests {
                     None,
                     None,
                     None,
+                    None,
                 )
                 .unwrap();
             builder
@@ -331,6 +334,7 @@ mod tests {
                     "Deceptive",
                     vec![],
                     vec![],
+                    None,
                     None,
                     None,
                     None,
@@ -353,6 +357,7 @@ mod tests {
                     None,
                     None,
                     None,
+                    None,
                 )
                 .unwrap();
             builder
@@ -361,6 +366,7 @@ mod tests {
                     "BURNING",
                     vec![],
                     vec![],
+                    None,
                     None,
                     None,
                     None,

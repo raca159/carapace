@@ -1,23 +1,20 @@
 use bevy::prelude::*;
-use game_core::{EventBus, GameEvent, MessageLog, Player, Inventory, Name, Position};
-use game_core::barter::{BarterItem, BarterOffer, BarterResult, resolve_barter_with_haggle};
+use game_core::{EventBus, GameEvent};
 use game_core::emotion::NpcEmotionalState;
-use game_tags::{TagRegistry, Tags};
-use game_world::cascade::{CascadeEngine, RegionEconomies};
-use game_world::cascade::economy::item_price_multiplier;
-use crate::interact::{InteractState, InteractMode};
+use game_tags::TagRegistry;
+use game_world::cascade::CascadeEngine;
+use crate::interact::InteractState;
 
 pub fn start_trade(
     ecs_world: &mut World,
     npc_entity: bevy_ecs::entity::Entity,
-    interact_state: &mut InteractState,
+    _interact_state: &mut InteractState,
 ) {
-    // Build a simple barter offer using the NPC's inventory
-    let registry = match ecs_world.get_resource::<TagRegistry>() {
+    let _registry = match ecs_world.get_resource::<TagRegistry>() {
         Some(r) => r.clone(),
         None => { push_message(ecs_world, "Barter not available."); return; }
     };
-    let cascade = match ecs_world.get_resource::<CascadeEngine>() {
+    let _cascade = match ecs_world.get_resource::<CascadeEngine>() {
         Some(c) => c.clone(),
         None => { push_message(ecs_world, "Barter not available."); return; }
     };

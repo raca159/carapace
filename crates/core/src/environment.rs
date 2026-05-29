@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use game_tags::{TagId, TagRegistry, Tags, TagValue};
+use game_tags::{TagId, TagRegistry};
 
 #[derive(Debug, Clone, Copy, Default, PartialEq)]
 pub struct EnvironmentalScores {
