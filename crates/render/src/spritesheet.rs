@@ -21,6 +21,75 @@ pub struct SpriteDef {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+pub struct BitmapConfig {
+    #[serde(default = "default_bitmap_width")]
+    pub width: u32,
+    #[serde(default = "default_bitmap_height")]
+    pub height: u32,
+    #[serde(default = "default_bitmap_scale")]
+    pub scale: u32,
+}
+
+fn default_bitmap_width() -> u32 {
+    5
+}
+fn default_bitmap_height() -> u32 {
+    7
+}
+fn default_bitmap_scale() -> u32 {
+    3
+}
+
+impl Default for BitmapConfig {
+    fn default() -> Self {
+        Self {
+            width: default_bitmap_width(),
+            height: default_bitmap_height(),
+            scale: default_bitmap_scale(),
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct GlyphBitmap {
+    pub width: u32,
+    pub height: u32,
+    pub data: Vec<u8>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+#[serde(untagged)]
+pub enum GlyphBitmapDef {
+    Legacy(Vec<u8>),
+    Structured {
+        width: Option<u32>,
+        height: Option<u32>,
+        data: Vec<u8>,
+    },
+}
+
+impl GlyphBitmapDef {
+    pub fn resolve(&self, default_width: u32, default_height: u32) -> GlyphBitmap {
+        match self {
+            GlyphBitmapDef::Legacy(data) => GlyphBitmap {
+                width: default_width,
+                height: default_height,
+                data: data.clone(),
+            },
+            GlyphBitmapDef::Structured {
+                width,
+                height,
+                data,
+            } => GlyphBitmap {
+                width: width.unwrap_or(default_width),
+                height: height.unwrap_or(default_height),
+                data: data.clone(),
+            },
+        }
+    }
+}
+
+#[derive(Debug, Clone, Deserialize)]
 pub struct SpriteAtlasConfig {
     pub tile_size: Option<u32>,
     pub fallback: SpriteDef,
@@ -28,7 +97,9 @@ pub struct SpriteAtlasConfig {
     pub tiles: Option<HashMap<String, String>>,
     pub entities: Option<HashMap<String, String>>,
     #[serde(default)]
-    pub glyph_bitmaps: HashMap<char, Vec<u8>>,
+    pub bitmap_config: Option<BitmapConfig>,
+    #[serde(default)]
+    pub glyph_bitmaps: HashMap<char, GlyphBitmapDef>,
 }
 
 #[derive(Resource)]
@@ -68,6 +139,7 @@ pub fn load_atlas_config(path: &str) -> SpriteAtlasConfig {
             sprites: HashMap::new(),
             tiles: None,
             entities: None,
+            bitmap_config: None,
             glyph_bitmaps: HashMap::new(),
         };
     }
@@ -86,43 +158,58 @@ pub fn load_atlas_config(path: &str) -> SpriteAtlasConfig {
             sprites: HashMap::new(),
             tiles: None,
             entities: None,
+            bitmap_config: None,
             glyph_bitmaps: HashMap::new(),
         }
     })
 }
 
-const BUILTIN_GLYPHS: &[char] = &[' ', '.', ',', '"', '~', '#', '@'];
-
-const BUILTIN_BITMAPS: &[&[u8]] = &[
-    &[0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000],
-    &[0b00000, 0b00000, 0b00000, 0b00100, 0b00100, 0b00000, 0b00000],
-    &[0b00000, 0b00000, 0b00000, 0b00100, 0b00100, 0b00100, 0b01000],
-    &[0b01010, 0b01010, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000],
-    &[0b00000, 0b00000, 0b10001, 0b01110, 0b00000, 0b00000, 0b00000],
-    &[0b01010, 0b01010, 0b11111, 0b01010, 0b11111, 0b01010, 0b01010],
-    &[0b01110, 0b10001, 0b10101, 0b11111, 0b10101, 0b10001, 0b01110],
+const BUILTIN_GLYPHS: &[(char, &[u8])] = &[
+    (' ', &[0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000]),
+    ('.', &[0b00000, 0b00000, 0b00000, 0b00100, 0b00100, 0b00000, 0b00000]),
+    (',', &[0b00000, 0b00000, 0b00000, 0b00100, 0b00100, 0b00100, 0b01000]),
+    ('"', &[0b01010, 0b01010, 0b00000, 0b00000, 0b00000, 0b00000, 0b00000]),
+    ('~', &[0b00000, 0b00000, 0b10001, 0b01110, 0b00000, 0b00000, 0b00000]),
+    ('#', &[0b01010, 0b01010, 0b11111, 0b01010, 0b11111, 0b01010, 0b01010]),
+    ('@', &[0b01110, 0b10001, 0b10101, 0b11111, 0b10101, 0b10001, 0b01110]),
 ];
 
-fn fallback_bitmap() -> [u8; 7] {
-    [
-        0b01110, 0b10001, 0b10001, 0b01110, 0b00100, 0b00000, 0b00100,
-    ]
+fn builtin_glyph(glyph: char) -> Option<GlyphBitmap> {
+    for &(ch, data) in BUILTIN_GLYPHS {
+        if ch == glyph {
+            return Some(GlyphBitmap {
+                width: 5,
+                height: 7,
+                data: data.to_vec(),
+            });
+        }
+    }
+    None
 }
 
-fn resolve_bitmap(glyph: char, custom: &HashMap<char, Vec<u8>>) -> [u8; 7] {
-    if let Some(bmp) = custom.get(&glyph)
-        && bmp.len() >= 7
-    {
-        let mut arr = [0u8; 7];
-        arr.copy_from_slice(&bmp[..7]);
-        return arr;
+fn fallback_bitmap() -> GlyphBitmap {
+    GlyphBitmap {
+        width: 5,
+        height: 7,
+        data: vec![
+            0b01110, 0b10001, 0b10001, 0b01110, 0b00100, 0b00000, 0b00100,
+        ],
     }
-    for (i, &c) in BUILTIN_GLYPHS.iter().enumerate() {
-        if c == glyph {
-            let mut arr = [0u8; 7];
-            arr.copy_from_slice(BUILTIN_BITMAPS[i]);
-            return arr;
+}
+
+fn resolve_bitmap(
+    glyph: char,
+    custom: &HashMap<char, GlyphBitmapDef>,
+    bitmap_config: &BitmapConfig,
+) -> GlyphBitmap {
+    if let Some(def) = custom.get(&glyph) {
+        let resolved = def.resolve(bitmap_config.width, bitmap_config.height);
+        if (resolved.data.len() as u32) >= resolved.height {
+            return resolved;
         }
+    }
+    if let Some(bmp) = builtin_glyph(glyph) {
+        return bmp;
     }
     fallback_bitmap()
 }
@@ -134,14 +221,12 @@ pub fn build_sprite_atlas(
 ) -> SpriteAtlas {
     let tile_size = config.tile_size.unwrap_or(32);
     let ts = tile_size;
-
-    let tile_px = 5usize;
-    let tile_py = 7usize;
-    let scale = 3usize;
-    let rw = tile_px * scale;
-    let rh = tile_py * scale;
-    let ox = ((ts as usize) - rw) / 2;
-    let oy = ((ts as usize) - rh) / 2;
+    let bitmap_config = config
+        .bitmap_config
+        .as_ref()
+        .cloned()
+        .unwrap_or_default();
+    let scale = bitmap_config.scale as usize;
 
     let mut all_glyphs: Vec<char> = Vec::new();
     all_glyphs.push(config.fallback.glyph);
@@ -157,11 +242,18 @@ pub fn build_sprite_atlas(
     let mut data = vec![0u8; (atlas_width * atlas_height * 4) as usize];
 
     for (gi, &glyph) in all_glyphs.iter().enumerate() {
-        let bitmap = resolve_bitmap(glyph, &config.glyph_bitmaps);
+        let bitmap = resolve_bitmap(glyph, &config.glyph_bitmaps, &bitmap_config);
+        let tile_px = bitmap.width as usize;
+        let tile_py = bitmap.height as usize;
+        let rw = tile_px * scale;
+        let rh = tile_py * scale;
+        let ox = ((ts as usize) - rw) / 2;
+        let oy = ((ts as usize) - rh) / 2;
         let x_off = gi as u32 * ts;
-        for (row, &row_bits) in bitmap.iter().enumerate().take(tile_py) {
+
+        for (row, &row_bits) in bitmap.data.iter().enumerate().take(tile_py) {
             for col in 0..tile_px {
-                if (row_bits >> (4 - col)) & 1 == 0 {
+                if (row_bits >> (tile_px - 1 - col)) & 1 == 0 {
                     continue;
                 }
                 let px0 = x_off as usize + ox + col * scale;

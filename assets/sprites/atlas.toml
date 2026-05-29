@@ -9,8 +9,23 @@
 #
 # To add a new sprite: add a [sprites.*] entry and reference it from
 # [tiles] or [entities]. No Rust code changes needed.
+#
+# ## Bitmap resolution
+# - Each glyph is rendered as a small bitmap, scaled, and centered in a tile.
+# - Default bitmap size is 5x7 pixels, scaled 3x → 15x21 rendered.
+# - Override globally with [bitmap_config] (width, height, scale).
+# - Per-glyph overrides use the structured format:
+#     'X' = { width = 7, height = 9, data = [0b0000000, ...] }
+# - Backward compat: the flat array format defaults to 5x7.
 
 tile_size = 32
+
+# Optional: global bitmap defaults (width, height, scale).
+# Per-glyph overrides in [glyph_bitmaps] take precedence.
+# [bitmap_config]
+# width = 5
+# height = 7
+# scale = 3
 
 [fallback]
 glyph = '?'
@@ -68,8 +83,17 @@ item = "item"
 npc = "npc"
 
 # Glyph bitmap definitions for characters not in the built-in set.
-# Each entry maps a glyph character to 7 rows of 5-bit pixel masks
-# (1 = opaque white, 0 = transparent; left-to-right, MSB to LSB).
+# Each entry maps a glyph character to rows of pixel masks.
+#
+# Flat format (defaults to 5x7): [row0, row1, ...]
+#   7 u8 values, each using bottom 5 bits.
+#   Bit = 1 = opaque white, 0 = transparent; left-to-right, MSB to LSB.
+#
+# Structured format (variable resolution):
+#   'X' = { width = 7, height = 9, data = [row0, ...] }
+#   width and height optional; fall back to [bitmap_config] defaults.
+#
+# Scale factor applies uniformly; each bit becomes scale×scale white pixels.
 [glyph_bitmaps]
 '^' = [0b00100, 0b01010, 0b01010, 0b10001, 0b10001, 0b00000, 0b00000]
 'T' = [0b11111, 0b00100, 0b00100, 0b00100, 0b00100, 0b00000, 0b00000]
