@@ -5,7 +5,7 @@ use game_core::turn::BehaviorState;
 use game_core::Glyph;
 use game_tags::{TagId, TagRegistry, Tags};
 use game_world::cascade::{CascadeEngine, PlacedLocation};
-use game_world::dungeon::{DungeonConfig, DungeonType, generate_dungeon, dungeon_spawn_positions, MapLayer, ActiveInterior};
+use game_world::dungeon::{DungeonConfig, DungeonType, generate_dungeon, dungeon_spawn_positions, MapLayer, ActiveInterior, DungeonMap};
 use game_world::interior::spawn_interior_tiles;
 use game_world::WorldMap;
 use rand::SeedableRng;
@@ -75,6 +75,8 @@ pub fn enter_location(world: &mut World, location: &PlacedLocation) {
     }
 
     let interior_map = spawn_interior_tiles(world, &dungeon, &interior_tag_ids, Some(&interior_def.environment), &registry);
+
+    place_dungeon_traps(world, &dungeon, &registry);
 
     spawn_interior_entities(world, &dungeon, &interior_def.spawn_rules, &registry);
 
@@ -236,6 +238,8 @@ pub fn enter_next_depth(world: &mut World) {
 
     let interior_map = spawn_interior_tiles(world, &dungeon, &interior.interior_tags, Some(&interior.environment), &registry);
 
+    place_dungeon_traps(world, &dungeon, &registry);
+
     let mut rng = rand::rngs::StdRng::seed_from_u64(dungeon.seed);
     let spawn_positions = dungeon_spawn_positions(&dungeon, &mut rng);
     for &pos in &spawn_positions {
@@ -275,5 +279,39 @@ pub fn enter_next_depth(world: &mut World) {
 
     if let Some(mut ml) = world.get_resource_mut::<MapLayer>() {
         ml.depth += 1;
+    }
+}
+
+/// Place traps on a subset of floor tiles in dungeon rooms.
+/// Uses dungeon seed for deterministic placement.
+fn place_dungeon_traps(world: &mut World, dungeon: &DungeonMap, _registry: &TagRegistry) {
+    use rand::Rng;
+    let mut rng = rand::rngs::StdRng::seed_from_u64(dungeon.seed.wrapping_add(0xDEAD));
+    let trap_types = [
+        game_core::traps::TrapType::PoisonDart,
+        game_core::traps::TrapType::ExplosiveRune,
+        game_core::traps::TrapType::SummonTrap,
+        game_core::traps::TrapType::AlarmTrap,
+    ];
+    for room in &dungeon.rooms {
+        let area = room.area() as f32;
+        let trap_count = (area * 0.08 * rng.random::<f32>()).ceil() as u32;
+        for _ in 0..trap_count {
+            let x = room.x + rng.random_range(0..room.w);
+            let y = room.y + rng.random_range(0..room.h);
+            let idx = (y * dungeon.width + x) as usize;
+            if let Some(tile) = dungeon.tiles.get(idx)
+                && tile.tile_type == game_world::dungeon::DungeonTileType::Floor
+            {
+                // Skip entrance tile
+                if x == dungeon.entrance.0 && y == dungeon.entrance.1 {
+                    continue;
+                }
+                let trap_type = trap_types[rng.random_range(0..trap_types.len())];
+                let trap = game_core::traps::Trap::new(trap_type)
+                    .with_damage(if trap_type == game_core::traps::TrapType::ExplosiveRune { 15 } else if trap_type == game_core::traps::TrapType::PoisonDart { 8 } else { 0 });
+                world.spawn((trap, game_core::components::Position { x, y, z: 0 }));
+            }
+        }
     }
 }

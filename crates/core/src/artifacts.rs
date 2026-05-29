@@ -1,8 +1,8 @@
 use bevy_ecs::prelude::*;
 
-use crate::components::{MessageCategory, MessageEntry, MessageLog};
+use crate::components::MessageLog;
 use crate::turn::TurnCounter;
-use crate::{Glyph, Name, Player, Position};
+use crate::{Glyph, Name, Position};
 use game_tags::{TagRegistry, Tags};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -94,7 +94,7 @@ impl Artifact {
         if self.charges == 0 { return false; }
         self.charges -= 1;
 
-        let turn = world.get_resource::<TurnCounter>().map(|tc| tc.0).unwrap_or(0);
+        let _turn = world.get_resource::<TurnCounter>().map(|tc| tc.0).unwrap_or(0);
         let name = self.artifact_type.name();
         let msg = if self.charges == 0 {
             format!("{} activated. No charges remaining.", name)
@@ -102,7 +102,7 @@ impl Artifact {
             format!("{} activated. ({} charge{} remaining)", name, self.charges, if self.charges == 1 { "" } else { "s" })
         };
         if let Some(mut log) = world.get_resource_mut::<MessageLog>() {
-            log.push(MessageEntry { text: msg, category: MessageCategory::Item, turn });
+            log.push(msg);
         }
         self.charges == 0
     }

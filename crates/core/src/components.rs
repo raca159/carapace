@@ -104,6 +104,60 @@ pub struct WeatherSensitive;
 #[derive(Component, Debug, Clone, Copy, Default)]
 pub struct OverworldEntity;
 
+/// Marker for entities that are gene-splicing pods/terminals.
+#[derive(Component, Debug, Clone, Copy, Default)]
+pub struct GeneSplicer;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, serde::Deserialize, serde::Serialize)]
+#[serde(rename_all = "lowercase")]
+pub enum SpliceSlot {
+    #[default]
+    Arms,
+    Body,
+    Eyes,
+    Organs,
+    Sense,
+    Skin,
+    Skeleton,
+}
+
+/// Tracks a single adaptation/mutation applied via gene splicing.
+#[derive(Debug, Clone)]
+pub struct Adaptation {
+    pub id: String,
+    pub source: String,
+    pub tags_granted: Vec<game_tags::TagId>,
+    pub humanity_cost: u32,
+    pub slot: SpliceSlot,
+}
+
+/// Player component tracking gene-splicing state.
+#[derive(Component, Debug, Clone)]
+pub struct GeneSplicing {
+    pub splice_points: u32,
+    pub humanity: u32,
+    pub adaptations: Vec<Adaptation>,
+}
+
+impl GeneSplicing {
+    pub fn new() -> Self {
+        Self { splice_points: 0, humanity: 100, adaptations: Vec::new() }
+    }
+
+    pub fn humanity_rank(&self) -> &'static str {
+        let h = self.humanity.min(100);
+        if h >= 80 { "Full Human" }
+        else if h >= 60 { "Slightly Chitinous" }
+        else if h >= 40 { "Significant Chitin" }
+        else if h >= 20 { "Mostly Carapace" }
+        else { "Carapace-Mind" }
+    }
+}
+
+impl Default for GeneSplicing {
+    fn default() -> Self { Self::new() }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

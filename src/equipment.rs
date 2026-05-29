@@ -73,6 +73,8 @@ pub fn handle_equip(ecs_world: &mut World, cursor: usize) {
         }
     }
 
+    game_core::durability::set_durability_on_equip(ecs_world, item_entity);
+
     if let Some(mut bus) = ecs_world.get_resource_mut::<EventBus>() {
         bus.push(GameEvent::ItemEquipped { item_name });
     }

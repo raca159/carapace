@@ -108,7 +108,7 @@ pub fn load_encounters(toml_str: &str) -> Result<Vec<EncounterDef>, toml::de::Er
 pub fn roll_encounter(
     world: &World,
     _pos: &Position,
-    _biome_tags: &[game_tags::TagId],
+    biome_tags: &[game_tags::TagId],
     near_location: Option<&str>,
     weather_context: Option<&crate::WeatherContext>,
     rng: &mut impl Rng,
@@ -130,6 +130,21 @@ pub fn roll_encounter(
         if dark_id.is_some_and(|id| wc.applied_tags.contains(&id)) { chance += 0.05; }
         if stormy_id.is_some_and(|id| wc.applied_tags.contains(&id)) { chance += 0.03; }
         if reduced_id.is_some_and(|id| wc.applied_tags.contains(&id)) { chance += 0.02; }
+    }
+
+    // Biome modifiers — hostile biomes increase encounter chance
+    if !biome_tags.is_empty() {
+        let registry = world.get_resource::<game_tags::TagRegistry>();
+        let hostile_ids: Vec<game_tags::TagId> = [
+            "BIOME_SWAMP", "BIOME_VOLCANIC", "BIOME_DESERT", "BIOME_TUNDRA", "BIOME_TAIGA",
+        ].iter().filter_map(|name| {
+            registry.and_then(|r| r.tag_id(name))
+        }).collect();
+        for id in hostile_ids {
+            if biome_tags.contains(&id) {
+                chance += 0.03;
+            }
+        }
     }
 
     if rng.random::<f32>() > chance { return None; }

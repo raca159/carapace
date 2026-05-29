@@ -4,11 +4,13 @@ use bevy_ecs::prelude::World;
 use game_core::{WeatherState, WeatherContext};
 use game_core::crafting::load_crafting_recipes;
 use game_core::encounters::{Encounters, load_encounters};
+use game_core::narrative::{LoreFragmentsResource, NarrativeEvents, load_lore_fragments, load_narrative_events};
 use game_core::npc_action::load_npc_action_weights;
 use game_core::weather_tags_for_context;
 use game_world::{
     cascade::CascadeEngine, load_behavior_rules, load_biome_rules, load_factions,
-    load_spawn_rules, load_world_config_str, populate_inventories, spawn_entities, MapLayer, TilePos,
+    load_loot_tables, load_spawn_rules, load_world_config_str, populate_inventories, spawn_entities,
+    LootTables, MapLayer, TilePos,
     WorldConfig, WorldMap, WorldPlugin, WorldSeed, BehaviorRules,
 };
 
@@ -122,6 +124,18 @@ pub fn generate_world(ecs_world: &mut World, seed: WorldSeed, width: u32, height
     let encounters_toml = include_str!("../assets/config/encounters.toml");
     let encounter_defs = load_encounters(encounters_toml).expect("Failed to load encounters");
     ecs_world.insert_resource(Encounters::new(encounter_defs));
+
+    let narrative_toml = include_str!("../assets/config/narrative_events.toml");
+    let narrative_events = load_narrative_events(narrative_toml).expect("Failed to load narrative events");
+    ecs_world.insert_resource(NarrativeEvents { events: narrative_events });
+
+    let loot_toml = include_str!("../assets/config/loot_tables.toml");
+    let loot_table_defs = load_loot_tables(loot_toml).expect("Failed to load loot tables");
+    ecs_world.insert_resource(LootTables { tables: loot_table_defs });
+
+    let lore_toml = include_str!("../assets/config/lore_fragments.toml");
+    let lore_fragments = load_lore_fragments(lore_toml).expect("Failed to load lore fragments");
+    ecs_world.insert_resource(LoreFragmentsResource { fragments: lore_fragments });
 
     ecs_world.insert_resource(MapLayer::default());
     ecs_world.insert_resource(WeatherState::new());

@@ -253,6 +253,24 @@ id = "DEMON"
 [[archetype.tags]]
 id = "DRAGON"
 
+[[archetype.tags]]
+id = "INSECTOID"
+
+[[archetype.tags]]
+id = "MUTANT"
+
+[[archetype.tags]]
+id = "AQUATIC"
+
+[[archetype.tags]]
+id = "AMPHIBIOUS"
+
+[[archetype.tags]]
+id = "REPTILIAN"
+
+[[archetype.tags]]
+id = "FLYING"
+
 [[archetype]]
 id = "size"
 name = "Size"
@@ -353,9 +371,6 @@ id = "SWARMING"
 id = "FLIGHT"
 
 [[archetype.tags]]
-id = "AQUATIC"
-
-[[archetype.tags]]
 id = "STATIONARY"
 
 [[archetype.tags]]
@@ -402,6 +417,78 @@ id = "INDOORS"
 
 [[archetype.tags]]
 id = "BLOCKS_WEATHER"
+
+[[archetype.tags]]
+id = "DECEPTIVE"
+
+[[archetype.tags]]
+id = "ERRATIC"
+
+[[archetype.tags]]
+id = "SOCIAL"
+
+[[archetype.tags]]
+id = "FERAL"
+
+[[archetype.tags]]
+id = "ZEALOT"
+
+[[archetype.tags]]
+id = "SILENT"
+
+[[archetype.tags]]
+id = "SWARM"
+
+[[archetype.tags]]
+id = "HAS_CHITIN"
+
+[[archetype.tags]]
+id = "ADDICTED"
+
+[[archetype.tags]]
+id = "SANGUIVORE"
+
+[[archetype.tags]]
+id = "PRE_COLLAPSE"
+
+[[archetype.tags]]
+id = "TECH_WORSHIPPER"
+
+[[archetype.tags]]
+id = "CRYO_REMNANT"
+
+[[archetype.tags]]
+id = "LEADER"
+
+[[archetype.tags]]
+id = "GROWING"
+
+[[archetype.tags]]
+id = "REGENERATIVE"
+
+[[archetype.tags]]
+id = "REPRODUCTIVE"
+
+[[archetype.tags]]
+id = "SHOCK"
+
+[[archetype.tags]]
+id = "IMMORTAL"
+
+[[archetype.tags]]
+id = "STRUCTURE"
+
+[[archetype.tags]]
+id = "EXOTHERMIC"
+
+[[archetype.tags]]
+id = "EXOTHERMIC_SPRAY"
+
+[[archetype.tags]]
+id = "EXPLOSIVE"
+
+[[archetype.tags]]
+id = "LUMINESCENT_GLAND"
 
 [[archetype]]
 id = "status"
@@ -589,6 +676,34 @@ implies = ["SWIMMABLE", "WET"]
 id = "BIOME_VOLCANIC"
 implies = ["WALKABLE", "HOT", "DANGEROUS"]
 
+[[archetype.tags]]
+id = "BIOME_ANCIENT_VAULT"
+implies = ["WALKABLE", "INDOORS", "BLOCKS_WEATHER"]
+
+[[archetype.tags]]
+id = "BIOME_CAVE"
+implies = ["WALKABLE", "DARK", "INDOORS"]
+
+[[archetype.tags]]
+id = "BIOME_CRYSTALLINE_CAVERN"
+implies = ["WALKABLE", "LUMINESCENT", "INDOORS"]
+
+[[archetype.tags]]
+id = "BIOME_DUNGEON"
+implies = ["WALKABLE", "INDOORS", "BLOCKS_WEATHER"]
+
+[[archetype.tags]]
+id = "BIOME_RUINED_CITY"
+implies = ["WALKABLE", "DANGEROUS"]
+
+[[archetype.tags]]
+id = "BIOME_SETTLEMENT"
+implies = ["WALKABLE", "SETTLEMENT"]
+
+[[archetype.tags]]
+id = "BIOME_TRENCH"
+implies = ["SWIMMABLE", "DARK", "DANGEROUS"]
+
 [[archetype]]
 id = "magic"
 name = "Magical Property"
@@ -711,7 +826,7 @@ id = "ORE_GOLD"
 id = "ORE_COPPER"
 
 [[archetype.tags]]
-id = "ORE_MITHRIL"
+id = "ORE_COBALT"
 
 [[archetype.tags]]
 id = "GEM_RUBY"
@@ -774,6 +889,21 @@ id = "HOLY_DAMAGE"
 
 [[archetype.tags]]
 id = "NECROTIC_DAMAGE"
+
+[[archetype.tags]]
+id = "CHEMICAL"
+
+[[archetype.tags]]
+id = "PIERCING"
+
+[[archetype.tags]]
+id = "SONIC"
+
+[[archetype.tags]]
+id = "CORROSIVE"
+
+[[archetype.tags]]
+id = "CRUSHING"
 
 [[archetype]]
 id = "sense"
@@ -845,6 +975,21 @@ id = "THROWABLE"
 
 [[archetype.tags]]
 id = "USABLE"
+
+[[archetype.tags]]
+id = "CONSUMABLE"
+
+[[archetype.tags]]
+id = "CRAFTING"
+
+[[archetype.tags]]
+id = "CURRENCY"
+
+[[archetype.tags]]
+id = "KEY"
+
+[[archetype.tags]]
+id = "SPLICING"
 
 [[archetype]]
 id = "weapon_type"
@@ -932,3 +1077,258 @@ id = "INVENTORY_TRADE"
 
 [[archetype.tags]]
 id = "INVENTORY_EQUIPMENT"
+
+[[archetype]]
+id = "faction_group"
+name = "Faction Group"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "CARAPACE"
+# The Great Carapace — deep-trench crustacean horrors, pure telomerase producers
+
+[[archetype.tags]]
+id = "SANGUINE"
+# The Sanguine Elite — human-crustacean hybrids, vampire aristocracy
+
+[[archetype.tags]]
+id = "FAMILIAR"
+# The Familiars — human addicts of the Enzyme, cult worshippers
+
+[[archetype.tags]]
+id = "HUMAN"
+# Free Humanity — survivors who refused the Enzyme, settlement dwellers
+
+[[archetype.tags]]
+id = "CHITIN"
+# Chitin — crustacean biological armor material, Carapace-origin
+
+[[archetype.tags]]
+id = "ARTIFACT"
+# Pre-Collapse technology — old-world origin, high value, poorly understood
+
+[[archetype.tags]]
+id = "TOOL"
+# Tools and utility items — improvised or salvaged, non-weapon function
+
+[[archetype.tags]]
+id = "VALUABLE"
+# High-value trade goods — currency, art, rare materials
+
+[[archetype.tags]]
+id = "MEDICAL"
+# Medical supplies — healing-focused items, old-world or improvised
+
+[[archetype.tags]]
+id = "SALVAGE"
+# Salvaged material — repurposed scrap, second-hand components
+
+[[archetype.tags]]
+id = "ENERGY"
+# Energy-based — powered artifacts, electrical components, cells
+
+[[archetype.tags]]
+id = "BLOOD"
+# Blood-based — sanguis, biological fluids
+
+[[archetype.tags]]
+id = "TELOMERASE"
+# Telomerase-related — enzyme, fluid, infused items
+
+[[archetype.tags]]
+id = "SANGUIS"
+# Sanguis — refined blood currency, Elite-blessed
+
+[[archetype]]
+id = "item_category"
+name = "Item Category"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "CONCEALED"
+
+[[archetype.tags]]
+id = "CONCEALING"
+
+[[archetype.tags]]
+id = "DELICATE"
+
+[[archetype.tags]]
+id = "PERISHABLE"
+
+[[archetype.tags]]
+id = "REINFORCED"
+
+[[archetype.tags]]
+id = "HARDENED"
+
+[[archetype.tags]]
+id = "PRESSURE_RESISTANT"
+
+[[archetype.tags]]
+id = "CHROMATOPHORIC"
+
+[[archetype.tags]]
+id = "COMPOUND_EYES"
+
+[[archetype.tags]]
+id = "BIO_ELECTRIC"
+
+[[archetype.tags]]
+id = "BLOOD_BONDED"
+
+[[archetype.tags]]
+id = "CEREMONIAL"
+
+[[archetype.tags]]
+id = "TELOMERASE_INFUSED"
+
+[[archetype.tags]]
+id = "ALCHEMICAL"
+
+[[archetype.tags]]
+id = "ELECTRIC"
+
+[[archetype.tags]]
+id = "ELECTRONIC"
+
+[[archetype.tags]]
+id = "OPTICAL"
+
+[[archetype.tags]]
+id = "PRECISION"
+
+[[archetype.tags]]
+id = "ARMOR_CRAFTING"
+
+[[archetype.tags]]
+id = "GENETIC_MATERIAL"
+
+[[archetype.tags]]
+id = "TISSUE"
+
+[[archetype.tags]]
+id = "DILUTED"
+
+[[archetype.tags]]
+id = "TAINTED"
+
+[[archetype.tags]]
+id = "BOMB"
+
+[[archetype.tags]]
+id = "POISON"
+
+[[archetype.tags]]
+id = "HAZARD"
+
+[[archetype.tags]]
+id = "CHEMICAL_RESISTANT"
+
+[[archetype.tags]]
+id = "FOOD"
+
+[[archetype.tags]]
+id = "SLOWING"
+
+[[archetype.tags]]
+id = "THICK"
+
+[[archetype.tags]]
+id = "ORGAN"
+
+[[archetype.tags]]
+id = "MUTAGENIC"
+
+[[archetype.tags]]
+id = "GLAND"
+
+[[archetype.tags]]
+id = "WITHDRAWAL"
+
+[[archetype]]
+id = "faction_economy"
+name = "Faction Economy Good"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "SANGUINE_GOODS"
+
+[[archetype.tags]]
+id = "FAMILIAR_GOODS"
+
+[[archetype.tags]]
+id = "TECH_GOODS"
+
+[[archetype.tags]]
+id = "MUTATED_GOODS"
+
+[[archetype]]
+id = "location_tag"
+name = "Location Property"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "LANDMARK"
+
+[[archetype.tags]]
+id = "SACRED"
+
+[[archetype.tags]]
+id = "UNDERGROUND"
+
+[[archetype.tags]]
+id = "HOSTILE_ZONE"
+
+[[archetype.tags]]
+id = "HAS_LOOT"
+
+[[archetype.tags]]
+id = "QUEST_GIVER"
+
+[[archetype]]
+id = "mutation"
+name = "Gene Splicing Mutation"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "SONIC_CAVITATION"
+
+[[archetype.tags]]
+id = "ANHYDRO_CHITIN"
+
+[[archetype.tags]]
+id = "BIO_RECESSION"
+
+[[archetype.tags]]
+id = "CHROMATIC_INSTABILITY"
+
+[[archetype.tags]]
+id = "MALFORMED"
+
+[[archetype.tags]]
+id = "NEURAL_FRAGILE"
+
+[[archetype.tags]]
+id = "WEAKENED_IMMUNE"
+
+[[archetype.tags]]
+id = "VIABLE_TISSUE"
+
+[[archetype.tags]]
+id = "GENE_SPLICED"
+
+[[archetype.tags]]
+id = "TISSUE_PISTOL_SHRIMP"
+
+[[archetype.tags]]
+id = "TISSUE_TARDIGRADE"
+
+[[archetype.tags]]
+id = "TISSUE_BOMBARDIER"
+
+[[archetype.tags]]
+id = "TISSUE_CUTTLEFISH"
+
+[[archetype.tags]]
+id = "TISSUE_ELECTRIC_EEL"

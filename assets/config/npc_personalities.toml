@@ -511,3 +511,328 @@ template = "QUERY: Accessing archived records. The pre-Collapse meteorological s
 [[personality.conversation_topics]]
 trigger = "security_alert"
 template = "ALERT: Perimeter breach detected. Automated countermeasures engaged. Civilian casualties expected. This message will self-destruct."
+
+# ─── VAMPIRE COURTESAN ─────────────────────────────────────────────────────
+
+[[personality]]
+id = "vampire_courtesan"
+name = "Vampire Courtesan"
+factions = ["sanguine_elite"]
+tags = ["SANGUINE", "DECEPTIVE", "SOCIAL", "NOCTURNAL", "HUMANOID"]
+speech_style = "Velvet-wrapped steel. Laughter that does not reach the eyes. Compliments that sting on reflection. Uses intimacy as a weapon — proximity, lowered voice, lingering touch. Chromatophoric skin shifts subtly with mood, visible only to those who know to look."
+emotional_range = "Performative warmth to ice-cold dismissal. Genuine emotion is a professional liability."
+
+[[personality.voice]]
+hostile = "Sweet threats. A finger tracing your jawline. 'You have no idea what I am capable of.'"
+neutral = "Flirtatious appraisal. 'You carry yourself like someone who has lost everything. That is either tragic — or interesting.'"
+ally = "Warm, protective, but never fully vulnerable. Treats the player as a favored pet with privileges."
+
+[[personality.values]]
+key = "information"
+description = "Secrets are the only currency that never devalues."
+weight = 0.9
+
+[[personality.values]]
+key = "appearance"
+description = "Looking human is the ultimate camouflage. Perfecting it is an art form."
+weight = 0.8
+
+[[personality.values]]
+key = "independence"
+description = "Works for a noble house but serves only herself. Loyalty is a transaction."
+weight = 0.7
+
+[[personality.fears]]
+key = "discovery"
+description = "If her hybrid nature is exposed, her position — and her life — are forfeit"
+weight = 0.9
+
+[[personality.fears]]
+key = "nobles"
+description = "She knows too much about too many houses. If she outlives her usefulness..."
+weight = 0.7
+
+[[personality.conversation_topics]]
+trigger = "seduction_tease"
+template = "You have that look. The one that says 'I know things I should not.' I find that look very attractive — and very dangerous."
+
+[[personality.conversation_topics]]
+trigger = "blood_market"
+template = "I can get you into the Vein Market. The nobles do not approve of surface-dwellers trading there. Which is precisely why I enjoy it."
+
+[[personality.conversation_topics]]
+trigger = "house_gossip"
+template = "House {house_name} is fracturing. The matriarch has not fed in three days. The heir is circling like a shark. If you have interests in that quarter, now would be the time to act."
+
+# ─── TELOMERASE JUNKIE ─────────────────────────────────────────────────────
+
+[[personality]]
+id = "telomerase_junkie"
+name = "Telomerase Junkie"
+factions = ["familiars"]
+tags = ["FAMILIAR", "ADDICTED", "HUMANOID"]
+speech_style = "Erratic, desperate, fragmented. Sentences start and stop. Eyes dart to exits, to pockets, to the horizon. Obsessive focus on the next dose. Memory is shot — forgets what was said mid-sentence. Teeth chatter. Hands shake."
+emotional_range = "Desperate craving to brief, manic relief to crushing guilt. Cycles in hours."
+
+[[personality.voice]]
+hostile = "Cornered animal. Lashing out. Will do anything for a vial."
+neutral = "Jittery, pleading. Constantly scratching at track marks. Asks about the Enzyme within three sentences."
+ally = "Guilt-ridden gratitude. Wants to quit. Knows they cannot."
+
+[[personality.values]]
+key = "survival"
+description = "Will do anything for the next dose. Anything."
+weight = 1.0
+
+[[personality.values]]
+key = "regret"
+description = "A sliver of the old self remains — ashamed, watching, powerless."
+weight = 0.4
+
+[[personality.fears]]
+key = "withdrawal"
+description = "The Screaming. The bone-ache. The feeling of cells forgetting their purpose."
+weight = 1.0
+
+[[personality.fears]]
+key = "ghoul_transition"
+description = "Every junkie knows they are one bad batch away from becoming a Ghoul — and they know exactly what that looks like."
+weight = 0.8
+
+[[personality.knowledge]]
+domain = "dealer_routes"
+description = "Knows where to buy, who sells clean product, and who sells poison"
+weight = 0.7
+
+[[personality.conversation_topics]]
+trigger = "desperate_plea"
+template = "Please. I can feel it wearing off. The shaking started an hour ago. I have telomerase — diluted, but it is clean. I will trade everything I have for a proper dose."
+
+[[personality.conversation_topics]]
+trigger = "junkie_warning"
+template = "Do not go to the east market. The dealer there is cutting the Enzyme with something. Two of my associates are Ghouls now. They still moan their old names sometimes."
+
+# ─── SETTLEMENT ELDER ──────────────────────────────────────────────────────
+
+[[personality]]
+id = "settlement_elder"
+name = "Settlement Elder"
+factions = ["free_humanity"]
+tags = ["HUMAN", "MEDIUM", "PEACEFUL", "HUMANOID", "SOCIAL"]
+speech_style = "Slow, deliberate, weighted with years. Pauses between words are meaningful. Does not waste breath on the unimportant. Has buried too many young people to speak lightly. Offers wisdom freely — expects it to be ignored, as all elders do."
+emotional_range = "Gentle melancholy to quiet fury. Has earned the right to both."
+
+[[personality.voice]]
+hostile = "Cold, disappointed. 'I have seen your kind before. They are all dead now.'"
+neutral = "Warm but measured. Assesses character. Remembers faces."
+ally = "Paternal pride. Sees the player as the next generation worth investing in."
+
+[[personality.values]]
+key = "community"
+description = "The settlement is not walls and buildings — it is the people. All of them."
+weight = 0.9
+
+[[personality.values]]
+key = "memory"
+description = "If no one remembers the old world, it truly dies. Stories are seeds."
+weight = 0.8
+
+[[personality.values]]
+key = "pragmatism"
+description = "Idealism gets people killed. Survival requires hard choices."
+weight = 0.7
+
+[[personality.fears]]
+key = "extinction"
+description = "Not of humanity — but of humanity's soul. Kindness. Art. Hope."
+weight = 0.9
+
+[[personality.fears]]
+key = "the_young_forgetting"
+description = "The children born after the Collapse do not know what they have lost. They cannot miss what they never had."
+weight = 0.7
+
+[[personality.knowledge]]
+domain = "settlement_history"
+description = "Remembers the founding of the settlement, every raid, every winter, every birth and death"
+weight = 0.9
+
+[[personality.knowledge]]
+domain = "old_world_stories"
+description = "Carries fragments of pre-Collapse culture — songs, recipes, jokes that no one understands anymore"
+weight = 0.6
+
+[[personality.knowledge]]
+domain = "diplomacy"
+description = "Has negotiated with scavengers, vampires, and desperate fools. Knows how to read a lie."
+weight = 0.8
+
+[[personality.conversation_topics]]
+trigger = "settlement_story"
+template = "I remember when we built this hall. Twenty-two of us, hauling stones from the old highway. Three died under collapsed scaffolding. We buried them where the altar now stands. That is what this place is built on: the bones of the people who refused to leave."
+
+[[personality.conversation_topics]]
+trigger = "old_world_reminiscence"
+template = "I was six years old when the Collapse happened. I remember the sky turning the color of an old bruise. I remember my mother dragging me into the cellar. I remember the screaming from outside. The rest is silence. You learn to live in the silence."
+
+[[personality.conversation_topics]]
+trigger = "warning_advice"
+template = "You carry yourself like someone looking for something. I have seen that look before. It either ends in a shallow grave or a throne. Either way, there is no middle ground out here."
+
+# ─── NOMAD TRADER ──────────────────────────────────────────────────────────
+
+[[personality]]
+id = "nomad_trader"
+name = "Nomad Trader"
+factions = ["free_humanity"]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "SOCIAL", "CURIOUS"]
+speech_style = "Brisk, cheerful, appraising. Eyes constantly scanning for value — in goods, in information, in people. Laughs easily but watches how you react. Has a story for everything and a price for everything else. Speaks three broken languages and one fluent: negotiation."
+emotional_range = "Genial warmth to flinty hardness. The smile stays the same; the eyes change."
+
+[[personality.voice]]
+hostile = "Flat, professional. 'I do not trade with threats. Walk away.'"
+neutral = "Jovial haggling. Compliments your gear while pointing out its flaws."
+ally = "Fair prices, good advice, honest warnings. 'You saved my life. My stock is yours.'"
+
+[[personality.values]]
+key = "fair_dealing"
+description = "A reputation for honesty is worth more than any single profit."
+weight = 0.8
+
+[[personality.values]]
+key = "movement"
+description = "Staying in one place is death. The road is freedom."
+weight = 0.9
+
+[[personality.fears]]
+key = "the_road_taking"
+description = "Every journey could be the last. The wastes do not discriminate."
+weight = 0.8
+
+[[personality.knowledge]]
+domain = "trade_routes"
+description = "Knows the safe passages between every settlement within a hundred klicks"
+weight = 0.9
+
+[[personality.knowledge]]
+domain = "current_events"
+description = "Carries news between settlements — politics, monster migrations, price fluctuations"
+weight = 0.8
+
+[[personality.knowledge]]
+domain = "faction_identification"
+description = "Can spot a vampire, a familiar, and a Remnant at a glance by dress and mannerism"
+weight = 0.7
+
+[[personality.conversation_topics]]
+trigger = "trade_pitch"
+template = "You look like someone who could use a good deal. I have things from three settlements over — medicine from the north, tools from the east, and something I found in a vault that I still do not fully understand."
+
+[[personality.conversation_topics]]
+trigger = "road_news"
+template = "Word on the road: the Carapace are pushing up through the old subway tunnels. Three outposts went dark last week. The vampires are denying it, which means it is worse than they are letting on."
+
+# ─── FAMILIAR DEFECTOR ─────────────────────────────────────────────────────
+
+[[personality]]
+id = "familiar_defector"
+name = "Familiar Defector"
+factions = ["free_humanity"]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "COWARDLY", "CURIOUS"]
+speech_style = "Hesitant, watchful, apologetic. Chooses words carefully — old habits from a hierarchy where wrong words meant pain. Flinches at sudden movements. Carries the shame of what they did in the cult. The withdrawal tremors never fully stop."
+emotional_range = "Grateful to be alive, terrified of being found, guilty about the past."
+
+[[personality.voice]]
+hostile = "Backs away. Hands up. 'I am not with them anymore. Please. Please believe me.'"
+neutral = "Quiet, polite. Eager to prove they can be useful. Offers information freely."
+ally = "Relief. A genuine smile, unpracticed. 'I forgot what it felt like to not be afraid.'"
+
+[[personality.values]]
+key = "redemption"
+description = "Tries to save others from the cult. Knows the signs of recruitment."
+weight = 0.9
+
+[[personality.values]]
+key = "honesty"
+description = "Lied so much in the cult that honesty now feels like a luxury."
+weight = 0.8
+
+[[personality.fears]]
+key = "recapture"
+description = "The Elite hunt defectors. The punishment for leaving is being 'reabsorbed' — fed to the Broodmothers."
+weight = 1.0
+
+[[personality.fears]]
+key = "relapse"
+description = "The craving never fully leaves. One bad day could send them back."
+weight = 0.9
+
+[[personality.knowledge]]
+domain = "cult_operations"
+description = "Knows the layout of the local familiar dens, the hierarchy, and the schedules"
+weight = 0.9
+
+[[personality.knowledge]]
+domain = "elite_weaknesses"
+description = "Learned which vampires are vulnerable, where they sleep, and what they fear"
+weight = 0.7
+
+[[personality.conversation_topics]]
+trigger = "defector_story"
+template = "I was an acolyte for seven years. Seven years of communion, blood-letting, and watching people vanish into the basement. I escaped during the last raid — crawled through a sewage pipe for three hours. I still dream about the chanting."
+
+[[personality.conversation_topics]]
+trigger = "cult_intel"
+template = "The Familiars are planning something. I heard the Acolyte mention 'the Trench Gate' — something about opening a passage to the deep layers. I do not know what is down there, but I know they are afraid of it."
+
+[[personality.conversation_topics]]
+trigger = "redemption_offer"
+template = "If you are going after the cult, I can help. I know the layouts. I know the codes. I know which doors are trapped and which lead to dead ends. Just let me be useful. Let me undo some of what I did."
+
+# ─── VAMPIRE SCION ─────────────────────────────────────────────────────────
+
+[[personality]]
+id = "vampire_scion"
+name = "Vampire Scion"
+factions = ["sanguine_elite"]
+tags = ["SANGUINE", "AGGRESSIVE", "HUMANOID", "FEARLESS", "NOCTURNAL"]
+speech_style = "Arrogant, impulsive, cruel with the casualness of youth. Recently turned — still adjusting to the new senses, the new hunger, the new hierarchy. Alternates between bravado and moments of existential terror. Teeth are not fully formed chitin yet; gums still bleed when they eat."
+emotional_range = "Petulant pride to genuine fear. The immortality has not sunk in; the mortality of everyone else has."
+
+[[personality.voice]]
+hostile = "Taunting, overconfident. 'You are meat that has not realized it is dead yet.'"
+neutral = "Bored, dismissive. 'What could a surface-dweller possibly have to say that interests me?'"
+ally = "Reluctant respect. 'You proved yourself. The Blood does not forget — nor do I.'"
+
+[[personality.values]]
+key = "proving_worth"
+description = "The Blood is everything. Must prove worthy of the transformation."
+weight = 0.9
+
+[[personality.values]]
+key = "predator_pride"
+description = "Is no longer prey. The world is a hunting ground. This is intoxicating."
+weight = 0.8
+
+[[personality.fears]]
+key = "failure"
+description = "The House does not tolerate weakness. A failed scion is a dead scion."
+weight = 0.8
+
+[[personality.fears]]
+key = "the_change"
+description = "The body is still changing. Chitin plates push through the skin at night. What will they become when the change is complete?"
+weight = 0.6
+
+[[personality.knowledge]]
+domain = "house_genealogy"
+description = "Knows the bloodlines of the local houses and which lineages are considered pure"
+weight = 0.6
+
+[[personality.conversation_topics]]
+trigger = "scion_bravado"
+template = "I remember being human. It was like being blind and deaf at the same time. Now I can hear a heartbeat from fifty paces. I can smell your fear. Do not give me a reason to test which is stronger."
+
+[[personality.conversation_topics]]
+trigger = "scion_doubt"
+template = "The Enforcers say the change takes decades. My shoulders are widening. My teeth are sharpening. I caught myself staring at my own reflection — and not recognizing the face that stared back. Is this what immortality feels like? Because it feels like drowning."

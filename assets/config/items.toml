@@ -567,12 +567,12 @@ tags = ["STONE", "HARD", "ORE_IRON"]
 weight = 50
 
 [[item]]
-id = "mithril_ore"
-name = "Mithril Ore"
+id = "cobalt_ore"
+name = "Cobalt Ore"
 glyph = "*"
 color = [100, 200, 255]
 base_value = 35
-tags = ["STONE", "HARD", "ORE_MITHRIL", "VALUABLE"]
+tags = ["STONE", "HARD", "ORE_COBALT", "VALUABLE"]
 weight = 15
 
 [[item]]

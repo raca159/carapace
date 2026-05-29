@@ -89,12 +89,12 @@ impl DNA {
 }
 
 #[derive(Component, Debug, Clone)]
-pub struct GeneSplicer {
+pub struct GeneticsLab {
     pub stored_genes: Vec<Allele>,
     pub slots: u32,
 }
 
-impl GeneSplicer {
+impl GeneticsLab {
     pub fn new(slots: u32) -> Self {
         Self { stored_genes: Vec::new(), slots }
     }
@@ -168,14 +168,14 @@ mod tests {
 
     #[test]
     fn splice_stored_requires_two_genes() {
-        let mut splicer = GeneSplicer::new(5);
+        let mut splicer = GeneticsLab::new(5);
         assert!(!splicer.can_splice());
         assert!(splicer.splice_stored().is_none());
     }
 
     #[test]
     fn splice_stored_works_with_two_genes() {
-        let mut splicer = GeneSplicer::new(5);
+        let mut splicer = GeneticsLab::new(5);
         splicer.stored_genes.push(Allele { trait_type: GeneTrait::Speed, value: 0.8, dominant: true });
         splicer.stored_genes.push(Allele { trait_type: GeneTrait::Toughness, value: 0.6, dominant: true });
         assert!(splicer.can_splice());
@@ -198,7 +198,7 @@ mod tests {
     fn extract_gene_returns_matching() {
         let mut dna = DNA::new();
         dna.add_allele(Allele { trait_type: GeneTrait::NightVision, value: 1.0, dominant: true });
-        let extracted = GeneSplicer::extract_gene(&dna, GeneTrait::NightVision);
+        let extracted = GeneticsLab::extract_gene(&dna, GeneTrait::NightVision);
         assert!(extracted.is_some());
         assert_eq!(extracted.unwrap().value, 1.0);
     }
@@ -206,6 +206,6 @@ mod tests {
     #[test]
     fn extract_gene_returns_none_for_missing() {
         let dna = DNA::new();
-        assert!(GeneSplicer::extract_gene(&dna, GeneTrait::Climbing).is_none());
+        assert!(GeneticsLab::extract_gene(&dna, GeneTrait::Climbing).is_none());
     }
 }

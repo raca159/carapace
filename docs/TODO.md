@@ -50,24 +50,24 @@
 | 3 | Quest system | Quest board display + acceptance (1-9 keys) works | `check_quest_completion`, `track_kill`, `track_collect`, `handle_quest_turn_in` all dead — quests never complete |
 | 4 | NPC Action Engine | `score_action()` used in talk panel for display scoring | `NpcAction` enum (Speak, OfferTrade, AttackTarget, GiveQuest, EndConversation) never dispatched — scoring is cosmetic |
 | 5 | Personality | `PersonalityScores` queried by `process_npc_turns`, `NpcPersonalitiesResource` loaded | `PersonalityScores` never inserted on spawned entities — personality multiplier always 1.0 |
-| 6 | Encounters | `roll_encounter()` called on player movement, weather modulates chance | `biome_tags` parameter always `Vec::new()` — no biome-based encounter filtering |
+| 6 | Encounters | `roll_encounter()` called on player movement, weather modulates chance | **NOW WIRED** — biome tags extracted from tile, hostile biomes increase encounter chance |
 | 7 | Location traversal | Previously cosmetic | **Now WIRED** — Phase 2 interiors: `>` enters locations with BSP dungeon gen, `<` exits, depth progression on deeper stairs, dungeon creatures + chests |
 
-### 1.3 Dead Systems (10+)
+### 1.3 Dead Systems (8+)
 
 | # | System | File | Lines | Notes |
 |---|--------|------|-------|-------|
-| 1 | Save/Load | `core/save.rs` | ~200 | Full implementation, never called, no save points |
-| 2 | Traps | `core/traps.rs` | ~150 | Detection/disarm/trigger, never spawned or triggered |
-| 3 | Durability | `core/durability.rs` | ~100 | Degrade/repair, items never get Durability component |
-| 4 | Narrative events | `core/narrative.rs` | ~100 | Resources loaded, `check_narrative_events` never called |
-| 5 | Legacy input | `core/input.rs` | ~300 | Crossterm terminal backend, replaced by Bevy `ButtonInput` |
-| 6 | Gene splicing | `core/gene_splicing.rs` | ~557 | Module not declared in lib.rs, recipes loaded in tests only |
-| 7 | Genetics | `core/genetics.rs` | ~150 | Module not declared in lib.rs |
-| 8 | Artifacts | `core/artifacts.rs` | ~206 | Module not declared in lib.rs |
-| 9 | Game endings | `core/game_endings.rs` | ~137 | Module not declared in lib.rs |
+| 1 | Save/Load | `core/save.rs` | ~200 | **NOW WIRED** — auto-save in turn loop, load from main menu |
+| 2 | Narrative events | `core/narrative.rs` | ~100 | **NOW WIRED** — `check_narrative_events` in turn loop |
+| 3 | Durability | `core/durability.rs` | ~100 | **NOW WIRED** — set on equip (player + NPC), degrade on combat |
+| 4 | Traps | `core/traps.rs` | ~150 | **NOW WIRED** — spawned in dungeons, detected/triggered on movement, poison DoT in turn loop |
+| 5 | Legacy input | `core/input.rs` | ~300 | DELETED — crossterm backend replaced by Bevy `ButtonInput` |
+| 6 | Gene splicing | `core/_gene_splicing.rs.disabled` | ~557 | Module not declared in lib.rs, recipes loaded in tests only |
+| 7 | Genetics | `core/_genetics.rs.disabled` | ~150 | Module not declared in lib.rs |
+| 8 | Artifacts | `core/_artifacts.rs.disabled` | ~206 | Module not declared in lib.rs |
+| 9 | Game endings | `core/_game_endings.rs.disabled` | ~137 | Module not declared in lib.rs |
 | 10 | TurnState/TurnPhase | `core/turn.rs` | ~50 | Superseded by `GameTurnState`, never inserted |
-| 11 | Spatial hash grid | `crates/world/src/spatial.rs` | ~262 | Module not declared, optimization unused |
+| 11 | Spatial hash grid | `world/src/_spatial.rs.disabled` | ~262 | Module not declared, optimization unused |
 
 ---
 
@@ -166,14 +166,14 @@ All loaded via `include_str!()` in `src/world_gen.rs`:
 | 8 | `assets/config/biome_rules.toml` | `BiomeClassifier` | Biome classification |
 | 9 | `assets/config/factions.toml` | `FactionRelationships` | Faction hostility checks |
 | 10 | `assets/config/behavior_rules.toml` | `BehaviorRules` | NPC chase/flee/guard/approach/wander |
-| 11 | `assets/config/narrative_events.toml` | `NarrativeEvents` | Loaded but never queried |
+| 11 | `assets/config/narrative_events.toml` | `NarrativeEvents` | `check_narrative_events()` in turn loop |
 | 12 | `assets/config/quests.toml` | `QuestTemplates` | Quest board display |
-| 13 | `assets/config/lore_fragments.toml` | `LoreFragmentsResource` | Loaded but never queried |
-| 14 | `assets/config/npc_personalities.toml` | `NpcPersonalitiesResource` | Loaded but never queried |
+| 13 | `assets/config/lore_fragments.toml` | `LoreFragmentsResource` | Available for lore discovery systems |
+| 14 | `assets/config/npc_personalities.toml` | `NpcPersonalitiesResource` | `spawner.rs` personality generation |
 | 15 | `assets/config/npc_actions.toml` | `NpcActionWeights` | Talk panel action scoring |
 | 16 | `assets/config/dialogue.toml` | `DialogueLinesResource` | Talk panel dialogue selection |
 | 17 | `assets/config/crafting.toml` | `CraftingRecipesResource` | Crafting panel |
-| 18 | `assets/config/loot_tables.toml` | `LootTables` | Loaded but never queried |
+| 18 | `assets/config/loot_tables.toml` | `LootTables` | `populate_inventories()` for INVENTORY_LOOT |
 | 19 | `assets/config/encounters.toml` | `Encounters` | Encounter rolling |
 | 20 | `assets/config/spawn_rules.toml` | `SpawnRulesFile` | Entity spawning |
 | 21 | `assets/config/events.toml` | `EventFormats` | Event message formatting |
@@ -183,7 +183,9 @@ Additional active configs:
 - `assets/config/wfc_tilesets/*.toml` (6 tilesets) → WFC generation (loaded via file I/O)
 - `crates/llm/assets/config/llm.toml` → LLM config (crate-level)
 
-### 3.2 Dead Configs (11 files)
+### 3.2 Dead Configs — Cleaned Up (2026-05-29)
+
+The following 11 TOML files + 3 companion PNGs were confirmed dead (zero call sites, no `include_str!` or file I/O) and deleted:
 
 | File | Why Dead |
 |------|----------|
@@ -195,9 +197,31 @@ Additional active configs:
 | `assets/config/entities/cryo_vault_overseer.toml` | Never loaded |
 | `assets/config/world/world.toml` | Duplicate of top-level `world.toml` |
 | `assets/config/world/biome_rules.toml` | Older version with simpler biome IDs |
-| `assets/sprites/ui_icons.toml` | Never loaded (no texture atlas loader) |
-| `assets/sprites/creatures_carapace.toml` | Never loaded |
-| `assets/sprites/tiles_terrain.toml` | Never loaded |
+| `assets/sprites/ui_icons.toml` | Never loaded (old coordinate-atlas schema) |
+| `assets/sprites/creatures_carapace.toml` | Never loaded (old coordinate-atlas schema) |
+| `assets/sprites/tiles_terrain.toml` | Never loaded (old coordinate-atlas schema) |
+| `assets/sprites/ui_icons.png` | Companion to deleted ui_icons.toml |
+| `assets/sprites/creatures_carapace.png` | Companion to deleted creatures_carapace.toml |
+| `assets/sprites/tiles_terrain.png` | Companion to deleted tiles_terrain.toml |
+
+Also removed the now-empty `assets/config/entities/` and `assets/config/world/` directories.
+
+### 3.5 Glyph Collisions — Resolved (2026-05-29)
+
+Entity templates in `assets/config/entity_templates.toml` had 10 glyph collisions across 12 templates, making different creature types indistinguishable on the map. Each template now has a unique glyph:
+
+| Collision | Glyph | Templates | Resolution |
+|-----------|-------|-----------|------------|
+| 3-way | `C` | Spitter Crab → **C**, Vampire Courtesan → **c**, Cryo Survivor → **O** |
+| 3-way | `D` | Abyssal Dreadclaw → **D**, Wasteland Doctor → **+**, Security Drone → **0** |
+| 2-way | `M` | Molting Broodmother → **M**, Medical Sentinel → **#** |
+| 2-way | `H` | Vampire Bloodhound → **H**, Remnant Hunter → **t** |
+| 2-way | `S` | Artifact Scavenger → **S**, Stasis Pod Guardian → **Q** |
+| 2-way | `P` | Flagellant Prophet → **P**, Survey Probe → **%** |
+| 2-way | `A` | Vampire Alchemist → **A**, Atmosphere Processor → **X** |
+| 2-way | `G` | Telomerase Ghoul → **G**, Settlement Guard → **g** |
+| 2-way | `r` | Trench Runner → **r**, Chitin-Rat Swarm → **:** |
+| 2-way | `R` | Radio Operator → **R**, Remnant Archivist → **k** |
 
 ### 3.3 Schema Drift
 
@@ -212,10 +236,10 @@ Additional active configs:
 |----------|-------------|--------|
 | `PlayerStats` | `world_gen.rs:66` | Kept — consumed by render overlays |
 | `NpcPersonalitiesResource` | `world_gen.rs:115` | **Now wired** — consumed by spawner.rs for personality generation |
-| `NarrativeEvents` | Removed | Insertion deleted (TOML kept) |
-| `NarrativeCooldowns` | Removed | Insertion deleted |
-| `LoreFragmentsResource` | Removed | Insertion deleted (TOML kept) |
-| `LootTables` | Removed | Insertion deleted (TOML kept) |
+| `NarrativeEvents` | `world_gen.rs:129` | **Now wired** — consumed by `check_narrative_events()` in turn loop |
+| `NarrativeCooldowns` | `game/mod.rs:68` | Kept — consumed by `check_narrative_events()` for cooldown tracking |
+| `LoreFragmentsResource` | `world_gen.rs:137` | **Now wired** — loaded from TOML, available for lore discovery |
+| `LootTables` | `world_gen.rs:133` | **Now wired** — consumed by `populate_inventories()` for INVENTORY_LOOT entities |
 
 ---
 
@@ -337,6 +361,14 @@ tags.toml (central registry)
 | 10 | Location traversal cosmetic (Phase 2 interiors) | Full enter/exit/depth-progression with BSP dungeon gen for 5 location types |
 | 11 | Entity inventory system missing | **Tag-driven entity inventory system** — see full architecture entry below |
 
+### Done (2026-05-29)
+
+| # | Gap | Resolution |
+|---|-----|------------|
+| 12 | NarrativeEvents resource not inserted | Wired from `narrative_events.toml` into `NarrativeEvents` resource — `check_narrative_events()` now has data to process |
+| 13 | LootTables resource not inserted | Wired from `loot_tables.toml` into `LootTables` resource — `INVENTORY_LOOT` entities (dungeon chests, containers) now get table-based loot |
+| 14 | LoreFragmentsResource not inserted | Wired from `lore_fragments.toml` into `LoreFragmentsResource` — 32+ lore fragments available for future lore discovery systems |
+
 ---
 
 ## Entity Inventory System — Architecture & Impact
@@ -402,7 +434,11 @@ Fixes: enter_next_depth population, unused _seed variable
 | # | Gap | Fix | Effort |
 |---|-----|-----|--------|
 | 8 | Barter backend exists, UI is stub | Wire `resolve_barter_with_haggle` into `start_trade()` with `RegionEconomies` pricing | Medium |
-| 9 | Quest tracking dead | Wire `check_quest_completion`/`track_kill`/etc. into turn loop | Medium |
+| 9 | Quest tracking dead | **RESOLVED** — `track_kill`/`track_collect`/`track_reach`/`track_kill_area` wired, `check_quest_failures` in turn loop | — |
+| 10 | Traps | **RESOLVED** — spawned in dungeons, detected/triggered on movement, poison DoT | — |
+| 11 | NPC Action social dispatch | Auto-dispatch `Speak`/`OfferTrade`/`AttackTarget`/`GiveQuest` from `score_action()` results | Medium |
+| 12 | Disabled files | Rename 5 `.rs.disabled` + declare modules (gene_splicing, genetics, artifacts, game endings, spatial) | Large |
+| 13 | Durability on NPC combat | Degrade NPC equipment too (currently only player degrades) | Small |
 
 ### Disabled Reference Files
 

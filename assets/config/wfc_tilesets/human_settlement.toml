@@ -60,7 +60,7 @@ tags = ["floor", "ruin"]
 
 [conditions]
 biomes = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_SETTLEMENT"]
-factions = ["free_settlements"]
+factions = ["free_humanity"]
 
 [adjacency.EMPTY]
 up = ["EMPTY", "WALL"]

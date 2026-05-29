@@ -193,3 +193,70 @@ lines = [
     "Please leave. I don't want to have to hurt you.",
     "You're making a mistake. Walk away before it's too late."
 ]
+
+# ─── THE REMNANT (Cryo Survivors) ────────────────────────────────────────────
+# Voice: Formal, clinical, carrying old-world terminology. Slightly detached,
+# as if observing the present through a pane of historical glass.
+
+[[dialogue]]
+trigger_tags = ["TECH_WORSHIPPER", "CURIOUS"]
+standing = "neutral"
+lines = [
+    "You carry pre-Collapse equipment. May I examine it? The calibration may be off by several decades.",
+    "The atmospheric composition has shifted significantly since I was last conscious. The telomerase concentration is... concerning.",
+    "I have been cataloging the local biosphere. The rate of mutagenesis is statistically improbable without an external catalyst."
+]
+
+[[dialogue]]
+trigger_tags = ["TECH_WORSHIPPER", "CURIOUS"]
+standing = "ally"
+lines = [
+    "You remind me of the old-world engineers. Pragmatic. Resourceful. Entirely too willing to touch unknown technology without reading the manual first.",
+    "I have compiled a list of nearby vault coordinates from fragmented satellite memory. Would you like a copy?",
+    "The pre-Collapse archives contain detailed records of this region's infrastructure. Sewer maps, power conduits, emergency shelters. I will share what I have."
+]
+
+[[dialogue]]
+trigger_tags = ["TECH_WORSHIPPER"]
+standing = "hostile"
+lines = [
+    "You are damaging pre-Collapse infrastructure at an alarming rate. I am compelled to intervene.",
+    "That artifact is older than your entire civilization. You will return it or I will demonstrate why our technology outpaced yours.",
+    "I have accessed the local security network. Your biometrics have been flagged. Do not test this."
+]
+
+[[dialogue]]
+trigger_tags = ["TECH_WORSHIPPER", "PEACEFUL"]
+standing = "neutral"
+lines = [
+    "The world I knew ended one hundred and twelve years ago. I am still processing the discrepancy between expectation and reality.",
+    "You call the old-world technology 'artifacts' and treat them with reverence. They were tools. Coffee makers. Door hinges. We built wonders and forgot to leave instructions.",
+    "I have been awake for three weeks. The nightmares are subsiding. The grief is not."
+]
+
+[[dialogue]]
+trigger_tags = ["TECH_WORSHIPPER", "PEACEFUL"]
+standing = "ally"
+lines = [
+    "You accept me despite my origin. That is more than I expected from this century. Thank you.",
+    "I can fabricate basic medical supplies if you can source the raw compounds. The old-world formulas still work — they just need clean reactants.",
+    "There is a cryo-vault to the northeast with a functional gene-therapy bay. If we can reach it, I may be able to synthesize telomerase stabilizers. Real ones, not the cult's diluted poison."
+]
+
+[[dialogue]]
+trigger_tags = ["HUMAN", "PEACEFUL"]
+standing = "neutral"
+lines = [
+    "You have adapted remarkably well to the post-Collapse environment. The human genome is more resilient than the pre-Collapse models predicted.",
+    "Your settlement's resource allocation is inefficient. I have documented several optimizations, if your council is interested.",
+    "You speak of the 'old world' as a lost paradise. It was not. It was flawed and beautiful and doomed, just like every other age of humanity."
+]
+
+[[dialogue]]
+trigger_tags = ["HUMAN", "PEACEFUL"]
+standing = "ally"
+lines = [
+    "Your people accepted me into your community despite my strange speech and stranger equipment. That kind of trust is a currency I did not expect to find in this age.",
+    "I am calibrating a weather prediction model using the archival satellite data. If it works, you will know when the night-hunters are most active. Forewarned is forearmed.",
+    "The children in your settlement have never seen a tree that was not mutated. I want to show them the old-world seed bank. I want them to know what green used to mean."
+]

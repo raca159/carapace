@@ -103,3 +103,77 @@ target_tags = ["HERB_MEDICINAL"]
 required_count = 5
 reward_tags = ["METAL", "COMMON"]
 
+# ─── FACTION-SPECIFIC QUESTS ──────────────────────────────────────────────
+# Added per CAR-3: Faction voice (lens 3), History as texture (lens 6),
+# Dark wonder (lens 4), Density over volume (lens 5)
+
+[[quest_template]]
+id = "reclaim_vault_data"
+name_pattern = "Reclaim Vault Data from the {biome}"
+description_pattern = "A Remnant archivist tracked a pre-Collapse server core to the {biome}, but the facility is infested. The data could contain gene-therapy protocols — real medicine, not cult poison. We need the storage cylinder. The machines can keep the rest."
+objective_type = "collect"
+target_tags = ["ARTIFACT", "ELECTRONIC"]
+required_count = 1
+reward_tags = ["EQUIP_ACCESSORY", "RARE"]
+biome_tags = ["BIOME_ANCIENT_VAULT", "BIOME_MOUNTAIN"]
+
+[[quest_template]]
+id = "silence_construct"
+name_pattern = "Silence the {target}"
+description_pattern = "An automated security unit in the {biome} has been broadcasting a distress signal for seventy years. The signal attracts Carapace — and worse. We need someone to reach its maintenance access and terminate the transmitter. It will defend itself. They all do."
+objective_type = "kill"
+target_tags = ["CONSTRUCT", "MINDLESS"]
+reward_tags = ["ARTIFACT", "UNCOMMON"]
+required_count = 1
+biome_tags = ["BIOME_ANCIENT_VAULT", "BIOME_TUNDRA", "BIOME_MOUNTAIN"]
+
+[[quest_template]]
+id = "intercept_sanguine_courier"
+name_pattern = "Intercept the Sanguine Courier"
+description_pattern = "A vampire courier is moving through the {biome} with a sealed manifest of House {house_name}. The contents could shift the balance between the noble houses. The settlement wants that manifest — and the courier is secondary. A dead courier tells no tales, but their documents tell everything."
+objective_type = "kill_area"
+target_tags = ["SANGUINE", "HUMANOID", "AGGRESSIVE"]
+kill_count = 2
+reward_tags = ["TELOMERASE", "RARE"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_SHRUBLAND", "BIOME_GRASSLAND"]
+
+[[quest_template]]
+id = "close_trench_leak"
+name_pattern = "Close the Trench Leak in the {biome}"
+description_pattern = "A fissure has opened in the {biome}, leaking raw telomerase into the water table. The Carapace are already swarming to it. The settlement needs the fissure sealed — collapsed, flooded, or buried. The Carapace will not surrender their new spawning ground without a fight."
+objective_type = "kill_area"
+target_tags = ["CARAPACE", "HAS_CHITIN", "AGGRESSIVE"]
+kill_count = 6
+reward_tags = ["EQUIP_WEAPON", "RARE"]
+biome_tags = ["BIOME_SWAMP", "BIOME_TEMPERATE_FOREST", "BIOME_MOUNTAIN"]
+
+[[quest_template]]
+id = "cult_sabotage_supply"
+name_pattern = "Sabotage the Familiar Supply Line"
+description_pattern = "The Familiars are moving a shipment of diluted Enzyme through the {biome} to a forward ritual site. Without it, the local cult loses its grip on the flock. Destroy the shipment. Kill the couriers. Let the addicts feel the withdrawal and remember why they hate their masters."
+objective_type = "kill_area"
+target_tags = ["FAMILIAR", "HUMANOID", "ADDICTED"]
+kill_count = 4
+reward_tags = ["CHITIN", "UNCOMMON"]
+biome_tags = ["BIOME_SHRUBLAND", "BIOME_TEMPERATE_FOREST", "BIOME_DESERT"]
+
+[[quest_template]]
+id = "sample_mutation"
+name_pattern = "Sample {biome} Mutation"
+description_pattern = "A free humanity biologist is cataloging telomerase mutations in the {biome}. They need tissue samples from at least {kill_count} distinct mutant specimens — alive enough to culture, dead enough to carry. The mutations are accelerating. This may be our last chance to document the baseline."
+objective_type = "kill_area"
+target_tags = ["MUTANT", "AGGRESSIVE"]
+kill_count = 5
+reward_tags = ["HERB_MEDICINAL", "EPIC"]
+biome_tags = ["BIOME_SWAMP", "BIOME_TROPICAL_FOREST", "BIOME_VOLCANIC"]
+
+[[quest_template]]
+id = "safe_passage_remnant"
+name_pattern = "Escort the Remnant Convoy to {biome}"
+description_pattern = "A Remnant convoy is attempting to reach a pre-Collapse bunker in the {biome}. They carry cryo-tech that could awaken more survivors — but every faction wants it. The vampires want the tech. The Familiars want the untainted blood. The Carapace just want everything organic. Keep the convoy alive."
+objective_type = "kill_area"
+target_tags = ["HUMANOID", "AGGRESSIVE"]
+kill_count = 8
+reward_tags = ["EQUIP_ARMOR", "EPIC"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_MOUNTAIN", "BIOME_TUNDRA"]
+

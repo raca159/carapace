@@ -155,6 +155,9 @@ fn generate_npc_equipment(
             Item,
         )).id();
 
+        // Set durability on equipped items
+        game_core::durability::set_durability_on_equip(world, item_entity);
+
         let is_weapon = roll.item.tags.iter().any(|t| t == "EQUIP_WEAPON");
         let is_armor = roll.item.tags.iter().any(|t| t == "EQUIP_ARMOR");
 

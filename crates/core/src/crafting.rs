@@ -502,7 +502,7 @@ outputs = [{ tags = ["WOOD", "CLOTH", "FLAMMABLE", "HOLDABLE", "LUMINESCENT"], n
     fn test_load_actual_crafting_toml() {
         let crafting_toml = include_str!("../../../assets/config/crafting.toml");
         let recipes = load_crafting_recipes(crafting_toml).unwrap();
-        assert_eq!(recipes.len(), 6);
+        assert_eq!(recipes.len(), 20);
         assert_eq!(recipes[0].name, "Smelt Iron");
         assert_eq!(recipes[1].name, "Forge Sword");
     }

@@ -422,3 +422,282 @@ glyph = "/"
 color = [180, 180, 200]
 tags = ["METAL", "EQUIP_WEAPON", "MELEE", "UNCOMMON"]
 count = 1
+
+# ─── REMNANT CRYO-SURVIVOR ────────────────────────────────────────────────────
+# A disoriented pre-Collapse human awakened from stasis. Carries advanced gear
+# they barely understand. Neutral — more curious than hostile.
+
+[[encounter]]
+id = "remnant_survivor"
+name = "Cryo Survivor"
+description = "A figure in a damaged stasis-adapted suit stands amid a circle of dead Carapace. They grip a cryo-pistol with the uncertain authority of someone who woke up to a nightmare."
+weight = 6
+min_distance = 8
+
+[[encounter.spawn]]
+name = "Cryo Survivor"
+glyph = "C"
+color = [180, 220, 255]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "TECH_WORSHIPPER", "CURIOUS", "HAS_INVENTORY", "INVENTORY_SMALL", "INVENTORY_EQUIPMENT"]
+health = 35
+count = 1
+
+[[encounter.loot]]
+name = "Cryo-Pistol"
+glyph = "/"
+color = [200, 240, 255]
+tags = ["ARTIFACT", "ENERGY", "EQUIP_WEAPON", "RANGED", "RARE"]
+count = 1
+
+[[encounter.loot]]
+name = "Old-World Bandage"
+glyph = "!"
+color = [220, 220, 220]
+tags = ["MEDICAL", "HEALING", "CONSUMABLE", "COMMON"]
+count = 2
+
+# ─── ANCIENT CONSTRUCT PATROL ──────────────────────────────────────────────────
+# A pre-Collapse security drone still following protocols from a dead world.
+# Hostile to anything it classifies as a threat.
+
+[[encounter]]
+id = "construct_patrol"
+name = "Ancient Construct Patrol"
+description = "A hovering security drone sweeps the area with optical sensors. Its weapon arm hums with stored energy. Warning lights flash in a pattern that no living person can decode."
+weight = 7
+min_distance = 10
+
+[[encounter.spawn]]
+name = "Security Drone"
+glyph = "D"
+color = [180, 180, 180]
+tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "LUMINESCENT", "FLIGHT"]
+health = 40
+count = 1
+
+[[encounter.spawn]]
+name = "Survey Probe"
+glyph = "P"
+color = [100, 180, 220]
+tags = ["CONSTRUCT", "SMALL", "CURIOUS", "ARTIFACT", "MINDLESS", "FLIGHT"]
+health = 15
+count = 1
+offset_x = 2
+offset_y = 1
+
+[[encounter.loot]]
+name = "Salvaged Circuit Board"
+glyph = "."
+color = [100, 180, 100]
+tags = ["ARTIFACT", "ELECTRONIC", "SALVAGE", "COMMON"]
+count = 2
+
+[[encounter.loot]]
+name = "Power Cell Fragments"
+glyph = "."
+color = [200, 200, 50]
+tags = ["ARTIFACT", "ENERGY", "SALVAGE", "UNCOMMON"]
+count = 1
+
+# ─── FAMILIAR PROCESSION ───────────────────────────────────────────────────────
+# A cult procession moving through the wasteland — chanting, delirious,
+# dragging a blood-offering toward the nearest vampire manor.
+
+[[encounter]]
+id = "familiar_procession"
+name = "Familiar Procession"
+description = "A line of robed figures moves across the landscape in single file. Their chant is low and syncopated. Between them, a bound figure stumbles — the nights' offering."
+weight = 9
+min_distance = 10
+
+[[encounter.spawn]]
+name = "Familiar Acolyte"
+glyph = "a"
+color = [80, 0, 60]
+tags = ["FAMILIAR", "MEDIUM", "HUMANOID", "ADDICTED", "DECEPTIVE", "HAS_INVENTORY", "INVENTORY_SMALL", "INVENTORY_LOOT"]
+health = 30
+count = 1
+
+[[encounter.spawn]]
+name = "Familiar Zealot"
+glyph = "f"
+color = [100, 0, 80]
+tags = ["FAMILIAR", "MEDIUM", "HUMANOID", "ADDICTED", "AGGRESSIVE", "HAS_INVENTORY", "INVENTORY_TINY"]
+health = 25
+count = 2
+offset_x = 1
+offset_y = 1
+
+[[encounter.loot]]
+name = "Communion Dose (Diluted)"
+glyph = "*"
+color = [80, 20, 80]
+tags = ["TELOMERASE", "CURRENCY", "DILUTED", "COMMON"]
+count = 3
+
+[[encounter.loot]]
+name = "Blood-Letting Kit"
+glyph = "i"
+color = [200, 50, 50]
+tags = ["TOOL", "MEDICAL", "BLOOD", "UNCOMMON"]
+count = 1
+
+# ─── MUTANT PACK ───────────────────────────────────────────────────────────────
+# A group of mutated predators hunting together — partially synchronized
+# by the telomerase that rewired their nervous systems.
+
+[[encounter]]
+id = "mutant_pack"
+name = "Mutant Pack"
+description = "A pack of chimeric predators moves through the undergrowth. Their movements are not quite coordinated — each individual fights for itself, but they have learned that the pack survives longer."
+weight = 12
+min_distance = 10
+
+[[encounter.spawn]]
+name = "Mutant Predator"
+glyph = "m"
+color = [100, 140, 80]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "CARNIVORE", "PACK_ANIMAL", "HAS_CHITIN"]
+health = 30
+count = 1
+
+[[encounter.spawn]]
+name = "Mutant Predator"
+glyph = "m"
+color = [100, 140, 80]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "CARNIVORE", "PACK_ANIMAL", "HAS_CHITIN"]
+health = 30
+count = 1
+offset_x = 1
+
+[[encounter.spawn]]
+name = "Mutant Predator"
+glyph = "m"
+color = [100, 140, 80]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "CARNIVORE", "PACK_ANIMAL", "HAS_CHITIN"]
+health = 30
+count = 1
+offset_y = 1
+
+[[encounter.loot]]
+name = "Mutated Tissue"
+glyph = "%"
+color = [100, 140, 80]
+tags = ["TISSUE", "MUTAGENIC", "ALCHEMICAL", "UNCOMMON"]
+count = 2
+
+[[encounter.loot]]
+name = "Chitin Fragment"
+glyph = "."
+color = [100, 80, 60]
+tags = ["CHITIN", "HARD", "CRAFTING", "COMMON"]
+count = 2
+
+# ─── SETTLEMENT REFUGEE ────────────────────────────────────────────────────────
+# A wounded survivor fleeing a recent attack. Needs help but has little to offer
+# except information and gratitude.
+
+[[encounter]]
+id = "settlement_refugee"
+name = "Wounded Refugee"
+description = "A bloodied figure stumbles toward you, one arm pressed against a wound that has soaked through their makeshift bandages. Their eyes are wide — they are running from something that is still coming."
+weight = 6
+min_distance = 5
+
+[[encounter.spawn]]
+name = "Refugee"
+glyph = "h"
+color = [140, 120, 100]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "PEACEFUL", "COWARDLY"]
+health = 10
+count = 1
+
+[[encounter.loot]]
+name = "Dried Rations"
+glyph = "%"
+color = [180, 140, 80]
+tags = ["FOOD_WILD", "EDIBLE", "CONSUMABLE", "COMMON"]
+count = 1
+
+[[encounter.loot]]
+name = "Worn Journal"
+glyph = "□"
+color = [180, 160, 100]
+tags = ["PAPER", "ARTIFACT", "VALUABLE", "COMMON"]
+count = 1
+
+# ─── BIO-ELECTRIC STORM ────────────────────────────────────────────────────────
+# An environmental hazard caused by telomerase reacting with atmospheric
+# conditions. Crackling energy and dissolving organic matter.
+
+[[encounter]]
+id = "bio_electric_storm"
+name = "Bio-Electric Storm"
+description = "The air crackles with static. Ozone burns the nostrils. Violet arcs of bio-electricity dance between the ground and the sky — the Enzyme in the atmosphere is ionizing. Shelter is not optional."
+kind = "hazard"
+weight = 5
+min_distance = 3
+
+[[encounter.effect]]
+damage = 15
+message = "A violet arc of bio-electricity lances down from the charged air! Your nerves scream!"
+
+[[encounter.loot]]
+name = "Bio-Electric Organ"
+glyph = "."
+color = [0, 150, 200]
+tags = ["ORGAN", "ELECTRIC", "CRAFTING", "UNCOMMON"]
+count = 1
+
+# ─── CARAPACE BROOD SWARM ──────────────────────────────────────────────────────
+# A wave of juvenile Carapace spawn surging from a nearby trench fissure.
+# Individually weak, overwhelming in numbers.
+
+[[encounter]]
+id = "carapace_brood_swarm"
+name = "Carapace Brood Swarm"
+description = "The ground ripples. A tide of glistening chitinous bodies pours from a crack in the earth — larval Carapace spawn, each the size of a rat, moving as one feeding organism."
+weight = 10
+min_distance = 8
+
+[[encounter.spawn]]
+name = "Carapace Larva"
+glyph = "l"
+color = [140, 100, 60]
+tags = ["CARAPACE", "TINY", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "COWARDLY"]
+health = 8
+count = 1
+
+[[encounter.spawn]]
+name = "Carapace Larva"
+glyph = "l"
+color = [140, 100, 60]
+tags = ["CARAPACE", "TINY", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "COWARDLY"]
+health = 8
+count = 1
+offset_x = 1
+
+[[encounter.spawn]]
+name = "Carapace Larva"
+glyph = "l"
+color = [140, 100, 60]
+tags = ["CARAPACE", "TINY", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "COWARDLY"]
+health = 8
+count = 1
+offset_y = 1
+
+[[encounter.spawn]]
+name = "Carapace Larva"
+glyph = "l"
+color = [140, 100, 60]
+tags = ["CARAPACE", "TINY", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "COWARDLY"]
+health = 8
+count = 1
+offset_x = -1
+
+[[encounter.loot]]
+name = "Chitin Fragment"
+glyph = "."
+color = [80, 60, 40]
+tags = ["CHITIN", "HARD", "CRAFTING", "COMMON"]
+count = 3

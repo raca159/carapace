@@ -2,8 +2,34 @@
 
 **Author:** StoryTeller
 **Issue:** CAR-272
-**Status:** Draft — pending CTO review
+**Status:** Canonical
+**Last finalized:** 2026-05-29 — Designer, CAR-8 consistency audit
 **Lenses applied:** World consistency, Faction voice, Density over volume, Dark wonder, History as texture, Modular fragments, Readability under constraints
+
+---
+
+## Finalization Notes (CAR-8)
+
+This document was finalized from Draft to Canonical as part of the CAR-8 lore consistency audit.
+
+**Changes applied:**
+- Removed stale `L#nnn` line references (outdated after entity_templates.toml edits)
+- Status updated from "Draft — pending CTO review" to "Canonical"
+
+**Creatures described here but not yet in `entity_templates.toml` (design references, not implemented):**
+Great Carapace: Pressure Crawler, Abyssal Siege Crab, Lurejaw Angler
+Sanguine Elite: Vampire Inquisitor, Blood Hound
+Familiars: Telomerase Junkie
+Free Humanity: Nomad Trader
+Mutated Wildlife: Chimeric Brute, Mantis Slicer, Venom Stinger, Spore-Spliced Shambler, Carrion Flapper
+
+These 12 creatures have full visual specs. When entity templates are added, their designs should follow these descriptions exactly — the descriptions passed faction-voice review.
+
+**Canonical references (use these for all sprite work):**
+- Faction color palettes — Section 1 (hex codes)
+- Creature glyph assignments — Section 3 (glyph field in entity headers)
+- Location tile descriptions — Section 2 (WFC tileset visual specs)
+- Item icon spec — Section 4 (size, material, maker signals)
 
 ---
 
@@ -134,11 +160,19 @@
 
 ### 1.5 The Remnant
 
-**Nature:** Those who rejected walls. Nomads, exiles, and freedom-worshippers who move constantly, never staying long enough to be found. They know the surface better than anyone — where the water runs clean, where the Diggers tunnel, where the vampires hunt.
+**Nature:** Pre-Collapse humans awakened from cryogenic vaults. They carry old-world knowledge but are strangers in a world that moved on without them. Their bodies are untainted by the Enzyme, their minds shaped by a world that no longer exists. They wake to ash and rust and the ruins of everything they knew.
 
-**Architectural style:** None permanent. Their architecture is the trail, the camp, the agreed-upon meeting point. A Remnant camp is a circle of patched tents around a fire, with lookouts posted and horses (or mutated pack animals) tethered at the edge. They leave no trace — and take everything worth taking.
+**Architectural style:** Pristine survival. They inhabit the cryogenic facilities that preserved them — sterile corridors, med bays, data archives. When they venture to the surface, they build temporary shelters with military precision: modular, efficient, designed to be defensible. Their camps look like field hospitals, not homes. Everything has a place. Everything is clean. This is not comfort — it is discipline born of grief.
 
-**Color palette:** Same as Free Humanity but with more earth tones `#5C4033`, `#8B7D6B`, and less settlement structure/warmth.
+**Visual motifs:**
+- Pre-Collapse clothing preserved in cryo: uniforms, lab coats, civilian clothes that are decades out of style
+- Cleanliness that marks them as outsiders — scrubbed skin, trimmed hair, mended clothes
+- Tech they understand but cannot replace: tablets, scanners, diagnostic tools with dying batteries
+- The thousand-yard stare of people who buried everyone they loved and then woke up
+- Old-world gestures that no one else recognizes: salutes, handshakes, the sign of the cross
+- Cryo-stiffness: joints that ache, movements that are careful and measured
+
+**Color palette:** `#4682B4` cryo steel blue, `#B0C4DE` frost white, `#E8E8E8` sterile white, `#2F4F4F` vault shadow, `#DAA520` worn brass, `#8B4513` aged leather
 
 ---
 
@@ -332,49 +366,49 @@
 
 ### 3.1 The Great Carapace
 
-**Trench Lobster** (`entity_templates.toml` L#14, glyph `L`)
+**Trench Lobster** (`entity_templates.toml` glyph `L`)
 - **Silhouette:** Bipedal crustacean form, hunched forward. Two massive claws held at different heights. Six segmented legs, folded against the body when walking, extending for stability when attacking. Tail segments drag behind.
 - **Head:** Two stalks with compound eyes, swiveling independently. Mandibles click audibly. Antennae sweep the air for chemical signatures.
 - **Texture:** Smooth glossy chitin on the carapace, slightly translucent at the joints where soft tissue shows through as pale pink.
 - **Color:** Deep crimson body fading to black at the limb tips. Eyes are jet black with a pinprick of cyan reflection.
 - **Sprite notes:** Claws should be the focal point — one slightly larger than the other. Animation idea: claw opening/closing idle. Eye stalks should twitch.
 
-**Abyssal Dreadclaw** (`entity_templates.toml` L#45, glyph `D`)
+**Abyssal Dreadclaw** (`entity_templates.toml` glyph `D`)
 - **Silhouette:** Larger, wider, lower to the ground than Trench Lobster. Claws are disproportionately massive — one designed for crushing, one for gripping. Carapace is thicker, almost armored-vehicle proportions.
 - **Head:** Recessed into the body — barely visible between the shoulder plates. Small eyes, multiple pairs, arranged along the brow ridge. Bioluminescent lure organs on the underside of the carapace, flashing in patterns.
 - **Texture:** Barnacle-encrusted chitin. The carapace is a palimpsest of past wounds healed over.
 - **Color:** Dark purple-black body. Bioluminescence in cyan and occasionally red. The claws have a slightly iridescent sheen.
 - **Sprite notes:** This is a boss-tier creature. Needs to convey weight. Should occupy 3 tiles. Animation idea: slow, deliberate claw movements followed by explosive speed.
 
-**Spitter Crab** (`entity_templates.toml` L#76, glyph `C`)
+**Spitter Crab** (`entity_templates.toml` glyph `C`)
 - **Silhouette:** Quadrupedal crab form with an enlarged abdomen housing chemical glands. Two small pincers for manipulation, one large modified limb ending in a spray nozzle.
 - **Head:** Eyes on long stalks that can retract into the carapace. The spray gland is visible on the back — a translucent sac that pulses when full.
 - **Texture:** Bumpy chitin, heat-cracked around the spray gland. The gland pulses with internal pressure.
 - **Color:** Amber-orange body with dark brown highlights. The chemical gland is visible as a yellow-green sac. When full, it glows from within.
 - **Sprite notes:** The gland should be the visual focus. When the creature is about to attack, the gland should appear swollen and brighter. Add acid-drip sprite effect on attack.
 
-**Molting Broodmother** (`entity_templates.toml` L#99, glyph `M`)
+**Molting Broodmother** (`entity_templates.toml` glyph `M`)
 - **Silhouette:** Massive, stationary or slow-moving. Abdomen is hugely distended — translucent enough to see the shapes of gestating spawn within. The front half is armored, the back half is soft and vulnerable.
 - **Head:** Small in proportion to body. Mandibles are delicate tools, not weapons — she is not the fighter. She is the factory.
 - **Texture:** The forward carapace is thick, cracked, and ancient — hundreds of molts layered. The abdomen is smooth, stretched thin, veined.
 - **Color:** Muted purple-brown body. The abdomen glows with internal warmth — a soft orange-pink like embers. Eyes are pale and almost blind.
 - **Sprite notes:** This is a "don't get close" creature. Should convey vulnerability and horror. Surround with smaller spawn sprites. Animation idea: slow abdominal pulse, spawn occasionally emerging.
 
-**Pressure Crawler** (`entity_templates.toml` L#560, glyph `p`)
+**Pressure Crawler** (`entity_templates.toml` glyph `p`)
 - **Silhouette:** Dog-sized, many-legged. Six to eight jointed legs splayed outward like a spider-crab hybrid. Low to the ground. Tail is a thin sensory filament that drags behind.
 - **Head:** Enlarged mandible cluster — the face is mostly mouth. Small eyes on short stalks. Sensory pits along the jawline detect vibrations in water.
 - **Texture:** Thin, flexible chitin. Joints are vulnerable and unarmored — a survival tradeoff for speed.
 - **Color:** Mottled grey-purple, matches deep-trench sediment. Underside is pale cream.
 - **Sprite notes:** Pack animal — sprites should be designed to look good in groups of 3-6. Variation in size within the pack. Fast, skittering movement.
 
-**Abyssal Siege Crab** (`entity_templates.toml` L#583, glyph `S`)
+**Abyssal Siege Crab** (`entity_templates.toml` glyph `S`)
 - **Silhouette:** A building with legs. The carapace is a dome of mineral-encrusted chitin so thick that it has become geological. Legs are columns — four massive, tree-trunk limbs that plant with each step.
 - **Head:** Microscopic in proportion. Two tiny eye stalks that are almost vestigial. It does not need to see well — it crushes everything in its path.
 - **Texture:** The carapace is not just chitin — it has fused with seabed minerals, forming a rock-like surface. Coral, barnacles, and tube worms grow on the shell of the oldest individuals.
 - **Color:** Stone grey with purple-chitin undertones. The living tissue (leg joints, underbelly) is a deep bruise purple. Eyes are pale blue.
 - **Sprite notes:** Ultra-boss. 4+ tiles. Should inspire awe and "do not engage." Movement should be terrifyingly slow but inexorable.
 
-**Lurejaw Angler** (`entity_templates.toml` L#615, glyph `A`)
+**Lurejaw Angler** (`entity_templates.toml` glyph `A`)
 - **Silhouette:** Eel-like body, serpentine. The front half is all jaw — a mouth that unhinges to swallow prey larger than itself. A bioluminescent lure extends from the forehead on a flexible stalk.
 - **Head:** The lure is the key feature: a glowing orb that pulses in rhythmic patterns designed to mesmerize. Below it, a mouth lined with translucent needle-teeth that fold inward (prey can only go in, not out).
 - **Texture:** Smooth, almost slimy chitin. The body is flexible, allowing it to coil in confined spaces.
@@ -385,35 +419,35 @@
 
 ### 3.2 The Sanguine Elite
 
-**Vampire Noble** (`entity_templates.toml` L#132, glyph `V`)
+**Vampire Noble** (`entity_templates.toml` glyph `V`)
 - **Silhouette:** Human-proportioned but wrong — shoulders slightly too broad, neck slightly too long, fingers slightly too many joints. Wears formal attire that conceals the worst of the hybrid tells.
 - **Head:** Aristocratic features, pale skin, high cheekbones. Eyes are the giveaway: pupils that contract to pinpricks in light, expand to black pools in dark. Canines are visibly elongated but often filed down to pass as human.
 - **Texture:** Skin is smooth and cold-looking. Beneath it, at the jawline and wrists, the faint outline of subdermal chitin plates is visible as a darker shadow under the skin.
 - **Color:** Pale flesh, dark hair (often black or deep red), crimson clothing. Eyes are pale grey or red. The chitin plates have a faint purple tint visible only in certain light.
 - **Sprite notes:** Distinction from humans should be subtle but present. The cape/collar is an important silhouette differentiator. When feeding or enraged, the chitin plates should be shown emerging (sprite swap or overlay).
 
-**Vampire Enforcer** (`entity_templates.toml` L#163, glyph `E`)
+**Vampire Enforcer** (`entity_templates.toml` glyph `E`)
 - **Silhouette:** Bulked humanoid — the hybrid gene expression was pushed toward physical mass rather than social grace. Shoulders broad, neck thick, arms slightly too long. Subdermal plates are visible as ridges pushing against the skin, especially across the shoulders and forearms.
 - **Head:** Heavy brow, flat nose, small eyes. Expression is perpetually aggressive. Chitin growth along the jawline looks like a bone beard.
 - **Texture:** Skin is thick and scarred. The chitin plates that push through at the knuckles, elbows, and spine are dark and rough.
 - **Color:** Dark grey-purple skin (higher chitin density than nobles), wearing functional dark leather with metal reinforcement. Eyes are solid red.
 - **Sprite notes:** Bigger sprite than nobles. Weapons should look heavy and brutal. No capes — armor and function.
 
-**Vampire Courtesan** (`entity_templates.toml` L#194, glyph `C`)
+**Vampire Courtesan** (`entity_templates.toml` glyph `C`)
 - **Silhouette:** Deliberately human-convincing. Slender, graceful, often shown in motion — a dancer's posture. The clothes are designed to reveal and conceal simultaneously: bare shoulders, high collars, long gloves.
 - **Head:** Beautiful by human standards. The only tell is the eyes — they track too precisely, and the smile does not quite reach them. Hair is always immaculate.
 - **Texture:** Skin is perfect — too perfect. No pores, no scars, no imperfections. This is the most recent and expensive genetic maintenance the Elite can buy.
 - **Color:** Pale skin, dark or brightly dyed hair, elaborate clothing in deep reds and blacks. Gold jewelry accents.
 - **Sprite notes:** Most human-looking of the vampire types. The threat should come through in the pose — coiled grace, a hand resting near a concealed weapon. Chromatophoric skin shifts could be shown as subtle color ripples on the sprite.
 
-**Vampire Inquisitor** (`entity_templates.toml` L#649, glyph `I`)
+**Vampire Inquisitor** (`entity_templates.toml` glyph `I`)
 - **Silhouette:** Lean, wired, predatory. Wears a cassock or long coat over armor. Ritual scars are visible on the face and hands — deliberate cuts that healed with chitin inlay.
 - **Head:** Clean-shaven or severely cropped hair. Scars form patterns — house sigils, doctrinal statements. Eyes are the coldest of all vampire types: they have seen every kind of heresy and are looking for the next.
 - **Texture:** The scars are raised and slightly iridescent — chitin tissue that grew over the wounds. Hands are calloused from weapon practice.
 - **Color:** Black cassock with blood-red accents. Pale grey skin. The ritual scars are a faint purple-silver.
 - **Sprite notes:** Intimidating posture. The barbed scourge should be the most prominent visual element. The inquisitor's cassock should have a high collar and a severe silhouette.
 
-**Blood Hound** (`entity_templates.toml` L#680, glyph `h`)
+**Blood Hound** (`entity_templates.toml` glyph `h`)
 - **Silhouette:** Canine frame distorted by crustacean DNA. Longer body, more legs (six — the front two have become arm-like), chitin ridges along the spine that raise and lower with mood. Tail is a bare, whip-like appendage.
 - **Head:** Wolf-like but the jaws open wider, and the teeth are layered — rows of chitin needles that replace themselves when lost. Nostrils are large, constantly sampling the air. No visible eyes — it does not need them.
 - **Texture:** Patches of fur (patchy, molting) over chitin plating. The spine ridges are semi-translucent.
@@ -424,28 +458,28 @@
 
 ### 3.3 The Familiars
 
-**Familiar Zealot** (`entity_templates.toml` L#219, glyph `f`)
+**Familiar Zealot** (`entity_templates.toml` glyph `f`)
 - **Silhouette:** Human, but wrong. The posture is either hunched (in withdrawal) or unnaturally erect (when dosed). Movement is erratic — sudden bursts of energy followed by pauses. Clothing is mismatched cult robes.
 - **Head:** Eyes are the first thing you notice: hugely dilated, unfocused, or locked on with disturbing intensity. Track marks visible on neck and temples. Teeth are starting to sharpen.
 - **Texture:** Skin is sallow, clammy. Enzyme residue stains the fingers and around the mouth.
 - **Color:** Pale grey skin, dark circles under eyes. Cult robes in muted purples and browns. Equipment is a mix of salvaged tools and ritual items.
 - **Sprite notes:** The most important visual is the eyes — dilated pupils should be visible. Weapon visible but held poorly (they are not trained fighters). Multiple variants for different dosage states.
 
-**Familiar Acolyte** (`entity_templates.toml` L#242, glyph `a`)
+**Familiar Acolyte** (`entity_templates.toml` glyph `a`)
 - **Silhouette:** Calmer, more centered than the Zealot. Stands straight. Wears better-maintained robes with cult rank markings — patterns of concentric circles in purple thread. Carries a ceremonial scepter or staff.
 - **Head:** Serene expression, but the eyes betray the fanaticism. Older, more established in the cult. Tattoos cover the face — cult script, devotional markings.
 - **Texture:** Skin is leathery from years of enzyme exposure. Fingertips are calloused from administering communion.
 - **Color:** Deeper, richer purples in robes than the Zealots. Gold or brass ritual items. The tattoos are dark indigo against pale skin.
 - **Sprite notes:** Should look like a priest — authoritative, calm, dangerous in a different way. The scepter/staff should have a visible enzyme reservoir (small vial or bulb at the top).
 
-**Telomerase Ghoul** (`entity_templates.toml` L#265, glyph `G`)
+**Telomerase Ghoul** (`entity_templates.toml` glyph `G`)
 - **Silhouette:** Shambling, barely human. The body is collapsing — joints swollen, spine curved, one shoulder higher than the other. Clothing hangs off a frame that is simultaneously wasting away and bulking in wrong places.
 - **Head:** The face is a mask stretched over something else. Cheekbones prominent. The jaw unhinges slightly when it opens its mouth. Hair has fallen out in patches. Teeth are visibly chitinous and sharp.
 - **Texture:** Skin is waxy, discolored, pulled tight over bone and the chitin plates that are beginning to emerge. Some ghouls have chitin spikes that have pierced through the skin at the elbows, knees, and spine.
 - **Color:** Grey-white skin with purple undertones. The emerging chitin is a dark bruised purple. Eyes are milky - blind or nearly so.
 - **Sprite notes:** The horror of the ghoul is that it was recently human. Keep recognizable human elements (a torn shirt, a wedding ring on a swollen finger) to sell the tragedy. Shambling animation, dragging one foot.
 
-**Telomerase Junkie** (`entity_templates.toml` L#715, glyph `j`)
+**Telomerase Junkie** (`entity_templates.toml` glyph `j`)
 - **Silhouette:** Erratic, twitching, never still. The body is wired on unstable telomerase — muscles contract and release without conscious control. Clothing is disheveled, half-buttoned, torn.
 - **Head:** Pinprick pupils, wild eyes, vein networks visible across the face and scalp glowing faintly purple with enzyme in the bloodstream. Grinning or grimacing — there is no in-between.
 - **Texture:** Translucent skin at the temples and wrists where the enzyme glow is most visible. The veins themselves look like they are moving (actually the enzyme crystallizing and dissolving in real time).
@@ -456,28 +490,28 @@
 
 ### 3.4 Free Humanity
 
-**Remnant Hunter** (`entity_templates.toml` L#290, glyph `H`)
+**Remnant Hunter** (`entity_templates.toml` glyph `H`)
 - **Silhouette:** Lean, practical, loaded with gear. Wears a long coat or duster over salvaged armor. Weapons visible and accessible — belt knife, rifle or crossbow on the back, a hand-axe at the hip.
 - **Head:** Weather-beaten, scarred. Eyes scan constantly — this is someone alive because they see threats before they arrive. Short hair or tied back. Practical.
 - **Texture:** Leather and cloth that has been repaired many times. Metal parts are oiled but scratched.
 - **Color:** Earth tones — browns, greys, faded greens. A splash of color from a scarf or bandana (personality choice). Skin is tanned and lined.
 - **Sprite notes:** The most relatable human type for the player. Posture should be competent but not aggressive — a professional at rest. The gear loadout should be visibly useful (not decorative).
 
-**Settlement Guard** (`entity_templates.toml` L#321, glyph `G`)
+**Settlement Guard** (`entity_templates.toml` glyph `G`)
 - **Silhouette:** Armored, standardized (within settlement resources). Wears a helm or cap with a visor, a reinforced jerkin or breastplate, and carries a weapon — spear, baton, or crossbow. Shield optional.
 - **Head:** Hidden by helmet or cap. The visible lower face is neutral, professional. Eyes watch the gate.
 - **Texture:** Leather and metal, well-maintained but not new. The settlement's emblem (if any) is painted or stitched onto the uniform.
 - **Color:** Settlement colors — typically blues, greys, or browns. Metal is a muted silver with rust patina. 
 - **Sprite notes:** Guard is about uniformity and readiness. Posture: standing watch, weapon at rest but hand on it. Different settlement styles could vary the uniform color.
 
-**Artifact Scavenger** (`entity_templates.toml` L#352, glyph `S`)
+**Artifact Scavenger** (`entity_templates.toml` glyph `S`)
 - **Silhouette:** Carries more gear than seems reasonable. A pack overflowing with salvaged items, tools hanging from every belt loop, a scanner or probe in one hand. Posture is slightly hunched from the weight but eager — always looking at the next find.
 - **Head:** Goggles pushed up on the forehead or worn over the eyes. Expression is curious, obsessive, delighted by discovery. Maybe a magnifying loupe on a headband.
 - **Texture:** A mess of utility. Pockets on pockets. Straps and buckles everywhere. The gear is well-cared-for but eclectic.
 - **Color:** Mix of whatever colors the salvaged gear came in — no coordination. The unifying element is the dirt and wear of the ruins.
 - **Sprite notes:** The scavenger should look like they are on the verge of pulling out something interesting. Hands full, bag bulging. The tech-scanner tool should have a visible display or light.
 
-**Nomad Trader** (`entity_templates.toml` L#750, glyph `T`)
+**Nomad Trader** (`entity_templates.toml` glyph `T`)
 - **Silhouette:** Travel-worn but prosperous. Carries a pack but moves easily under it — experienced traveler. Wears a coat with many pockets, sturdy boots, a hat against the sun.
 - **Head:** Friendly, weathered face. Eyes that assess value in everything they look at. Well-fed (compared to settlement-dwellers).
 - **Texture:** Quality fabrics, well-maintained. Gear that has been chosen carefully for utility. A walking stick that doubles as a hidden blade.
@@ -502,21 +536,21 @@
 
 ### 3.5 Mutated Wildlife
 
-**Chitin-Rat Swarm** (`entity_templates.toml` L#377, glyph `r`)
+**Chitin-Rat Swarm** (`entity_templates.toml` glyph `r`)
 - **Silhouette:** Not a single sprite — the swarm is a moving carpet of individual rats, each the size of a cat. The mass flows around obstacles, chitin plates clattering.
 - **Individual rat:** Rat shape distorted by chitin plates that make it look armored, almost beetle-like. Eyes are multiple and black. Tail is bare, segmented, and whip-like.
 - **Texture:** Fur patches over chitin sections. The chitin is smooth and glossy, the fur is matted.
 - **Color:** Brown-grey fur, black chitin. The swarm has a rippling, shifting color as individuals move over each other.
 - **Sprite notes:** Swarm needs to be a multi-tile effect. A roiling mass with individual rats visible at the edges. Movement animation is the key — flowing, surging, splitting around obstacles.
 
-**Bio-Electric Eel Hound** (`entity_templates.toml` L#400, glyph `e`)
+**Bio-Electric Eel Hound** (`entity_templates.toml` glyph `e`)
 - **Silhouette:** Canine with an elongated, eel-like body. Legs are shorter, body is longer, neck is sinuous. Arcs of electricity dance between its ears and along its spine.
 - **Head:** Dog-like but the mouth opens wider and the tongue is forked. Eyes are pale blue. Visible electrical organs along the jawline.
 - **Texture:** Fur is damp-looking, slick. Patches of bare skin where electrical discharge has burned away the hair. The electrical organs are visible as blue-green patches under the skin.
 - **Color:** Dark blue-black fur with bright cyan electrical arcs. The arcs are brighter when the creature is agitated.
 - **Sprite notes:** Electrical arcs should be the primary animation — flickering, intensifying before an attack. The creature should look like it hurts to touch.
 
-**Chromatophoric Stalker** (`entity_templates.toml` L#423, glyph `s`)
+**Chromatophoric Stalker** (`entity_templates.toml` glyph `s`)
 - **Silhouette:** Feline frame with cephalopod tissue grafts. The body is fluid, sinuous, and constantly in motion — not walking but flowing. The skin ripples with color even when "invisible."
 - **Head:** Cuttlefish-shaped head with two large, complex eyes. Tentacle-like tendrils around the mouth. No visible ears or nose.
 - **Texture:** Skin is smooth, wet-looking, and covered in chromatophores that shift color continuously. When camouflaged, it is not invisible — it is a shimmering distortion like heat haze.
@@ -527,42 +561,42 @@
   - Threat display (bright red with pattern)
   - Transition frames between states
 
-**Bombardier Hog** (`entity_templates.toml` L#446, glyph `b`)
+**Bombardier Hog** (`entity_templates.toml` glyph `b`)
 - **Silhouette:** Heavy, boar-shaped, but the back half is distorted by the chemical gland cluster. Two large glands protrude from the shoulders like humps, ending in nozzle-like orifices that can swivel independently.
 - **Head:** Wild boar head, tusks, small angry eyes. The boar is visible but the mutation has given it an unsettling intelligence in the gaze.
 - **Texture:** Bristly fur on the front half, leathery gland tissue on the back. The gland nozzles are chitinous. Chemical residue stains the fur around the gland openings.
 - **Color:** Dark brown-black fur. The glands are a lighter, mottled orange-brown. The chemical spray vent shows as a darker opening.
 - **Sprite notes:** The glands are the focal point. They should visibly swell before a spray attack. Steam or chemical mist rising from the gland openings adds atmosphere. The hog charges head-down — animation should convey mass and momentum.
 
-**Chimeric Brute** (`entity_templates.toml` L#785, glyph `B`)
+**Chimeric Brute** (`entity_templates.toml` glyph `B`)
 - **Silhouette:** Human frame expanded and distorted by Carapace muscle grafts. One arm is normal, the other is a massive chitinous club. The torso is asymmetrical — bulked on the grafted side. Head is human but the jaw has been displaced sideways.
 - **Head:** Human face twisted by pain and confusion. One eye is human, one is a compound eye. The mouth is a rictus of mixed human and crustacean features.
 - **Texture:** Patches of human skin stretch over bulging crustacean muscle. Chitin plates burst through the skin at the shoulders and hips. The graft line is visible as a ridge of scar tissue.
 - **Color:** Pale human skin, dark purple chitin on the grafted regions. The compound eye is jet black. Blood from the forced growth stains the chitin seams.
 - **Sprite notes:** The tragedy of the brute is visible humanity. Keep human elements dominant but wrong. The asymmetry of the body should be the key visual — it tells the story of the failed splicing.
 
-**Mantis Slicer** (`entity_templates.toml` L#816, glyph `m`)
+**Mantis Slicer** (`entity_templates.toml` glyph `m`)
 - **Silhouette:** Humanoid frame with mantis-like folded forelimbs that unfold to twice the arm length. The body is held in a low, predatory crouch. Head can rotate nearly 360 degrees.
 - **Head:** Triangular, with large compound eyes and vestigial antennae. The mouth is small — this creature is a precision killer, not a biter.
 - **Texture:** Smooth, almost polished chitin covering most of the body. The forelimbs are blade-sharp along the inner edge.
 - **Color:** Bright verdant green with darker green stripes on the forelimbs. Eyes are large, black, and depthlessly reflective.
 - **Sprite notes:** Speed embodied. The unfolded forelimbs should be the visual anchor — they extend past the rest of the body. Animation: the slow, deliberate sway of the mantis before the lightning strike.
 
-**Venom Stinger** (`entity_templates.toml` L#839, glyph `v`)
+**Venom Stinger** (`entity_templates.toml` glyph `v`)
 - **Silhouette:** Humanoid torso with a scorpion-like lower body — four to six legs, a segmented tail that arches over the body, ending in a curved stinger dripping venom. Two pincer arms in front.
 - **Head:** Human face, but the eyes are multiple (four, arranged vertically on each side of the head). The mouth has a proboscis that extends when feeding.
 - **Texture:** Smooth chitin on the lower body, human skin on the torso — the transition line is visible at the waist. The tail segments are glossy.
 - **Color:** Dark amber body, lighter underside. The stinger tip is black and visibly wet. Human torso is pale with purple veins.
 - **Sprite notes:** Centaur-like composition. The tail should be a focus — it moves independently, threatening. The stinger drip is a nice detail. Animation: tail weaves, scorpion legs skitter.
 
-**Spore-Spliced Shambler** (`entity_templates.toml` L#870, glyph `z`)
+**Spore-Spliced Shambler** (`entity_templates.toml` glyph `z`)
 - **Silhouette:** Human shape obscured by fungal overgrowth. The body is bloated in places, withered in others. Spore caps push through the skin at irregular intervals. Posture is shambling, directionless — the human brain is mostly gone.
 - **Head:** Face is partially obscured by fungal growth. One eye may be visible, staring without understanding. The mouth hangs open — breath visible as a spore cloud in cold air.
 - **Texture:** Fungal bodies are fleshy, veined, and damp. Some have the texture of mushrooms (smooth cap, gills visible), others are more like slime molds.
 - **Color:** Pale grey-green fungal tissue, dark brown or black spore caps, yellow-white mycelium networks visible under translucent skin. The overall impression is decay in progress.
 - **Sprite notes:** Walking environmental hazard. The spore caps should look ready to burst. Mention animation: occasional spore puff released, body swaying slightly. Group them for maximum horror effect.
 
-**Carrion Flapper** (`entity_templates.toml` L#901, glyph `f`)
+**Carrion Flapper** (`entity_templates.toml` glyph `f`)
 - **Silhouette:** Vulture shape grafted with crustacean features. Leathery wings, a long naked neck, and a chitinous beak that is serrated on the inside. The feet are clawed and adapted to perch on ruins.
 - **Head:** Bare, wrinkled, vulture-like. Eyes are large and adapted for long-distance carcass spotting. The beak is chitin, not bone — it grows continuously and is sharpened by use.
 - **Texture:** Feathers are sparse and wiry, mixed with patches of chitinous scutes on the breast and wing joints.
@@ -573,31 +607,31 @@
 
 ### 3.6 Ancient Constructs
 
-**Security Drone** (`entity_templates.toml` L#479, glyph `D`)
+**Security Drone** (`entity_templates.toml` glyph `D`)
 - **Silhouette:** Floating disk or sphere, 1 tile in size. No visible propulsion — it just hovers. A single optical sensor (camera lens) on the front. Weapon port on the underside.
 - **Details:** The casing is scuffed and faded from a century of operation. Warning labels are still legible. A serial number is stenciled on the side. The optical sensor glows red when hostile, blue when neutral.
 - **Color:** Faded white or grey casing, yellowed with age. Red status light. Warning stripes (yellow-black) around the weapon port.
 - **Sprite notes:** The simplest construct sprite. Clean shapes, clear status indicator. The hover should be conveyed with a slight shadow offset and maybe a subtle glow underneath. 
 
-**Trench Maintenance Unit** (`entity_templates.toml` L#502, glyph `U`)
+**Trench Maintenance Unit** (`entity_templates.toml` glyph `U`)
 - **Silhouette:** Industrial bulk on treads or heavy legs. The body is a rectangular chassis covered in tool mounts. Two or four manipulator arms, currently armed with improvised weapons (welding torch, circular saw, hydraulic clamp).
 - **Details:** Painted industrial yellow originally, now faded and rusted. Scorch marks and chemical stains. A caution sign on the side reads "AUTOMATED — DO NOT APPROACH." The tool arms move continuously, even when idle — recalibrating, testing range of motion.
 - **Color:** Faded safety yellow, rust orange, dark grey tool heads. The optical sensors glow a steady amber.
 - **Sprite notes:** Heavy, slow, relentless. The movement should convey weight — each tread step is a thud. The tool arms should be animated, slowly pivoting and adjusting.
 
-**Stasis Pod Guardian** (`entity_templates.toml` L#533, glyph `S`)
+**Stasis Pod Guardian** (`entity_templates.toml` glyph `S`)
 - **Silhouette:** Humanoid-ish, built on a security chassis. Rounded torso, sensor head, articulated legs. One arm has been replaced with a stasis field emitter. The other retains a manipulator hand.
 - **Details:** Designed to look non-threatening to cryo-pod occupants — rounded edges, friendly color scheme (originally). The "face" is a screen that displays a simplified emoticon expression. After a century alone, the screen flickers between the assigned friendly face and error messages.
 - **Color:** White and light blue originally, now scuffed and greyed. The stasis emitter glows a soft blue-white. The face screen is pale green.
 - **Sprite notes:** The most humanoid construct. The friendly face that flickers into error state tells the story. Animation: head tilts, face expression changes, stasis field charging glow.
 
-**Cryo-Security Sentinel** (`entity_templates.toml` L#951, glyph `C`)
+**Cryo-Security Sentinel** (`entity_templates.toml` glyph `C`)
 - **Silhouette:** Bulky, stationary or slow-moving. Built around a cryogenic coolant system — pipes and tanks visible on the exterior. Two weapon barrels, side-mounted. A sensor array on top.
 - **Details:** The coolant system is the key visual. Frost builds on the exterior pipes during operation. Vents release plumes of cold vapor. The weapon barrels glow faintly blue as they charge. A status panel displays: "COOLANT: 67% | WEAPONS: ARMED | TARGET: ACQUIRED."
 - **Color:** Cold grey metal, ice blue highlights, frost white on the cooling elements. The status panel is amber text on black.
 - **Sprite notes:** This is a turret with legs. The coolant system should be visibly active — frost spreading along pipes, vapor venting. Animation: barrel tracking, coolant pump sound implied by visual rhythm.
 
-**Plasma Guardian** (`entity_templates.toml` L#982, glyph `P`)
+**Plasma Guardian** (`entity_templates.toml` glyph `P`)
 - **Silhouette:** Heavy combat chassis. The defining feature is the plasma cannon — a large barrel assembly built into the torso or mounted on the shoulder. The body is armored in reactive plates that shift slightly with internal systems.
 - **Details:** The plasma cannon requires visible charging: vents open, a whine builds (implied visually by glow intensity in the barrel), and the shot is a bright orange-white bolt. After firing, the barrel glows with residual heat. Warning labels everywhere: "THERMAL HAZARD. KEEP CLEAR."
 - **Color:** Dark military green or grey, orange-white plasma glow, heat red on the barrel after firing. The status lights are warning orange.

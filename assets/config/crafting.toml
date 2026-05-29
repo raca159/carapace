@@ -29,3 +29,77 @@ outputs = [{ tags = ["STONE", "WOOD", "EQUIP_WEAPON", "MELEE", "HOLDABLE"], name
 name = "Torch"
 inputs = ["WOOD", "CLOTH"]
 outputs = [{ tags = ["WOOD", "CLOTH", "FLAMMABLE", "HOLDABLE", "LUMINESCENT"], name = "Torch", glyph = "t", color = [255, 200, 50] }]
+
+[[recipe]]
+name = "Craft Bone Plate"
+inputs = ["BONE", "LEATHER"]
+outputs = [{ tags = ["BONE", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "HARD"], name = "Bone Plate", glyph = "[", color = [210, 200, 180] }]
+
+[[recipe]]
+name = "Craft Reinforced Jerkin"
+inputs = ["LEATHER", "METAL"]
+requires_env = ["FIRE"]
+outputs = [{ tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "REINFORCED"], name = "Reinforced Jerkin", glyph = "[", color = [90, 130, 170] }]
+
+[[recipe]]
+name = "Craft Old-World Bandage"
+inputs = ["CLOTH", "HERB_MEDICINAL"]
+outputs = [{ tags = ["MEDICAL", "HEALING", "CONSUMABLE", "USABLE"], name = "Old-World Bandage", glyph = "!", color = [220, 220, 220] }]
+
+[[recipe]]
+name = "Craft Guard Baton"
+inputs = ["METAL", "WOOD"]
+outputs = [{ tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "ELECTRIC"], name = "Guard Baton", glyph = "/", color = [120, 160, 200] }]
+
+[[recipe]]
+name = "Craft Chain Vest"
+inputs = ["METAL", "LEATHER", "LEATHER"]
+requires_env = ["FIRE"]
+outputs = [{ tags = ["METAL", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "HARD"], name = "Chain Vest", glyph = "[", color = [150, 150, 160] }]
+
+[[recipe]]
+name = "Craft Leather Vest"
+inputs = ["LEATHER", "CLOTH"]
+outputs = [{ tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR"], name = "Leather Vest", glyph = "[", color = [140, 90, 50] }]
+
+[[recipe]]
+name = "Craft Hunting Dagger"
+inputs = ["METAL", "BONE"]
+outputs = [{ tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "PRECISION"], name = "Hunting Dagger", glyph = "/", color = [180, 180, 200] }]
+
+[[recipe]]
+name = "Brew Herbal Tea"
+inputs = ["HERB_MEDICINAL", "WATER_FRESH", "GLASS"]
+outputs = [{ tags = ["DRINKABLE", "HEALING", "CONSUMABLE"], name = "Herbal Tea", glyph = "!", color = [100, 180, 100] }]
+
+[[recipe]]
+name = "Craft Antiseptic"
+inputs = ["HERB_MEDICINAL", "HERB_POISONOUS", "GLASS"]
+outputs = [{ tags = ["MEDICAL", "HEALING", "CONSUMABLE", "USABLE"], name = "Antiseptic", glyph = "!", color = [200, 200, 255] }]
+
+[[recipe]]
+name = "Recycle Scrap Metal"
+inputs = ["SALVAGE", "SALVAGE"]
+requires_env = ["FIRE"]
+outputs = [{ tags = ["METAL", "HARD", "HOLDABLE"], name = "Iron Ingot", glyph = "=", color = [180, 180, 180] }]
+
+[[recipe]]
+name = "Craft Chitin Guard"
+inputs = ["CHITIN", "CHITIN", "LEATHER"]
+outputs = [{ tags = ["CHITIN", "EQUIP_ARMOR", "WEARABLE", "HEAVY_ARMOR"], name = "Reinforced Chitin Guard", glyph = "[", color = [140, 40, 70] }]
+
+[[recipe]]
+name = "Craft Scrap Rifle"
+inputs = ["METAL", "METAL", "SALVAGE"]
+requires_env = ["FIRE"]
+outputs = [{ tags = ["METAL", "ARTIFACT", "EQUIP_WEAPON", "RANGED", "HOLDABLE", "PHYSICAL"], name = "Scrap Rifle", glyph = "/", color = [150, 150, 150] }]
+
+[[recipe]]
+name = "Rusty Torch"
+inputs = ["WOOD", "CLOTH", "FLAMMABLE"]
+outputs = [{ tags = ["WOOD", "FLAMMABLE", "LUMINESCENT", "CONSUMABLE", "USABLE"], name = "Rusty Torch", glyph = "t", color = [200, 150, 50] }]
+
+[[recipe]]
+name = "Craft Coil of Rope"
+inputs = ["CLOTH", "CLOTH", "LEATHER"]
+outputs = [{ tags = ["CLOTH", "USABLE", "FLEXIBLE"], name = "Coil of Rope", glyph = "=", color = [160, 120, 80] }]

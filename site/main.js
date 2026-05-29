@@ -60,8 +60,8 @@
   function initHero() {
     typeAsciiArt(heroEl, voidshellArt, 8, function () {
       typeElement(heroTitle, 'CARAPACE', 70, function () {
-        typeElement(heroTagline, 'Every world is uncharted. Every story is yours.', 35, function () {
-          typeElement(heroDesc, 'A procedurally generated simulation where deep systems collide with emergent narrative. No two runs share the same map, the same factions, or the same ending.', 20);
+        typeElement(heroTagline, 'Immortality has a price. Your humanity is the currency.', 35, function () {
+          typeElement(heroDesc, 'A procedurally-generated terminal RPG set in a biological grimdark world. A century after civilization collapsed, immortal crustaceans rule the deep trenches — their blood-thirsty hybrids walk among humans. Harvest the telomerase enzyme from the dead. Trade in blood. Survive the harvest.', 15);
         });
       });
     });

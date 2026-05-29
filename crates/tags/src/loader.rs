@@ -270,7 +270,7 @@ mod integration {
     fn test_full_registry_loads() {
         let registry = full_registry();
         assert!(registry.tag_count() > 100, "expected 150+ tags, got {}", registry.tag_count());
-        assert_eq!(registry.all_archetypes().count(), 26);
+        assert_eq!(registry.all_archetypes().count(), 31);
     }
 
     #[test]

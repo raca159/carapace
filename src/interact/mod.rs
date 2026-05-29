@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use game_core::quest::QuestBoardState;
+use game_core::quest::{QuestBoardState, handle_quest_turn_in};
 use game_core::screen::AppScreen;
 use game_core::{EventBus, GameEvent, Inventory, Player};
 use game_tags::TagRegistry;
@@ -222,6 +222,12 @@ fn handle_interact_input(
                 interact.active = None;
                 return;
             }
+
+            if keyboard.just_pressed(KeyCode::Enter) {
+                handle_quest_turn_in(&mut game_world.0, 0);
+                return;
+            }
+
             let board_state = match game_world.0.get_resource::<QuestBoardState>() {
                 Some(s) => s.clone(),
                 None => return,

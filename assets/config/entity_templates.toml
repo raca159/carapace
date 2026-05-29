@@ -242,6 +242,99 @@ color = [50, 160, 180]
 tags = ["CHITIN", "COMMON", "SLIPPERY"]
 chance = 0.6
 
+[[template]]
+name = "Pressure Crawler"
+glyph = "w"
+color = [120, 100, 140]
+tags = ["CARAPACE", "SMALL", "AGGRESSIVE", "HAS_CHITIN", "COMPOUND_EYES", "AQUATIC", "PACK_ANIMAL"]
+description = "A dog-sized deep-trench scavenger — skitters through flooded tunnels in coordinated hunting packs"
+
+[template.stats]
+health_min = 25
+health_max = 45
+inventory_capacity = 2
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Rending Mandible"
+glyph = ";"
+color = [140, 120, 160]
+tags = ["BONE", "COMMON", "CHITIN"]
+chance = 0.5
+
+[[template.equipment]]
+slot = "armor"
+name = "Pressure-Adapted Chitin"
+glyph = "["
+color = [100, 80, 120]
+tags = ["CHITIN", "COMMON", "PRESSURE_RESISTANT"]
+chance = 0.6
+
+[[template]]
+name = "Lurejaw Angler"
+glyph = "W"
+color = [10, 60, 80]
+tags = ["CARAPACE", "MEDIUM", "AGGRESSIVE", "HAS_CHITIN", "AQUATIC", "LUMINESCENT", "DECEPTIVE", "SILENT"]
+description = "An eel-like trench ambusher — its bioluminescent lure pulses in hypnotic patterns to draw prey into crushing jaws"
+
+[template.stats]
+health_min = 60
+health_max = 90
+inventory_capacity = 2
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Lure-Light Fangs"
+glyph = ";"
+color = [20, 80, 100]
+tags = ["BONE", "UNCOMMON", "CHITIN", "LUMINESCENT"]
+chance = 0.7
+
+[[template.equipment]]
+slot = "armor"
+name = "Abyssal Membrane"
+glyph = "["
+color = [10, 40, 60]
+tags = ["FLESH", "COMMON", "SLIPPERY"]
+chance = 0.4
+
+[[template]]
+name = "Abyssal Siege Crab"
+glyph = "J"
+color = [60, 40, 80]
+tags = ["CARAPACE", "HUGE", "AGGRESSIVE", "HAS_CHITIN", "COMPOUND_EYES", "AQUATIC", "SLOW", "TERRITORIAL", "MINDLESS"]
+description = "A living siege weapon — its mineral-encrusted carapace has become geological over centuries of trench growth"
+
+[template.stats]
+health_min = 400
+health_max = 600
+inventory_capacity = 8
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Crushing Column"
+glyph = "/"
+color = [80, 60, 100]
+tags = ["CHITIN", "EPIC", "CRUSHING", "HEAVY"]
+chance = 0.9
+
+[[template.equipment]]
+slot = "armor"
+name = "Mineral-Encrusted Shell"
+glyph = "["
+color = [50, 30, 70]
+tags = ["CHITIN", "LEGENDARY", "HARDENED", "HEAVY", "PRESSURE_RESISTANT"]
+chance = 1.0
+
 # ─── THE SANGUINE ELITE ──────────────────────────────────────────────────────
 
 [[template]]
@@ -308,7 +401,7 @@ chance = 0.5
 
 [[template]]
 name = "Vampire Courtesan"
-glyph = "C"
+glyph = "c"
 color = [200, 80, 120]
 tags = ["SANGUINE", "MEDIUM", "DECEPTIVE", "SANGUIVORE", "HUMANOID", "NOCTURNAL", "SOCIAL"]
 description = "A velvet-tongued infiltrator — uses chromatophoric skin-shifts and pheromone manipulation to control human courts"
@@ -413,6 +506,68 @@ glyph = "["
 color = [80, 20, 30]
 tags = ["CHITIN", "COMMON", "POROUS"]
 chance = 0.3
+
+[[template]]
+name = "Vampire Inquisitor"
+glyph = "I"
+color = [100, 10, 40]
+tags = ["SANGUINE", "MEDIUM", "AGGRESSIVE", "SANGUIVORE", "HAS_CHITIN", "NOCTURNAL", "HUMANOID", "ZEALOT"]
+description = "A hunter of heretics and defectors — ritual scars glow with chitin-inlay as it tracks the unfaithful through blood-scent"
+
+[template.stats]
+health_min = 65
+health_max = 95
+inventory_capacity = 6
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Barbed Scourge"
+glyph = "/"
+color = [120, 20, 50]
+tags = ["METAL", "RARE", "BLOOD_BONDED", "CEREMONIAL"]
+chance = 0.6
+
+[[template.equipment]]
+slot = "armor"
+name = "Inquisitor's Cassock"
+glyph = "["
+color = [80, 10, 30]
+tags = ["CLOTH", "UNCOMMON", "CONCEALING"]
+chance = 0.5
+
+[[template]]
+name = "Blood Hound"
+glyph = "h"
+color = [80, 20, 40]
+tags = ["SANGUINE", "MEDIUM", "AGGRESSIVE", "SANGUIVORE", "HAS_CHITIN", "NOCTURNAL", "PACK_ANIMAL", "CARNIVORE"]
+description = "A canine-crustacean war-beast — layered rows of chitin teeth, no visible eyes, tracks by telomerase concentration in the air"
+
+[template.stats]
+health_min = 45
+health_max = 75
+inventory_capacity = 1
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Layered Fangs"
+glyph = ";"
+color = [100, 30, 50]
+tags = ["BONE", "UNCOMMON", "CHITIN", "CRUSHING"]
+chance = 0.7
+
+[[template.equipment]]
+slot = "armor"
+name = "Spine Chitin Ridge"
+glyph = "["
+color = [60, 10, 30]
+tags = ["CHITIN", "COMMON", "HARDENED"]
+chance = 0.5
 
 # ─── THE FAMILIARS ───────────────────────────────────────────────────────────
 
@@ -554,11 +709,42 @@ color = [160, 10, 80]
 tags = ["BONE", "UNCOMMON", "TELOMERASE_INFUSED", "CEREMONIAL"]
 chance = 0.4
 
+[[template]]
+name = "Telomerase Junkie"
+glyph = "j"
+color = [80, 60, 50]
+tags = ["FAMILIAR", "MEDIUM", "ADDICTED", "HUMANOID", "ERRATIC", "NOCTURNAL"]
+description = "A familiar in the final addictive spiral — veins glow through translucent skin, hands shake, pupils are pinpricks in a sea of white"
+
+[template.stats]
+health_min = 20
+health_max = 35
+inventory_capacity = 3
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Makeshift Shiv"
+glyph = ";"
+color = [100, 80, 70]
+tags = ["METAL", "COMMON", "TOXIC"]
+chance = 0.4
+
+[[template.equipment]]
+slot = "armor"
+name = "Enzyme-Stained Rags"
+glyph = "["
+color = [60, 40, 30]
+tags = ["CLOTH", "COMMON", "POROUS"]
+chance = 0.2
+
 # ─── FREE HUMANS ─────────────────────────────────────────────────────────────
 
 [[template]]
 name = "Remnant Hunter"
-glyph = "H"
+glyph = "t"
 color = [200, 180, 150]
 tags = ["HUMAN", "MEDIUM", "HUMANOID"]
 description = "A scavenger-turned-monster-hunter — carries pre-collapse tools and improvised weapons"
@@ -589,7 +775,7 @@ chance = 0.3
 
 [[template]]
 name = "Settlement Guard"
-glyph = "G"
+glyph = "g"
 color = [100, 150, 200]
 tags = ["HUMAN", "MEDIUM", "HUMANOID", "TERRITORIAL"]
 description = "A militia defender manning the barricades — holds the line against the night-stalkers"
@@ -643,7 +829,7 @@ chance = 0.5
 
 [[template]]
 name = "Wasteland Doctor"
-glyph = "D"
+glyph = "+"
 color = [200, 220, 200]
 tags = ["HUMAN", "MEDIUM", "HUMANOID", "HEALING"]
 description = "A field medic who stitches flesh with salvaged bio-gel and old-world antiseptics — treats anyone who can pay"
@@ -726,11 +912,42 @@ color = [160, 130, 80]
 tags = ["LEATHER", "COMMON", "LIGHT"]
 chance = 0.3
 
+[[template]]
+name = "Nomad Trader"
+glyph = "N"
+color = [180, 140, 80]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "CURIOUS", "PEACEFUL", "SOCIAL"]
+description = "A traveler who moves between holds — knows the safe routes, carries rare goods, and has friends in every settlement"
+
+[template.stats]
+health_min = 35
+health_max = 55
+inventory_capacity = 12
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Walking Stick Blade"
+glyph = "/"
+color = [160, 120, 60]
+tags = ["WOOD", "COMMON", "CONCEALED"]
+chance = 0.4
+
+[[template.equipment]]
+slot = "armor"
+name = "Dusted Travel Coat"
+glyph = "["
+color = [140, 100, 50]
+tags = ["CLOTH", "COMMON", "LIGHT"]
+chance = 0.3
+
 # ─── MUTATED BEASTS ──────────────────────────────────────────────────────────
 
 [[template]]
 name = "Chitin-Rat Swarm"
-glyph = "r"
+glyph = ":"
 color = [100, 80, 60]
 tags = ["MUTANT", "SMALL", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "NOCTURNAL"]
 description = "Vermin exposed to spilled telomerase — hardened carapace plates, unnervingly coordinated"
@@ -928,11 +1145,142 @@ color = [120, 80, 200]
 tags = ["BONE", "RARE", "POISON", "CONCEALED"]
 chance = 0.6
 
+[[template]]
+name = "Mantis Slicer"
+glyph = "i"
+color = [60, 180, 60]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "HAS_CHITIN", "DECEPTIVE", "SILENT", "NOCTURNAL", "CARNIVORE"]
+description = "A humanoid frame with mantis forelimbs — unfolds to double arm length in a single, devastating cutting arc"
+
+[template.stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 1
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Folded Scythe Blade"
+glyph = "/"
+color = [80, 200, 80]
+tags = ["BONE", "UNCOMMON", "CHITIN", "PRECISION"]
+chance = 0.8
+
+[[template]]
+name = "Venom Stinger"
+glyph = "v"
+color = [160, 100, 20]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "HAS_CHITIN", "TERRITORIAL", "NOCTURNAL", "CARNIVORE"]
+description = "A scorpion-spliced chimera — humanoid torso fused to a segmented carapace body, tail arching with venom-dripping stinger"
+
+[template.stats]
+health_min = 50
+health_max = 80
+inventory_capacity = 3
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Venom Stinger Tip"
+glyph = ";"
+color = [180, 120, 30]
+tags = ["BONE", "UNCOMMON", "CHITIN", "TOXIC"]
+chance = 0.7
+
+[[template.equipment]]
+slot = "armor"
+name = "Amber Carapace"
+glyph = "["
+color = [140, 80, 20]
+tags = ["CHITIN", "COMMON", "HARD"]
+chance = 0.6
+
+[[template]]
+name = "Spore-Spliced Shambler"
+glyph = "z"
+color = [100, 140, 80]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "TOXIC", "SLOW", "MINDLESS"]
+description = "A human shape overgrown with telomerase-accelerated fungus — spore caps push through skin, the mind is long gone"
+
+[template.stats]
+health_min = 40
+health_max = 65
+inventory_capacity = 1
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Spore Burst"
+glyph = "~"
+color = [120, 160, 100]
+tags = ["CHEMICAL", "UNCOMMON", "TOXIC", "CORROSIVE"]
+chance = 0.6
+
+[[template]]
+name = "Carrion Flapper"
+glyph = "q"
+color = [100, 100, 100]
+tags = ["MUTANT", "SMALL", "NEUTRAL", "CARNIVORE", "FLIGHT", "NOCTURNAL", "PACK_ANIMAL"]
+description = "A vulture-crustacean hybrid — leathery wings, serrated chitin beak, drawn to the scent of telomerase-rich carrion from miles away"
+
+[template.stats]
+health_min = 25
+health_max = 40
+inventory_capacity = 0
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Serrated Beak"
+glyph = ";"
+color = [120, 120, 120]
+tags = ["BONE", "COMMON", "CHITIN"]
+chance = 0.5
+
+[[template]]
+name = "Chimeric Brute"
+glyph = "Z"
+color = [120, 60, 100]
+tags = ["MUTANT", "LARGE", "AGGRESSIVE", "HAS_CHITIN", "ERRATIC", "TERRITORIAL"]
+description = "A failed gene-splicing experiment — one human arm, one crustacean club-arm, a mind fractured by conflicting DNA screaming inside one skull"
+
+[template.stats]
+health_min = 90
+health_max = 140
+inventory_capacity = 3
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Chimeric Club Arm"
+glyph = "/"
+color = [140, 80, 120]
+tags = ["CHITIN", "RARE", "CRUSHING", "HEAVY"]
+chance = 0.8
+
+[[template.equipment]]
+slot = "armor"
+name = "Fused Chitin Patchwork"
+glyph = "["
+color = [100, 50, 80]
+tags = ["CHITIN", "UNCOMMON", "HARDENED"]
+chance = 0.5
+
 # ─── ANCIENT CONSTRUCTS ──────────────────────────────────────────────────────
 
 [[template]]
 name = "Security Drone"
-glyph = "D"
+glyph = "0"
 color = [180, 180, 180]
 tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "LUMINESCENT", "FLIGHT"]
 description = "A pre-collapse automated sentry — damaged optics, erratic targeting, still lethal after centuries"
@@ -986,7 +1334,7 @@ chance = 0.7
 
 [[template]]
 name = "Stasis Pod Guardian"
-glyph = "S"
+glyph = "Q"
 color = [100, 180, 200]
 tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "TERRITORIAL"]
 description = "A cryo-vault sentinel — programmed to protect the sleeping Remnants from any disturbance"
@@ -1009,7 +1357,7 @@ chance = 0.5
 
 [[template]]
 name = "Medical Sentinel"
-glyph = "M"
+glyph = "#"
 color = [200, 220, 240]
 tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "TERRITORIAL", "HEALING"]
 description = "A pre-collapse auto-doc gone haywire — forcibly diagnoses and treats anyone it catches, with outdated surgical protocols"
@@ -1040,7 +1388,7 @@ chance = 0.4
 
 [[template]]
 name = "Survey Probe"
-glyph = "P"
+glyph = "%"
 color = [100, 180, 220]
 tags = ["CONSTRUCT", "SMALL", "CURIOUS", "ARTIFACT", "MINDLESS", "FLIGHT", "LUMINESCENT"]
 description = "A fast aerial reconnaissance drone — damaged sensor arrays still scan and catalog everything, including threats"
@@ -1063,7 +1411,7 @@ chance = 0.5
 
 [[template]]
 name = "Atmosphere Processor"
-glyph = "A"
+glyph = "X"
 color = [60, 120, 100]
 tags = ["CONSTRUCT", "HUGE", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "SLOW", "EXOTHERMIC_SPRAY", "STATIONARY"]
 description = "A colossal environmental control unit — vents superheated or cryogenic gases depending on which valve cluster is damaged"
@@ -1096,7 +1444,7 @@ chance = 1.0
 
 [[template]]
 name = "Cryo Survivor"
-glyph = "C"
+glyph = "O"
 color = [180, 220, 255]
 tags = ["HUMAN", "MEDIUM", "HUMANOID", "TECH_WORSHIPPER", "CURIOUS"]
 description = "An awakened pre-collapse human — disoriented, armed with advanced cryo-tech, seeking to understand the world that grew in their sleep"
@@ -1127,7 +1475,7 @@ chance = 0.5
 
 [[template]]
 name = "Remnant Archivist"
-glyph = "R"
+glyph = "k"
 color = [140, 180, 220]
 tags = ["HUMAN", "MEDIUM", "HUMANOID", "PEACEFUL", "CURIOUS", "SOCIAL"]
 description = "A preserver of pre-collapse data — carries memory crystals filled with old-world histories and technical schematics"

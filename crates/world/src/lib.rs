@@ -3,6 +3,7 @@ pub mod biome;
 pub mod cascade;
 pub mod debug;
 pub mod pathfinding;
+pub mod spatial;
 pub mod wfc;
 pub mod dungeon;
 pub mod entity_gen;

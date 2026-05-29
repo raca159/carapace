@@ -1,106 +1,179 @@
+# Factions — Carapace World Factions
+#
+# Each faction has a unique ID (parsed by engine), plus display metadata
+# (name, description, color, motto) that the engine currently ignores.
+# These metadata are forward-compatible decoration for future UI/LLM use.
+#
+# Relationships define baseline inter-faction standing used for AI behavior,
+# reputation initialization, and dialogue gating.
+
+# ─── FACTION DEFINITIONS ─────────────────────────────────────────────────────
+
 [[faction]]
 id = "great_carapace"
+name = "The Great Carapace"
+description = "Deep-trench crustacean horrors that predate humanity. They do not build — they grow. Every structure is a fused mass of chitin, calcified enzyme, and mineral sediment accreted over centuries. They are the original source of the telomerase enzyme that reshaped the world."
+color = "#2B0F3A"
+motto = "The Trenches remember what the surface has forgotten."
 
 [[faction]]
 id = "sanguine_elite"
+name = "The Sanguine Elite"
+description = "Human-Carapace hybrids descended from volunteers who accepted the Carapace gene to survive. They maintain the veneer of human nobility while their bodies betray them: subdermal chitin plates, dilated pupils, claws that grow after feeding. They rule through blood, influence, and controlled terror."
+color = "#8B0000"
+motto = "We are what humanity was meant to become."
 
 [[faction]]
 id = "familiars"
+name = "The Familiars"
+description = "Humans addicted to the Enzyme — willingly or by coercion. Their bodies dissolve and reform in stages: track marks, glowing veins, chitin spikes that pierce through skin. They worship the Sanguine Elite as deities and will do anything for the next dose."
+color = "#3D0A4A"
+motto = "The Enzyme is salvation. The blood is the price."
 
 [[faction]]
 id = "free_humanity"
+name = "Free Humanity"
+description = "The survivors who refused the Enzyme. They build walls, maintain watch, and remember the world before. Their settlements are patched and improvised — shipping containers welded into homes, wooden palisades reinforced with scrap. They are not winning, but they are not extinct."
+color = "#8B7355"
+motto = "We hold the line. We remember the light."
 
 [[faction]]
 id = "the_remnant"
+name = "The Remnant"
+description = "Pre-Collapse humans awakened from cryogenic vaults. They carry old-world knowledge but are strangers in a world that moved on without them. Their technology is superior, their bodies are untainted, and their hearts are full of grief for a world that no longer exists."
+color = "#4682B4"
+motto = "We woke to ash. We will not sleep again."
 
 [[faction]]
 id = "ancient_machines"
+name = "Ancient Constructs"
+description = "Pre-Collapse machines that still follow their original programming — or what is left of it. Some maintain order in empty facilities. Some have degraded into unpredictable behavior. None of them understand that the world ended a century ago."
+color = "#C0C0C0"
+motto = "MISSION: PRESERVE CIVILIAN LIFE. CIVILIANS REMAINING: ZERO. CONTINUING PATROL."
 
 [[faction]]
 id = "mutated_wildlife"
+name = "Mutated Wildlife"
+description = "Accidental byproducts of the telomerase cascade. Animals that absorbed Carapace DNA through the food chain, water table, or direct exposure. Each is a unique evolutionary experiment — chitin plating on mammals, electric organs in fish, eyes that do not track together."
+color = "#8B4513"
+motto = "Evolution does not stop when the world ends."
+
+[[faction]]
+id = "dark_market"
+name = "The Dark Market"
+description = "A stateless shadow economy that operates across faction boundaries — trading in sanguis, telomerase fluid, pre-Collapse artifacts, and information. The Market has no loyalty, no territory, and no mercy. Its brokers appear where need is greatest and leave when the price is paid."
+color = "#4A4A3A"
+motto = "Blood, enzyme, secrets. Prices are fixed. You are not."
+
+# ─── FACTION RELATIONSHIPS ────────────────────────────────────────────────────
 
 [[relationship]]
 faction_a = "great_carapace"
 faction_b = "sanguine_elite"
 standing = "neutral"
+# The Carapace tolerate the hybrids as useful distributors of the Enzyme.
+# The Elite fear the Carapace as their origin — and their potential end.
 
 [[relationship]]
 faction_a = "great_carapace"
 faction_b = "free_humanity"
 standing = "hostile"
+# Humans are prey, competitors, and a resource to be harvested.
 
 [[relationship]]
 faction_a = "great_carapace"
 faction_b = "the_remnant"
 standing = "hostile"
+# The Remnant carry pre-Collapse tech that can harm the Old Ones.
+# They are marked for extermination.
 
 [[relationship]]
 faction_a = "sanguine_elite"
 faction_b = "familiars"
 standing = "ally"
+# The Familiars are the Elite's primary source of fresh blood and labor.
+# In return, they receive diluted Enzyme that keeps them alive — barely.
 
 [[relationship]]
 faction_a = "sanguine_elite"
 faction_b = "free_humanity"
 standing = "hostile"
+# Free humans are the Elite's prey and breeding stock.
+# The Elite infiltrate their settlements to feed.
 
 [[relationship]]
 faction_a = "sanguine_elite"
 faction_b = "the_remnant"
 standing = "neutral"
+# The Elite are curious about the Remnant's untainted genome.
+# They see them as a resource to be studied — and eventually consumed.
 
 [[relationship]]
 faction_a = "familiars"
 faction_b = "free_humanity"
 standing = "hostile"
+# The Familiars hunt free humans to supply the Elite.
+# They also despise them as a reminder of what they have lost.
 
 [[relationship]]
 faction_a = "free_humanity"
 faction_b = "the_remnant"
 standing = "ally"
-
-[[relationship]]
-faction_a = "player"
-faction_b = "great_carapace"
-standing = "hostile"
-
-[[relationship]]
-faction_a = "player"
-faction_b = "sanguine_elite"
-standing = "hostile"
-
-[[relationship]]
-faction_a = "player"
-faction_b = "free_humanity"
-standing = "ally"
-
-[[relationship]]
-faction_a = "player"
-faction_b = "the_remnant"
-standing = "ally"
+# The Remnant's pre-Collapse knowledge makes them valuable allies.
+# Free Humanity offers them shelter and purpose in exchange for technology.
 
 [[relationship]]
 faction_a = "ancient_machines"
 faction_b = "great_carapace"
 standing = "hostile"
+# The Carapace's biological growth damages the facilities the machines protect.
+# Conflict is automatic and unending.
 
 [[relationship]]
 faction_a = "ancient_machines"
 faction_b = "sanguine_elite"
 standing = "hostile"
+# The Elite's tampering with pre-Collapse technology triggers security protocols.
+# The machines classify them as unauthorized biological threats.
 
 [[relationship]]
 faction_a = "ancient_machines"
 faction_b = "familiars"
 standing = "neutral"
+# The machines do not register the Familiars as significant threats.
+# The Familiars avoid the machines out of superstitious fear.
 
 [[relationship]]
 faction_a = "ancient_machines"
 faction_b = "free_humanity"
 standing = "ally"
+# The machines are programmed to protect human life.
+# Free Humanity is the closest match to their original directives.
 
 [[relationship]]
 faction_a = "ancient_machines"
+faction_b = "the_remnant"
+standing = "ally"
+# The Remnant carry valid pre-Collapse genetic and authorization markers.
+# The machines recognize them as authorized personnel.
+
+[[relationship]]
+faction_a = "player"
+faction_b = "great_carapace"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "sanguine_elite"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "free_humanity"
+standing = "ally"
+
+[[relationship]]
+faction_a = "player"
 faction_b = "the_remnant"
 standing = "ally"
 
@@ -113,3 +186,39 @@ standing = "neutral"
 faction_a = "player"
 faction_b = "mutated_wildlife"
 standing = "hostile"
+
+[[relationship]]
+faction_a = "dark_market"
+faction_b = "great_carapace"
+standing = "neutral"
+# The Market trades with Carapace proxies for raw enzyme, but the deep-trench horrors are too alien for direct commerce.
+
+[[relationship]]
+faction_a = "dark_market"
+faction_b = "sanguine_elite"
+standing = "neutral"
+# Both sides benefit from the blood trade. The Elite tolerate the Market as a useful distribution channel.
+
+[[relationship]]
+faction_a = "dark_market"
+faction_b = "free_humanity"
+standing = "neutral"
+# The Market sells to everyone, including Free Humanity — at a premium. Survival is business.
+
+[[relationship]]
+faction_a = "dark_market"
+faction_b = "the_remnant"
+standing = "neutral"
+# The Remnant's old-world artifacts fetch the highest prices. The Market protects its supply lines.
+
+[[relationship]]
+faction_a = "dark_market"
+faction_b = "ancient_machines"
+standing = "neutral"
+# The machines ignore the Market unless they trespass on protected installations.
+
+[[relationship]]
+faction_a = "player"
+faction_b = "dark_market"
+standing = "neutral"
+# The Market deals with anyone who can pay.

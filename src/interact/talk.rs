@@ -143,7 +143,7 @@ pub fn handle_talk_input(
 
     let ecs_world = &mut game_world.0;
 
-    // Load context for action scoring
+    // Score available actions — source of truth for dispatch gating
     let registry = match ecs_world.get_resource::<TagRegistry>() {
         Some(r) => r.clone(),
         None => return,
@@ -154,25 +154,23 @@ pub fn handle_talk_input(
     };
     let npc = build_npc_context(ecs_world, npc_entity);
     let env = build_environment_context(ecs_world);
-    let action_ids = ["speak_greeting", "offer_trade", "give_quest", "speak_hostile", "flee", "attack"];
-
-    // Score and rank actions
-    let mut scored: Vec<(String, f32)> = action_ids.iter()
-        .map(|id| (id.to_string(), score_action(id, &npc, None, &env, &weights, &registry)))
-        .filter(|(_, s)| *s > 0.0)
+    let action_ids = ["speak_greeting", "speak_hostile", "offer_trade", "give_quest", "attack"];
+    let scored: std::collections::HashSet<&str> = action_ids.iter()
+        .filter(|id| score_action(id, &npc, None, &env, &weights, &registry) > 0.0)
+        .copied()
         .collect();
-    scored.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
 
-    let _top_action = scored.first().map(|(id, _)| id.as_str()).unwrap_or("end_conversation");
-
-    // Handle player input
+    // Escape always exits conversation
     if keyboard.just_pressed(KeyCode::Escape) {
         interact.active = None;
         return;
     }
 
+    // [T] Talk — gated on speak_greeting or speak_hostile having a positive score
     if keyboard.just_pressed(KeyCode::KeyT) {
-        // Speak — select dialogue
+        if !scored.contains("speak_greeting") && !scored.contains("speak_hostile") {
+            return;
+        }
         let npc_tags = match ecs_world.get::<game_tags::Tags>(npc_entity) {
             Some(t) => t.clone(),
             None => return,
@@ -201,50 +199,51 @@ pub fn handle_talk_input(
             msg.messages.push(format!("{}: \"{}\"", name, dialogue));
         }
 
-        // Update emotional state
         if let Some(mut state) = ecs_world.get_mut::<NpcEmotionalState>(npc_entity) {
-            state.apply_event(-0.1); // positive interaction
+            state.apply_event(-0.1);
             state.conversation = game_core::emotion::ConversationState::Dialogue;
         }
+        return;
     }
 
+    // [B] Barter — gated on offer_trade score (replaces direct CAN_BARTER tag check)
     if keyboard.just_pressed(KeyCode::KeyB) {
-        // Barter
-        if ecs_world.get_resource::<TagRegistry>()
-            .and_then(|r| r.tag_id("CAN_BARTER"))
-            .is_some_and(|id| ecs_world.get::<game_tags::Tags>(npc_entity).is_some_and(|t| t.has(id)))
-        {
-            crate::interact::trade::start_trade(ecs_world, npc_entity, &mut interact);
-        } else {
+        if !scored.contains("offer_trade") {
             if let Some(mut msg) = ecs_world.get_resource_mut::<MessageLog>() {
                 msg.messages.push("They're not interested in trading.".to_string());
             }
+            return;
         }
+        crate::interact::trade::start_trade(ecs_world, npc_entity, &mut interact);
+        return;
     }
 
+    // [Q] Quests — gated on give_quest score (replaces direct QuestGiver component check)
     if keyboard.just_pressed(KeyCode::KeyQ) {
-        if ecs_world.get::<QuestGiver>(npc_entity).is_some() {
-            interact.active = Some(InteractMode::QuestBoard);
+        if !scored.contains("give_quest") {
+            return;
         }
+        interact.active = Some(InteractMode::QuestBoard);
+        return;
     }
 
+    // [F] Fight — gated on attack score (replaces re-scoring with threshold check)
     if keyboard.just_pressed(KeyCode::KeyF) {
-        // Fight — initiate combat via the action engine
-        let attack_score = score_action("attack", &npc, None, &env, &weights, &registry);
-        if attack_score > 5.0 {
-            // Handle combat
-            if ecs_world
-                .query_filtered::<bevy_ecs::entity::Entity, bevy_ecs::query::With<Player>>()
-                .single(ecs_world)
-                .is_err()
-            {
-                return;
-            }
-            crate::game::resolve_combat(ecs_world, npc_entity, String::new(), game_core::Health { current: 1, max: 1 });
-            if let Some(mut state) = ecs_world.get_mut::<NpcEmotionalState>(npc_entity) {
-                state.apply_event(0.5);
-            }
-            interact.active = None;
+        if !scored.contains("attack") {
+            return;
         }
+        if ecs_world
+            .query_filtered::<bevy_ecs::entity::Entity, bevy_ecs::query::With<Player>>()
+            .single(ecs_world)
+            .is_err()
+        {
+            return;
+        }
+        crate::game::resolve_combat(ecs_world, npc_entity, String::new(), game_core::Health { current: 1, max: 1 });
+        if let Some(mut state) = ecs_world.get_mut::<NpcEmotionalState>(npc_entity) {
+            state.apply_event(0.5);
+        }
+        interact.active = None;
+        return;
     }
 }

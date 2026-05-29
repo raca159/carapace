@@ -1,16 +1,17 @@
 use bevy::prelude::*;
 use game_core::screen::AppScreen;
 use game_core::components::{Player, Position, Health, Inventory, Equipment, Item, Creature, Name};
-use game_core::{EventBus, GameEvent, MessageLog, ExamineMode, TurnCounter, PlayerStats};
+use game_core::{EventBus, GameEvent, MessageLog, ExamineMode, TurnCounter, PlayerStats, Durability};
 use game_core::WeatherState;
-use game_core::narrative::NarrativeCooldowns;
-use game_world::{WorldMap, WorldSeed, TilePos, MapLayer, process_npc_turns};
+use game_core::narrative::{NarrativeCooldowns, check_narrative_events};
+use game_core::quest::{self, QuestBoard, check_quest_failures};
+use game_world::{WorldMap, WorldSeed, TilePos, MapLayer, Tile, process_npc_turns};
 use game_tags::{TagRegistry, Tags};
 use crate::interact::{InteractState, InteractMode, SelectionMode};
 use game_core::world_overview::WorldOverviewState;
 use crate::render::{GameWorld, GameCamera};
-use game_core::quest::QuestBoard;
 use game_core::emotion::NpcEmotionalState;
+use crate::reputation_sync::sync_reputation_systems;
 
 #[derive(Resource, Default)]
 pub struct GameTurnState {
@@ -494,6 +495,46 @@ fn handle_game_input(
         pos.y = ny;
     }
 
+    // Trap detection and triggering at new position
+    {
+        let player = game_world.0
+            .query_filtered::<Entity, bevy_ecs::query::With<Player>>()
+            .single(&game_world.0).ok();
+        if let Some(player_entity) = player {
+            let traps: Vec<(Entity, game_core::traps::Trap)> = game_world.0
+                .query::<(Entity, &game_core::traps::Trap, &Position)>()
+                .iter(&game_world.0)
+                .filter(|(_, _, p)| p.x == nx && p.y == ny)
+                .map(|(e, t, _)| (e, t.clone()))
+                .collect();
+            for (trap_entity, trap) in &traps {
+                if trap.triggered { continue; }
+                if !trap.detected {
+                    // Detect the trap
+                    if let Some(mut t) = game_world.0.get_mut::<game_core::traps::Trap>(*trap_entity) {
+                        t.detected = true;
+                    }
+                    if let Some(mut bus) = game_world.0.get_resource_mut::<game_core::EventBus>() {
+                        bus.push(game_core::GameEvent::Message("You spot a trap!".to_string()));
+                    }
+                } else {
+                    // Step on a known trap — trigger it
+                    game_core::traps::trigger_trap(&mut game_world.0, *trap_entity, player_entity);
+                }
+            }
+        }
+    }
+
+    // Track quest progress for reaching new biome
+    if let Some(tile_entity) = game_world.0.get_resource::<WorldMap>()
+        .and_then(|map| map.get(TilePos::new(nx, ny)))
+    {
+        if let Some(tile) = game_world.0.get::<Tile>(tile_entity) {
+            let biome_clean = tile.biome_name.trim_start_matches("BIOME_").replace("_", " ").to_lowercase();
+            quest::track_reach(&mut game_world.0, &biome_clean);
+        }
+    }
+
     // Roll encounter at new position
     let encounter = {
         let pos = Position { x: nx, y: ny, z: 0 };
@@ -502,7 +543,16 @@ fn handle_game_input(
             .map(|lm| lm.locations.clone()).unwrap_or_default();
         let near_loc = game_world::cascade::locations::location_at(&location_map, nx, ny)
             .map(|l| l.location_type.as_str());
-        let biome_tags: Vec<game_tags::TagId> = Vec::new();
+        let biome_tags: Vec<game_tags::TagId> = game_world.0.get_resource::<WorldMap>()
+            .and_then(|map| map.get(TilePos::new(nx, ny)))
+            .and_then(|tile_entity| {
+                let tags = game_world.0.get::<game_tags::Tags>(tile_entity)?;
+                let registry = game_world.0.get_resource::<game_tags::TagRegistry>()?;
+                Some(tags.iter_present().filter(|tid| {
+                    registry.tag_by_id(*tid).name.starts_with("BIOME_")
+                }).collect::<Vec<_>>())
+            })
+            .unwrap_or_default();
         game_core::encounters::roll_encounter(
             &game_world.0, &pos, &biome_tags, near_loc, wc, &mut rand::rng(),
         )
@@ -574,10 +624,21 @@ fn finish_npc_turn(
     }
     crate::weather_pipeline::apply_environmental_tags(&mut game_world.0);
     crate::status::process_status_effects(&mut game_world.0);
+    game_core::traps::process_trapped_status(&mut game_world.0);
+
+    check_narrative_events(&mut game_world.0);
+    sync_reputation_systems(&mut game_world.0);
+    check_quest_failures(&mut game_world.0, None);
 
     turn_state.processing_npcs = false;
     if let Some(mut tc) = game_world.0.get_resource_mut::<TurnCounter>() {
         tc.increment();
+        if game_core::save::should_auto_save(&game_world.0) {
+            let seed = game_world.0.get_resource::<game_world::WorldSeed>()
+                .map(|s| s.0)
+                .unwrap_or(0);
+            let _ = game_core::save::save_game(&mut game_world.0, seed);
+        }
     }
 }
 
@@ -625,6 +686,18 @@ pub fn resolve_combat(
     let mut events = Vec::new();
 
     if new_creature_hp == 0 {
+        quest::track_kill(ecs_world, &creature_name);
+        let creature_pos = ecs_world.get::<Position>(creature_entity).copied();
+        if let Some(pos) = creature_pos {
+            if let Some(tile_entity) = ecs_world.get_resource::<WorldMap>()
+                .and_then(|map| map.get(TilePos::new(pos.x, pos.y)))
+            {
+                if let Some(tile) = ecs_world.get::<game_world::Tile>(tile_entity) {
+                    let biome_clean = tile.biome_name.trim_start_matches("BIOME_").replace("_", " ").to_lowercase();
+                    quest::track_kill_area(ecs_world, &biome_clean);
+                }
+            }
+        }
         events.push(GameEvent::Combat {
             attacker: Some(player_entity),
             target: Some(creature_entity),
@@ -706,6 +779,23 @@ pub fn resolve_combat(
         }
     }
 
+    // Degrade player's weapon and armor from combat use
+    {
+        let player_eq = ecs_world.get::<Equipment>(player_entity).cloned();
+        if let Some(eq) = player_eq {
+            if let Some(wpn) = eq.weapon {
+                if ecs_world.get::<Durability>(wpn).is_some() {
+                    game_core::durability::degrade_weapon(ecs_world, wpn, 1);
+                }
+            }
+            if let Some(arm) = eq.armor {
+                if ecs_world.get::<Durability>(arm).is_some() {
+                    game_core::durability::degrade_armor(ecs_world, arm, 1);
+                }
+            }
+        }
+    }
+
     if ecs_world.get_entity(creature_entity).is_ok() {
         if let Some(mut state) = ecs_world.get_mut::<NpcEmotionalState>(creature_entity) {
             state.apply_event(0.5);
@@ -731,6 +821,19 @@ fn auto_pickup_items(ecs_world: &mut World, nx: u32, ny: u32) {
 
     for item in items {
         let name = ecs_world.get::<Name>(item).map(|n| n.0.clone()).unwrap_or_else(|| "?".to_string());
+
+        // Track collection quest progress for item tags
+        let collect_tags: Vec<String> = {
+            let registry = ecs_world.get_resource::<TagRegistry>();
+            ecs_world.get::<Tags>(item).map(|item_tags| {
+                item_tags.iter_present().filter_map(|tag_id| {
+                    registry.map(|reg| reg.tag_by_id(tag_id).name.clone())
+                }).collect()
+            }).unwrap_or_default()
+        };
+        for tag_name in &collect_tags {
+            quest::track_collect(ecs_world, tag_name);
+        }
 
         let inv = ecs_world.get_mut::<Inventory>(player).unwrap();
         if inv.items.len() >= inv.capacity {
