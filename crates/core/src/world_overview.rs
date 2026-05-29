@@ -8,6 +8,14 @@ pub enum WorldOverviewMode {
     InWorld,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum OverviewTab {
+    #[default]
+    Minimap,
+    History,
+    CivSummary,
+}
+
 #[derive(Debug, Clone, Resource)]
 pub struct WorldOverviewState {
     pub active: bool,
@@ -19,6 +27,9 @@ pub struct WorldOverviewState {
     pub cursor_y: u32,
     pub player_x: u32,
     pub player_y: u32,
+    pub tab: OverviewTab,
+    pub history_scroll: usize,
+    pub civ_scroll: usize,
 }
 
 impl Default for WorldOverviewState {
@@ -33,6 +44,9 @@ impl Default for WorldOverviewState {
             cursor_y: 0,
             player_x: 0,
             player_y: 0,
+            tab: OverviewTab::Minimap,
+            history_scroll: 0,
+            civ_scroll: 0,
         }
     }
 }

@@ -63,7 +63,6 @@ impl Plugin for InteractPlugin {
                 consume::update_consume_overlay,
                 throw::update_throw_overlay,
                 loot::update_loot_panel,
-                overview::update_world_overview,
             ).run_if(in_state(AppScreen::InWorld)));
     }
 }

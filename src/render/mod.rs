@@ -6,7 +6,7 @@ use game_core::{MessageLog, ExamineMode};
 use game_core::color_theme::desaturate_color;
 use game_world::{Tile, TilePos, WorldMap};
 use game_render::spritesheet::{self, SpriteAtlas};
-use crate::interact::overview::OverviewOverlay;
+use crate::interact::overview::{self, OverviewOverlay};
 
 const TILE_SIZE: f32 = 16.0;
 const MINIMAP_TILE_SIZE: f32 = 5.0;
@@ -85,6 +85,8 @@ impl Plugin for RenderPlugin {
             .add_systems(OnExit(AppScreen::PauseMenu), despawn_pause_overlay)
             .add_systems(OnEnter(AppScreen::Dead), spawn_death_screen)
             .add_systems(OnExit(AppScreen::Dead), despawn_death_screen)
+            .add_systems(OnEnter(AppScreen::WorldOverview), overview::spawn_world_overview)
+            .add_systems(OnExit(AppScreen::WorldOverview), overview::despawn_world_overview)
             .add_systems(Startup, setup_atlas)
             .add_systems(Startup, setup_camera)
             .add_systems(OnEnter(AppScreen::Boot), boot_sequence)
@@ -98,6 +100,7 @@ impl Plugin for RenderPlugin {
                 update_hud.run_if(in_state(AppScreen::InWorld)),
                 render_examine_panel.run_if(in_state(AppScreen::InWorld)),
                 render_disambiguation_panel.run_if(in_state(AppScreen::InWorld)),
+                overview::handle_world_overview_input.run_if(in_state(AppScreen::WorldOverview)),
             ).chain());
     }
 }

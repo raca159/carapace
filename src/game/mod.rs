@@ -12,6 +12,8 @@ use game_core::world_overview::WorldOverviewState;
 use crate::render::{GameWorld, GameCamera};
 use game_core::emotion::NpcEmotionalState;
 use crate::reputation_sync::sync_reputation_systems;
+use crate::ui::{WorldGenParams, CharacterName, SaveFileList};
+use game_core::save::deserialize_to_world;
 
 #[derive(Resource, Default)]
 pub struct GameTurnState {
@@ -45,16 +47,59 @@ impl Plugin for GamePlugin {
 fn spawn_world(
     mut game_world: ResMut<GameWorld>,
     mut game_camera: ResMut<GameCamera>,
+    params: Res<WorldGenParams>,
+    name: Res<CharacterName>,
+    mut saves: ResMut<SaveFileList>,
 ) {
     let ecs_world = &mut game_world.0;
-    let seed = WorldSeed::random();
-    let width = 200u32;
-    let height = 200u32;
+
+    if let Some(save) = saves.selected_save.take() {
+        let seed = WorldSeed::from_value(save.seed);
+        let width = 200u32;
+        let height = 200u32;
+        crate::world_gen::generate_world(ecs_world, seed, width, height);
+        let _ = deserialize_to_world(ecs_world, &save);
+        let player_pos = ecs_world
+            .query_filtered::<&Position, bevy_ecs::query::With<Player>>()
+            .single(ecs_world)
+            .ok()
+            .copied()
+            .unwrap_or(Position { x: 100, y: 100, z: 0 });
+        game_camera.x = player_pos.x;
+        game_camera.y = player_pos.y;
+
+        ecs_world.insert_resource(MessageLog::new(50));
+        ecs_world.insert_resource(EventBus::new());
+        let events_toml = include_str!("../../assets/config/events.toml");
+        if let Ok(formats) = crate::event_format::load_event_formats(events_toml) {
+            ecs_world.insert_resource(formats);
+        }
+        ecs_world.insert_resource(ExamineMode::new());
+        ecs_world.insert_resource(NarrativeCooldowns::default());
+        return;
+    }
+
+    let seed = WorldSeed::from_value(params.seed);
+    let width = params.width.max(50);
+    let height = params.height.max(50);
 
     crate::world_gen::generate_world(ecs_world, seed, width, height);
     let mut render_camera = game_render::Camera::new(80, 24);
     let player_pos = crate::world_gen::spawn_player(ecs_world, &mut render_camera);
     crate::world_gen::spawn_game_entities(ecs_world, player_pos);
+
+    let player_entity = ecs_world
+        .query_filtered::<Entity, bevy_ecs::query::With<Player>>()
+        .iter(ecs_world)
+        .next();
+    if let Some(p) = player_entity {
+        let character_name = if name.0.is_empty() { "Adventurer".to_string() } else { name.0.clone() };
+        if let Some(mut n) = ecs_world.get_mut::<Name>(p) {
+            n.0 = character_name;
+        } else {
+            ecs_world.entity_mut(p).insert(Name(character_name));
+        }
+    }
 
     ecs_world.insert_resource(MessageLog::new(50));
     ecs_world.insert_resource(EventBus::new());
