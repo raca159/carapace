@@ -1,0 +1,5 @@
+name = "Cloudy"
+weight = 20
+duration = [5, 15]
+visibility = 0.9
+modifiers = { light = -10 }

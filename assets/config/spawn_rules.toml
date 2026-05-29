@@ -1,0 +1,365 @@
+[[spawn_rule]]
+name = "Wolf"
+glyph = "w"
+color = [128, 128, 128]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_BOREAL_FOREST"]
+density = 0.02
+min_distance_from_player = 10
+equip_chance = 0.2
+
+[[spawn_rule]]
+name = "Scorpion"
+glyph = "s"
+color = [139, 90, 43]
+tags = ["BEAST", "SMALL", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_DESERT"]
+density = 0.03
+min_distance_from_player = 8
+equip_chance = 0.1
+
+[[spawn_rule]]
+name = "Deer"
+glyph = "d"
+color = [160, 120, 60]
+tags = ["BEAST", "MEDIUM", "HERBIVORE", "PEACEFUL", "COWARDLY"]
+biome_tags = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_SAVANNA"]
+density = 0.03
+min_distance_from_player = 6
+
+[[spawn_rule]]
+name = "Trench Spawn"
+glyph = "E"
+color = [100, 200, 255]
+tags = ["BEAST", "MEDIUM", "AGGRESSIVE", "NOCTURNAL"]
+biome_tags = ["BIOME_TUNDRA", "BIOME_ICE_SHEET"]
+density = 0.01
+min_distance_from_player = 12
+faction = "great_carapace"
+
+[[spawn_rule]]
+name = "Iron Ore"
+glyph = "*"
+color = [150, 150, 150]
+tags = ["STONE", "HARD", "ORE_IRON"]
+biome_tags = ["BIOME_MOUNTAIN"]
+density = 0.05
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Medicinal Herb"
+glyph = "h"
+color = [0, 200, 0]
+tags = ["PLANT", "HERB_MEDICINAL", "SMALL"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_TROPICAL_FOREST", "BIOME_GRASSLAND"]
+density = 0.04
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Iron Sword"
+glyph = "/"
+color = [180, 180, 190]
+tags = ["METAL", "HARD", "EQUIP_WEAPON", "MELEE", "HOLDABLE"]
+biome_tags = ["BIOME_DUNGEON", "BIOME_MOUNTAIN"]
+density = 0.01
+min_distance_from_player = 5
+is_item = true
+
+[[spawn_rule]]
+name = "Leather Armor"
+glyph = "["
+color = [160, 100, 50]
+tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR"]
+biome_tags = ["BIOME_DUNGEON", "BIOME_TEMPERATE_FOREST"]
+density = 0.01
+min_distance_from_player = 5
+is_item = true
+
+[[spawn_rule]]
+name = "Healing Potion"
+glyph = "!"
+color = [255, 50, 50]
+tags = ["DRINKABLE", "EDIBLE", "HERB_MEDICINAL", "GLASS"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_GRASSLAND"]
+density = 0.02
+min_distance_from_player = 3
+is_item = true
+
+[[spawn_rule]]
+name = "Fire Beetle"
+glyph = "b"
+color = [255, 100, 0]
+tags = ["BEAST", "TINY", "CARNIVORE", "SWARMING"]
+biome_tags = ["BIOME_VOLCANIC"]
+density = 0.04
+min_distance_from_player = 5
+faction = "great_carapace"
+
+[[spawn_rule]]
+name = "Degenerated"
+glyph = "S"
+color = [200, 200, 200]
+tags = ["HUMANOID", "MEDIUM", "MINDLESS"]
+biome_tags = ["BIOME_SWAMP", "BIOME_TUNDRA"]
+density = 0.015
+min_distance_from_player = 15
+faction = "sanguine_elite"
+equip_chance = 0.3
+
+[[spawn_rule]]
+name = "Village Elder"
+glyph = "E"
+color = [0, 200, 100]
+tags = ["HUMANOID", "MEDIUM", "PEACEFUL", "TERRITORIAL", "INTERACTABLE", "CAN_TALK"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_GRASSLAND"]
+density = 0.01
+min_distance_from_player = 8
+quest_giver = true
+equip_chance = 0.5
+location_types = ["city", "village"]
+
+[[spawn_rule]]
+name = "Wandering Sage"
+glyph = "S"
+color = [180, 130, 255]
+tags = ["HUMANOID", "MEDIUM", "PEACEFUL", "INTERACTABLE", "CAN_TALK"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_TUNDRA", "BIOME_GRASSLAND"]
+density = 0.003
+min_distance_from_player = 12
+quest_giver = true
+equip_chance = 0.4
+location_types = ["city", "village", "outpost"]
+
+[[spawn_rule]]
+name = "Mithril Ore"
+glyph = "*"
+color = [100, 200, 255]
+tags = ["STONE", "HARD", "ORE_MITHRIL", "VALUABLE"]
+biome_tags = ["BIOME_MOUNTAIN", "BIOME_CAVE", "BIOME_ANCIENT_VAULT"]
+density = 0.008
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Poisonous Herb"
+glyph = "h"
+color = [150, 0, 150]
+tags = ["PLANT", "HERB_POISONOUS", "SMALL"]
+biome_tags = ["BIOME_SWAMP", "BIOME_TROPICAL_FOREST"]
+density = 0.02
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Quest Board"
+glyph = "≡"
+color = [160, 120, 60]
+tags = ["WOOD", "STRUCTURE"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_GRASSLAND", "BIOME_SAVANNA"]
+density = 0.003
+min_distance_from_player = 8
+quest_board = true
+
+[[spawn_rule]]
+name = "Depth Stalker"
+glyph = "K"
+color = [60, 180, 200]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_DEEP_OCEAN", "BIOME_OCEAN"]
+density = 0.015
+min_distance_from_player = 10
+faction = "great_carapace"
+equip_chance = 0.3
+
+[[spawn_rule]]
+name = "Carapace Larva Swarm"
+glyph = "l"
+color = [140, 100, 60]
+tags = ["BEAST", "TINY", "CARNIVORE", "SWARMING"]
+biome_tags = ["BIOME_BEACH"]
+density = 0.03
+min_distance_from_player = 5
+faction = "great_carapace"
+
+[[spawn_rule]]
+name = "Seismic Burrower"
+glyph = "B"
+color = [80, 60, 20]
+tags = ["BEAST", "LARGE", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_MOUNTAIN", "BIOME_CAVE"]
+density = 0.006
+min_distance_from_player = 15
+faction = "great_carapace"
+
+[[spawn_rule]]
+name = "Crystal-Wing Moth"
+glyph = "m"
+color = [180, 220, 255]
+tags = ["BEAST", "LARGE", "HERBIVORE", "PEACEFUL"]
+biome_tags = ["BIOME_TROPICAL_FOREST"]
+density = 0.015
+min_distance_from_player = 8
+
+[[spawn_rule]]
+name = "Corrosive Slime"
+glyph = "o"
+color = [60, 200, 80]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_SWAMP", "BIOME_CAVE"]
+density = 0.015
+min_distance_from_player = 8
+faction = "mutated_wildlife"
+
+[[spawn_rule]]
+name = "Phase Spider"
+glyph = "x"
+color = [100, 60, 180]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_CAVE", "BIOME_TEMPERATE_FOREST"]
+density = 0.012
+min_distance_from_player = 10
+faction = "mutated_wildlife"
+equip_chance = 0.2
+
+[[spawn_rule]]
+name = "Fungal Crawler"
+glyph = "F"
+color = [140, 80, 40]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_SWAMP"]
+density = 0.018
+min_distance_from_player = 8
+faction = "mutated_wildlife"
+
+[[spawn_rule]]
+name = "Vampire Alchemist"
+glyph = "A"
+color = [160, 0, 80]
+tags = ["HUMANOID", "MEDIUM", "AGGRESSIVE"]
+biome_tags = ["BIOME_DUNGEON", "BIOME_ANCIENT_VAULT"]
+density = 0.006
+min_distance_from_player = 12
+faction = "sanguine_elite"
+equip_chance = 0.5
+location_types = ["dungeon"]
+
+[[spawn_rule]]
+name = "Sand Worm"
+glyph = "W"
+color = [200, 160, 100]
+tags = ["BEAST", "LARGE", "CARNIVORE", "AGGRESSIVE"]
+biome_tags = ["BIOME_DESERT", "BIOME_SHRUBLAND"]
+density = 0.008
+min_distance_from_player = 14
+faction = "mutated_wildlife"
+
+[[spawn_rule]]
+name = "Cave Bat"
+glyph = "b"
+color = [80, 60, 60]
+tags = ["BEAST", "SMALL", "CARNIVORE", "COWARDLY"]
+biome_tags = ["BIOME_CAVE", "BIOME_MOUNTAIN"]
+density = 0.025
+min_distance_from_player = 6
+
+[[spawn_rule]]
+name = "Cryo Survivor"
+glyph = "C"
+color = [180, 220, 255]
+tags = ["HUMANOID", "MEDIUM", "PEACEFUL", "INTERACTABLE", "CAN_TALK"]
+biome_tags = ["BIOME_ANCIENT_VAULT", "BIOME_TUNDRA"]
+density = 0.004
+min_distance_from_player = 10
+faction = "the_remnant"
+equip_chance = 0.5
+location_types = ["ruin"]
+
+[[spawn_rule]]
+name = "Gold Ore"
+glyph = "*"
+color = [255, 215, 0]
+tags = ["STONE", "HARD", "ORE_GOLD", "VALUABLE"]
+biome_tags = ["BIOME_MOUNTAIN", "BIOME_CAVE"]
+density = 0.02
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Copper Ore"
+glyph = "*"
+color = [184, 115, 51]
+tags = ["STONE", "HARD", "ORE_COPPER"]
+biome_tags = ["BIOME_MOUNTAIN", "BIOME_DESERT"]
+density = 0.04
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Crystal Shard"
+glyph = "*"
+color = [180, 60, 200]
+tags = ["STONE", "HARD", "GEM_EMERALD", "VALUABLE", "LUMINESCENT"]
+biome_tags = ["BIOME_ANCIENT_VAULT", "BIOME_VOLCANIC"]
+density = 0.012
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "Spore Fruit"
+glyph = "h"
+color = [200, 100, 180]
+tags = ["PLANT", "FOOD_WILD", "SMALL"]
+biome_tags = ["BIOME_SWAMP", "BIOME_TROPICAL_FOREST"]
+density = 0.025
+min_distance_from_player = 0
+is_item = true
+
+[[spawn_rule]]
+name = "City Merchant"
+glyph = "M"
+color = [255, 200, 50]
+tags = ["HUMANOID", "MEDIUM", "PEACEFUL", "INTERACTABLE", "CAN_TALK", "CAN_BARTER", "HAS_INVENTORY", "INVENTORY_MEDIUM", "INVENTORY_TRADE"]
+biome_tags = ["WALKABLE"]
+density = 0.01
+min_distance_from_player = 3
+faction = "free_humanity"
+location_types = ["city"]
+
+[[spawn_rule]]
+name = "Settlement Guard"
+glyph = "G"
+color = [50, 100, 200]
+tags = ["HUMANOID", "MEDIUM", "TERRITORIAL", "INTERACTABLE", "CAN_TALK", "HAS_INVENTORY", "INVENTORY_SMALL", "INVENTORY_EQUIPMENT"]
+biome_tags = ["WALKABLE"]
+density = 0.02
+min_distance_from_player = 5
+faction = "free_humanity"
+equip_chance = 0.8
+location_types = ["city", "village", "outpost"]
+
+[[spawn_rule]]
+name = "Dungeon Guardian"
+glyph = "G"
+color = [180, 40, 40]
+tags = ["HUMANOID", "MEDIUM", "AGGRESSIVE", "MINDLESS", "HAS_INVENTORY", "INVENTORY_SMALL", "INVENTORY_EQUIPMENT"]
+biome_tags = ["WALKABLE"]
+density = 0.02
+min_distance_from_player = 8
+faction = "great_carapace"
+equip_chance = 0.9
+equip_tier = "RARE"
+location_types = ["dungeon"]
+
+[[spawn_rule]]
+name = "Ruin Scavenger"
+glyph = "s"
+color = [140, 100, 60]
+tags = ["HUMANOID", "SMALL", "COWARDLY", "CURIOUS", "HAS_INVENTORY", "INVENTORY_TINY"]
+biome_tags = ["WALKABLE"]
+density = 0.015
+min_distance_from_player = 6
+faction = "free_humanity"
+equip_chance = 0.3
+location_types = ["ruin"]

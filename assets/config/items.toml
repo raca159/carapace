@@ -1,0 +1,1039 @@
+# items.toml — Single Item Pool
+# All items in the game are defined here once.
+# The cascade engine uses this as the single source of truth for
+# equipment generation, inventory generation, loot, and economy.
+
+# ─── WEAPONS ────────────────────────────────────────────────────────────────────
+
+[[item]]
+id = "iron_sword"
+name = "Iron Sword"
+glyph = "/"
+color = [180, 180, 190]
+base_value = 30
+tags = ["METAL", "HARD", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL"]
+weight = 40
+quality_bias = "common"
+
+[[item]]
+id = "steel_mace"
+name = "Steel Mace"
+glyph = "/"
+color = [160, 160, 170]
+base_value = 45
+tags = ["METAL", "HARD", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "CRUSHING"]
+weight = 25
+quality_bias = "common"
+
+[[item]]
+id = "bone_blade"
+name = "Bone Blade"
+glyph = "/"
+color = [220, 210, 190]
+base_value = 18
+tags = ["BONE", "HARD", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL"]
+weight = 35
+quality_bias = "common"
+
+[[item]]
+id = "sharp_claw"
+name = "Sharp Claw"
+glyph = ";"
+color = [200, 180, 160]
+base_value = 10
+tags = ["BONE", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL"]
+weight = 45
+
+[[item]]
+id = "hunting_dagger"
+name = "Hunting Dagger"
+glyph = "/"
+color = [180, 180, 200]
+base_value = 22
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "PRECISION"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "scrap_dagger"
+name = "Scrap Dagger"
+glyph = "/"
+color = [160, 140, 120]
+base_value = 8
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "SALVAGE"]
+weight = 50
+quality_bias = "common"
+
+[[item]]
+id = "ceremonial_dagger"
+name = "Ceremonial Dagger"
+glyph = "/"
+color = [120, 20, 100]
+base_value = 35
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "CEREMONIAL", "BLOOD_BONDED"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "plasma_rifle"
+name = "Plasma Rifle"
+glyph = "/"
+color = [0, 200, 255]
+base_value = 250
+tags = ["METAL", "ARTIFACT", "EQUIP_WEAPON", "RANGED", "HOLDABLE", "ENERGY"]
+weight = 5
+quality_bias = "legendary"
+
+[[item]]
+id = "pre_collapse_sidearm"
+name = "Pre-Collapse Sidearm"
+glyph = "/"
+color = [180, 180, 200]
+base_value = 120
+tags = ["METAL", "ARTIFACT", "EQUIP_WEAPON", "RANGED", "HOLDABLE", "ENERGY"]
+weight = 12
+quality_bias = "rare"
+
+[[item]]
+id = "forged_sword"
+name = "Forged Sword"
+glyph = "/"
+color = [200, 200, 210]
+base_value = 55
+tags = ["METAL", "HARD", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL"]
+weight = 15
+quality_bias = "uncommon"
+
+[[item]]
+id = "stone_axe"
+name = "Stone Axe"
+glyph = "/"
+color = [150, 150, 150]
+base_value = 12
+tags = ["STONE", "WOOD", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL"]
+weight = 35
+quality_bias = "common"
+
+[[item]]
+id = "guard_baton"
+name = "Guard Baton"
+glyph = "/"
+color = [120, 160, 200]
+base_value = 20
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "ELECTRIC"]
+weight = 25
+quality_bias = "common"
+
+[[item]]
+id = "scrap_rifle"
+name = "Scrap Rifle"
+glyph = "/"
+color = [150, 150, 150]
+base_value = 35
+tags = ["METAL", "ARTIFACT", "EQUIP_WEAPON", "RANGED", "HOLDABLE", "PHYSICAL"]
+weight = 20
+quality_bias = "common"
+
+[[item]]
+id = "runner_knife"
+name = "Runner's Knife"
+glyph = "/"
+color = [200, 170, 120]
+base_value = 15
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "LIGHT"]
+weight = 35
+
+[[item]]
+id = "rite_blade"
+name = "Rite-Blade"
+glyph = "/"
+color = [200, 30, 30]
+base_value = 65
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "BLOOD_BONDED"]
+weight = 15
+quality_bias = "rare"
+
+[[item]]
+id = "enforcer_maul"
+name = "Enforcer Maul"
+glyph = "/"
+color = [120, 30, 50]
+base_value = 50
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "CRUSHING", "HEAVY"]
+weight = 18
+quality_bias = "uncommon"
+
+[[item]]
+id = "needle_stiletto"
+name = "Needle Stiletto"
+glyph = "/"
+color = [220, 100, 140]
+base_value = 30
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "PRECISION", "CONCEALED"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "cryo_pistol"
+name = "Cryo-Pistol"
+glyph = "/"
+color = [200, 240, 255]
+base_value = 100
+tags = ["METAL", "ARTIFACT", "EQUIP_WEAPON", "RANGED", "HOLDABLE", "ENERGY", "ICE_DAMAGE"]
+weight = 10
+quality_bias = "rare"
+
+[[item]]
+id = "sacrificial_dagger"
+name = "Sacrificial Dagger"
+glyph = "/"
+color = [120, 20, 100]
+base_value = 20
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "CEREMONIAL"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "ceremonial_scepter"
+name = "Ceremonial Scepter"
+glyph = "/"
+color = [100, 30, 90]
+base_value = 40
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "CEREMONIAL", "TELOMERASE_INFUSED"]
+weight = 12
+quality_bias = "uncommon"
+
+[[item]]
+id = "ritual_barb"
+name = "Ritual Barb"
+glyph = "/"
+color = [160, 10, 80]
+base_value = 25
+tags = ["BONE", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "PHYSICAL", "TELOMERASE_INFUSED"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "telomerase_injector"
+name = "Telomerase Injector"
+glyph = "/"
+color = [180, 20, 100]
+base_value = 80
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "HOLDABLE", "TOXIC", "PRECISION", "TELOMERASE_INFUSED"]
+weight = 10
+quality_bias = "rare"
+
+# ─── ARMOR ──────────────────────────────────────────────────────────────────────
+
+[[item]]
+id = "leather_armor"
+name = "Leather Armor"
+glyph = "["
+color = [160, 100, 50]
+base_value = 25
+tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR"]
+weight = 50
+quality_bias = "common"
+
+[[item]]
+id = "chain_vest"
+name = "Chain Vest"
+glyph = "["
+color = [150, 150, 160]
+base_value = 40
+tags = ["METAL", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "HARD"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "bone_plate"
+name = "Bone Plate"
+glyph = "["
+color = [210, 200, 180]
+base_value = 20
+tags = ["BONE", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "HARD"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "thick_hide"
+name = "Thick Hide"
+glyph = "["
+color = [160, 100, 0]
+base_value = 12
+tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "THICK"]
+weight = 45
+
+[[item]]
+id = "hardened_carapace_plate"
+name = "Hardened Carapace Plate"
+glyph = "["
+color = [160, 30, 30]
+base_value = 50
+tags = ["CHITIN", "EQUIP_ARMOR", "WEARABLE", "HEAVY_ARMOR", "HARDENED"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "hardened_carapace_armor"
+name = "Hardened Carapace Armor"
+glyph = "["
+color = [140, 30, 40]
+base_value = 85
+tags = ["CHITIN", "EQUIP_ARMOR", "WEARABLE", "HEAVY_ARMOR", "HARDENED", "PRESSURE_RESISTANT"]
+weight = 10
+quality_bias = "epic"
+
+[[item]]
+id = "cultist_robes"
+name = "Cultist Robes"
+glyph = "["
+color = [60, 0, 40]
+base_value = 15
+tags = ["CLOTH", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "CONCEALING"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "chromatophoric_weave_suit"
+name = "Chromatophoric Weave Suit"
+glyph = "["
+color = [60, 120, 80]
+base_value = 110
+tags = ["CHITIN", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "CHROMATOPHORIC", "CONCEALING"]
+weight = 8
+quality_bias = "rare"
+
+[[item]]
+id = "shield_generator_belt"
+name = "Shield Generator Belt"
+glyph = "="
+color = [100, 150, 255]
+base_value = 150
+tags = ["ARTIFACT", "EQUIP_ACCESSORY", "WEARABLE", "ENERGY"]
+weight = 8
+quality_bias = "rare"
+
+[[item]]
+id = "bio_electric_gauntlets"
+name = "Bio-Electric Gauntlets"
+glyph = "="
+color = [0, 170, 220]
+base_value = 90
+tags = ["METAL", "EQUIP_ACCESSORY", "WEARABLE", "ELECTRIC", "BIO_ELECTRIC"]
+weight = 12
+quality_bias = "rare"
+
+[[item]]
+id = "leather_vest"
+name = "Leather Vest"
+glyph = "["
+color = [140, 90, 50]
+base_value = 18
+tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR"]
+weight = 35
+quality_bias = "common"
+
+[[item]]
+id = "salvaged_vest"
+name = "Salvaged Vest"
+glyph = "["
+color = [130, 130, 130]
+base_value = 15
+tags = ["METAL", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "ARTIFACT"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "reinforced_jerkin"
+name = "Reinforced Jerkin"
+glyph = "["
+color = [90, 130, 170]
+base_value = 22
+tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "REINFORCED"]
+weight = 25
+quality_bias = "common"
+
+[[item]]
+id = "light_scavenger_gear"
+name = "Light Scavenger Gear"
+glyph = "["
+color = [160, 130, 80]
+base_value = 10
+tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR"]
+weight = 40
+
+[[item]]
+id = "reinforced_chitin_guard"
+name = "Reinforced Chitin Guard"
+glyph = "["
+color = [140, 40, 70]
+base_value = 45
+tags = ["CHITIN", "EQUIP_ARMOR", "WEARABLE", "HEAVY_ARMOR"]
+weight = 20
+quality_bias = "uncommon"
+
+# ─── CONSUMABLES ────────────────────────────────────────────────────────────────
+
+[[item]]
+id = "healing_potion"
+name = "Healing Potion"
+glyph = "!"
+color = [255, 50, 50]
+base_value = 40
+tags = ["DRINKABLE", "EDIBLE", "CONSUMABLE", "HERB_MEDICINAL", "GLASS", "HEALING"]
+weight = 30
+quality_bias = "common"
+
+[[item]]
+id = "medicinal_herb"
+name = "Medicinal Herb"
+glyph = "h"
+color = [0, 200, 0]
+base_value = 8
+tags = ["PLANT", "HERB_MEDICINAL", "EDIBLE", "CONSUMABLE", "HEALING"]
+weight = 50
+
+[[item]]
+id = "medicinal_herb_bundle"
+name = "Medicinal Herb Bundle"
+glyph = "h"
+color = [0, 200, 0]
+base_value = 20
+tags = ["HERB_MEDICINAL", "EDIBLE", "CONSUMABLE", "HEALING"]
+weight = 25
+quality_bias = "uncommon"
+
+[[item]]
+id = "poisonous_herb"
+name = "Poisonous Herb"
+glyph = "h"
+color = [150, 0, 150]
+base_value = 10
+tags = ["PLANT", "HERB_POISONOUS", "EDIBLE", "CONSUMABLE", "TOXIC"]
+weight = 30
+
+[[item]]
+id = "spore_fruit"
+name = "Spore Fruit"
+glyph = "h"
+color = [200, 100, 180]
+base_value = 5
+tags = ["PLANT", "FOOD_WILD", "EDIBLE", "CONSUMABLE"]
+weight = 40
+
+[[item]]
+id = "dried_rations"
+name = "Dried Rations"
+glyph = "%"
+color = [180, 140, 80]
+base_value = 6
+tags = ["FOOD_WILD", "EDIBLE", "CONSUMABLE"]
+weight = 55
+
+[[item]]
+id = "stolen_rations"
+name = "Stolen Rations"
+glyph = "%"
+color = [160, 130, 80]
+base_value = 5
+tags = ["FOOD_WILD", "EDIBLE", "CONSUMABLE"]
+weight = 30
+
+[[item]]
+id = "pre_collapse_ration_packet"
+name = "Pre-Collapse Ration Packet"
+glyph = "%"
+color = [200, 200, 150]
+base_value = 15
+tags = ["EDIBLE", "CONSUMABLE", "ARTIFACT"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "raw_meat"
+name = "Raw Meat"
+glyph = "%"
+color = [180, 60, 60]
+base_value = 3
+tags = ["FLESH", "FOOD_WILD", "EDIBLE", "CONSUMABLE", "PERISHABLE"]
+weight = 40
+
+[[item]]
+id = "old_world_bandage"
+name = "Old-World Bandage"
+glyph = "!"
+color = [220, 220, 220]
+base_value = 15
+tags = ["MEDICAL", "HEALING", "CONSUMABLE", "USABLE"]
+weight = 35
+quality_bias = "common"
+
+[[item]]
+id = "med_patch"
+name = "Med-Patch"
+glyph = "+"
+color = [0, 200, 0]
+base_value = 30
+tags = ["MEDICAL", "HEALING", "EDIBLE", "CONSUMABLE", "ARTIFACT"]
+weight = 18
+quality_bias = "uncommon"
+
+[[item]]
+id = "antiseptic"
+name = "Antiseptic"
+glyph = "!"
+color = [200, 200, 255]
+base_value = 18
+tags = ["MEDICAL", "HEALING", "CONSUMABLE", "USABLE"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "herbal_tea"
+name = "Herbal Tea"
+glyph = "!"
+color = [100, 180, 100]
+base_value = 8
+tags = ["DRINKABLE", "HEALING", "CONSUMABLE"]
+weight = 25
+
+[[item]]
+id = "rusty_torch"
+name = "Rusty Torch"
+glyph = "t"
+color = [200, 150, 50]
+base_value = 5
+tags = ["WOOD", "FLAMMABLE", "LUMINESCENT", "CONSUMABLE", "USABLE"]
+weight = 40
+
+[[item]]
+id = "torch"
+name = "Torch"
+glyph = "t"
+color = [255, 200, 50]
+base_value = 8
+tags = ["WOOD", "CLOTH", "FLAMMABLE", "HOLDABLE", "LUMINESCENT", "CONSUMABLE", "USABLE"]
+weight = 30
+
+# ─── TOOLS & UTILITY ITEMS ──────────────────────────────────────────────────────
+
+[[item]]
+id = "coil_of_rope"
+name = "Coil of Rope"
+glyph = "="
+color = [160, 120, 80]
+base_value = 12
+tags = ["CLOTH", "USABLE", "FLEXIBLE"]
+weight = 30
+
+[[item]]
+id = "old_world_flashlight"
+name = "Old-World Flashlight"
+glyph = "i"
+color = [255, 200, 50]
+base_value = 25
+tags = ["TOOL", "LIGHT", "ARTIFACT", "USABLE"]
+weight = 20
+quality_bias = "common"
+
+[[item]]
+id = "old_map_fragments"
+name = "Old Map Fragments"
+glyph = "□"
+color = [180, 150, 80]
+base_value = 15
+tags = ["PAPER", "ARTIFACT", "VALUABLE"]
+weight = 25
+
+[[item]]
+id = "worn_journal"
+name = "Worn Journal"
+glyph = "□"
+color = [180, 160, 100]
+base_value = 12
+tags = ["PAPER", "ARTIFACT", "VALUABLE"]
+weight = 25
+
+# ─── RESOURCES & MATERIALS ──────────────────────────────────────────────────────
+
+[[item]]
+id = "iron_ore"
+name = "Iron Ore"
+glyph = "*"
+color = [150, 150, 150]
+base_value = 8
+tags = ["STONE", "HARD", "ORE_IRON"]
+weight = 50
+
+[[item]]
+id = "mithril_ore"
+name = "Mithril Ore"
+glyph = "*"
+color = [100, 200, 255]
+base_value = 35
+tags = ["STONE", "HARD", "ORE_MITHRIL", "VALUABLE"]
+weight = 15
+
+[[item]]
+id = "gold_ore"
+name = "Gold Ore"
+glyph = "*"
+color = [255, 215, 0]
+base_value = 20
+tags = ["STONE", "HARD", "ORE_GOLD", "VALUABLE"]
+weight = 25
+
+[[item]]
+id = "copper_ore"
+name = "Copper Ore"
+glyph = "*"
+color = [184, 115, 51]
+base_value = 6
+tags = ["STONE", "HARD", "ORE_COPPER"]
+weight = 45
+
+[[item]]
+id = "crystal_shard"
+name = "Crystal Shard"
+glyph = "*"
+color = [180, 60, 200]
+base_value = 30
+tags = ["CRYSTAL", "HARD", "LUMINESCENT", "VALUABLE"]
+weight = 18
+
+[[item]]
+id = "iron_ingot"
+name = "Iron Ingot"
+glyph = "="
+color = [180, 180, 180]
+base_value = 20
+tags = ["METAL", "HARD", "HOLDABLE"]
+weight = 35
+
+[[item]]
+id = "chitin_fragment"
+name = "Chitin Fragment"
+glyph = "."
+color = [180, 40, 40]
+base_value = 5
+tags = ["CHITIN", "HARD", "CRAFTING"]
+weight = 55
+
+[[item]]
+id = "scrap_metal"
+name = "Scrap Metal"
+glyph = "."
+color = [150, 150, 150]
+base_value = 4
+tags = ["METAL", "SALVAGE"]
+weight = 50
+
+[[item]]
+id = "corroded_metal_scrap"
+name = "Corroded Metal Scrap"
+glyph = "."
+color = [100, 140, 60]
+base_value = 3
+tags = ["METAL", "SALVAGE"]
+weight = 35
+
+[[item]]
+id = "tough_hide"
+name = "Tough Hide"
+glyph = "."
+color = [120, 80, 50]
+base_value = 6
+tags = ["LEATHER", "CRAFTING", "THICK"]
+weight = 35
+
+[[item]]
+id = "salvaged_circuit_board"
+name = "Salvaged Circuit Board"
+glyph = "."
+color = [100, 180, 100]
+base_value = 18
+tags = ["ARTIFACT", "ELECTRONIC", "SALVAGE"]
+weight = 25
+
+[[item]]
+id = "power_cell_fragments"
+name = "Power Cell Fragments"
+glyph = "."
+color = [200, 200, 50]
+base_value = 15
+tags = ["ARTIFACT", "ENERGY", "SALVAGE"]
+weight = 22
+
+[[item]]
+id = "laser_emitter_lens"
+name = "Laser Emitter Lens"
+glyph = "*"
+color = [255, 50, 50]
+base_value = 45
+tags = ["ARTIFACT", "OPTICAL", "CRAFTING"]
+weight = 12
+quality_bias = "rare"
+
+[[item]]
+id = "ancient_alloy_plate"
+name = "Ancient Alloy Plate"
+glyph = "["
+color = [160, 160, 180]
+base_value = 35
+tags = ["ARTIFACT", "METAL", "ARMOR_CRAFTING", "HEAVY"]
+weight = 15
+quality_bias = "uncommon"
+
+[[item]]
+id = "subdermal_chitin_shard"
+name = "Subdermal Chitin Shard"
+glyph = "."
+color = [160, 40, 60]
+base_value = 8
+tags = ["CHITIN", "HARD", "CRAFTING", "CONCEALED"]
+weight = 30
+
+[[item]]
+id = "compound_eye_cluster"
+name = "Compound Eye Cluster"
+glyph = "."
+color = [0, 100, 80]
+base_value = 12
+tags = ["COMPOUND_EYES", "DELICATE", "OPTICAL", "CRAFTING"]
+weight = 20
+
+[[item]]
+id = "viable_tissue_sample"
+name = "Viable Tissue Sample"
+glyph = "%"
+color = [200, 50, 100]
+base_value = 40
+tags = ["TISSUE", "GENETIC_MATERIAL", "SPLICING"]
+weight = 15
+quality_bias = "rare"
+
+[[item]]
+id = "enzyme_gland"
+name = "Enzyme Gland"
+glyph = "."
+color = [100, 200, 100]
+base_value = 25
+tags = ["TELOMERASE", "GLAND", "ORGAN", "ALCHEMICAL"]
+weight = 18
+quality_bias = "rare"
+
+[[item]]
+id = "mutated_tissue"
+name = "Mutated Tissue"
+glyph = "%"
+color = [100, 140, 80]
+base_value = 15
+tags = ["TISSUE", "MUTAGENIC", "ALCHEMICAL"]
+weight = 25
+quality_bias = "uncommon"
+
+[[item]]
+id = "bio_electric_organ"
+name = "Bio-Electric Organ"
+glyph = "."
+color = [0, 150, 200]
+base_value = 22
+tags = ["ORGAN", "ELECTRIC", "CRAFTING"]
+weight = 18
+quality_bias = "uncommon"
+
+[[item]]
+id = "wood_timber"
+name = "Timber"
+glyph = "."
+color = [120, 80, 40]
+base_value = 3
+tags = ["WOOD", "WOOD_TIMBER", "HOLDABLE"]
+weight = 60
+
+[[item]]
+id = "stone_block"
+name = "Stone Block"
+glyph = "."
+color = [130, 130, 130]
+base_value = 4
+tags = ["STONE", "STONE_BLOCK", "HARD"]
+weight = 55
+
+[[item]]
+id = "cloth_scrap"
+name = "Cloth Scrap"
+glyph = "."
+color = [180, 170, 160]
+base_value = 2
+tags = ["CLOTH", "CRAFTING"]
+weight = 50
+
+[[item]]
+id = "leather_scrap"
+name = "Leather Scrap"
+glyph = "."
+color = [150, 110, 70]
+base_value = 3
+tags = ["LEATHER", "CRAFTING"]
+weight = 45
+
+[[item]]
+id = "glass_vial"
+name = "Glass Vial"
+glyph = "!"
+color = [200, 220, 240]
+base_value = 5
+tags = ["GLASS", "CRAFTING", "FRAGILE"]
+weight = 40
+
+[[item]]
+id = "bone_shard"
+name = "Bone Shard"
+glyph = "."
+color = [220, 215, 200]
+base_value = 2
+tags = ["BONE", "CRAFTING"]
+weight = 55
+
+# ─── FACTION CURRENCY & BIOLOGICALS ─────────────────────────────────────────────
+
+[[item]]
+id = "telomerase_fluid_diluted"
+name = "Telomerase Fluid (Diluted)"
+glyph = "*"
+color = [0, 200, 100]
+base_value = 10
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "LIQUID"]
+weight = 40
+
+[[item]]
+id = "telomerase_fluid_tainted"
+name = "Telomerase Fluid (Tainted)"
+glyph = "*"
+color = [150, 30, 100]
+base_value = 8
+tags = ["TELOMERASE", "CURRENCY", "TAINTED"]
+weight = 30
+
+[[item]]
+id = "telomerase_fluid_standard"
+name = "Telomerase Fluid (Standard)"
+glyph = "*"
+color = [0, 200, 100]
+base_value = 20
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "LIQUID"]
+weight = 30
+quality_bias = "uncommon"
+
+[[item]]
+id = "telomerase_fluid_concentrated"
+name = "Telomerase Fluid (Concentrated)"
+glyph = "*"
+color = [0, 255, 100]
+base_value = 40
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "LIQUID"]
+weight = 20
+quality_bias = "rare"
+
+[[item]]
+id = "telomerase_fluid_pure"
+name = "Telomerase Fluid (Pure)"
+glyph = "*"
+color = [0, 255, 150]
+base_value = 80
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "LIQUID"]
+weight = 8
+quality_bias = "epic"
+
+[[item]]
+id = "sanguis_canister_depleted"
+name = "Sanguis Canister (Depleted)"
+glyph = "!"
+color = [180, 0, 0]
+base_value = 5
+tags = ["SANGUIS", "BLOOD", "METAL", "VALUABLE"]
+weight = 40
+
+[[item]]
+id = "sanguis_canister_fresh"
+name = "Sanguis Canister (Fresh)"
+glyph = "!"
+color = [200, 30, 30]
+base_value = 15
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "METAL"]
+weight = 30
+quality_bias = "uncommon"
+
+[[item]]
+id = "sanguis_canister_standard"
+name = "Sanguis Canister (Standard)"
+glyph = "!"
+color = [200, 30, 30]
+base_value = 25
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "METAL"]
+weight = 22
+quality_bias = "uncommon"
+
+[[item]]
+id = "sanguis_canister_concentrated"
+name = "Sanguis Canister (Concentrated)"
+glyph = "!"
+color = [255, 0, 0]
+base_value = 45
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "METAL"]
+weight = 15
+quality_bias = "rare"
+
+[[item]]
+id = "communion_dose_diluted"
+name = "Diluted Communion Dose"
+glyph = "*"
+color = [80, 20, 80]
+base_value = 6
+tags = ["TELOMERASE", "CURRENCY", "DILUTED", "LIQUID"]
+weight = 35
+
+[[item]]
+id = "diluted_telomerase"
+name = "Diluted Telomerase"
+glyph = "*"
+color = [0, 200, 100]
+base_value = 8
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "LIQUID"]
+weight = 30
+
+[[item]]
+id = "concentrated_sanguis"
+name = "Concentrated Sanguis"
+glyph = "!"
+color = [200, 10, 10]
+base_value = 35
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "LIQUID"]
+weight = 15
+quality_bias = "rare"
+
+[[item]]
+id = "blood_letting_kit"
+name = "Blood-Letting Kit"
+glyph = "i"
+color = [200, 50, 50]
+base_value = 20
+tags = ["TOOL", "MEDICAL", "BLOOD", "USABLE"]
+weight = 20
+quality_bias = "uncommon"
+
+# ─── SPECIAL & LEGENDARY ITEMS ──────────────────────────────────────────────────
+
+[[item]]
+id = "gene_splicing_reagent_kit"
+name = "Gene-Splicing Reagent Kit"
+glyph = "?"
+color = [100, 200, 255]
+base_value = 120
+tags = ["TOOL", "MEDICAL", "SPLICING", "ARTIFACT"]
+weight = 8
+quality_bias = "rare"
+
+[[item]]
+id = "genetic_splicing_pod_portable"
+name = "Genetic Splicing Pod (Portable)"
+glyph = "%"
+color = [150, 50, 200]
+base_value = 300
+tags = ["ARTIFACT", "SPLICING", "MEDICAL"]
+weight = 3
+quality_bias = "legendary"
+
+[[item]]
+id = "ancient_vault_key"
+name = "Ancient Vault Key"
+glyph = "?"
+color = [255, 200, 0]
+base_value = 60
+tags = ["ARTIFACT", "KEY", "VALUABLE"]
+weight = 8
+quality_bias = "rare"
+
+[[item]]
+id = "rusted_key"
+name = "Rusted Key"
+glyph = "?"
+color = [200, 180, 50]
+base_value = 15
+tags = ["METAL", "KEY", "ARTIFACT"]
+weight = 20
+quality_bias = "uncommon"
+
+[[item]]
+id = "ancient_coin"
+name = "Ancient Coin"
+glyph = "*"
+color = [220, 190, 60]
+base_value = 25
+tags = ["METAL", "VALUABLE", "CURRENCY"]
+weight = 25
+
+# ─── ANCIENT CONSTRUCT LOOT ─────────────────────────────────────────────────────
+
+[[item]]
+id = "thermal_vent_module"
+name = "Thermal Vent Module"
+glyph = "~"
+color = [80, 180, 160]
+base_value = 75
+tags = ["ARTIFACT", "ENERGY", "HEAT_RESISTANT"]
+weight = 8
+quality_bias = "epic"
+
+[[item]]
+id = "industrial_hull_plate"
+name = "Industrial Hull Plate"
+glyph = "["
+color = [60, 100, 80]
+base_value = 40
+tags = ["METAL", "ARTIFACT", "HEAVY", "ARMOR_CRAFTING", "HEAT_RESISTANT"]
+weight = 12
+quality_bias = "rare"
+
+[[item]]
+id = "scanning_pulse_module"
+name = "Scanning Pulse Module"
+glyph = "~"
+color = [120, 200, 240]
+base_value = 15
+tags = ["ARTIFACT", "ENERGY", "LUMINESCENT", "ELECTRONIC"]
+weight = 20
+
+[[item]]
+id = "surgical_laser_module"
+name = "Surgical Laser Module"
+glyph = "~"
+color = [220, 240, 255]
+base_value = 35
+tags = ["ARTIFACT", "ENERGY", "PRECISION", "CRAFTING"]
+weight = 14
+quality_bias = "uncommon"
+
+# ─── REMNANT LOOT ───────────────────────────────────────────────────────────────
+
+[[item]]
+id = "memory_crystal_shard"
+name = "Memory Crystal Shard"
+glyph = "/"
+color = [160, 200, 240]
+base_value = 30
+tags = ["CRYSTAL", "ARTIFACT", "LUMINESCENT", "VALUABLE"]
+weight = 15
+quality_bias = "uncommon"
+
+[[item]]
+id = "stasis_adapted_suit"
+name = "Stasis-Adapted Suit"
+glyph = "["
+color = [160, 200, 240]
+base_value = 60
+tags = ["CLOTH", "ARTIFACT", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR", "COLD_RESISTANT"]
+weight = 10
+quality_bias = "rare"

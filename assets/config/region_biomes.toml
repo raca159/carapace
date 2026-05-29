@@ -1,0 +1,72 @@
+[[biome]]
+tags = ["BIOME_TEMPERATE_FOREST"]
+produces = [
+  { tag = "WOOD_TIMBER",   weight = 60.0 },
+  { tag = "HERB_MEDICINAL", weight = 30.0 },
+  { tag = "FOOD_WILD",     weight = 40.0 },
+]
+
+[[biome]]
+tags = ["BIOME_GRASSLAND"]
+produces = [
+  { tag = "FOOD_WILD",     weight = 50.0 },
+  { tag = "HERB_MEDICINAL", weight = 20.0 },
+]
+
+[[biome]]
+tags = ["BIOME_DESERT"]
+produces = [
+  { tag = "ORE_COPPER", weight = 30.0 },
+  { tag = "ORE_GOLD",   weight = 15.0 },
+]
+
+[[biome]]
+tags = ["BIOME_MOUNTAIN"]
+produces = [
+  { tag = "ORE_IRON",   weight = 50.0 },
+  { tag = "ORE_GOLD",   weight = 20.0 },
+  { tag = "ORE_MITHRIL", weight = 10.0 },
+  { tag = "STONE_BLOCK", weight = 40.0 },
+]
+
+[[biome]]
+tags = ["BIOME_SWAMP"]
+produces = [
+  { tag = "HERB_POISONOUS", weight = 40.0 },
+  { tag = "FOOD_WILD",      weight = 20.0 },
+]
+
+[[biome]]
+tags = ["BIOME_TUNDRA"]
+produces = [
+  { tag = "FOOD_WILD", weight = 10.0 },
+]
+
+[[biome]]
+tags = ["BIOME_OCEAN", "BIOME_DEEP_OCEAN"]
+produces = [
+  { tag = "FISH", weight = 50.0 },
+  { tag = "WATER_SALT", weight = 30.0 },
+]
+
+[[biome]]
+tags = ["BIOME_TROPICAL_FOREST"]
+produces = [
+  { tag = "FOOD_WILD",      weight = 50.0 },
+  { tag = "HERB_MEDICINAL", weight = 40.0 },
+  { tag = "WOOD_TIMBER",    weight = 30.0 },
+]
+
+[[biome]]
+tags = ["BIOME_SHRUBLAND"]
+produces = [
+  { tag = "FOOD_WILD", weight = 30.0 },
+]
+
+[[biome]]
+tags = ["BIOME_VOLCANIC"]
+produces = [
+  { tag = "ORE_MITHRIL", weight = 20.0 },
+  { tag = "ORE_IRON",    weight = 30.0 },
+  { tag = "STONE_BLOCK", weight = 30.0 },
+]

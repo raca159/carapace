@@ -1,0 +1,471 @@
+# Loot Tables — Carapace Biological Economy
+#
+# The world of Carapace runs on two currencies:
+# - Telomerase Fluid (harvested from Carapace and vampires)
+# - Sanguis / human blood (in vacuum-sealed old-world canisters)
+#
+# Loot tables reflect the biology-driven dark sci-fi setting:
+# creature drops yield biological components, dungeon loot includes
+# pre-collapse artifacts, and currency is always telomerase or sanguis.
+
+# ─── Creature Corpse Drops ────────────────────────────────────────────────────
+
+[[loot_table]]
+id = "carapace_common"
+match_tags = ["CARAPACE"]
+
+[[loot_table.entry]]
+name = "Telomerase Fluid (Diluted)"
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE"]
+glyph = "*"
+color = [0, 200, 100]
+weight = 40
+base_chance = 0.8
+quantity_min = 1
+quantity_max = 3
+
+[[loot_table.entry]]
+name = "Chitin Fragment"
+tags = ["CHITIN", "HARD", "CRAFTING"]
+glyph = "."
+color = [180, 40, 40]
+weight = 35
+base_chance = 0.7
+quantity_min = 1
+quantity_max = 4
+
+[[loot_table.entry]]
+name = "Compound Eye Cluster"
+tags = ["COMPOUND_EYES", "DELICATE", "OPTICAL", "CRAFTING"]
+glyph = "."
+color = [0, 100, 80]
+weight = 25
+base_chance = 0.4
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table]]
+id = "carapace_boss"
+match_tags = ["CARAPACE", "LARGE"]
+
+[[loot_table.entry]]
+name = "Telomerase Fluid (Concentrated)"
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "RARE"]
+glyph = "*"
+color = [0, 255, 100]
+weight = 30
+base_chance = 0.9
+quantity_min = 2
+quantity_max = 6
+
+[[loot_table.entry]]
+name = "Viable Tissue Sample"
+tags = ["TISSUE", "GENETIC_MATERIAL", "RARE", "SPLICING"]
+glyph = "%"
+color = [200, 50, 100]
+weight = 20
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table.entry]]
+name = "Hardened Carapace Plate"
+tags = ["CHITIN", "ARMOR_CRAFTING", "HARDENED", "UNCOMMON"]
+glyph = "["
+color = [160, 30, 30]
+weight = 30
+base_chance = 0.6
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Enzyme Gland"
+tags = ["TELOMERASE", "GLAND", "ORGAN", "ALCHEMICAL", "RARE"]
+glyph = "."
+color = [100, 200, 100]
+weight = 20
+base_chance = 0.4
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table]]
+id = "sanguine_common"
+match_tags = ["SANGUINE"]
+
+[[loot_table.entry]]
+name = "Sanguis Canister (Depleted)"
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "COMMON"]
+glyph = "!"
+color = [180, 0, 0]
+weight = 40
+base_chance = 0.7
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Telomerase Fluid (Tainted)"
+tags = ["TELOMERASE", "CURRENCY", "TAINTED", "UNCOMMON"]
+glyph = "*"
+color = [150, 30, 100]
+weight = 30
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Subdermal Chitin Shard"
+tags = ["CHITIN", "HARD", "CRAFTING", "CONCEALED"]
+glyph = "."
+color = [160, 40, 60]
+weight = 30
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table]]
+id = "familiar_common"
+match_tags = ["FAMILIAR"]
+
+[[loot_table.entry]]
+name = "Diluted Communion Dose"
+tags = ["TELOMERASE", "CURRENCY", "COMMON", "DILUTED"]
+glyph = "*"
+color = [80, 20, 80]
+weight = 30
+base_chance = 0.6
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Ceremonial Dagger"
+tags = ["METAL", "EQUIP_WEAPON", "CEREMONIAL", "COMMON"]
+glyph = "/"
+color = [120, 20, 100]
+weight = 25
+base_chance = 0.4
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table.entry]]
+name = "Cultist Robes"
+tags = ["CLOTH", "EQUIP_ARMOR", "COMMON", "CONCEALING"]
+glyph = "["
+color = [60, 0, 40]
+weight = 25
+base_chance = 0.4
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table.entry]]
+name = "Blood-Letting Kit"
+tags = ["TOOL", "MEDICAL", "UNCOMMON", "BLOOD"]
+glyph = "i"
+color = [200, 50, 50]
+weight = 20
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table]]
+id = "human_common"
+match_tags = ["HUMAN"]
+
+[[loot_table.entry]]
+name = "Sanguis Canister (Fresh)"
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "UNCOMMON"]
+glyph = "!"
+color = [200, 30, 30]
+weight = 35
+base_chance = 0.6
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Scrap Metal"
+tags = ["METAL", "COMMON", "SALVAGE"]
+glyph = "."
+color = [150, 150, 150]
+weight = 40
+base_chance = 0.7
+quantity_min = 1
+quantity_max = 3
+
+[[loot_table.entry]]
+name = "Pre-Collapse Ration Packet"
+tags = ["EDIBLE", "ARTIFACT", "COMMON"]
+glyph = "%"
+color = [200, 200, 150]
+weight = 25
+base_chance = 0.4
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table]]
+id = "mutant_wildlife_common"
+match_tags = ["MUTANT"]
+
+[[loot_table.entry]]
+name = "Mutated Tissue"
+tags = ["TISSUE", "MUTAGENIC", "UNCOMMON", "ALCHEMICAL"]
+glyph = "%"
+color = [100, 140, 80]
+weight = 40
+base_chance = 0.6
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Chitin Fragment"
+tags = ["CHITIN", "HARD", "CRAFTING"]
+glyph = "."
+color = [100, 80, 60]
+weight = 35
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 3
+
+[[loot_table.entry]]
+name = "Bio-Electric Organ"
+tags = ["ORGAN", "ELECTRIC", "UNCOMMON", "CRAFTING"]
+glyph = "."
+color = [0, 150, 200]
+weight = 25
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table]]
+id = "construct_common"
+match_tags = ["CONSTRUCT"]
+
+[[loot_table.entry]]
+name = "Salvaged Circuit Board"
+tags = ["ARTIFACT", "ELECTRONIC", "COMMON", "SALVAGE"]
+glyph = "."
+color = [100, 180, 100]
+weight = 35
+base_chance = 0.7
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Power Cell Fragments"
+tags = ["ARTIFACT", "ENERGY", "UNCOMMON", "SALVAGE"]
+glyph = "."
+color = [200, 200, 50]
+weight = 30
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 3
+
+[[loot_table.entry]]
+name = "Laser Emitter Lens"
+tags = ["ARTIFACT", "OPTICAL", "RARE", "CRAFTING"]
+glyph = "*"
+color = [255, 50, 50]
+weight = 20
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table.entry]]
+name = "Ancient Alloy Plate"
+tags = ["ARTIFACT", "METAL", "UNCOMMON", "ARMOR_CRAFTING", "HEAVY"]
+glyph = "["
+color = [160, 160, 180]
+weight = 15
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 2
+
+# ─── Vault / Ruin Loot (dungeon equivalents) ──────────────────────────────────
+
+[[loot_table]]
+id = "vault_common"
+dungeon_types = ["Flooded Vault", "Ancient Ruin", "Cryo-Bunker"]
+min_depth = 1
+max_depth = 5
+slots = 3
+
+[[loot_table.entry]]
+name = "Telomerase Fluid (Standard)"
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "UNCOMMON"]
+glyph = "*"
+color = [0, 200, 100]
+weight = 35
+base_chance = 0.9
+quantity_min = 2
+quantity_max = 8
+
+[[loot_table.entry]]
+name = "Sanguis Canister (Standard)"
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "UNCOMMON"]
+glyph = "!"
+color = [200, 30, 30]
+weight = 25
+base_chance = 0.6
+quantity_min = 1
+quantity_max = 3
+
+[[loot_table.entry]]
+name = "Med-Patch"
+tags = ["EDIBLE", "MEDICAL", "HEALING", "ARTIFACT", "UNCOMMON"]
+glyph = "+"
+color = [0, 200, 0]
+weight = 20
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 2
+
+[[loot_table.entry]]
+name = "Old-World Flashlight"
+tags = ["TOOL", "LIGHT", "ARTIFACT", "COMMON"]
+glyph = "i"
+color = [255, 200, 50]
+weight = 20
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table]]
+id = "vault_rare"
+dungeon_types = ["Flooded Vault", "Ancient Ruin", "Cryo-Bunker"]
+min_depth = 3
+max_depth = 8
+slots = 3
+quality_bias = "UNCOMMON"
+
+[[loot_table.entry]]
+name = "Telomerase Fluid (Concentrated)"
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "RARE"]
+glyph = "*"
+color = [0, 255, 100]
+weight = 25
+base_chance = 0.7
+quantity_min = 3
+quantity_max = 10
+
+[[loot_table.entry]]
+name = "Sanguis Canister (Concentrated)"
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "RARE"]
+glyph = "!"
+color = [255, 0, 0]
+weight = 20
+base_chance = 0.5
+quantity_min = 2
+quantity_max = 5
+
+[[loot_table.entry]]
+name = "Gene-Splicing Reagent Kit"
+tags = ["TOOL", "MEDICAL", "SPLICING", "RARE", "ARTIFACT"]
+glyph = "?"
+color = [100, 200, 255]
+weight = 15
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table.entry]]
+name = "Pre-Collapse Sidearm"
+tags = ["METAL", "EQUIP_WEAPON", "RANGED", "ARTIFACT", "RARE"]
+glyph = "/"
+color = [180, 180, 200]
+weight = 15
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 1
+quality_bias = "RARE"
+
+[[loot_table.entry]]
+name = "Shield Generator Belt"
+tags = ["ARTIFACT", "EQUIP_ACCESSORY", "ENERGY", "RARE"]
+glyph = "="
+color = [100, 150, 255]
+weight = 10
+base_chance = 0.2
+quantity_min = 1
+quantity_max = 1
+quality_bias = "RARE"
+
+[[loot_table.entry]]
+name = "Chromatophoric Weave Suit"
+tags = ["CHITIN", "EQUIP_ARMOR", "CHROMATOPHORIC", "CONCEALING", "RARE"]
+glyph = "["
+color = [60, 120, 80]
+weight = 15
+base_chance = 0.25
+quantity_min = 1
+quantity_max = 1
+quality_bias = "RARE"
+
+[[loot_table]]
+id = "vault_boss"
+dungeon_types = ["Flooded Vault", "Ancient Ruin", "Cryo-Bunker"]
+min_depth = 5
+max_depth = 10
+slots = 4
+quality_bias = "RARE"
+
+[[loot_table.entry]]
+name = "Telomerase Fluid (Pure)"
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "EPIC"]
+glyph = "*"
+color = [0, 255, 150]
+weight = 25
+base_chance = 1.0
+quantity_min = 5
+quantity_max = 20
+
+[[loot_table.entry]]
+name = "Ancient Vault Key"
+tags = ["ARTIFACT", "KEY", "VALUABLE", "RARE"]
+glyph = "?"
+color = [255, 200, 0]
+weight = 15
+base_chance = 0.6
+quantity_min = 1
+quantity_max = 1
+
+[[loot_table.entry]]
+name = "Plasma Rifle"
+tags = ["METAL", "EQUIP_WEAPON", "RANGED", "ENERGY", "ARTIFACT", "LEGENDARY"]
+glyph = "/"
+color = [0, 200, 255]
+weight = 15
+base_chance = 0.4
+quantity_min = 1
+quantity_max = 1
+quality_bias = "LEGENDARY"
+
+[[loot_table.entry]]
+name = "Hardened Carapace Armor"
+tags = ["CHITIN", "EQUIP_ARMOR", "HARDENED", "PRESSURE_RESISTANT", "EPIC"]
+glyph = "["
+color = [140, 30, 40]
+weight = 15
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 1
+quality_bias = "EPIC"
+
+[[loot_table.entry]]
+name = "Genetic Splicing Pod (Portable)"
+tags = ["ARTIFACT", "SPLICING", "MEDICAL", "LEGENDARY"]
+glyph = "%"
+color = [150, 50, 200]
+weight = 10
+base_chance = 0.3
+quantity_min = 1
+quantity_max = 1
+quality_bias = "LEGENDARY"
+
+[[loot_table.entry]]
+name = "Bio-Electric Gauntlets"
+tags = ["METAL", "EQUIP_ACCESSORY", "ELECTRIC", "BIO_ELECTRIC", "RARE"]
+glyph = "="
+color = [0, 170, 220]
+weight = 20
+base_chance = 0.5
+quantity_min = 1
+quantity_max = 1
+quality_bias = "RARE"

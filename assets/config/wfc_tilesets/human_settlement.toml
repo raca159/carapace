@@ -1,0 +1,111 @@
+name = "HumanSettlement"
+description = "A walled post-collapse settlement — salvaged stone streets, repurposed wooden houses, and the constant fear of what lurks beyond the walls"
+location_type = "city"
+
+[[tile]]
+id = "EMPTY"
+glyph = " "
+color = [0, 0, 0]
+weight = 1.0
+tags = ["border", "void"]
+
+[[tile]]
+id = "WALL"
+glyph = "#"
+color = [90, 85, 70]
+weight = 3.0
+tags = ["wall", "structure"]
+
+[[tile]]
+id = "FLOOR"
+glyph = "."
+color = [130, 120, 100]
+weight = 4.5
+tags = ["floor", "interior"]
+
+[[tile]]
+id = "COBBLE"
+glyph = "="
+color = [110, 105, 95]
+weight = 2.0
+tags = ["road", "path"]
+
+[[tile]]
+id = "DOOR"
+glyph = "+"
+color = [139, 90, 43]
+weight = 0.5
+tags = ["door", "transition"]
+
+[[tile]]
+id = "MARKET_STALL"
+glyph = "◊"
+color = [180, 150, 100]
+weight = 0.2
+tags = ["special", "feature", "trade"]
+
+[[tile]]
+id = "SHRINE"
+glyph = "†"
+color = [150, 150, 200]
+weight = 0.1
+tags = ["special", "feature"]
+
+[[tile]]
+id = "RUIN_PATCH"
+glyph = "."
+color = [100, 110, 130]
+weight = 0.3
+tags = ["floor", "ruin"]
+
+[conditions]
+biomes = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_SETTLEMENT"]
+factions = ["free_settlements"]
+
+[adjacency.EMPTY]
+up = ["EMPTY", "WALL"]
+down = ["EMPTY", "WALL"]
+left = ["EMPTY", "WALL"]
+right = ["EMPTY", "WALL"]
+
+[adjacency.WALL]
+up = ["EMPTY", "WALL", "DOOR", "FLOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+down = ["EMPTY", "WALL", "DOOR", "FLOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+left = ["EMPTY", "WALL", "DOOR", "FLOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+right = ["EMPTY", "WALL", "DOOR", "FLOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+
+[adjacency.FLOOR]
+up = ["WALL", "FLOOR", "DOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+down = ["WALL", "FLOOR", "DOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+left = ["WALL", "FLOOR", "DOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+right = ["WALL", "FLOOR", "DOOR", "COBBLE", "MARKET_STALL", "SHRINE", "RUIN_PATCH"]
+
+[adjacency.COBBLE]
+up = ["WALL", "COBBLE", "FLOOR", "DOOR", "MARKET_STALL"]
+down = ["WALL", "COBBLE", "FLOOR", "DOOR", "MARKET_STALL"]
+left = ["WALL", "COBBLE", "FLOOR", "DOOR", "MARKET_STALL"]
+right = ["WALL", "COBBLE", "FLOOR", "DOOR", "MARKET_STALL"]
+
+[adjacency.DOOR]
+up = ["WALL", "FLOOR", "COBBLE"]
+down = ["WALL", "FLOOR", "COBBLE"]
+left = ["WALL", "FLOOR", "COBBLE"]
+right = ["WALL", "FLOOR", "COBBLE"]
+
+[adjacency.MARKET_STALL]
+up = ["FLOOR", "COBBLE", "WALL"]
+down = ["FLOOR", "COBBLE", "WALL"]
+left = ["FLOOR", "COBBLE", "WALL"]
+right = ["FLOOR", "COBBLE", "WALL"]
+
+[adjacency.SHRINE]
+up = ["FLOOR", "RUIN_PATCH", "WALL"]
+down = ["FLOOR", "RUIN_PATCH", "WALL"]
+left = ["FLOOR", "RUIN_PATCH", "WALL"]
+right = ["FLOOR", "RUIN_PATCH", "WALL"]
+
+[adjacency.RUIN_PATCH]
+up = ["FLOOR", "RUIN_PATCH", "WALL", "SHRINE"]
+down = ["FLOOR", "RUIN_PATCH", "WALL", "SHRINE"]
+left = ["FLOOR", "RUIN_PATCH", "WALL", "SHRINE"]
+right = ["FLOOR", "RUIN_PATCH", "WALL", "SHRINE"]

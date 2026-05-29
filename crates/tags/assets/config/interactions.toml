@@ -1,0 +1,215 @@
+[[interaction]]
+tag_a = "FIRE"
+tag_b = "FLAMMABLE"
+produces = ["BURNING"]
+consumes = []
+priority = 10
+description = "Fire spreads to flammable things"
+
+[[interaction]]
+tag_a = "WATER"
+tag_b = "FIRE"
+produces = []
+consumes = ["FIRE"]
+priority = 20
+description = "Water extinguishes fire"
+
+[[interaction]]
+tag_a = "WATER"
+tag_b = "BURNING"
+produces = []
+consumes = ["BURNING"]
+priority = 15
+description = "Water extinguishes burning objects"
+
+[[interaction]]
+tag_a = "ICE"
+tag_b = "FIRE"
+produces = ["WATER"]
+consumes = ["ICE"]
+priority = 12
+description = "Fire melts ice into water"
+
+[[interaction]]
+tag_a = "LIGHTNING"
+tag_b = "WET"
+produces = ["STUNNED"]
+consumes = []
+priority = 15
+description = "Lightning stuns wet targets"
+
+[[interaction]]
+tag_a = "LIGHTNING"
+tag_b = "CONDUCTIVE"
+produces = ["STUNNED"]
+consumes = []
+priority = 15
+description = "Lightning arcs through conductive materials"
+
+[[interaction]]
+tag_a = "LIGHTNING"
+tag_b = "INSULATING"
+produces = []
+consumes = ["LIGHTNING"]
+priority = 18
+description = "Insulation blocks lightning"
+
+[[interaction]]
+tag_a = "ACID"
+tag_b = "METAL"
+produces = ["TOXIC", "ACID_DAMAGE"]
+consumes = []
+priority = 10
+description = "Acid corrodes metal"
+
+[[interaction]]
+tag_a = "ACID"
+tag_b = "FLESH"
+produces = ["POISONED", "ACID_DAMAGE"]
+consumes = []
+priority = 10
+description = "Acid burns living tissue"
+
+[[interaction]]
+tag_a = "ACID"
+tag_b = "GLASS"
+produces = []
+consumes = []
+priority = 20
+description = "Glass is immune to acid (blocks cascade)"
+
+[[interaction]]
+tag_a = "FIRE"
+tag_b = "OILED"
+produces = ["BURNING"]
+consumes = ["OILED"]
+priority = 8
+description = "Oil accelerates fire"
+
+[[interaction]]
+tag_a = "FIRE"
+tag_b = "FIREPROOF"
+produces = []
+consumes = []
+priority = 25
+description = "Fireproof blocks fire entirely"
+
+[[interaction]]
+tag_a = "UNDEAD"
+tag_b = "BLESSED"
+produces = ["HOLY_DAMAGE"]
+consumes = ["BLESSED"]
+priority = 10
+description = "Holy energy harms undead"
+
+[[interaction]]
+tag_a = "UNDEAD"
+tag_b = "NECROTIC_DAMAGE"
+produces = ["HEALING"]
+consumes = []
+priority = 10
+description = "Undead heal from necrotic damage"
+
+[[interaction]]
+tag_a = "CONSTRUCT"
+tag_b = "POISONED"
+produces = []
+consumes = ["POISONED"]
+priority = 20
+description = "Constructs are immune to poison"
+
+[[interaction]]
+tag_a = "PLANT"
+tag_b = "WATER"
+produces = ["REGENERATING"]
+consumes = []
+priority = 5
+description = "Water heals plants"
+
+[[interaction]]
+tag_a = "PLANT"
+tag_b = "FIRE"
+produces = ["BURNING"]
+consumes = []
+priority = 8
+description = "Plants are very flammable"
+
+[[interaction]]
+tag_a = "FREEZING"
+tag_b = "LIQUID"
+produces = ["ICE_MATERIAL"]
+consumes = ["LIQUID"]
+priority = 10
+description = "Liquids freeze in extreme cold"
+
+[[interaction]]
+tag_a = "HOT"
+tag_b = "ICE_MATERIAL"
+produces = ["WET"]
+consumes = ["ICE_MATERIAL"]
+priority = 10
+description = "Heat melts ice"
+
+[[interaction]]
+tag_a = "FREEZING"
+tag_b = "WET"
+produces = ["FROZEN"]
+consumes = ["WET"]
+priority = 8
+description = "Wet things freeze solid"
+
+[[interaction]]
+tag_a = "HOT"
+tag_b = "WET"
+produces = ["DRY"]
+consumes = ["WET"]
+priority = 5
+description = "Heat dries wet things"
+
+[[interaction]]
+tag_a = "ARCANE"
+tag_b = "ARCANE"
+produces = ["HOLY_DAMAGE"]
+consumes = []
+priority = 20
+description = "Arcane instability"
+
+[[interaction]]
+tag_a = "ANTI_MAGIC"
+tag_b = "ENCHANTED"
+produces = []
+consumes = ["ENCHANTED"]
+priority = 15
+description = "Anti-magic dispels enchantments"
+
+[[interaction]]
+tag_a = "ANTI_MAGIC"
+tag_b = "CURSED"
+produces = []
+consumes = ["CURSED"]
+priority = 15
+description = "Anti-magic removes curses"
+
+[[interaction]]
+tag_a = "CURSED"
+tag_b = "FLESH"
+produces = ["CONFUSED"]
+consumes = []
+priority = 5
+description = "Curses confuse the living"
+
+[[interaction]]
+tag_a = "NECROTIC"
+tag_b = "FLESH"
+produces = ["NECROTIC_DAMAGE"]
+consumes = []
+priority = 8
+description = "Necrotic energy drains life"
+
+[[interaction]]
+tag_a = "NECROTIC"
+tag_b = "UNDEAD"
+produces = ["HEALING"]
+consumes = []
+priority = 8
+description = "Necrotic heals undead"

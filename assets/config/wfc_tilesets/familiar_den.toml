@@ -1,0 +1,124 @@
+name = "FamiliarDen"
+description = "A subterranean cultist lair — crude tunnels reeking of telomerase residue, littered with the remains of failed rituals"
+location_type = "dungeon"
+
+[[tile]]
+id = "EMPTY"
+glyph = " "
+color = [0, 0, 0]
+weight = 0.5
+tags = ["border"]
+
+[[tile]]
+id = "WALL"
+glyph = "#"
+color = [80, 60, 50]
+weight = 3.5
+tags = ["wall", "structure"]
+
+[[tile]]
+id = "FLOOR"
+glyph = "."
+color = [100, 80, 60]
+weight = 4.0
+tags = ["floor", "dirt"]
+
+[[tile]]
+id = "CORRIDOR"
+glyph = "="
+color = [90, 70, 55]
+weight = 2.0
+tags = ["tunnel", "path"]
+
+[[tile]]
+id = "DOOR"
+glyph = "+"
+color = [120, 70, 40]
+weight = 0.4
+tags = ["door", "transition"]
+
+[[tile]]
+id = "ALTAR"
+glyph = "†"
+color = [200, 50, 50]
+weight = 0.1
+tags = ["special", "feature"]
+
+[[tile]]
+id = "BRAZIER"
+glyph = "Δ"
+color = [255, 120, 20]
+weight = 0.15
+tags = ["special", "feature", "light"]
+
+[[tile]]
+id = "SYMBOL"
+glyph = "✧"
+color = [150, 60, 180]
+weight = 0.1
+tags = ["special", "feature"]
+
+[[tile]]
+id = "TANK"
+glyph = "■"
+color = [60, 80, 60]
+weight = 0.12
+tags = ["special", "feature", "tank"]
+
+[conditions]
+biomes = ["BIOME_CAVE", "BIOME_DUNGEON", "BIOME_SWAMP"]
+factions = ["familiars"]
+
+[adjacency.EMPTY]
+up = ["EMPTY", "WALL"]
+down = ["EMPTY", "WALL"]
+left = ["EMPTY", "WALL"]
+right = ["EMPTY", "WALL"]
+
+[adjacency.WALL]
+up = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+down = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+left = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+right = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+
+[adjacency.FLOOR]
+up = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+down = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+left = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+right = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "ALTAR", "BRAZIER", "SYMBOL", "TANK"]
+
+[adjacency.CORRIDOR]
+up = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+down = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+left = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+right = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+
+[adjacency.DOOR]
+up = ["WALL", "FLOOR", "CORRIDOR"]
+down = ["WALL", "FLOOR", "CORRIDOR"]
+left = ["WALL", "FLOOR", "CORRIDOR"]
+right = ["WALL", "FLOOR", "CORRIDOR"]
+
+[adjacency.ALTAR]
+up = ["FLOOR", "WALL", "SYMBOL", "BRAZIER"]
+down = ["FLOOR", "WALL", "SYMBOL", "BRAZIER"]
+left = ["FLOOR", "WALL", "SYMBOL", "BRAZIER"]
+right = ["FLOOR", "WALL", "SYMBOL", "BRAZIER"]
+
+[adjacency.BRAZIER]
+up = ["FLOOR", "WALL", "BRAZIER", "ALTAR"]
+down = ["FLOOR", "WALL", "BRAZIER", "ALTAR"]
+left = ["FLOOR", "WALL", "BRAZIER", "ALTAR"]
+right = ["FLOOR", "WALL", "BRAZIER", "ALTAR"]
+
+[adjacency.SYMBOL]
+up = ["FLOOR", "WALL", "ALTAR"]
+down = ["FLOOR", "WALL", "ALTAR"]
+left = ["FLOOR", "WALL", "ALTAR"]
+right = ["FLOOR", "WALL", "ALTAR"]
+
+[adjacency.TANK]
+up = ["FLOOR", "WALL", "TANK"]
+down = ["FLOOR", "WALL", "TANK"]
+left = ["FLOOR", "WALL", "TANK"]
+right = ["FLOOR", "WALL", "TANK"]

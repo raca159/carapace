@@ -1,0 +1,211 @@
+use bevy_ecs::prelude::*;
+
+pub type GeneId = u32;
+pub type AlleleValue = f32;
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum GeneTrait {
+    Strength,
+    Speed,
+    Toughness,
+    Regeneration,
+    NightVision,
+    PoisonResist,
+    FireResist,
+    ColdResist,
+    Climbing,
+    Swimming,
+    Digging,
+    Photosynthesis,
+    Venomous,
+    Thorny,
+    Camouflage,
+    Sonar,
+}
+
+#[derive(Debug, Clone)]
+pub struct Allele {
+    pub trait_type: GeneTrait,
+    pub value: f32,
+    pub dominant: bool,
+}
+
+#[derive(Component, Debug, Clone, Default)]
+pub struct DNA {
+    pub genes: Vec<Allele>,
+}
+
+impl DNA {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn add_allele(&mut self, allele: Allele) {
+        self.genes.push(allele);
+    }
+
+    pub fn trait_value(&self, trait_type: GeneTrait) -> f32 {
+        let mut total = 0.0;
+        let mut count = 0;
+        for allele in &self.genes {
+            if allele.trait_type == trait_type && allele.dominant {
+                total += allele.value;
+                count += 1;
+            }
+        }
+        if count > 0 { total / count as f32 } else { 0.0 }
+    }
+
+    pub fn has_trait(&self, trait_type: GeneTrait) -> bool {
+        self.genes.iter().any(|a| a.trait_type == trait_type)
+    }
+
+    pub fn splice(&self, other: &DNA) -> DNA {
+        let mut child = DNA::new();
+        let half = self.genes.len() / 2;
+        for i in 0..half {
+            if let Some(g) = self.genes.get(i).cloned() {
+                child.genes.push(g);
+            }
+        }
+        if let Some(other_half_start) = other.genes.len().checked_sub(half) {
+            for i in other_half_start..other.genes.len() {
+                if let Some(g) = other.genes.get(i).cloned() {
+                    child.genes.push(g);
+                }
+            }
+        }
+        child
+    }
+
+    pub fn mutate(&mut self, chance: f32, rng: &mut impl rand::Rng) {
+        for allele in &mut self.genes {
+            if rng.random::<f32>() < chance {
+                allele.value = (allele.value + rng.random_range(-0.3..0.3)).clamp(0.0, 1.0);
+                allele.dominant = rng.random_bool(0.5);
+            }
+        }
+    }
+}
+
+#[derive(Component, Debug, Clone)]
+pub struct GeneSplicer {
+    pub stored_genes: Vec<Allele>,
+    pub slots: u32,
+}
+
+impl GeneSplicer {
+    pub fn new(slots: u32) -> Self {
+        Self { stored_genes: Vec::new(), slots }
+    }
+
+    pub fn extract_gene(dna: &DNA, trait_type: GeneTrait) -> Option<Allele> {
+        dna.genes.iter().find(|a| a.trait_type == trait_type).cloned()
+    }
+
+    pub fn can_splice(&self) -> bool {
+        self.stored_genes.len() >= 2
+    }
+
+    pub fn splice_stored(&mut self) -> Option<DNA> {
+        if self.stored_genes.len() < 2 {
+            return None;
+        }
+        let mut result = DNA::new();
+        let gene = self.stored_genes.remove(0);
+        let gene2 = self.stored_genes.remove(0);
+        result.genes.push(gene);
+        result.genes.push(gene2);
+        Some(result)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn empty_dna_has_no_traits() {
+        let dna = DNA::new();
+        assert!(!dna.has_trait(GeneTrait::Strength));
+    }
+
+    #[test]
+    fn add_allele_then_has_trait() {
+        let mut dna = DNA::new();
+        dna.add_allele(Allele { trait_type: GeneTrait::Strength, value: 0.8, dominant: true });
+        assert!(dna.has_trait(GeneTrait::Strength));
+    }
+
+    #[test]
+    fn trait_value_returns_average_of_dominant() {
+        let mut dna = DNA::new();
+        dna.add_allele(Allele { trait_type: GeneTrait::Speed, value: 0.5, dominant: true });
+        dna.add_allele(Allele { trait_type: GeneTrait::Speed, value: 0.7, dominant: true });
+        dna.add_allele(Allele { trait_type: GeneTrait::Speed, value: 0.9, dominant: false });
+        let val = dna.trait_value(GeneTrait::Speed);
+        assert!((val - 0.6).abs() < 0.01);
+    }
+
+    #[test]
+    fn splice_combines_first_half_of_self_with_second_half_of_other() {
+        let mut a = DNA::new();
+        a.add_allele(Allele { trait_type: GeneTrait::Strength, value: 0.5, dominant: true });
+        a.add_allele(Allele { trait_type: GeneTrait::Speed, value: 0.5, dominant: true });
+        a.add_allele(Allele { trait_type: GeneTrait::Toughness, value: 0.5, dominant: true });
+
+        let mut b = DNA::new();
+        b.add_allele(Allele { trait_type: GeneTrait::FireResist, value: 0.5, dominant: true });
+        b.add_allele(Allele { trait_type: GeneTrait::ColdResist, value: 0.5, dominant: true });
+        b.add_allele(Allele { trait_type: GeneTrait::Regeneration, value: 0.5, dominant: true });
+
+        let child = a.splice(&b);
+        assert_eq!(child.genes.len(), 2);
+        assert!(child.has_trait(GeneTrait::Strength));
+        assert!(child.has_trait(GeneTrait::Regeneration));
+        assert!(child.has_trait(GeneTrait::Regeneration));
+    }
+
+    #[test]
+    fn splice_stored_requires_two_genes() {
+        let mut splicer = GeneSplicer::new(5);
+        assert!(!splicer.can_splice());
+        assert!(splicer.splice_stored().is_none());
+    }
+
+    #[test]
+    fn splice_stored_works_with_two_genes() {
+        let mut splicer = GeneSplicer::new(5);
+        splicer.stored_genes.push(Allele { trait_type: GeneTrait::Speed, value: 0.8, dominant: true });
+        splicer.stored_genes.push(Allele { trait_type: GeneTrait::Toughness, value: 0.6, dominant: true });
+        assert!(splicer.can_splice());
+        let result = splicer.splice_stored();
+        assert!(result.is_some());
+        assert_eq!(result.unwrap().genes.len(), 2);
+    }
+
+    #[test]
+    fn mutation_changes_values() {
+        let mut dna = DNA::new();
+        dna.add_allele(Allele { trait_type: GeneTrait::Strength, value: 0.5, dominant: true });
+        let original = dna.genes[0].value;
+        dna.mutate(1.0, &mut rand::rng());
+        let new = dna.genes[0].value;
+        assert!((original - new).abs() > 0.0001 || original == new);
+    }
+
+    #[test]
+    fn extract_gene_returns_matching() {
+        let mut dna = DNA::new();
+        dna.add_allele(Allele { trait_type: GeneTrait::NightVision, value: 1.0, dominant: true });
+        let extracted = GeneSplicer::extract_gene(&dna, GeneTrait::NightVision);
+        assert!(extracted.is_some());
+        assert_eq!(extracted.unwrap().value, 1.0);
+    }
+
+    #[test]
+    fn extract_gene_returns_none_for_missing() {
+        let dna = DNA::new();
+        assert!(GeneSplicer::extract_gene(&dna, GeneTrait::Climbing).is_none());
+    }
+}

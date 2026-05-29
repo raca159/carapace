@@ -1,0 +1,31 @@
+[[recipe]]
+name = "Smelt Iron"
+inputs = ["ORE_IRON"]
+requires_env = ["FIRE"]
+outputs = [{ tags = ["METAL", "HARD", "HOLDABLE"], name = "Iron Ingot", glyph = "=", color = [180, 180, 180] }]
+
+[[recipe]]
+name = "Forge Sword"
+inputs = ["METAL", "METAL"]
+requires_env = ["FIRE"]
+outputs = [{ tags = ["METAL", "HARD", "EQUIP_WEAPON", "MELEE", "HOLDABLE"], name = "Forged Sword", glyph = "/", color = [200, 200, 210] }]
+
+[[recipe]]
+name = "Craft Leather Armor"
+inputs = ["LEATHER", "LEATHER"]
+outputs = [{ tags = ["LEATHER", "EQUIP_ARMOR", "WEARABLE", "LIGHT_ARMOR"], name = "Leather Armor", glyph = "[", color = [160, 100, 50] }]
+
+[[recipe]]
+name = "Brew Healing Potion"
+inputs = ["HERB_MEDICINAL", "GLASS"]
+outputs = [{ tags = ["DRINKABLE", "EDIBLE", "HERB_MEDICINAL", "HEALING"], name = "Healing Potion", glyph = "!", color = [255, 50, 50] }]
+
+[[recipe]]
+name = "Stone Axe"
+inputs = ["STONE", "WOOD"]
+outputs = [{ tags = ["STONE", "WOOD", "EQUIP_WEAPON", "MELEE", "HOLDABLE"], name = "Stone Axe", glyph = "/", color = [150, 150, 150] }]
+
+[[recipe]]
+name = "Torch"
+inputs = ["WOOD", "CLOTH"]
+outputs = [{ tags = ["WOOD", "CLOTH", "FLAMMABLE", "HOLDABLE", "LUMINESCENT"], name = "Torch", glyph = "t", color = [255, 200, 50] }]

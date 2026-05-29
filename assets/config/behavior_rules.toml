@@ -1,0 +1,34 @@
+[[rule]]
+trait_tag = "AGGRESSIVE"
+action = "chase"
+weight = 2.0
+range = 10
+description = "Aggressive creatures chase nearby hostile entities"
+
+[[rule]]
+trait_tag = "COWARDLY"
+action = "flee"
+weight = 3.0
+range = 8
+description = "Cowardly creatures flee from nearby threats"
+
+[[rule]]
+trait_tag = "TERRITORIAL"
+action = "guard"
+weight = 2.5
+range = 6
+description = "Territorial creatures guard their home position"
+
+[[rule]]
+trait_tag = "CURIOUS"
+action = "approach"
+weight = 1.5
+range = 6
+description = "Curious creatures approach nearby non-hostile entities"
+
+[[rule]]
+trait_tag = "PEACEFUL"
+action = "wander"
+weight = 1.0
+range = 1
+description = "Peaceful creatures wander randomly"

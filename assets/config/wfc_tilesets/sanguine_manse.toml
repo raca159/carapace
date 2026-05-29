@@ -1,0 +1,111 @@
+name = "SanguineManse"
+description = "A gothic manor-turned-vampire stronghold — blood-stained marble halls, hidden passages, and the lingering scent of decay"
+location_type = "dungeon"
+
+[[tile]]
+id = "EMPTY"
+glyph = " "
+color = [0, 0, 0]
+weight = 0.5
+tags = ["border"]
+
+[[tile]]
+id = "WALL"
+glyph = "#"
+color = [70, 55, 65]
+weight = 3.5
+tags = ["wall", "structure"]
+
+[[tile]]
+id = "FLOOR"
+glyph = "."
+color = [120, 90, 100]
+weight = 4.0
+tags = ["floor", "interior"]
+
+[[tile]]
+id = "HALL"
+glyph = "="
+color = [100, 75, 85]
+weight = 2.0
+tags = ["hall", "path"]
+
+[[tile]]
+id = "DOOR"
+glyph = "+"
+color = [139, 70, 50]
+weight = 0.4
+tags = ["door", "transition"]
+
+[[tile]]
+id = "THRONE"
+glyph = "♛"
+color = [180, 20, 20]
+weight = 0.1
+tags = ["special", "feature"]
+
+[[tile]]
+id = "BLOOD_FOUNTAIN"
+glyph = "~"
+color = [200, 10, 10]
+weight = 0.08
+tags = ["special", "feature", "hazard"]
+
+[[tile]]
+id = "COFFIN"
+glyph = "□"
+color = [100, 50, 40]
+weight = 0.15
+tags = ["special", "feature", "spawn"]
+
+[conditions]
+biomes = ["BIOME_SWAMP", "BIOME_TEMPERATE_FOREST", "BIOME_SETTLEMENT"]
+factions = ["sanguine_elite"]
+
+[adjacency.EMPTY]
+up = ["EMPTY", "WALL"]
+down = ["EMPTY", "WALL"]
+left = ["EMPTY", "WALL"]
+right = ["EMPTY", "WALL"]
+
+[adjacency.WALL]
+up = ["EMPTY", "WALL", "DOOR", "FLOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+down = ["EMPTY", "WALL", "DOOR", "FLOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+left = ["EMPTY", "WALL", "DOOR", "FLOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+right = ["EMPTY", "WALL", "DOOR", "FLOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+
+[adjacency.FLOOR]
+up = ["WALL", "FLOOR", "DOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+down = ["WALL", "FLOOR", "DOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+left = ["WALL", "FLOOR", "DOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+right = ["WALL", "FLOOR", "DOOR", "HALL", "THRONE", "BLOOD_FOUNTAIN", "COFFIN"]
+
+[adjacency.HALL]
+up = ["WALL", "HALL", "FLOOR", "DOOR"]
+down = ["WALL", "HALL", "FLOOR", "DOOR"]
+left = ["WALL", "HALL", "FLOOR", "DOOR"]
+right = ["WALL", "HALL", "FLOOR", "DOOR"]
+
+[adjacency.DOOR]
+up = ["WALL", "FLOOR", "HALL"]
+down = ["WALL", "FLOOR", "HALL"]
+left = ["WALL", "FLOOR", "HALL"]
+right = ["WALL", "FLOOR", "HALL"]
+
+[adjacency.THRONE]
+up = ["FLOOR", "WALL", "BLOOD_FOUNTAIN"]
+down = ["FLOOR", "WALL", "BLOOD_FOUNTAIN"]
+left = ["FLOOR", "WALL", "BLOOD_FOUNTAIN"]
+right = ["FLOOR", "WALL", "BLOOD_FOUNTAIN"]
+
+[adjacency.BLOOD_FOUNTAIN]
+up = ["FLOOR", "WALL", "BLOOD_FOUNTAIN", "THRONE"]
+down = ["FLOOR", "WALL", "BLOOD_FOUNTAIN", "THRONE"]
+left = ["FLOOR", "WALL", "BLOOD_FOUNTAIN", "THRONE"]
+right = ["FLOOR", "WALL", "BLOOD_FOUNTAIN", "THRONE"]
+
+[adjacency.COFFIN]
+up = ["FLOOR", "WALL", "COFFIN"]
+down = ["FLOOR", "WALL", "COFFIN"]
+left = ["FLOOR", "WALL", "COFFIN"]
+right = ["FLOOR", "WALL", "COFFIN"]

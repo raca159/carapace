@@ -1,0 +1,96 @@
+# Sprite atlas configuration for the Bevy rendering pipeline.
+#
+# How it works:
+# - Named sprite entries define a visual appearance (glyph character + color).
+# - Tile types and entity types reference sprite entries by name.
+# - At startup the Bevy pipeline builds a texture atlas from all referenced
+#   glyphs and provides lookup methods.
+# - Unknown tile/entity types fall back to [fallback].
+#
+# To add a new sprite: add a [sprites.*] entry and reference it from
+# [tiles] or [entities]. No Rust code changes needed.
+
+tile_size = 32
+
+[fallback]
+glyph = '?'
+color = { r = 1.0, g = 0.0, b = 1.0 }
+
+[sprites.grass]
+glyph = '"'
+color = { r = 0.2, g = 0.6, b = 0.1 }
+
+[sprites.dirt]
+glyph = '.'
+color = { r = 0.55, g = 0.35, b = 0.15 }
+
+[sprites.stone]
+glyph = '#'
+color = { r = 0.4, g = 0.4, b = 0.4 }
+
+[sprites.water]
+glyph = '~'
+color = { r = 0.1, g = 0.3, b = 0.7 }
+
+[sprites.sand]
+glyph = ','
+color = { r = 0.76, g = 0.7, b = 0.5 }
+
+[sprites.player]
+glyph = '@'
+color = { r = 0.0, g = 1.0, b = 1.0 }
+
+[sprites.creature]
+glyph = 'C'
+color = { r = 0.8, g = 0.2, b = 0.2 }
+
+[sprites.item]
+glyph = '*'
+color = { r = 1.0, g = 0.8, b = 0.0 }
+
+[sprites.npc]
+glyph = 'n'
+color = { r = 0.9, g = 0.7, b = 0.5 }
+
+# Tile type → sprite mapping
+[tiles]
+grass = "grass"
+dirt = "dirt"
+stone = "stone"
+water = "water"
+sand = "sand"
+
+# Entity type → sprite mapping
+[entities]
+player = "player"
+creature = "creature"
+item = "item"
+npc = "npc"
+
+# Glyph bitmap definitions for characters not in the built-in set.
+# Each entry maps a glyph character to 7 rows of 5-bit pixel masks
+# (1 = opaque white, 0 = transparent; left-to-right, MSB to LSB).
+[sprites.glyph_bitmaps]
+'^' = [0b00100, 0b01010, 0b01010, 0b10001, 0b10001, 0b00000, 0b00000]
+'T' = [0b11111, 0b00100, 0b00100, 0b00100, 0b00100, 0b00000, 0b00000]
+'w' = [0b10001, 0b10001, 0b01110, 0b00100, 0b01010, 0b10001, 0b00000]
+'s' = [0b10001, 0b11000, 0b01100, 0b00110, 0b00011, 0b00001, 0b00000]
+'d' = [0b01010, 0b01010, 0b01110, 0b10101, 0b11111, 0b01010, 0b00100]
+'*' = [0b00100, 0b10101, 0b01110, 0b11111, 0b01110, 0b10101, 0b00100]
+'h' = [0b00100, 0b00100, 0b01110, 0b00100, 0b00100, 0b01010, 0b00000]
+'/' = [0b00001, 0b00010, 0b00100, 0b01000, 0b10000, 0b00000, 0b00000]
+'[' = [0b11110, 0b10000, 0b10000, 0b10000, 0b10000, 0b11110, 0b00000]
+'!' = [0b00100, 0b01110, 0b01110, 0b01110, 0b00100, 0b00000, 0b00100]
+'b' = [0b01110, 0b10001, 0b11111, 0b11111, 0b10101, 0b01010, 0b00000]
+'S' = [0b01110, 0b10001, 0b00001, 0b00110, 0b01000, 0b10001, 0b01110]
+'≡' = [0b00000, 0b11111, 0b00000, 0b11111, 0b00000, 0b11111, 0b00000]
+'K' = [0b10001, 0b10010, 0b10100, 0b11000, 0b10100, 0b10010, 0b10001]
+'l' = [0b00100, 0b01010, 0b00100, 0b01010, 0b00100, 0b01010, 0b00000]
+'B' = [0b11110, 0b10001, 0b11110, 0b10001, 0b11110, 0b00000, 0b00000]
+'m' = [0b00000, 0b10001, 0b11011, 0b10101, 0b10001, 0b00000, 0b00000]
+'o' = [0b00000, 0b00000, 0b01110, 0b10001, 0b01110, 0b00000, 0b00000]
+'x' = [0b10001, 0b01010, 0b00100, 0b01010, 0b10001, 0b00000, 0b00000]
+'F' = [0b11111, 0b10000, 0b11110, 0b10000, 0b10000, 0b00000, 0b00000]
+'A' = [0b00100, 0b01010, 0b10001, 0b11111, 0b10001, 0b10001, 0b00000]
+'W' = [0b10001, 0b10001, 0b10001, 0b01010, 0b00100, 0b00000, 0b00000]
+'C' = [0b01110, 0b10001, 0b10000, 0b10000, 0b10001, 0b01110, 0b00000]

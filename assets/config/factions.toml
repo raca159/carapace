@@ -1,0 +1,115 @@
+[[faction]]
+id = "great_carapace"
+
+[[faction]]
+id = "sanguine_elite"
+
+[[faction]]
+id = "familiars"
+
+[[faction]]
+id = "free_humanity"
+
+[[faction]]
+id = "the_remnant"
+
+[[faction]]
+id = "ancient_machines"
+
+[[faction]]
+id = "mutated_wildlife"
+
+[[relationship]]
+faction_a = "great_carapace"
+faction_b = "sanguine_elite"
+standing = "neutral"
+
+[[relationship]]
+faction_a = "great_carapace"
+faction_b = "free_humanity"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "great_carapace"
+faction_b = "the_remnant"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "sanguine_elite"
+faction_b = "familiars"
+standing = "ally"
+
+[[relationship]]
+faction_a = "sanguine_elite"
+faction_b = "free_humanity"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "sanguine_elite"
+faction_b = "the_remnant"
+standing = "neutral"
+
+[[relationship]]
+faction_a = "familiars"
+faction_b = "free_humanity"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "free_humanity"
+faction_b = "the_remnant"
+standing = "ally"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "great_carapace"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "sanguine_elite"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "free_humanity"
+standing = "ally"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "the_remnant"
+standing = "ally"
+
+[[relationship]]
+faction_a = "ancient_machines"
+faction_b = "great_carapace"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "ancient_machines"
+faction_b = "sanguine_elite"
+standing = "hostile"
+
+[[relationship]]
+faction_a = "ancient_machines"
+faction_b = "familiars"
+standing = "neutral"
+
+[[relationship]]
+faction_a = "ancient_machines"
+faction_b = "free_humanity"
+standing = "ally"
+
+[[relationship]]
+faction_a = "ancient_machines"
+faction_b = "the_remnant"
+standing = "ally"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "ancient_machines"
+standing = "neutral"
+
+[[relationship]]
+faction_a = "player"
+faction_b = "mutated_wildlife"
+standing = "hostile"

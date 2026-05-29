@@ -1,0 +1,52 @@
+[[action]]
+id = "speak_greeting"
+base_weight = 10.0
+personality_modifiers = { sociability = 1.5, curiosity = 1.2 }
+standing_modifiers = { ally = 1.5, neutral = 1.0, hostile = 0.3 }
+description = "Greet the player"
+
+[[action]]
+id = "speak_hostile"
+base_weight = 8.0
+personality_modifiers = { aggression = 1.8, volatility = 1.3 }
+standing_modifiers = { hostile = 2.0, neutral = 0.5 }
+description = "Threaten the player"
+
+[[action]]
+id = "offer_trade"
+base_weight = 8.0
+personality_modifiers = { sociability = 1.3, industriousness = 1.2 }
+standing_modifiers = { ally = 1.5, neutral = 1.0, hostile = 0.1 }
+requires_tags = ["CAN_BARTER"]
+description = "Offer to trade goods"
+
+[[action]]
+id = "attack"
+base_weight = 12.0
+personality_modifiers = { aggression = 1.8, bravery = 1.3 }
+standing_modifiers = { hostile = 3.0, neutral = 0.5, ally = 0.1 }
+env_modifiers = [{ tag = "DARK", mult = 1.2 }]
+requires_tags = ["AGGRESSIVE"]
+description = "Attack the target"
+
+[[action]]
+id = "flee"
+base_weight = 15.0
+personality_modifiers = { bravery = 0.3 }
+standing_modifiers = { hostile = 1.5, neutral = 0.5 }
+env_modifiers = [{ tag = "DARK", mult = 1.1 }]
+description = "Flee from the target"
+
+[[action]]
+id = "give_quest"
+base_weight = 5.0
+personality_modifiers = { sociability = 1.2, industriousness = 1.3 }
+standing_modifiers = { ally = 1.5, neutral = 1.0, hostile = 0.1 }
+requires_tags = ["QUEST_GIVER"]
+description = "Offer a quest"
+
+[[action]]
+id = "end_conversation"
+base_weight = 6.0
+personality_modifiers = { sociability = 0.5, gregariousness = 0.5 }
+description = "End the conversation"

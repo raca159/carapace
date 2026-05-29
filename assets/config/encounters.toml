@@ -1,0 +1,424 @@
+# Encounters — Carapace World Encounters
+#
+# Random encounters that can occur while traveling the overworld.
+# Each encounter is selected by weighted random roll when the player moves.
+# The spawn groups define which creatures and items appear for each type.
+#
+# Encounter system: 15% base chance per tile; higher risk at night,
+# in hostile biomes (swamp, volcanic), and near faction territory.
+
+# ─── TRAVELING MERCHANT ────────────────────────────────────────────────────────
+# A weathered merchant who travels the wasteland with salvaged goods. Friendly.
+# Rare encounter, typically near settlements or roads.
+
+[[encounter]]
+id = "merchant"
+name = "Traveling Merchant"
+description = "A weathered merchant with a cart laden with salvaged pre-Collapse goods."
+weight = 8
+min_distance = 6
+
+[[encounter.spawn]]
+name = "Traveling Merchant"
+glyph = "M"
+color = [255, 200, 50]
+tags = ["HUMAN", "MEDIUM", "PEACEFUL", "HUMANOID"]
+health = 30
+count = 1
+
+[[encounter.loot]]
+name = "Dried Rations"
+glyph = "%"
+color = [180, 140, 80]
+tags = ["EDIBLE", "FOOD", "COMMON"]
+count = 3
+
+[[encounter.loot]]
+name = "Old-World Bandage"
+glyph = "!"
+color = [220, 220, 220]
+tags = ["MEDICAL", "HEALING", "COMMON"]
+count = 2
+
+[[encounter.loot]]
+name = "Rusty Torch"
+glyph = "t"
+color = [200, 150, 50]
+tags = ["WOOD", "FLAMMABLE", "LUMINESCENT", "COMMON"]
+count = 2
+
+[[encounter.loot]]
+name = "Coil of Rope"
+glyph = "="
+color = [160, 120, 80]
+tags = ["CLOTH", "USABLE", "COMMON"]
+count = 1
+
+# ─── PATROL GUARDS ─────────────────────────────────────────────────────────────
+# A small patrol of Free Humanity guards checking the perimeter. Neutral unless
+# the player has negative reputation. Armed with light equipment.
+
+[[encounter]]
+id = "patrol_guards"
+name = "Patrol Guards"
+description = "A squad of three Free Humanity guards patrolling the perimeter."
+weight = 12
+min_distance = 8
+
+[[encounter.spawn]]
+name = "Patrol Guard 1"
+glyph = "G"
+color = [50, 100, 200]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "AGGRESSIVE"]
+health = 25
+count = 1
+
+[[encounter.spawn]]
+name = "Patrol Guard 2"
+glyph = "G"
+color = [50, 100, 200]
+tags = ["HUMAN", "MEDIUM", "HUMANOID"]
+health = 25
+count = 1
+offset_x = 1
+
+[[encounter.spawn]]
+name = "Patrol Guard 3"
+glyph = "G"
+color = [50, 100, 200]
+tags = ["HUMAN", "MEDIUM", "HUMANOID"]
+health = 25
+count = 1
+offset_y = 1
+
+[[encounter.loot]]
+name = "Iron Sword"
+glyph = "/"
+color = [180, 180, 190]
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "COMMON"]
+count = 1
+
+[[encounter.loot]]
+name = "Leather Vest"
+glyph = "["
+color = [140, 90, 50]
+tags = ["LEATHER", "EQUIP_ARMOR", "LIGHT_ARMOR", "COMMON"]
+count = 1
+
+# ─── TRAVELING HEALER ──────────────────────────────────────────────────────────
+# A rare wandering healer who can tend wounds. Always peaceful. Valuable ally
+# in the wasteland.
+
+[[encounter]]
+id = "traveling_healer"
+name = "Traveling Healer"
+description = "A wandering field medic who tends to the wounded of the wasteland."
+weight = 5
+min_distance = 6
+
+[[encounter.spawn]]
+name = "Traveling Healer"
+glyph = "H"
+color = [50, 255, 50]
+tags = ["HUMAN", "MEDIUM", "PEACEFUL", "HUMANOID"]
+health = 20
+count = 1
+
+[[encounter.loot]]
+name = "Medicinal Herb Bundle"
+glyph = "h"
+color = [0, 200, 0]
+tags = ["HERB_MEDICINAL", "HEALING", "UNCOMMON"]
+count = 3
+
+[[encounter.loot]]
+name = "Antiseptic"
+glyph = "!"
+color = [200, 200, 255]
+tags = ["MEDICAL", "HEALING", "UNCOMMON"]
+count = 1
+
+# ─── WILD BEASTS ───────────────────────────────────────────────────────────────
+# Predators hunting in the wilds. Hostile. Common in forests and mountains.
+# May drop crafting materials.
+
+[[encounter]]
+id = "wild_beasts"
+name = "Wild Beasts"
+description = "A pack of feral beasts on the hunt. They have spotted you."
+weight = 18
+min_distance = 10
+
+[[encounter.spawn]]
+name = "Wolf"
+glyph = "w"
+color = [139, 90, 43]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE", "PACK_ANIMAL"]
+health = 20
+count = 1
+
+[[encounter.spawn]]
+name = "Wolf"
+glyph = "w"
+color = [139, 90, 43]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE", "PACK_ANIMAL"]
+health = 20
+count = 1
+offset_x = 1
+
+[[encounter.spawn]]
+name = "Wolf"
+glyph = "w"
+color = [139, 90, 43]
+tags = ["BEAST", "MEDIUM", "CARNIVORE", "AGGRESSIVE", "PACK_ANIMAL"]
+health = 20
+count = 1
+offset_y = 1
+
+[[encounter.loot]]
+name = "Raw Meat"
+glyph = "%"
+color = [180, 60, 60]
+tags = ["EDIBLE", "FOOD", "PERISHABLE"]
+count = 2
+
+[[encounter.loot]]
+name = "Tough Hide"
+glyph = "."
+color = [120, 80, 50]
+tags = ["LEATHER", "CRAFTING", "COMMON"]
+count = 1
+
+# ─── TOXIC SPILL ───────────────────────────────────────────────────────────────
+# Environmental hazard. The ground bubbles with chemical runoff from old-world
+# industry mixed with biological decay. Damages the player on contact.
+
+[[encounter]]
+id = "toxic_spill"
+name = "Toxic Spill"
+description = "The ground here is saturated with chemical runoff and biological decay. Acrid fumes burn the lungs."
+kind = "hazard"
+weight = 10
+min_distance = 3
+
+[[encounter.effect]]
+damage = 10
+message = "You stumble into a toxic spill! It burns through your boots!"
+
+[[encounter.loot]]
+name = "Corroded Metal Scrap"
+glyph = "."
+color = [100, 140, 60]
+tags = ["METAL", "SALVAGE", "COMMON"]
+count = 1
+
+# ─── ABANDONED CACHE ───────────────────────────────────────────────────────────
+# A hidden stash left behind by a wasteland survivor. Contains useful loot.
+# No creatures. Always worth investigating.
+
+[[encounter]]
+id = "abandoned_cache"
+name = "Abandoned Cache"
+description = "A half-buried container with pre-Collapse markings. The latch is rusted but intact."
+weight = 10
+min_distance = 3
+
+[[encounter.loot]]
+name = "Old Map Fragments"
+glyph = "□"
+color = [180, 150, 80]
+tags = ["ARTIFACT", "VALUABLE", "COMMON"]
+count = 2
+
+[[encounter.loot]]
+name = "Rusted Key"
+glyph = "?"
+color = [200, 180, 50]
+tags = ["METAL", "KEY", "ARTIFACT", "UNCOMMON"]
+count = 1
+
+[[encounter.loot]]
+name = "Ancient Coin"
+glyph = "*"
+color = [220, 190, 60]
+tags = ["METAL", "VALUABLE", "CURRENCY", "COMMON"]
+count = 3
+
+# ─── AMBUSH ────────────────────────────────────────────────────────────────────
+# Bandits or hostile wastelanders lying in wait. They surround the player.
+# Dangerous encounter, more common in lawless zones.
+
+[[encounter]]
+id = "ambush"
+name = "Bandit Ambush"
+description = "Wasteland bandits spring from hiding! They have you surrounded!"
+weight = 15
+min_distance = 10
+
+[[encounter.spawn]]
+name = "Bandit 1"
+glyph = "b"
+color = [200, 50, 50]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "AGGRESSIVE"]
+health = 20
+count = 1
+offset_x = 1
+
+[[encounter.spawn]]
+name = "Bandit 2"
+glyph = "b"
+color = [200, 50, 50]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "AGGRESSIVE"]
+health = 20
+count = 1
+offset_x = -1
+
+[[encounter.spawn]]
+name = "Bandit 3"
+glyph = "b"
+color = [200, 50, 50]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "AGGRESSIVE"]
+health = 20
+count = 1
+offset_y = 1
+
+[[encounter.spawn]]
+name = "Bandit Leader"
+glyph = "B"
+color = [220, 30, 30]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "AGGRESSIVE", "LEADER"]
+health = 35
+count = 1
+offset_y = -1
+
+[[encounter.loot]]
+name = "Scrap Dagger"
+glyph = "/"
+color = [160, 140, 120]
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "COMMON"]
+count = 1
+
+[[encounter.loot]]
+name = "Stolen Rations"
+glyph = "%"
+color = [160, 130, 80]
+tags = ["EDIBLE", "FOOD", "COMMON"]
+count = 2
+
+# ─── WASTELAND HERMIT ──────────────────────────────────────────────────────────
+# A solitary survivor who keeps to themselves. Neutral unless provoked. May
+# share information or trade if approached peacefully.
+
+[[encounter]]
+id = "hermit"
+name = "Wasteland Hermit"
+description = "A lone figure huddled near a small fire. They watch you with wary eyes."
+weight = 7
+min_distance = 6
+
+[[encounter.spawn]]
+name = "Hermit"
+glyph = "h"
+color = [150, 150, 150]
+tags = ["HUMAN", "MEDIUM", "PEACEFUL", "HUMANOID"]
+health = 15
+count = 1
+
+[[encounter.loot]]
+name = "Herbal Tea"
+glyph = "!"
+color = [100, 180, 100]
+tags = ["DRINKABLE", "HEALING", "COMMON"]
+count = 1
+
+[[encounter.loot]]
+name = "Worn Journal"
+glyph = "□"
+color = [180, 160, 100]
+tags = ["ARTIFACT", "VALUABLE", "COMMON"]
+count = 1
+
+# ─── CARAPACE SCOUT ────────────────────────────────────────────────────────────
+# A small Carapace creature scouting the surface. Hostile. Can call for
+# reinforcements if not dealt with quickly. Drops telomerase.
+
+[[encounter]]
+id = "carapace_scout"
+name = "Carapace Scout"
+description = "A chitinous creature the size of a dog skitters toward you on too many legs. Its antennae twitch."
+weight = 10
+min_distance = 8
+
+[[encounter.spawn]]
+name = "Carapace Scout"
+glyph = "c"
+color = [80, 180, 120]
+tags = ["CARAPACE", "SMALL", "AGGRESSIVE", "HAS_CHITIN"]
+health = 25
+count = 1
+
+[[encounter.spawn]]
+name = "Carapace Scout"
+glyph = "c"
+color = [80, 180, 120]
+tags = ["CARAPACE", "SMALL", "AGGRESSIVE", "HAS_CHITIN"]
+health = 25
+count = 1
+offset_x = 1
+
+[[encounter.loot]]
+name = "Diluted Telomerase"
+glyph = "*"
+color = [0, 200, 100]
+tags = ["TELOMERASE", "CURRENCY", "VALUABLE", "COMMON"]
+count = 2
+
+[[encounter.loot]]
+name = "Chitin Fragment"
+glyph = "."
+color = [80, 60, 40]
+tags = ["CHITIN", "HARD", "CRAFTING", "COMMON"]
+count = 2
+
+# ─── SANGUINE HUNTER ───────────────────────────────────────────────────────────
+# A vampire hunting party from the Sanguine Elite. Highly dangerous.
+# They track the player by scent. Drops concentrated sanguis.
+
+[[encounter]]
+id = "sanguine_hunter"
+name = "Sanguine Hunter"
+description = "A pale figure in aristocratic hunting garb emerges from the mist. Its eyes reflect no light."
+weight = 8
+min_distance = 12
+
+[[encounter.spawn]]
+name = "Sanguine Hunter"
+glyph = "V"
+color = [180, 20, 60]
+tags = ["SANGUINE", "MEDIUM", "HUMANOID", "AGGRESSIVE", "NOCTURNAL"]
+health = 40
+count = 1
+
+[[encounter.spawn]]
+name = "Blood Hound"
+glyph = "h"
+color = [200, 30, 30]
+tags = ["SANGUINE", "SMALL", "BEAST", "AGGRESSIVE", "PACK_ANIMAL"]
+health = 15
+count = 2
+offset_x = 1
+offset_y = 1
+
+[[encounter.loot]]
+name = "Concentrated Sanguis"
+glyph = "!"
+color = [200, 10, 10]
+tags = ["SANGUIS", "VALUABLE", "BLOOD", "RARE"]
+count = 1
+
+[[encounter.loot]]
+name = "Hunting Dagger"
+glyph = "/"
+color = [180, 180, 200]
+tags = ["METAL", "EQUIP_WEAPON", "MELEE", "UNCOMMON"]
+count = 1

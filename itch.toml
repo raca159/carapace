@@ -1,0 +1,5 @@
+[channels]
+linux = "carapace-*-linux-x86_64.tar.gz"
+windows = "carapace-*-windows-x86_64.zip"
+mac = "carapace-*-macos-x86_64.tar.gz"
+mac-arm64 = "carapace-*-macos-arm64.tar.gz"

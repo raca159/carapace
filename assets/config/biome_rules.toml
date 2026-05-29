@@ -1,0 +1,172 @@
+[[rule]]
+biome = "BIOME_DEEP_OCEAN"
+glyph = "~"
+color = [0, 0, 128]
+elevation = [0.0, 0.20]
+priority = 100
+tags = ["BIOME_DEEP_OCEAN", "BLOCKED", "SWIMMABLE"]
+environment = { light = 50, temperature = 30, moisture = 100 }
+
+[[rule]]
+biome = "BIOME_OCEAN"
+glyph = "~"
+color = [0, 0, 255]
+elevation = [0.20, 0.30]
+priority = 90
+tags = ["BIOME_OCEAN", "BLOCKED", "SWIMMABLE"]
+environment = { light = 55, temperature = 35, moisture = 95 }
+
+[[rule]]
+biome = "BIOME_BEACH"
+glyph = "."
+color = [255, 215, 0]
+elevation = [0.30, 0.35]
+priority = 80
+tags = ["BIOME_BEACH", "WALKABLE"]
+environment = { light = 75, temperature = 60, moisture = 50 }
+
+[[rule]]
+biome = "BIOME_MOUNTAIN_PEAK"
+glyph = "^"
+color = [64, 64, 64]
+elevation = [0.85, 1.0]
+priority = 70
+tags = ["BIOME_MOUNTAIN_PEAK", "BLOCKED", "OPAQUE"]
+environment = { light = 80, temperature = 5, moisture = 15 }
+
+[[rule]]
+biome = "BIOME_MOUNTAIN"
+glyph = "^"
+color = [128, 128, 128]
+elevation = [0.70, 0.85]
+priority = 60
+tags = ["BIOME_MOUNTAIN", "WALKABLE", "SLOW", "CLIMBABLE"]
+environment = { light = 70, temperature = 15, moisture = 35 }
+
+[[rule]]
+biome = "BIOME_SWAMP"
+glyph = "~"
+color = [85, 107, 47]
+elevation = [0.30, 0.40]
+moisture = [0.7, 1.0]
+temperature = [0.5, 1.0]
+priority = 55
+tags = ["BIOME_SWAMP", "WALKABLE", "SLOW", "WET", "SOAKED"]
+environment = { light = 35, temperature = 60, moisture = 90 }
+
+[[rule]]
+biome = "BIOME_DESERT"
+glyph = "."
+color = [237, 201, 175]
+elevation = [0.35, 0.70]
+temperature = [0.7, 1.0]
+moisture = [0.0, 0.3]
+priority = 50
+tags = ["BIOME_DESERT", "WALKABLE", "DRY", "HOT"]
+environment = { light = 85, temperature = 85, moisture = 5 }
+
+[[rule]]
+biome = "BIOME_SAVANNA"
+glyph = "."
+color = [210, 180, 140]
+elevation = [0.35, 0.70]
+temperature = [0.7, 1.0]
+moisture = [0.3, 0.6]
+priority = 49
+tags = ["BIOME_SAVANNA", "WALKABLE", "DRY"]
+environment = { light = 75, temperature = 70, moisture = 35 }
+
+[[rule]]
+biome = "BIOME_TROPICAL_FOREST"
+glyph = "T"
+color = [0, 100, 0]
+elevation = [0.35, 0.70]
+temperature = [0.7, 1.0]
+moisture = [0.6, 1.0]
+priority = 48
+tags = ["BIOME_TROPICAL_FOREST", "WALKABLE", "WET", "FLAMMABLE"]
+environment = { light = 45, temperature = 75, moisture = 80 }
+
+[[rule]]
+biome = "BIOME_SHRUBLAND"
+glyph = "."
+color = [218, 165, 32]
+elevation = [0.35, 0.70]
+temperature = [0.4, 0.7]
+moisture = [0.0, 0.3]
+priority = 45
+tags = ["BIOME_SHRUBLAND", "WALKABLE", "DRY"]
+environment = { light = 65, temperature = 50, moisture = 40 }
+
+[[rule]]
+biome = "BIOME_GRASSLAND"
+glyph = "."
+color = [144, 238, 144]
+elevation = [0.35, 0.70]
+temperature = [0.4, 0.7]
+moisture = [0.3, 0.6]
+priority = 44
+tags = ["BIOME_GRASSLAND", "WALKABLE"]
+environment = { light = 70, temperature = 50, moisture = 50 }
+
+[[rule]]
+biome = "BIOME_TEMPERATE_FOREST"
+glyph = "T"
+color = [34, 139, 34]
+elevation = [0.35, 0.70]
+temperature = [0.4, 0.7]
+moisture = [0.6, 1.0]
+priority = 43
+tags = ["BIOME_TEMPERATE_FOREST", "WALKABLE", "FLAMMABLE"]
+environment = { light = 55, temperature = 45, moisture = 60 }
+
+[[rule]]
+biome = "BIOME_BOREAL_FOREST"
+glyph = "T"
+color = [0, 128, 128]
+elevation = [0.35, 0.70]
+temperature = [0.2, 0.4]
+moisture = [0.3, 0.7]
+priority = 40
+tags = ["BIOME_BOREAL_FOREST", "WALKABLE", "COLD"]
+environment = { light = 50, temperature = 25, moisture = 55 }
+
+[[rule]]
+biome = "BIOME_ICE_SHEET"
+glyph = "."
+color = [255, 255, 255]
+elevation = [0.35, 0.70]
+temperature = [0.0, 0.1]
+moisture = [0.0, 0.3]
+priority = 36
+tags = ["BIOME_ICE_SHEET", "WALKABLE", "FREEZING", "SLIPPERY"]
+environment = { light = 60, temperature = 0, moisture = 20 }
+
+[[rule]]
+biome = "BIOME_TUNDRA"
+glyph = "."
+color = [192, 192, 192]
+elevation = [0.35, 0.70]
+temperature = [0.0, 0.2]
+priority = 35
+tags = ["BIOME_TUNDRA", "WALKABLE", "COLD", "SLOW"]
+environment = { light = 55, temperature = 10, moisture = 30 }
+
+[[rule]]
+biome = "BIOME_VOLCANIC"
+glyph = "^"
+color = [200, 50, 0]
+elevation = [0.80, 1.0]
+temperature = [0.9, 1.0]
+priority = 75
+tags = ["BIOME_VOLCANIC", "WALKABLE", "HOT", "DANGEROUS"]
+environment = { light = 55, temperature = 95, moisture = 5 }
+
+[[rule]]
+biome = "BIOME_GRASSLAND"
+glyph = "."
+color = [144, 238, 144]
+elevation = [0.35, 0.70]
+priority = 1
+tags = ["BIOME_GRASSLAND", "WALKABLE"]
+environment = { light = 70, temperature = 50, moisture = 50 }

@@ -1,0 +1,54 @@
+[[recipe]]
+name = "Sonic Cavitation"
+input_sample_tag = "TISSUE_PISTOL_SHRIMP"
+output_mutation_tag = "SONIC_CAVITATION"
+output_mutation_name = "Sonic Cavitation"
+success_chance = 0.65
+humanity_cost = 3
+failure_tags = ["NEURAL_FRAGILE"]
+slot = "arms"
+description = "Pistol Shrimp gland — focused sonic blast extends your shockwave range."
+
+[[recipe]]
+name = "Anhydro-Chitin"
+input_sample_tag = "TISSUE_TARDIGRADE"
+output_mutation_tag = "ANHYDRO_CHITIN"
+output_mutation_name = "Anhydro-Chitin Carapace"
+success_chance = 0.45
+humanity_cost = 5
+failure_tags = ["MALFORMED"]
+slot = "body"
+description = "Tardigrade DNA — extreme damage resistance when near death."
+
+[[recipe]]
+name = "Bio-Electric Surge"
+input_sample_tag = "TISSUE_ELECTRIC_EEL"
+output_mutation_tag = "BIO_ELECTRIC"
+output_mutation_name = "Bio-Electric Surge"
+success_chance = 0.55
+humanity_cost = 4
+failure_tags = ["CHROMATIC_INSTABILITY"]
+slot = "organs"
+description = "Electric Eel nodes — passive melee shock damage."
+
+[[recipe]]
+name = "Exothermic Spray"
+input_sample_tag = "TISSUE_BOMBARDIER"
+output_mutation_tag = "EXOTHERMIC_SPRAY"
+output_mutation_name = "Exothermic Spray Glands"
+success_chance = 0.50
+humanity_cost = 4
+failure_tags = ["WEAKENED_IMMUNE"]
+slot = "body"
+description = "Bombardier Beetle glands — acid spray degrades enemy armor."
+
+[[recipe]]
+name = "Chromatophoric Shift"
+input_sample_tag = "TISSUE_CUTTLEFISH"
+output_mutation_tag = "CHROMATOPHORIC"
+output_mutation_name = "Chromatophoric Shift"
+success_chance = 0.60
+humanity_cost = 3
+failure_tags = ["BIO_RECESSION"]
+slot = "sense"
+description = "Cuttlefish chromatophores — high evasion with tile-meld stealth."

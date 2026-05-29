@@ -1,0 +1,6 @@
+name = "Fog"
+weight = 10
+duration = [5, 12]
+visibility = 0.3
+modifiers = { moisture = 20 }
+tags = ["FOGGY", "REDUCED_VISIBILITY"]

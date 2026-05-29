@@ -1,0 +1,4 @@
+name = "Clear"
+weight = 30
+duration = [8, 25]
+visibility = 1.0

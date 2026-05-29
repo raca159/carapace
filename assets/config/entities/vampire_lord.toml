@@ -1,0 +1,39 @@
+# Sanguine Elite — ancient hybrid noble of the blood courts
+name = "Sanguine Elder"
+glyph = "V"
+color = [140, 10, 10]
+tags = ["SANGUIVORE", "HUMANOID", "MEDIUM", "AGGRESSIVE", "NOCTURNAL", "HEMOVORE", "REGENERATING", "FEARLESS", "HAS_CHITIN", "DECEPTIVE"]
+description = "A centuries-old human-crustacean hybrid whose body has deeply integrated carapace traits — elegant, calculating, and lethally hungry"
+spawn_biomes = ["BIOME_SETTLEMENT", "BIOME_RUINED_CITY", "BIOME_TEMPERATE_FOREST"]
+
+[stats]
+health_min = 80
+health_max = 130
+inventory_capacity = 14
+
+[faction]
+name = "sanguine_elite"
+
+[[equipment]]
+slot = "weapon"
+name = "Ancient Blood-Blade"
+glyph = "/"
+color = [180, 10, 10]
+tags = ["METAL", "RARE", "EQUIP_WEAPON", "MELEE", "NECROTIC"]
+chance = 0.7
+
+[[equipment]]
+slot = "armor"
+name = "Hardened Chitin Plate"
+glyph = "["
+color = [60, 20, 20]
+tags = ["CHITIN", "RARE", "EQUIP_ARMOR", "HEAVY_ARMOR"]
+chance = 0.7
+
+[[equipment]]
+slot = "accessory"
+name = "Telomerase Signet"
+glyph = "="
+color = [180, 50, 50]
+tags = ["METAL", "EPIC", "EQUIP_ACCESSORY", "CURSED", "REGENERATING"]
+chance = 0.5

@@ -1,0 +1,6 @@
+name = "Snow"
+weight = 8
+duration = [5, 15]
+visibility = 0.5
+modifiers = { temperature = -40, moisture = 30 }
+tags = ["SNOWY"]

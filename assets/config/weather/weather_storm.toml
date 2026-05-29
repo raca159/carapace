@@ -1,0 +1,6 @@
+name = "Storm"
+weight = 5
+duration = [3, 8]
+visibility = 0.3
+modifiers = { moisture = 60 }
+tags = ["STORMY", "WINDY"]

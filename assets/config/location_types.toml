@@ -1,0 +1,120 @@
+# 3-pass location placement configuration
+# Pass 1: Major (cities, dungeons) — placed first, define zones of influence
+# Pass 2: Minor (villages, outposts) — placed inside pass-1 zones
+# Pass 3: POIs (ruins, caves, shrines) — fill remaining space
+
+[[location_type]]
+id = "city"
+name = "City"
+pass = 1
+weight = 30
+min_distance_from_same = 40
+zone_radius = 20
+habitability_threshold = 0.6
+tags = ["SETTLEMENT", "HAS_ECONOMY", "HAS_TRADE", "HAS_INTERIOR"]
+biome_affinity = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_SAVANNA"]
+faction_affinity = ["free_humanity", "sanguine_elite", "the_remnant"]
+
+[location_type.interior]
+generator = "wfc"
+tileset = "human_settlement"
+scale = [40, 60]
+tags = ["INDOORS", "SETTLEMENT"]
+environment = { light = 70, temperature = 50, moisture = 30 }
+spawn_rules = ["friendly", "shops"]
+
+[[location_type]]
+id = "dungeon"
+name = "Dungeon"
+pass = 1
+weight = 20
+min_distance_from_same = 30
+zone_radius = 10
+habitability_threshold = 0.0
+tags = ["HOSTILE_ZONE", "HAS_INTERIOR", "UNDERGROUND"]
+biome_affinity = ["BIOME_MOUNTAIN", "BIOME_SWAMP", "BIOME_DESERT", "BIOME_TUNDRA"]
+faction_affinity = ["great_carapace", "sanguine_elite", "familiars", "ancient_machines"]
+
+[location_type.interior]
+generator = "bsp"
+scale = [30, 50]
+tags = ["INDOORS", "BLOCKS_WEATHER"]
+environment = { light = 5, temperature = 30, moisture = 20 }
+spawn_rules = ["hostile", "loot"]
+depth_range = [1, 5]
+
+[[location_type]]
+id = "village"
+name = "Village"
+pass = 2
+weight = 40
+min_distance_from_same = 15
+zone_radius = 8
+habitability_threshold = 0.4
+tags = ["SETTLEMENT", "HAS_ECONOMY"]
+biome_affinity = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_TUNDRA"]
+faction_affinity = ["free_humanity", "the_remnant"]
+
+[[location_type]]
+id = "outpost"
+name = "Outpost"
+pass = 2
+weight = 30
+min_distance_from_same = 20
+zone_radius = 6
+habitability_threshold = 0.2
+tags = ["SETTLEMENT", "HAS_ECONOMY"]
+biome_affinity = ["BIOME_MOUNTAIN", "BIOME_DESERT", "BIOME_TUNDRA", "BIOME_VOLCANIC"]
+faction_affinity = ["free_humanity", "the_remnant", "ancient_machines"]
+
+[[location_type]]
+id = "cave"
+name = "Cave"
+pass = 3
+weight = 35
+min_distance_from_same = 8
+zone_radius = 3
+habitability_threshold = 0.0
+tags = ["HAS_INTERIOR", "UNDERGROUND"]
+biome_affinity = ["BIOME_MOUNTAIN", "BIOME_DESERT", "BIOME_TEMPERATE_FOREST"]
+
+[location_type.interior]
+scale = [12, 20]
+tags = ["INDOORS", "BLOCKS_WEATHER", "HOSTILE_ZONE"]
+environment = { light = 10, temperature = 35, moisture = 60 }
+spawn_rules = ["hostile"]
+
+[[location_type]]
+id = "ruin"
+name = "Ruin"
+pass = 3
+weight = 25
+min_distance_from_same = 10
+zone_radius = 4
+habitability_threshold = 0.0
+tags = ["HAS_LOOT", "HAS_INTERIOR", "UNDERGROUND"]
+biome_affinity = ["BIOME_TEMPERATE_FOREST", "BIOME_DESERT", "BIOME_SWAMP", "BIOME_SHRUBLAND"]
+faction_affinity = ["ancient_machines", "the_remnant"]
+
+[location_type.interior]
+scale = [15, 25]
+tags = ["INDOORS", "BLOCKS_WEATHER", "HOSTILE_ZONE"]
+environment = { light = 25, temperature = 40, moisture = 50 }
+spawn_rules = ["hostile", "loot"]
+
+[[location_type]]
+id = "shrine"
+name = "Shrine"
+pass = 3
+weight = 15
+min_distance_from_same = 12
+zone_radius = 3
+habitability_threshold = 0.0
+tags = ["SACRED", "HAS_INTERIOR"]
+biome_affinity = ["BIOME_TEMPERATE_FOREST", "BIOME_MOUNTAIN", "BIOME_GRASSLAND"]
+
+[location_type.interior]
+scale = [8, 12]
+tags = ["INDOORS", "BLOCKS_WEATHER", "SACRED"]
+environment = { light = 40, temperature = 45, moisture = 30 }
+spawn_rules = ["loot"]

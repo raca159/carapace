@@ -1,0 +1,217 @@
+# Narrative Events — Carapace Dark Bio-Sci-Fi
+#
+# Environmental narrative triggers that fire when specific
+# biological or technological conditions are met.
+# Tone: grim, atmospheric, grounded in biological horror.
+
+[[narrative_event]]
+id = "pack_hunt"
+trigger = { entity_tags = ["PACK_ANIMAL", "CARNIVORE"], nearby_tags = ["BLOOD"] }
+message = "A low growl rises from the darkness — the pack has caught the scent. Coordinated clicks echo through the tunnels as they begin to flank."
+chance = 0.25
+cooldown_ticks = 60
+
+[[narrative_event]]
+id = "swarm_feeding_frenzy"
+trigger = { entity_tags = ["SWARM", "AGGRESSIVE"], nearby_tags = ["FLESH"] }
+message = "The swarm converges on exposed tissue with mechanical precision — thousands of tiny mandibles clicking in overlapping percussion."
+chance = 0.3
+cooldown_ticks = 50
+
+[[narrative_event]]
+id = "aerial_lure"
+trigger = { entity_tags = ["FLIGHT", "LUMINESCENT"], nearby_tags = ["OPAQUE", "DARK"] }
+message = "Bioluminescent patterns pulse overhead — a moth-spiral of coded light drifts through the darkness like a memory of stars."
+chance = 0.15
+cooldown_ticks = 80
+
+[[narrative_event]]
+id = "deep_tremor"
+trigger = { entity_tags = ["LARGE", "SLOW"], nearby_tags = ["HARD"] }
+message = "The ground shudders. A rhythmic impact — slow, heavy, deliberate — resonates through the stone. Something massive is approaching."
+chance = 0.15
+cooldown_ticks = 90
+
+[[narrative_event]]
+id = "enzyme_combustion"
+trigger = { entity_tags = ["TELOMERASE_INFUSED"], nearby_tags = ["FLAMMABLE", "HOT"] }
+message = "Raw telomerase ignites with a violent hiss — the air fills with the acrid stench of burning enzyme, leaving shimmering residue on the walls."
+chance = 0.2
+cooldown_ticks = 60
+
+[[narrative_event]]
+id = "crystal_resonance"
+trigger = { entity_tags = ["CRYSTAL"], nearby_tags = ["LUMINESCENT", "HARD"] }
+message = "The crystals hum at the edge of hearing — a resonant frequency that vibrates in the teeth and rattles the bones of the skull."
+chance = 0.15
+cooldown_ticks = 70
+
+[[narrative_event]]
+id = "cryo_pod_failure"
+trigger = { entity_tags = ["CRYO_REMNANT"], nearby_tags = ["COLD", "ARTIFACT"] }
+message = "A stasis pod's seals crack, venting centuries-old gas. Inside, a desiccated form twitches — something in the cryo-fluid has kept it alive."
+chance = 0.1
+cooldown_ticks = 120
+
+[[narrative_event]]
+id = "fearless_charge"
+trigger = { entity_tags = ["FEARLESS", "AGGRESSIVE"], health_percent = 0.3 }
+message = "Wounded beyond reason, the creature charges anyway — pain has been overwritten by enzymatic fury. It will not stop."
+chance = 0.3
+cooldown_ticks = 50
+
+[[narrative_event]]
+id = "territorial_display"
+trigger = { entity_tags = ["TERRITORIAL", "CARAPACE"], nearby_tags = ["HUMAN", "HUMANOID"] }
+message = "The creature scrapes its claws across the chitinous walls, spraying sparks — a warning display older than human language."
+chance = 0.2
+cooldown_ticks = 55
+
+[[narrative_event]]
+id = "withdrawal_collapse"
+trigger = { entity_tags = ["FAMILIAR", "ADDICTED"], health_percent = 0.25 }
+message = "The familiar convulses violently, foam streaked with telomerase residue bubbling from cracked lips. The withdrawal is shutting them down from the inside."
+chance = 0.25
+cooldown_ticks = 80
+
+[[narrative_event]]
+id = "wasteland_triage"
+trigger = { entity_tags = ["HUMAN", "HEALING"], nearby_tags = ["FLESH", "BLOOD"] }
+message = "A field medic kneels in the rubble, hands steady as they suture a wound with salvaged bio-gel. 'Hold still. I've seen worse.'"
+chance = 0.15
+cooldown_ticks = 70
+
+[[narrative_event]]
+id = "subdermal_writhe"
+trigger = { entity_tags = ["HAS_CHITIN", "SANGUINE"], nearby_tags = ["ARTIFACT"] }
+message = "The hybrid's subdermal plates ripple in response to the artifact's energy field — an involuntary rejection response from the crustacean genome."
+chance = 0.2
+cooldown_ticks = 65
+
+# ─── EXISTING EVENTS ──────────────────────────────────────────────────────────
+
+[[narrative_event]]
+id = "enzyme_seepage"
+trigger = { entity_tags = ["TELOMERASE"], nearby_tags = ["POROUS"] }
+message = "The enzyme seeps into porous surfaces — thin chitin filaments begin to crystallize along the cracks."
+chance = 0.3
+cooldown_ticks = 50
+
+[[narrative_event]]
+id = "chitin_molt"
+trigger = { entity_tags = ["CARAPACE", "HAS_CHITIN"], nearby_tags = ["HARD"] }
+message = "The creature's carapace cracks audibly — a fresh layer of glistening chitin hardens underneath."
+chance = 0.2
+cooldown_ticks = 80
+
+[[narrative_event]]
+id = "blood_scent"
+trigger = { entity_tags = ["SANGUINE"], nearby_tags = ["BLOOD"] }
+message = "Something in the darkness inhales sharply. The scent of blood has been detected."
+chance = 0.4
+cooldown_ticks = 40
+
+[[narrative_event]]
+id = "telomerase_lure"
+trigger = { entity_tags = ["FAMILIAR", "ADDICTED"], nearby_tags = ["TELOMERASE"] }
+message = "The cultist's pupils dilate to black pools. They can smell the Enzyme on you."
+chance = 0.5
+cooldown_ticks = 35
+
+[[narrative_event]]
+id = "compound_vision"
+trigger = { entity_tags = ["COMPOUND_EYES"], nearby_tags = ["LUMINESCENT"] }
+message = "The creature's compound eyes shimmer with reflected light — it sees in spectrums you cannot comprehend."
+chance = 0.3
+cooldown_ticks = 45
+
+[[narrative_event]]
+id = "bio_electric_arc"
+trigger = { entity_tags = ["BIO_ELECTRIC"], nearby_tags = ["CONDUCTIVE", "METAL"] }
+message = "Arcs of bio-electric current dance across nearby metal surfaces. The air tastes of ozone and burned tissue."
+chance = 0.35
+cooldown_ticks = 40
+
+[[narrative_event]]
+id = "exothermic_vent"
+trigger = { entity_tags = ["EXOTHERMIC_SPRAY"], nearby_tags = ["FLAMMABLE"] }
+message = "Chemical glands along the creature's flank pulse and vent — superheated enzyme spray hisses where it lands."
+chance = 0.25
+cooldown_ticks = 55
+
+[[narrative_event]]
+id = "chromatophoric_shift"
+trigger = { entity_tags = ["CHROMATOPHORIC"], nearby_tags = ["OPAQUE"] }
+message = "The surface of the creature's skin ripples — colors shift, patterns resolve, and it becomes... almost invisible."
+chance = 0.2
+cooldown_ticks = 70
+
+[[narrative_event]]
+id = "genetic_instability"
+trigger = { entity_tags = ["SANGUINE"], nearby_tags = ["ARTIFACT", "ENERGY"] }
+message = "The vampire's subdermal plates writhe under their skin. Proximity to old-world energy sources destabilizes the hybrid genome."
+chance = 0.15
+cooldown_ticks = 90
+
+[[narrative_event]]
+id = "withdrawal_rage"
+trigger = { entity_tags = ["FAMILIAR", "ADDICTED"], health_percent = 0.5 }
+message = "Deprivation tremors wrack the familiar's body. Without a dose, they will tear themselves apart — or you."
+chance = 0.4
+cooldown_ticks = 60
+
+[[narrative_event]]
+id = "ancient_activation"
+trigger = { entity_tags = ["CONSTRUCT", "ARTIFACT"], nearby_tags = ["CRYO_REMNANT"] }
+message = "A dormant console flickers to life. Ancient security systems recognize your genetic signature — for now."
+chance = 0.15
+cooldown_ticks = 100
+
+[[narrative_event]]
+id = "trench_echo"
+trigger = { entity_tags = ["CARAPACE", "LARGE"], nearby_tags = ["AQUATIC", "COLD"] }
+message = "A low-frequency vibration travels through the water — something vast is moving in the depths below."
+chance = 0.1
+cooldown_ticks = 120
+
+[[narrative_event]]
+id = "telomerase_crystallization"
+trigger = { entity_tags = ["TELOMERASE"], nearby_tags = ["COLD"] }
+message = "The Enzyme crystallizes in the cold air, forming delicate amber lattices that glow with trapped bioluminescence."
+chance = 0.2
+cooldown_ticks = 65
+
+[[narrative_event]]
+id = "hunter_marking"
+trigger = { entity_tags = ["HUMAN"], nearby_tags = ["SANGUINE", "NOCTURNAL"] }
+message = "A vampire's gaze lingers on a human — cataloging, assessing. They will remember this face."
+chance = 0.3
+cooldown_ticks = 50
+
+[[narrative_event]]
+id = "cult_chant"
+trigger = { entity_tags = ["FAMILIAR", "SOCIAL"], nearby_tags = ["TELOMERASE"] }
+message = "A low monotone chant echoes through the tunnels: 'The Enzyme is salvation. The Elite are divine. The blood is the price.'"
+chance = 0.25
+cooldown_ticks = 75
+
+[[narrative_event]]
+id = "cryo_flashback"
+trigger = { entity_tags = ["ARTIFACT", "CRYO_REMNANT"], nearby_tags = ["HUMAN"] }
+message = "A flicker of ancient memory — sterile halls, humming machinery, the cold kiss of the cryo-pod. You were someone, once."
+chance = 0.1
+cooldown_ticks = 150
+
+[[narrative_event]]
+id = "splicing_failure_echo"
+trigger = { entity_tags = ["MUTAGENIC"], nearby_tags = ["HAS_CHITIN"] }
+message = "Fragments of failed genetic grafts twitch and spasm — somewhere a gene-splicing attempt went catastrophically wrong."
+chance = 0.2
+cooldown_ticks = 85
+
+[[narrative_event]]
+id = "machine_sermon"
+trigger = { entity_tags = ["CONSTRUCT", "MINDLESS"], nearby_tags = ["HUMAN", "TECH_WORSHIPPER"] }
+message = "A nearby scavenger kneels before the ancient machine, murmuring prayers to the 'God of Steel.' The machine does not acknowledge them."
+chance = 0.15
+cooldown_ticks = 90

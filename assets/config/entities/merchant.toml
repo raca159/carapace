@@ -1,0 +1,39 @@
+# Dark Market Broker — shadowy trader of biological and pre-collapse commodities
+name = "Market Broker"
+glyph = "M"
+color = [100, 120, 140]
+tags = ["HUMANOID", "MEDIUM", "OMNIVORE", "DECEPTIVE", "CURIOUS"]
+description = "A shadowy broker who deals in sanguis, telomerase fluid, and pre-collapse artifacts — the economy of blood and enzyme"
+spawn_biomes = ["BIOME_SETTLEMENT", "BIOME_DUNGEON", "BIOME_CAVE", "BIOME_SHRUBLAND"]
+
+[stats]
+health_min = 35
+health_max = 50
+inventory_capacity = 20
+
+[faction]
+name = "dark_market"
+
+[[equipment]]
+slot = "weapon"
+name = "Concealed Blade"
+glyph = "/"
+color = [100, 100, 100]
+tags = ["METAL", "COMMON", "EQUIP_WEAPON", "MELEE"]
+chance = 0.4
+
+[[equipment]]
+slot = "armor"
+name = "Traveling Cloak"
+glyph = "["
+color = [80, 80, 100]
+tags = ["CLOTH", "COMMON", "EQUIP_ARMOR", "LIGHT_ARMOR"]
+chance = 0.5
+
+[[equipment]]
+slot = "accessory"
+name = "Sanguis Vial"
+glyph = "="
+color = [180, 20, 20]
+tags = ["GLASS", "RARE", "EQUIP_ACCESSORY", "CURSED"]
+chance = 0.6

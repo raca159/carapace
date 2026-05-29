@@ -1,0 +1,452 @@
+# Lore Fragments — Carapace Procedural World Lore
+#
+# Discoverable lore entries that persist across sessions.
+# Each fragment has a content template, discovery conditions,
+# rarity, and faction perspective.
+#
+# The LLM narrative layer renders these into player-readable lore
+# when triggered by world state, NPC dialogue, or artifact examination.
+#
+# Template variable syntax: {variable_name}
+# Rarity affects discovery probability: common > uncommon > rare > epic > legendary
+# Fractions of factions are the narrative source (bias is intentional — lens 10).
+
+# ─── WORLD HISTORY — The Collapse ──────────────────────────────────────────
+
+[[lore_fragment]]
+id = "the_great_collapse"
+category = "world_history"
+rarity = "common"
+faction_source = "free_humanity"
+title_template = "The Great Collapse"
+content_template = "No one agrees on what caused the Fall. Some say the machines rebelled. Some say a plague that rewrote the very code of life. A few whisper that we were not the first to fall, and will not be the last. What remains: ash, ruins, and the things that crawl between them."
+discovery_tags = ["HUMAN"]
+discovery_context = "dialogue_with_elder"
+persistence = true
+
+[[lore_fragment]]
+id = "the_compact_of_blood"
+category = "world_history"
+rarity = "rare"
+faction_source = "sanguine_elite"
+title_template = "The Compact of Blood"
+content_template = "Before the Collapse, a geneticist named {scientist_name} discovered the Carapace in a deep-ocean trench. The first Hybrids were volunteers — dying soldiers who chose to become something more. They got their wish. They became predators. And the world became prey."
+discovery_tags = ["SANGUINE", "DECEPTIVE"]
+discovery_context = "vampire_confession"
+persistence = true
+
+[[lore_fragment]]
+id = "the_telomerase_breakthrough"
+category = "world_history"
+rarity = "epic"
+faction_source = "ancient_machines"
+title_template = "Archival Log {log_id}: Telomerase Research Initiative"
+content_template = "PROJECT: Phoenix. OBJECTIVE: Develop stable telomerase synthesis for military longevity. STATUS: Phase 3 trials successful. SUBJECT: Human volunteers achieved 300% telomerase extension without malignant transformation. NOTE: Long-term psychological effects unstudied. WARNNOTES: Subject 47 displayed increased aggression, reduced empathy, dietary preference for hemoprotein. Recommendation: Continue observation."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE"]
+discovery_context = "artifact_scan"
+persistence = true
+
+[[lore_fragment]]
+id = "cryogen_fleet_manifest"
+category = "world_history"
+rarity = "legendary"
+faction_source = "ancient_machines"
+title_template = "Archival Log {log_id}: Civilian Cryogenic Manifest — Sector {sector_id}"
+content_template = "VAULT DESIGNATION: {vault_id}. STATUS: Operational — 847 pods occupied. ESTIMATED THAW DATE: 01-JAN-2105 or upon atmospheric stabilization. NOTE: Life support for 847 occupants for 120 years confirmed. — No further contact after 03-MAR-2098. Facility automated systems continue protocol. The sleepers wait."
+discovery_tags = ["CRYO_REMNANT", "CONSTRUCT"]
+discovery_context = "vault_discovery"
+persistence = true
+
+# ─── FACTON HISTORY ────────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "carapace_origin"
+category = "faction_lore"
+rarity = "rare"
+faction_source = "great_carapace"
+title_template = "The Trenches: A Carapace Brood-Chronicle"
+content_template = "The Great Carapace has no language. It speaks in pheromone clouds, chitin frequencies, and the arrangement of molted shells in the deep dark. But patterns emerge: the old ones grow shells inscribed with the chemical signatures of every brood they have devoured. Their history is written in calcium carbonate and digestive enzymes."
+discovery_tags = ["CARAPACE", "AQUATIC", "LARGE"]
+discovery_context = "trench_exploration"
+persistence = true
+
+[[lore_fragment]]
+id = "sanguine_houses"
+category = "faction_lore"
+rarity = "uncommon"
+faction_source = "sanguine_elite"
+title_template = "The Blood Houses of House {house_name}"
+content_template = "The Sanguine Elite are not a monolith. House {house_name} claims descent from the original Hybrid Compact; House {rival_house} insists the Compact was a myth and their founder was the first true vampire. They have been killing each other over this theological dispute for seventy years. Both are correct. Neither will admit it."
+discovery_tags = ["SANGUINE", "SOCIAL"]
+discovery_context = "vampire_politics"
+persistence = true
+
+[[lore_fragment]]
+id = "familiar_origin_cult"
+category = "faction_lore"
+rarity = "uncommon"
+faction_source = "familiars"
+title_template = "The First Communion: A Catechism of the Enzyme"
+content_template = "The First Familiar was a miner named {cult_founder}, trapped for three weeks in a collapsed trench shaft. When they found her, she had survived by drinking from the severed limb of a Carapace juvenile. She did not die. She did not stay human. She founded the first cult. The rest of us are just following her example."
+discovery_tags = ["FAMILIAR", "ZEALOT"]
+discovery_context = "cult_ritual"
+persistence = true
+
+[[lore_fragment]]
+id = "free_human_settlements"
+category = "faction_lore"
+rarity = "common"
+faction_source = "free_humanity"
+title_template = "The {settlement_name} Compact"
+content_template = "The settlements survive by a simple rule: walls, water, and watch. Each settlement maintains a mutual-defense pact with its neighbors — when the night-hunters come, the signal fires light the chain from {settlement_name} to {neighbor_settlement}. The system has failed three times. Three settlements are now ash."
+discovery_tags = ["HUMAN", "TERRITORIAL"]
+discovery_context = "settlement_conversation"
+persistence = true
+
+[[lore_fragment]]
+id = "mutant_ecology"
+category = "faction_lore"
+rarity = "uncommon"
+faction_source = "mutated_wildlife"
+title_template = "Telomerase Spill Effects: Third-Generation Wildlife"
+content_template = "The wildlife near the Trench spill-zones has begun showing {mutation_type}. Chitin plating on mammals. Electric organs in fish. A {animal_type} was recently found with functional chromatophores — it did not exist in the pre-Collapse biosphere. The telomerase is not corrupting life. It is accelerating it. Speeding up evolution until something breaks."
+discovery_tags = ["MUTANT", "FERAL", "HAS_CHITIN"]
+discovery_context = "beast_dissection"
+persistence = true
+
+# ─── TECHNOLOGY ────────────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "gene_splicing_pods"
+category = "technology"
+rarity = "rare"
+faction_source = "ancient_machines"
+title_template = "Operational Guide: Gene-Splicing Pod Mark VII"
+content_template = "The Mark VII Gene-Splicing Pod accepts viable tissue samples and integrates foreign genetic material into the host genome. SUCCESS RATE: 67% in controlled trials. REJECTION RATE: 31% (fatal within 72 hours). NOTE: The pod was designed for medical therapy, not {species_name} gene integration. The original designers did not account for chitinous tissue. Use at your own risk."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE", "ARTIFACT"]
+discovery_context = "machine_interaction"
+persistence = true
+
+[[lore_fragment]]
+id = "plasma_cutter_manual"
+category = "technology"
+rarity = "uncommon"
+faction_source = "ancient_machines"
+title_template = "Industrial Plasma Cutter: Safety and Operation"
+content_template = "WARNUNG: The PLASMA-CUTTER MARK IV generates temperatures exceeding 4,000°C. Do not operate near oxygen tanks, biological tissue, or personnel without Class IV heat shielding. BATTERY: Requires one (1) fully charged Cell Battery for 8 minutes of continuous operation. NOTE: The protective interlocks have been removed by previous users. You have been warned."
+discovery_tags = ["ARTIFACT", "ENERGY", "RARE"]
+discovery_context = "loot_examination"
+persistence = true
+
+[[lore_fragment]]
+id = "shield_module_specs"
+category = "technology"
+rarity = "rare"
+faction_source = "ancient_machines"
+title_template = "Deflector Shield Generator: Field Test Report"
+content_template = "The Mark II personal deflector generates a localized kinetic barrier effective against projectiles up to 7.62mm. DURATION: 45 seconds continuous. RECHARGE: 120 seconds from full discharge. LIMITATION: Does not protect against melee, biological acids, or ideological conviction. TESTER NOTE: 'It saved my life three times. The fourth time, the battery died.'"
+discovery_tags = ["ARTIFACT", "ENERGY", "RARE", "PRE_COLLAPSE"]
+discovery_context = "artifact_examination"
+persistence = true
+
+[[lore_fragment]]
+id = "cell_battery_tech"
+category = "technology"
+rarity = "common"
+faction_source = "free_humanity"
+title_template = "On the Nature of 'Cell Batteries'"
+content_template = "The old-world power cells hold a charge for decades, sometimes centuries. The settlements call them 'frozen lightning.' They are found in ruins, still humming, still waiting to be useful. A single cell can power a plasma cutter, a security door, or — if you believe the stories — a whole building. No one knows how to make new ones."
+discovery_tags = ["ARTIFACT", "ENERGY"]
+discovery_context = "item_inspection"
+persistence = true
+
+# ─── LOCATION LORE ─────────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "trench_geography"
+category = "location_lore"
+rarity = "rare"
+faction_source = "great_carapace"
+title_template = "The Trench-Layers: A Descent Guide"
+content_template = "The Trenches descend in layers. Layer One: the spill-zone, where diluted telomerase filters into groundwater. Layer Two: the nest-chambers, where Carapace broods gestate. Layer Three: the deep dark, where the Old Ones rest. No human has returned from Layer Four. The Carapace have no word for it because they have no need to name what they already own."
+discovery_tags = ["CARAPACE", "AQUATIC", "LARGE"]
+discovery_context = "deep_exploration"
+persistence = true
+
+[[lore_fragment]]
+id = "pre_collapse_city"
+category = "location_lore"
+rarity = "uncommon"
+faction_source = "free_humanity"
+title_template = "The Ruins of {city_name}"
+content_template = "Before the Collapse, {city_name} was home to {population_estimate} souls. Now its towers are nesting grounds for chitin-rats and its subways are vampire highways. The settlement council has forbidden excavation of the lower districts — too many expeditions have vanished into the dark. But the old-world treasures down there are worth any risk."
+discovery_tags = ["HUMAN", "PRE_COLLAPSE"]
+discovery_context = "ruin_exploration"
+persistence = true
+
+[[lore_fragment]]
+id = "sanguine_manor_lore"
+category = "location_lore"
+rarity = "uncommon"
+faction_source = "sanguine_elite"
+title_template = "House {house_name} Manor: Architectural Notes"
+content_template = "The manor of House {house_name} was built on the foundations of a pre-Collapse data center. The upper floors imitate human nobility — chandeliers, ballrooms, silk drapes. The basement levels are something else entirely: chitin-lined incubation chambers, telomerase refinement labs, and the feeding halls where the Family gathers. Guests are not invited to the basement."
+discovery_tags = ["SANGUINE", "DECEPTIVE", "SOCIAL"]
+discovery_context = "manor_exploration"
+persistence = true
+
+# ─── CREATURE LORE ─────────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "carapace_lifecycle"
+category = "creature_lore"
+rarity = "epic"
+faction_source = "great_carapace"
+title_template = "The Carapace Lifecycle: From Spawn to Old One"
+content_template = "The Carapace begins as a larval spawn no larger than a human hand, hatched in the warm organic slurry of a broodmother's gestation chamber. Those that survive the first molt — and most do not — grow shells, limbs, and hunger. Each molt adds mass, density, and a new set of instincts. An Old One has molted hundreds of times. It has forgotten it was ever small."
+discovery_tags = ["CARAPACE", "REPRODUCTIVE", "LARGE"]
+discovery_context = "broodmother_encounter"
+persistence = true
+
+[[lore_fragment]]
+id = "vampire_biology"
+category = "creature_lore"
+rarity = "rare"
+faction_source = "sanguine_elite"
+title_template = "The Hybrid Condition: A Self-Study by House {house_name}"
+content_template = "The Hybrid body exists in a state of controlled instability. The Carapace telomerase prevents aging, but it also demands constant hemoprotein catalysis — human blood. Without it, the enzyme crystallizes in the bloodstream. The result is a systemic cascade failure: organs calcify, chitin subdermal plates grow inward, and the Hybrid dissolves from within. The process takes three days. It is not painless."
+discovery_tags = ["SANGUINE", "SANGUIVORE", "HAS_CHITIN"]
+discovery_context = "sanguine_conversation"
+persistence = true
+
+[[lore_fragment]]
+id = "familiar_collapse"
+category = "creature_lore"
+rarity = "uncommon"
+faction_source = "familiars"
+title_template = "The Stages of Withdrawal"
+content_template = "Stage One: craving. The familiar thinks about the Enzyme constantly. Stage Two: tremor. The hands shake, the vision blurs, the genetic code begins to protest. Stage Three: the Screaming. The familiar's own cells recognize they have been abandoned by the telomerase that sustained them. Stage Four: reversion. The body begins producing its own corrupted enzyme, and the familiar becomes something that no longer needs to speak."
+discovery_tags = ["FAMILIAR", "ADDICTED", "WITHDRAWAL"]
+discovery_context = "withdrawal_observation"
+persistence = true
+
+[[lore_fragment]]
+id = "construct_origin"
+category = "creature_lore"
+rarity = "rare"
+faction_source = "ancient_machines"
+title_template = "Archival Log {log_id}: Autonomous Systems Activation Protocol"
+content_template = "AUTOMATED SYSTEMS DIRECTIVE: Protect civilian infrastructure. Preserve human life. Restore order following civil emergency. NOTE: The civil emergency is now one hundred and twelve years old. Power reserves at 23%. Civilian life detected: minimal. Restore order directive: impossible. Continue patrol. Continue patrol. Continue— {log_corruption} —patrol."
+discovery_tags = ["CONSTRUCT", "MINDLESS", "PRE_COLLAPSE"]
+discovery_context = "construct_examination"
+persistence = true
+
+[[lore_fragment]]
+id = "mutant_origin_bombardier"
+category = "creature_lore"
+rarity = "uncommon"
+faction_source = "mutated_wildlife"
+title_template = "Bombardier Hog: Case Study in Uncontrolled Splicing"
+content_template = "The Bombardier Hog is not a natural species. It is the result of a Carapace juvenile consuming a wild boar and failing to digest it fully. The horizontal gene transfer backfired — the boar's cells absorbed Carapace heat-gland DNA and survived. The resulting creature is a perfect accident: a mammal that sprays boiling enzyme at predators. Nature did not design this. The Trench did."
+discovery_tags = ["MUTANT", "EXOTHERMIC_SPRAY", "BEAST"]
+discovery_context = "beast_examination"
+persistence = true
+
+# ─── ANCIENT EVENTS ────────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "the_bioweapon_theory"
+category = "ancient_event"
+rarity = "legendary"
+faction_source = "sanguine_elite"
+title_template = "The Bioweapon Theory (Suppressed)"
+content_template = "Some among the Elite believe the Collapse was not an accident. The Carapace gene — the horizontal gene transfer mechanism — was weaponized. It was engineered to jump species, to spread, to convert. The question is: who fired it? And if they did, what were they trying to stop that required the transformation of all life on Earth?"
+discovery_tags = ["SANGUINE", "DECEPTIVE", "PRE_COLLAPSE"]
+discovery_context = "elite_inner_circle"
+persistence = true
+
+[[lore_fragment]]
+id = "the_last_transmission"
+category = "ancient_event"
+rarity = "legendary"
+faction_source = "ancient_machines"
+title_template = "Archival Log {log_id}: Final Planetary Communication"
+content_template = "This is the last recorded broadcast before global communications ceased: '—repeat, this is Unified Command to any surviving station. The quarantine has failed. The —signal breaking up— not a natural pathogen. It is— {transmission_garbling} —deliberate. If you receive this: do not approach the Trenches. Do not consume animal products. And for the love of God, do not—' Transmission ends. No further data."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE", "ARTIFACT"]
+discovery_context = "deep_vault_discovery"
+persistence = true
+
+[[lore_fragment]]
+id = "the_elder_things"
+category = "ancient_event"
+rarity = "epic"
+faction_source = "great_carapace"
+title_template = "What the Old Ones Remember"
+content_template = "The oldest Carapace — the ones that have molted so many times their shells are thicker than concrete and their minds are no longer recognizable — remember a time before humans. They remember when the Trenches were open air and the sky was a different color. They do not remember the Collapse because to them, it was Tuesday. They have seen civilizations rise and fall like tide cycles. They out-wait everything."
+discovery_tags = ["CARAPACE", "LARGE", "IMMORTAL"]
+discovery_context = "old_one_encounter"
+persistence = true
+
+[[lore_fragment]]
+id = "the_burning_of_sector_7"
+category = "ancient_event"
+rarity = "rare"
+faction_source = "free_humanity"
+title_template = "The Burning of {settlement_name}"
+content_template = "The night the Familiars breached the outer wall, {settlement_name} burned for three days. Not from fire — from enzyme. The cultists had been hoarding raw telomerase, and when the defense towers collapsed, the storage vats ruptured. The enzyme did not burn. It dissolved. Everything organic within the walls dissolved into a nutrient slurry. The Carapace arrived a week later to feed. The settlement is now a spawning ground."
+discovery_tags = ["HUMAN", "FAMILIAR"]
+discovery_context = "refugee_dialogue"
+persistence = true
+
+# ─── NEW: THE REMNANT LORE (was zero entries — lens 10: factional subjectivity) ──
+
+[[lore_fragment]]
+id = "remnant_origin_vaults"
+category = "faction_lore"
+rarity = "rare"
+faction_source = "the_remnant"
+title_template = "Archival Log {log_id}: Bunker Protocol Activation"
+content_template = "DECLASSIFIED: On the day of the Collapse, forty-seven hardened bunkers sealed their blast doors. Inside: military personnel, research staff, and what the government called 'essential genetic material.' The doors were designed to open after five years. They did not open. The occupants, faced with a surface still dead, extended their isolation. Generations passed. The keys to the doors were lost. What emerged decades later was not the same humanity that entered."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE", "ARTIFACT"]
+discovery_context = "vault_discovery"
+persistence = true
+
+[[lore_fragment]]
+id = "remnant_genetic_decay"
+category = "faction_lore"
+rarity = "uncommon"
+faction_source = "the_remnant"
+title_template = "Archival Log {log_id}: Genetic Diversity Report — Bunker {vault_id}"
+content_template = "STATUS: Critically low. The founding population of 247 has inbred across six generations. Congenital defects affect 68% of live births. The bunker's gene-therapy equipment failed in year 14. We have attempted hybridization with surface survivors, but the surface genome has been corrupted by telomerase exposure. Our children are born brittle. Their bones cannot support the weight of the world above."
+discovery_tags = ["HUMAN", "PRE_COLLAPSE"]
+discovery_context = "remnant_conversation"
+persistence = true
+
+[[lore_fragment]]
+id = "remnant_first_contact"
+category = "world_history"
+rarity = "legendary"
+faction_source = "the_remnant"
+title_template = "The Surface: First Contact Assessment"
+content_template = "BUNKER {vault_id} SURFACE TEAM: We opened the hatch on day 14,273. The sky was the color of old bruises. The air was breathable but carried a chemical sweetness we could not identify. We encountered 'settlers' who claimed the world ended 'generations ago.' They asked if we were 'pure.' We did not understand the question. Then we met the things that hunt at night. We understand now."
+discovery_tags = ["HUMAN", "PRE_COLLAPSE", "RARE"]
+discovery_context = "remnant_confession"
+persistence = true
+
+[[lore_fragment]]
+id = "remnant_tech_superiority"
+category = "faction_lore"
+rarity = "uncommon"
+faction_source = "the_remnant"
+title_template = "Field Report: Technology Disparity"
+content_template = "The surface dwellers have forgotten everything. They call a plasma cutter a 'fire knife.' They believe the old world's machines are magic. They do not know how to maintain, calibrate, or manufacture any pre-Collapse technology. They scavenge what we keep in working order. We are not stronger than them. We did not survive better. We simply remembered how to read the manuals."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE", "HUMAN"]
+discovery_context = "remnant_trade"
+persistence = true
+
+# ─── NEW: CREATURE LORE ──────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "the_hive_singularity"
+category = "creature_lore"
+rarity = "rare"
+faction_source = "mutated_wildlife"
+title_template = "Swarm Intelligence in Telomerase-Accelerated {animal_type} Populations"
+content_template = "We have observed a phenomenon the settlement hunters call 'the Glimmer.' When enough {animal_type} cluster in a telomerase-rich environment, their individual nervous systems begin to synchronize. They share pain. They share intent. They act as a single organism distributed across many bodies. The Glimmer does not think — it reacts. And it reacts to threats with the precision of something that has a thousand eyes and a thousand mouths."
+discovery_tags = ["MUTANT", "SWARMING", "BEAST"]
+discovery_context = "swarm_encounter"
+persistence = true
+
+[[lore_fragment]]
+id = "the_bone_weaver"
+category = "creature_lore"
+rarity = "epic"
+faction_source = "mutated_wildlife"
+title_template = "Unidentified Species: Provisional Designation 'Bone Weaver'"
+content_template = "A Carapace variant that does not consume its prey — it incorporates them. The Bone Weaver drags carcasses to a central nest and uses enzyme-thread to stitch skeletons into structural formations. The resulting 'architecture' is non-functional, decorative, and deeply unsettling. Purpose unknown. Possibly aesthetic. Possibly ritual. The Carapace were not observed to have culture. This observation challenges that assumption."
+discovery_tags = ["CARAPACE", "HAS_CHITIN", "LARGE"]
+discovery_context = "nest_discovery"
+persistence = true
+
+# ─── NEW: TECHNOLOGY LORE ────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "environmental_seal_systems"
+category = "technology"
+rarity = "common"
+faction_source = "the_remnant"
+title_template = "Bunker Maintenance Log: Environmental Seal {log_id}"
+content_template = "The bunker's outer seal has held for {vault_id} years. The rubber has long since petrified. The steel is kept in place by rust and habit. We do not open it unless we must. Every opening costs years of remaining seal life. The surface air is not the problem. The problem is what follows the air inside."
+discovery_tags = ["HUMAN", "CONSTRUCT", "PRE_COLLAPSE"]
+discovery_context = "bunker_exploration"
+persistence = true
+
+[[lore_fragment]]
+id = "auto_med_system"
+category = "technology"
+rarity = "rare"
+faction_source = "ancient_machines"
+title_template = "Archival Log {log_id}: Automated Medical Station — Diagnostic Remnant"
+content_template = "AUTO-MED MARK IV: Patient scan complete. DIAGNOSIS: Multiple genetic anomalies inconsistent with baseline Homo sapiens. RECOMMENDATION: Immediate quarantine and gene-therapy intervention. NOTE: Patient's genome contains non-human sequences at loci 4, 7, 12, 19, and 22. Sequence match: 47% similarity to database entry 'Astacidea — freshwater crustacean.' ADMINISTERING ANTIVIRAL PROTOCOL. ... ERROR: No antiviral available for this condition. ... ERROR: Patient is no longer responding."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE", "ARTIFACT"]
+discovery_context = "clinic_discovery"
+persistence = true
+
+# ─── NEW: LOCATION LORE ──────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "the_drowned_vault"
+category = "location_lore"
+rarity = "uncommon"
+faction_source = "the_remnant"
+title_template = "The Drowned Vault: Bunker {vault_id}"
+content_template = "Bunker {vault_id} was built into a coastal cliff face. When the sea levels rose — as the old climate models predicted they would — the lower levels flooded. The occupants retreated upward, floor by floor, for three weeks. The last transmission reported 'water at the hatch.' The bunker is now an underwater tomb, preserved in brine and silence, its pre-Collapse secrets still intact beneath the waves."
+discovery_tags = ["AQUATIC", "PRE_COLLAPSE", "CONSTRUCT"]
+discovery_context = "diving_expedition"
+persistence = true
+
+[[lore_fragment]]
+id = "the_blood_market"
+category = "location_lore"
+rarity = "rare"
+faction_source = "sanguine_elite"
+title_template = "The Vein Market of House {house_name}"
+content_template = "Beneath the manor of House {house_name} lies the Vein Market — a subterranean bazaar where blood is currency. The stalls sell everything: fresh-drawn from captive humans (premium), preserved packs from the Enzyme Wars (questionable vintage), and something the traders call 'vintage pre-Collapse' which may or may not be a lie. The Market operates on a simple rule: 'The vein is always open.' Buyers are advised to leave before they become merchandise."
+discovery_tags = ["SANGUINE", "SOCIAL", "DECEPTIVE"]
+discovery_context = "underworld_contact"
+persistence = true
+
+# ─── NEW: ANCIENT EVENTS ─────────────────────────────────────────────────────
+
+[[lore_fragment]]
+id = "the_cryo_waking"
+category = "ancient_event"
+rarity = "legendary"
+faction_source = "the_remnant"
+title_template = "Cryo Recovery Log: Pod {log_id}"
+content_template = "POD STATUS: Thaw cycle initiated after 142-year unscheduled stasis. OCCUPANT: Civilian — no military designation. POST-THAW ASSESSMENT: Severe psychological trauma. Subject keeps asking for family members who have been dead for over a century. PHYSICAL STATUS: Telomerase exposure detected — the Enzyme was already in the atmosphere when the pod sealed. Subject's genome is rewriting itself as we observe. Recommend immediate isolation. Subject does not yet know what they are becoming."
+discovery_tags = ["CONSTRUCT", "PRE_COLLAPSE", "CRYO_REMNANT"]
+discovery_context = "cryo_awakening"
+persistence = true
+
+[[lore_fragment]]
+id = "the_enzyme_wars"
+category = "ancient_event"
+rarity = "epic"
+faction_source = "sanguine_elite"
+title_template = "The Enzyme Wars: An Oral History (Redacted)"
+content_template = "The Sanguine Elite do not speak of the Enzyme Wars. Not because they lost — but because they won. House {house_name} and House {rival_house} turned the wasteland into a battlefield over control of the remaining telomerase refinement facilities. The war lasted eleven years and depopulated three sectors. The victor absorbed the vanquished. The facilities were destroyed in the final siege. Now both Houses share the same shortage. They do not discuss the irony."
+discovery_tags = ["SANGUINE", "SOCIAL", "DECEPTIVE"]
+discovery_context = "house_confession"
+persistence = true
+
+[[lore_fragment]]
+id = "the_last_garden"
+category = "ancient_event"
+rarity = "legendary"
+faction_source = "free_humanity"
+title_template = "The Last Garden: {settlement_name}"
+content_template = "Before the Collapse, {settlement_name} was an agricultural research station. The seeds are still there — locked in a climate-controlled vault that has somehow maintained power for over a century. The crops outside have long since mutated, turned carnivorous, or died. But inside the vault, untouched by the Enzyme: wheat. Corn. Potatoes. The old world's last meal, waiting for someone who knows how to plant it."
+discovery_tags = ["HUMAN", "PRE_COLLAPSE"]
+discovery_context = "vault_discovery"
+persistence = true

@@ -1,0 +1,934 @@
+[[archetype]]
+id = "element"
+name = "Element"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "FIRE"
+implies = ["HOT", "LUMINESCENT"]
+conflicts = ["WATER", "ICE", "EARTH", "AIR", "LIGHTNING", "ACID"]
+
+[[archetype.tags]]
+id = "WATER"
+implies = ["WET"]
+conflicts = ["FIRE", "ICE", "EARTH", "AIR", "LIGHTNING", "ACID"]
+
+[[archetype.tags]]
+id = "ICE"
+implies = ["COLD", "SLIPPERY"]
+conflicts = ["FIRE", "WATER", "EARTH", "AIR", "LIGHTNING", "ACID"]
+
+[[archetype.tags]]
+id = "LIGHTNING"
+implies = ["CONDUCTIVE", "LUMINESCENT"]
+conflicts = ["FIRE", "WATER", "ICE", "EARTH", "AIR", "ACID"]
+
+[[archetype.tags]]
+id = "ACID"
+implies = ["TOXIC"]
+conflicts = ["FIRE", "WATER", "ICE", "EARTH", "AIR", "LIGHTNING"]
+
+[[archetype.tags]]
+id = "EARTH"
+implies = ["HARD"]
+conflicts = ["FIRE", "WATER", "ICE", "LIGHTNING", "ACID", "AIR"]
+
+[[archetype.tags]]
+id = "AIR"
+conflicts = ["FIRE", "WATER", "ICE", "EARTH", "LIGHTNING", "ACID"]
+
+[[archetype]]
+id = "material"
+name = "Material"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "WOOD"
+implies = ["FLAMMABLE", "POROUS", "FLOATS"]
+
+[[archetype.tags]]
+id = "STONE"
+implies = ["HARD", "HEAVY"]
+
+[[archetype.tags]]
+id = "METAL"
+implies = ["CONDUCTIVE", "HARD"]
+
+[[archetype.tags]]
+id = "FLESH"
+implies = ["FLAMMABLE", "POROUS", "CONDUCTIVE"]
+
+[[archetype.tags]]
+id = "GLASS"
+implies = ["FRAGILE", "HEAT_RESISTANT"]
+
+[[archetype.tags]]
+id = "CRYSTAL"
+implies = ["HARD", "LUMINESCENT"]
+
+[[archetype.tags]]
+id = "SAND"
+implies = ["POROUS"]
+
+[[archetype.tags]]
+id = "ICE_MATERIAL"
+implies = ["SLIPPERY", "COLD", "MELTS"]
+
+[[archetype.tags]]
+id = "CLOTH"
+implies = ["FLAMMABLE", "POROUS", "LIGHT"]
+
+[[archetype.tags]]
+id = "BONE"
+implies = ["HARD"]
+
+[[archetype.tags]]
+id = "LEATHER"
+implies = ["FLAMMABLE", "POROUS", "FLEXIBLE"]
+
+[[archetype.tags]]
+id = "PAPER"
+implies = ["FLAMMABLE", "POROUS", "VERY_LIGHT"]
+
+[[archetype]]
+id = "state"
+name = "Physical State"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "SOLID"
+
+[[archetype.tags]]
+id = "LIQUID"
+implies = ["SPREADS", "WET"]
+
+[[archetype.tags]]
+id = "GAS"
+implies = ["SPREADS", "FLOATS"]
+
+[[archetype.tags]]
+id = "PLASMA"
+implies = ["LUMINESCENT", "HOT"]
+
+[[archetype]]
+id = "quality"
+name = "Quality Tier"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "COMMON"
+multiplier = 1.0
+
+[[archetype.tags]]
+id = "UNCOMMON"
+multiplier = 1.5
+
+[[archetype.tags]]
+id = "RARE"
+multiplier = 3.0
+
+[[archetype.tags]]
+id = "EPIC"
+multiplier = 7.0
+
+[[archetype.tags]]
+id = "LEGENDARY"
+multiplier = 15.0
+
+[[archetype]]
+id = "temperature"
+name = "Temperature"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "FREEZING"
+threshold = [0, 15]
+
+[[archetype.tags]]
+id = "COLD"
+threshold = [15, 35]
+
+[[archetype.tags]]
+id = "NEUTRAL"
+threshold = [35, 65]
+
+[[archetype.tags]]
+id = "WARM"
+threshold = [65, 85]
+
+[[archetype.tags]]
+id = "HOT"
+threshold = [85, 100]
+
+[[archetype]]
+id = "moisture"
+name = "Moisture"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "DRY"
+threshold = [0, 20]
+
+[[archetype.tags]]
+id = "DAMP"
+threshold = [20, 40]
+
+[[archetype.tags]]
+id = "WET"
+threshold = [40, 70]
+
+[[archetype.tags]]
+id = "SOAKED"
+threshold = [70, 100]
+
+[[archetype]]
+id = "light"
+name = "Light Level"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "DARK"
+threshold = [0, 20]
+
+[[archetype.tags]]
+id = "DIM"
+threshold = [20, 40]
+
+[[archetype.tags]]
+id = "BRIGHT"
+threshold = [60, 100]
+
+[[archetype]]
+id = "weather"
+name = "Weather State"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "RAINY"
+
+[[archetype.tags]]
+id = "STORMY"
+
+[[archetype.tags]]
+id = "SNOWY"
+
+[[archetype.tags]]
+id = "FOGGY"
+
+[[archetype.tags]]
+id = "WINDY"
+
+[[archetype.tags]]
+id = "REDUCED_VISIBILITY"
+
+[[archetype]]
+id = "creature_type"
+name = "Creature Type"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "HUMANOID"
+
+[[archetype.tags]]
+id = "BEAST"
+
+[[archetype.tags]]
+id = "UNDEAD"
+
+[[archetype.tags]]
+id = "ELEMENTAL"
+
+[[archetype.tags]]
+id = "INSECT"
+
+[[archetype.tags]]
+id = "PLANT"
+
+[[archetype.tags]]
+id = "CONSTRUCT"
+
+[[archetype.tags]]
+id = "DEMON"
+
+[[archetype.tags]]
+id = "DRAGON"
+
+[[archetype]]
+id = "size"
+name = "Size"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "TINY"
+tile_occupancy = 0.25
+hp_mult = 0.25
+
+[[archetype.tags]]
+id = "SMALL"
+tile_occupancy = 0.5
+hp_mult = 0.5
+
+[[archetype.tags]]
+id = "MEDIUM"
+tile_occupancy = 1.0
+hp_mult = 1.0
+
+[[archetype.tags]]
+id = "LARGE"
+tile_occupancy = 2.0
+hp_mult = 2.0
+
+[[archetype.tags]]
+id = "HUGE"
+tile_occupancy = 4.0
+hp_mult = 4.0
+
+[[archetype.tags]]
+id = "COLOSSAL"
+tile_occupancy = 8.0
+hp_mult = 8.0
+
+[[archetype]]
+id = "diet"
+name = "Diet"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "HERBIVORE"
+
+[[archetype.tags]]
+id = "CARNIVORE"
+
+[[archetype.tags]]
+id = "OMNIVORE"
+
+[[archetype.tags]]
+id = "PHOTOSYNTHETIC"
+
+[[archetype.tags]]
+id = "DETRITIVORE"
+
+[[archetype.tags]]
+id = "HEMOVORE"
+
+[[archetype.tags]]
+id = "LITHOVORE"
+
+[[archetype]]
+id = "trait"
+name = "Behavioral Trait"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "AGGRESSIVE"
+
+[[archetype.tags]]
+id = "PEACEFUL"
+
+[[archetype.tags]]
+id = "COWARDLY"
+
+[[archetype.tags]]
+id = "CURIOUS"
+
+[[archetype.tags]]
+id = "TERRITORIAL"
+
+[[archetype.tags]]
+id = "PACK_ANIMAL"
+
+[[archetype.tags]]
+id = "NOCTURNAL"
+
+[[archetype.tags]]
+id = "DIURNAL"
+
+[[archetype.tags]]
+id = "FEARLESS"
+
+[[archetype.tags]]
+id = "SWARMING"
+
+[[archetype.tags]]
+id = "FLIGHT"
+
+[[archetype.tags]]
+id = "AQUATIC"
+
+[[archetype.tags]]
+id = "STATIONARY"
+
+[[archetype.tags]]
+id = "MINDLESS"
+
+[[archetype.tags]]
+id = "HAS_ECONOMY"
+
+[[archetype.tags]]
+id = "HABITABLE"
+
+[[archetype.tags]]
+id = "SETTLEMENT"
+
+[[archetype.tags]]
+id = "HAS_TRADE"
+
+[[archetype.tags]]
+id = "INTERACTABLE"
+
+[[archetype.tags]]
+id = "CAN_TALK"
+
+[[archetype.tags]]
+id = "CAN_BARTER"
+
+[[archetype.tags]]
+id = "CAN_CRAFT"
+
+[[archetype.tags]]
+id = "CONTAINER"
+
+[[archetype.tags]]
+id = "LLM_CAPABLE"
+
+[[archetype.tags]]
+id = "CRAFT_ANYWHERE"
+
+[[archetype.tags]]
+id = "HAS_INTERIOR"
+
+[[archetype.tags]]
+id = "INDOORS"
+
+[[archetype.tags]]
+id = "BLOCKS_WEATHER"
+
+[[archetype]]
+id = "status"
+name = "Status Effect"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "BURNING"
+ticks = [5, 15]
+
+[[archetype.tags]]
+id = "POISONED"
+ticks = [10, 30]
+
+[[archetype.tags]]
+id = "FROZEN"
+ticks = [3, 8]
+
+[[archetype.tags]]
+id = "PARALYZED"
+ticks = [2, 6]
+
+[[archetype.tags]]
+id = "BLEEDING"
+ticks = [5, 20]
+
+[[archetype.tags]]
+id = "STUNNED"
+ticks = [1, 3]
+
+[[archetype.tags]]
+id = "BLINDED"
+ticks = [5, 15]
+
+[[archetype.tags]]
+id = "INVISIBLE"
+ticks = [10, 30]
+
+[[archetype.tags]]
+id = "CONFUSED"
+ticks = [3, 10]
+
+[[archetype.tags]]
+id = "REGENERATING"
+ticks = [5, 15]
+
+[[archetype.tags]]
+id = "ENRAGED"
+ticks = [5, 10]
+
+[[archetype.tags]]
+id = "OILED"
+ticks = [10, 30]
+
+[[archetype.tags]]
+id = "MELTING"
+ticks = [3, 8]
+
+[[archetype]]
+id = "terrain"
+name = "Terrain Property"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "WALKABLE"
+move_cost = 1.0
+
+[[archetype.tags]]
+id = "BLOCKED"
+
+[[archetype.tags]]
+id = "SWIMMABLE"
+move_cost = 2.0
+
+[[archetype.tags]]
+id = "FLYABLE"
+move_cost = 0.5
+
+[[archetype.tags]]
+id = "CLIMBABLE"
+move_cost = 3.0
+
+[[archetype.tags]]
+id = "SLOW"
+move_cost = 2.0
+
+[[archetype.tags]]
+id = "DANGEROUS"
+move_cost = 1.0
+
+[[archetype.tags]]
+id = "OPAQUE"
+
+[[archetype.tags]]
+id = "TRANSPARENT"
+
+[[archetype.tags]]
+id = "ARABLE"
+default_magnitude = 0.5
+
+[[archetype.tags]]
+id = "MINERAL_RICH"
+default_magnitude = 0.5
+
+[[archetype.tags]]
+id = "ENTRANCE_STAIR"
+
+[[archetype.tags]]
+id = "DEEPER_STAIR"
+
+[[archetype]]
+id = "biome"
+name = "Biome"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "BIOME_DEEP_OCEAN"
+implies = ["SWIMMABLE", "WET", "BLOCKED"]
+
+[[archetype.tags]]
+id = "BIOME_OCEAN"
+implies = ["SWIMMABLE", "WET", "BLOCKED"]
+
+[[archetype.tags]]
+id = "BIOME_BEACH"
+implies = ["WALKABLE", "DRY"]
+
+[[archetype.tags]]
+id = "BIOME_DESERT"
+implies = ["WALKABLE", "DRY", "HOT"]
+
+[[archetype.tags]]
+id = "BIOME_SAVANNA"
+implies = ["WALKABLE", "DRY"]
+
+[[archetype.tags]]
+id = "BIOME_TROPICAL_FOREST"
+implies = ["WALKABLE", "WET", "FLAMMABLE"]
+
+[[archetype.tags]]
+id = "BIOME_GRASSLAND"
+implies = ["WALKABLE"]
+
+[[archetype.tags]]
+id = "BIOME_TEMPERATE_FOREST"
+implies = ["WALKABLE", "FLAMMABLE"]
+
+[[archetype.tags]]
+id = "BIOME_SHRUBLAND"
+implies = ["WALKABLE", "DRY"]
+
+[[archetype.tags]]
+id = "BIOME_BOREAL_FOREST"
+implies = ["WALKABLE", "COLD"]
+
+[[archetype.tags]]
+id = "BIOME_TUNDRA"
+implies = ["WALKABLE", "COLD", "SLOW"]
+
+[[archetype.tags]]
+id = "BIOME_ICE_SHEET"
+implies = ["WALKABLE", "FREEZING", "SLIPPERY"]
+
+[[archetype.tags]]
+id = "BIOME_MOUNTAIN"
+implies = ["WALKABLE", "SLOW", "CLIMBABLE"]
+
+[[archetype.tags]]
+id = "BIOME_MOUNTAIN_PEAK"
+implies = ["BLOCKED", "OPAQUE"]
+
+[[archetype.tags]]
+id = "BIOME_SWAMP"
+implies = ["WALKABLE", "SLOW", "WET", "SOAKED"]
+
+[[archetype.tags]]
+id = "BIOME_RIVER"
+implies = ["SWIMMABLE", "WET"]
+
+[[archetype.tags]]
+id = "BIOME_LAKE"
+implies = ["SWIMMABLE", "WET"]
+
+[[archetype.tags]]
+id = "BIOME_VOLCANIC"
+implies = ["WALKABLE", "HOT", "DANGEROUS"]
+
+[[archetype]]
+id = "magic"
+name = "Magical Property"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "ENCHANTED"
+
+[[archetype.tags]]
+id = "CURSED"
+
+[[archetype.tags]]
+id = "BLESSED"
+
+[[archetype.tags]]
+id = "ARCANE"
+
+[[archetype.tags]]
+id = "NECROTIC"
+
+[[archetype.tags]]
+id = "ANTI_MAGIC"
+
+[[archetype]]
+id = "interaction"
+name = "Interaction Capability"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "FLAMMABLE"
+default_magnitude = 0.7
+
+[[archetype.tags]]
+id = "FIREPROOF"
+
+[[archetype.tags]]
+id = "CONDUCTIVE"
+default_magnitude = 0.8
+
+[[archetype.tags]]
+id = "INSULATING"
+
+[[archetype.tags]]
+id = "POROUS"
+default_magnitude = 0.5
+
+[[archetype.tags]]
+id = "WATERPROOF"
+
+[[archetype.tags]]
+id = "MAGNETIC"
+default_magnitude = 0.6
+
+[[archetype.tags]]
+id = "TOXIC"
+default_magnitude = 0.5
+
+[[archetype.tags]]
+id = "HEALING"
+default_magnitude = 0.3
+
+[[archetype.tags]]
+id = "HARD"
+default_magnitude = 0.8
+
+[[archetype.tags]]
+id = "FRAGILE"
+default_magnitude = 0.3
+
+[[archetype.tags]]
+id = "HEAVY"
+
+[[archetype.tags]]
+id = "LIGHT"
+
+[[archetype.tags]]
+id = "VERY_LIGHT"
+
+[[archetype.tags]]
+id = "FLEXIBLE"
+
+[[archetype.tags]]
+id = "HEAT_RESISTANT"
+
+[[archetype.tags]]
+id = "COLD_RESISTANT"
+
+[[archetype.tags]]
+id = "SLIPPERY"
+
+[[archetype.tags]]
+id = "FLOATS"
+
+[[archetype.tags]]
+id = "SPREADS"
+
+[[archetype.tags]]
+id = "LUMINESCENT"
+default_magnitude = 0.5
+
+[[archetype.tags]]
+id = "MELTS"
+
+[[archetype.tags]]
+id = "RUSTABLE"
+default_magnitude = 0.3
+
+[[archetype]]
+id = "resource"
+name = "Resource Type"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "ORE_IRON"
+
+[[archetype.tags]]
+id = "ORE_GOLD"
+
+[[archetype.tags]]
+id = "ORE_COPPER"
+
+[[archetype.tags]]
+id = "ORE_MITHRIL"
+
+[[archetype.tags]]
+id = "GEM_RUBY"
+
+[[archetype.tags]]
+id = "GEM_EMERALD"
+
+[[archetype.tags]]
+id = "GEM_DIAMOND"
+
+[[archetype.tags]]
+id = "WOOD_TIMBER"
+
+[[archetype.tags]]
+id = "HERB_MEDICINAL"
+
+[[archetype.tags]]
+id = "HERB_POISONOUS"
+
+[[archetype.tags]]
+id = "STONE_BLOCK"
+
+[[archetype.tags]]
+id = "FOOD_WILD"
+
+[[archetype.tags]]
+id = "WATER_FRESH"
+
+[[archetype.tags]]
+id = "WATER_SALT"
+
+[[archetype.tags]]
+id = "FISH"
+
+[[archetype]]
+id = "damage_type"
+name = "Damage Type"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "PHYSICAL"
+
+[[archetype.tags]]
+id = "FIRE_DAMAGE"
+
+[[archetype.tags]]
+id = "ICE_DAMAGE"
+
+[[archetype.tags]]
+id = "LIGHTNING_DAMAGE"
+
+[[archetype.tags]]
+id = "ACID_DAMAGE"
+
+[[archetype.tags]]
+id = "POISON_DAMAGE"
+
+[[archetype.tags]]
+id = "HOLY_DAMAGE"
+
+[[archetype.tags]]
+id = "NECROTIC_DAMAGE"
+
+[[archetype]]
+id = "sense"
+name = "Sense Channel"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "SIGHT"
+range = 8
+
+[[archetype.tags]]
+id = "HEARING"
+range = 6
+
+[[archetype.tags]]
+id = "SMELL"
+range = 4
+
+[[archetype.tags]]
+id = "TREMOR_SENSE"
+range = 5
+
+[[archetype.tags]]
+id = "DARKVISION"
+range = 6
+
+[[archetype.tags]]
+id = "THERMAL_SENSE"
+range = 4
+
+[[archetype]]
+id = "item_slot"
+name = "Equipment Slot"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "EQUIP_WEAPON"
+implies = ["HOLDABLE"]
+
+[[archetype.tags]]
+id = "EQUIP_ARMOR"
+implies = ["WEARABLE"]
+
+[[archetype.tags]]
+id = "EQUIP_ACCESSORY"
+
+[[archetype.tags]]
+id = "EQUIP_NONE"
+
+[[archetype]]
+id = "item_function"
+name = "Item Function"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "HOLDABLE"
+
+[[archetype.tags]]
+id = "WEARABLE"
+
+[[archetype.tags]]
+id = "EDIBLE"
+
+[[archetype.tags]]
+id = "DRINKABLE"
+
+[[archetype.tags]]
+id = "THROWABLE"
+
+[[archetype.tags]]
+id = "USABLE"
+
+[[archetype]]
+id = "weapon_type"
+name = "Weapon Type"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "MELEE"
+
+[[archetype.tags]]
+id = "RANGED"
+
+[[archetype]]
+id = "armor_type"
+name = "Armor Type"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "LIGHT_ARMOR"
+
+[[archetype.tags]]
+id = "HEAVY_ARMOR"
+
+[[archetype.tags]]
+id = "SHIELD"
+
+[[archetype]]
+id = "craft_complexity"
+name = "Crafting Complexity"
+exclusivity = "mutual"
+
+[[archetype.tags]]
+id = "CRAFT_COMPLEXITY_1"
+default_magnitude = 1.0
+
+[[archetype.tags]]
+id = "CRAFT_COMPLEXITY_2"
+default_magnitude = 2.0
+
+[[archetype.tags]]
+id = "CRAFT_COMPLEXITY_3"
+default_magnitude = 3.0
+
+[[archetype.tags]]
+id = "CRAFT_COMPLEXITY_4"
+default_magnitude = 4.0
+
+[[archetype.tags]]
+id = "CRAFT_COMPLEXITY_5"
+default_magnitude = 5.0
+
+[[archetype]]
+id = "inventory"
+name = "Inventory"
+exclusivity = "any"
+
+[[archetype.tags]]
+id = "HAS_INVENTORY"
+
+[[archetype.tags]]
+id = "INVENTORY_TINY"
+default_magnitude = 4.0
+
+[[archetype.tags]]
+id = "INVENTORY_SMALL"
+default_magnitude = 8.0
+
+[[archetype.tags]]
+id = "INVENTORY_MEDIUM"
+default_magnitude = 12.0
+
+[[archetype.tags]]
+id = "INVENTORY_LARGE"
+default_magnitude = 20.0
+
+[[archetype.tags]]
+id = "INVENTORY_HUGE"
+default_magnitude = 30.0
+
+[[archetype.tags]]
+id = "INVENTORY_LOOT"
+
+[[archetype.tags]]
+id = "INVENTORY_TRADE"
+
+[[archetype.tags]]
+id = "INVENTORY_EQUIPMENT"

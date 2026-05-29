@@ -1,0 +1,111 @@
+name = "VampireCity"
+description = "A gothic vampire-ruled settlement with dark stone architecture"
+location_type = "city"
+
+[[tile]]
+id = "EMPTY"
+glyph = " "
+color = [0, 0, 0]
+weight = 0.5
+tags = ["border"]
+
+[[tile]]
+id = "WALL"
+glyph = "#"
+color = [80, 60, 80]
+weight = 3.0
+tags = ["wall", "structure"]
+
+[[tile]]
+id = "FLOOR"
+glyph = "."
+color = [120, 100, 110]
+weight = 4.0
+tags = ["floor", "interior"]
+
+[[tile]]
+id = "ROAD"
+glyph = "="
+color = [100, 90, 80]
+weight = 2.0
+tags = ["road", "exterior"]
+
+[[tile]]
+id = "DOOR"
+glyph = "+"
+color = [139, 90, 43]
+weight = 0.5
+tags = ["door", "transition"]
+
+[[tile]]
+id = "THRONE"
+glyph = "T"
+color = [180, 30, 30]
+weight = 0.1
+tags = ["special", "feature"]
+
+[[tile]]
+id = "GATE"
+glyph = "∩"
+color = [100, 40, 60]
+weight = 0.2
+tags = ["gate", "entrance"]
+
+[[tile]]
+id = "COFFIN"
+glyph = "□"
+color = [120, 60, 30]
+weight = 0.15
+tags = ["special", "feature"]
+
+[conditions]
+biomes = ["BIOME_SWAMP", "BIOME_TEMPERATE_FOREST", "BIOME_SETTLEMENT"]
+factions = ["sanguine_elite"]
+
+[adjacency.EMPTY]
+up = ["EMPTY", "WALL", "GATE"]
+down = ["EMPTY", "WALL", "GATE"]
+left = ["EMPTY", "WALL", "GATE"]
+right = ["EMPTY", "WALL", "GATE"]
+
+[adjacency.WALL]
+up = ["EMPTY", "WALL", "GATE", "DOOR", "FLOOR", "ROAD", "COFFIN", "THRONE"]
+down = ["EMPTY", "WALL", "GATE", "DOOR", "FLOOR", "ROAD", "COFFIN", "THRONE"]
+left = ["EMPTY", "WALL", "GATE", "DOOR", "FLOOR", "ROAD", "COFFIN", "THRONE"]
+right = ["EMPTY", "WALL", "GATE", "DOOR", "FLOOR", "ROAD", "COFFIN", "THRONE"]
+
+[adjacency.FLOOR]
+up = ["WALL", "FLOOR", "DOOR", "THRONE", "COFFIN", "ROAD", "GATE"]
+down = ["WALL", "FLOOR", "DOOR", "THRONE", "COFFIN", "ROAD", "GATE"]
+left = ["WALL", "FLOOR", "DOOR", "THRONE", "COFFIN", "ROAD", "GATE"]
+right = ["WALL", "FLOOR", "DOOR", "THRONE", "COFFIN", "ROAD", "GATE"]
+
+[adjacency.ROAD]
+up = ["WALL", "ROAD", "GATE", "FLOOR", "DOOR"]
+down = ["WALL", "ROAD", "GATE", "FLOOR", "DOOR"]
+left = ["WALL", "ROAD", "GATE", "FLOOR", "DOOR"]
+right = ["WALL", "ROAD", "GATE", "FLOOR", "DOOR"]
+
+[adjacency.DOOR]
+up = ["WALL", "FLOOR", "ROAD", "DOOR"]
+down = ["WALL", "FLOOR", "ROAD", "DOOR"]
+left = ["WALL", "FLOOR", "ROAD", "DOOR"]
+right = ["WALL", "FLOOR", "ROAD", "DOOR"]
+
+[adjacency.THRONE]
+up = ["FLOOR", "WALL"]
+down = ["FLOOR", "WALL"]
+left = ["FLOOR", "WALL"]
+right = ["FLOOR", "WALL"]
+
+[adjacency.GATE]
+up = ["EMPTY", "WALL", "ROAD", "GATE", "FLOOR"]
+down = ["EMPTY", "WALL", "ROAD", "GATE", "FLOOR"]
+left = ["EMPTY", "WALL", "ROAD", "GATE", "FLOOR"]
+right = ["EMPTY", "WALL", "ROAD", "GATE", "FLOOR"]
+
+[adjacency.COFFIN]
+up = ["FLOOR", "WALL", "COFFIN"]
+down = ["FLOOR", "WALL", "COFFIN"]
+left = ["FLOOR", "WALL", "COFFIN"]
+right = ["FLOOR", "WALL", "COFFIN"]

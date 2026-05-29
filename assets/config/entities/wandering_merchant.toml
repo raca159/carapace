@@ -1,0 +1,39 @@
+# Wandering Merchant — rare quest-giving NPC who trades in exotic goods
+name = "Wandering Merchant"
+glyph = "M"
+color = [180, 120, 60]
+tags = ["HUMANOID", "MEDIUM", "PEACEFUL", "CURIOUS", "DECEPTIVE"]
+description = "An enigmatic figure who appears at the crossroads of different biomes — offers rare items in exchange for telomerase fluid, and whispers rumors of hidden vaults for those who prove useful"
+spawn_biomes = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_DESERT", "BIOME_SHRUBLAND"]
+
+[stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 25
+
+[faction]
+name = "dark_market"
+
+[[equipment]]
+slot = "weapon"
+name = "Custom Revolver"
+glyph = "/"
+color = [160, 140, 100]
+tags = ["METAL", "RARE", "EQUIP_WEAPON", "RANGED", "ARTIFACT"]
+chance = 0.8
+
+[[equipment]]
+slot = "armor"
+name = "Dusted Travel Coat"
+glyph = "["
+color = [140, 100, 50]
+tags = ["CLOTH", "UNCOMMON", "EQUIP_ARMOR", "LIGHT_ARMOR"]
+chance = 0.8
+
+[[equipment]]
+slot = "accessory"
+name = "Trade Ledger"
+glyph = "="
+color = [200, 180, 100]
+tags = ["PAPER", "COMMON", "EQUIP_ACCESSORY", "VALUABLE"]
+chance = 1.0

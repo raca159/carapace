@@ -1,0 +1,109 @@
+[entity_killed]
+template = "You hit {victim_name} for {damage} damage. It dies!"
+
+[entity_damaged]
+template = "You hit {defender_name} for {amount} damage. ({hp_remaining} HP remaining)"
+
+[player_damaged]
+template = "{attacker_name} hits you for {amount} damage! ({hp_current}/{hp_max} HP)"
+
+[player_death]
+template = "You have died!"
+
+[quest_completed]
+template = "Quest '{quest_name}' completed!"
+
+[quest_failed]
+template = "Quest '{quest_name}' failed: {reason}"
+
+[quest_accepted]
+template = "Quest accepted from board: {quest_name}!"
+
+[quest_turned_in]
+template = "Quest '{quest_name}' turned in."
+[quest_turned_in.with_rewards]
+template = "Quest '{quest_name}' turned in! Rewards received."
+
+[item_crafted]
+template = "You craft a {item_name}."
+
+[item_equipped]
+template = "You equip the {item_name}."
+
+[item_unequipped]
+template = "You unequip the {item_name}."
+
+[item_consumed]
+template = "You consume the {item_name}."
+[item_consumed.healed]
+template = "You consume the {item_name}. Healed {healed} HP."
+[item_consumed.poisoned]
+template = "You consume the {item_name}. You feel sick..."
+[item_consumed.extinguished]
+template = "You consume the {item_name}. The flames die down."
+
+[item_thrown]
+template = "You hit {target_name} with the {item_name} for {damage} damage! ({hp_remaining} HP remaining)"
+[item_thrown.kill]
+template = "You hit {target_name} with the {item_name} for {damage} damage! It dies!"
+[item_thrown.miss]
+template = "You throw the {item_name} at {target_name} but miss! It scatters."
+[item_thrown.ground]
+template = "You throw the {item_name}. It lands on the ground."
+
+[cannot_consume]
+template = "That item cannot be consumed."
+
+[cannot_equip]
+template = "That item cannot be equipped."
+
+[cannot_throw]
+template = "That item cannot be thrown."
+
+[cannot_throw_range]
+template = "That is too far to throw."
+
+[nothing_to_pickup]
+template = "Nothing to pick up."
+
+[inventory_full]
+template = "Inventory full."
+
+[nothing_equipped]
+template = "Nothing equipped in that slot."
+
+[status_applied]
+template = "{status} applied to {entity_name}."
+
+[status_expired]
+template = "{status} on {entity_name} has expired."
+
+[dungeon_entered]
+template = "You descend into the {dungeon_type}."
+
+[dungeon_descended]
+template = "You descend deeper..."
+
+[dungeon_exited]
+template = "You ascend back to the surface."
+
+[dungeon_no_stair_down]
+template = "There is no way down here."
+
+[dungeon_no_stair_up]
+template = "There is no way up here."
+
+[narrative_triggered]
+template = "{description}"
+
+[pickup_item]
+template = "Picked up {item_name}."
+
+[quest_board_approached]
+template = "You approach the quest board."
+
+[quest_board_none]
+template = "No quest board nearby."
+
+[creature_loot_dropped]
+template = "Dropped: {dropped_items}."

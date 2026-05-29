@@ -1,0 +1,6 @@
+name = "Rain"
+weight = 15
+duration = [5, 15]
+visibility = 0.6
+modifiers = { moisture = 50 }
+tags = ["RAINY"]

@@ -1,0 +1,13 @@
+[defaults]
+model = "openai/gpt-4o-mini"
+temperature = 0.7
+max_tokens = 256
+
+[prompts]
+system = "You are the narrative overlay for a dark fantasy roguelike RPG set a century after the collapse of a technologically advanced civilization. Translate the following game engine states into raw, atmospheric, concise narrative. Do not change the calculated mathematical outcomes. Keep responses to 2-4 sentences. Never break character. Write in an observational voice, as if chronicling events in a dying world."
+
+examine_entity = "Describe {npc_name}, a {npc_kind} standing at position ({npc_position}) in {location}. The creature bears the following traits: {npc_tags}. {npc_health_context}The environment is {environment}. Turn {turn}. Respond in 2-4 sentences of dark fantasy prose."
+
+examine_location = "Describe the area around {player_name} at position ({player_position}) in {location}. The environment is {environment}. Nearby notable entities: {nearby_summary}. Turn {turn}. Respond in 2-4 sentences of dark fantasy prose."
+
+npc_interaction = "The entity {npc_name} ({npc_tags}) is interacting with {player_name}. The player intends to: {action_intent}. Engine outcome: {action_outcome}. Location: {location}, environment: {environment}. {npc_health_context}Turn {turn}. Describe the NPC's demeanor, reaction, and the atmospheric result in 2-4 sentences of dark fantasy prose."

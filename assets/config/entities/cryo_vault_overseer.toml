@@ -1,0 +1,47 @@
+# Cryo-Vault Overseer — unique construct boss guarding the deepest cryo-chambers
+name = "Cryo-Vault Overseer"
+glyph = "O"
+color = [80, 180, 255]
+tags = ["CONSTRUCT", "HUGE", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "TERRITORIAL", "FEARLESS", "FLIGHT"]
+description = "The supreme guardian of the cryo-bunkers — a hovering fortress of pre-collapse military tech, four weapon arms, integrated shield generator, and a self-destruct failsafe that threatens the entire vault"
+spawn_biomes = ["BIOME_ANCIENT_VAULT"]
+
+[stats]
+health_min = 350
+health_max = 500
+inventory_capacity = 12
+
+[faction]
+name = "ancient_machines"
+
+[[equipment]]
+slot = "weapon"
+name = "Quad Plasma Battery"
+glyph = "~"
+color = [100, 200, 255]
+tags = ["ARTIFACT", "EPIC", "EQUIP_WEAPON", "RANGED", "ENERGY"]
+chance = 1.0
+
+[[equipment]]
+slot = "weapon"
+name = "Cryo-Missile Pod"
+glyph = "~"
+color = [200, 200, 255]
+tags = ["ARTIFACT", "EPIC", "EQUIP_WEAPON", "RANGED", "ICE_DAMAGE"]
+chance = 1.0
+
+[[equipment]]
+slot = "armor"
+name = "Reactive Shield Matrix"
+glyph = "["
+color = [60, 160, 255]
+tags = ["ARTIFACT", "LEGENDARY", "EQUIP_ARMOR", "SHIELD", "ENERGY"]
+chance = 1.0
+
+[[equipment]]
+slot = "accessory"
+name = "Vault Override Key"
+glyph = "="
+color = [255, 200, 0]
+tags = ["ARTIFACT", "LEGENDARY", "EQUIP_ACCESSORY", "KEY"]
+chance = 0.8

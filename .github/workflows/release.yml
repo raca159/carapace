@@ -1,0 +1,152 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to build (e.g. v0.1.0)"
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build ${{ matrix.platform }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - platform: linux-x86_64
+            runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            archive: tar.gz
+
+          - platform: windows-x86_64
+            runner: windows-latest
+            target: x86_64-pc-windows-msvc
+            archive: zip
+
+          - platform: macos-arm64
+            runner: macos-latest
+            target: aarch64-apple-darwin
+            archive: tar.gz
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Package archive
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          DIST_NAME="carapace-${VERSION}-${{ matrix.platform }}"
+          RELEASE_DIR="target/release-package"
+          mkdir -p "${RELEASE_DIR}/${DIST_NAME}"
+
+          if [ "${{ matrix.platform }}" = "windows-x86_64" ]; then
+            cp "target/${{ matrix.target }}/release/carapace.exe" "${RELEASE_DIR}/${DIST_NAME}/"
+          else
+            cp "target/${{ matrix.target }}/release/carapace" "${RELEASE_DIR}/${DIST_NAME}/"
+          fi
+          cp -r assets "${RELEASE_DIR}/${DIST_NAME}/"
+
+          {
+            echo "CARAPACE v${VERSION} -- Procedural Terminal Roguelike"
+            echo ""
+            echo "A procedurally-generated dark sci-fi terminal roguelike."
+            echo ""
+            echo "Requires a terminal with 256-color support and a Unicode font."
+            echo ""
+            echo "Controls: WASD/arrows to move, I inventory, C crafting, T talk, J journal"
+            echo "Options:  --seed N --width N --height N"
+          } > "${RELEASE_DIR}/${DIST_NAME}/README.txt"
+
+          cd "${RELEASE_DIR}"
+          if [ "${{ matrix.archive }}" = "zip" ]; then
+            7z a "${DIST_NAME}.zip" "${DIST_NAME}"
+          else
+            tar czf "${DIST_NAME}.tar.gz" "${DIST_NAME}"
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: carapace-${{ github.ref_name }}-${{ matrix.platform }}
+          path: target/release-package/carapace-*.${{ matrix.archive }}
+
+  create-release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: carapace-*
+          merge-multiple: true
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: carapace-*
+          generate_release_notes: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  push-itchio:
+    name: Push to itch.io
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref_name != 'v0.0.0' && vars.ITCHIO_GAME != ''
+    steps:
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: carapace-*
+          merge-multiple: true
+
+      - name: Push to itch.io (linux)
+        uses: yeslayla/butler-push@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          game: ${{ vars.ITCHIO_GAME }}
+          channel: linux
+          files: carapace-*-linux-x86_64.tar.gz
+
+      - name: Push to itch.io (windows)
+        uses: yeslayla/butler-push@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          game: ${{ vars.ITCHIO_GAME }}
+          channel: windows
+          files: carapace-*-windows-x86_64.zip
+
+      - name: Push to itch.io (macos-intel)
+        uses: yeslayla/butler-push@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          game: ${{ vars.ITCHIO_GAME }}
+          channel: mac
+          files: carapace-*-macos-x86_64.tar.gz
+
+      - name: Push to itch.io (macos-arm)
+        uses: yeslayla/butler-push@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          game: ${{ vars.ITCHIO_GAME }}
+          channel: mac-arm64
+          files: carapace-*-macos-arm64.tar.gz

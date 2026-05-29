@@ -1,0 +1,39 @@
+# Guard — settlement protector of Free Settlements
+name = "Settlement Guard"
+glyph = "G"
+color = [70, 130, 180]
+tags = ["HUMANOID", "MEDIUM", "TERRITORIAL", "DIURNAL"]
+description = "An armed defender of a post-collapse settlement — stands watch against chitin swarms, sanguine infiltrators, and feral broods"
+spawn_biomes = ["BIOME_GRASSLAND", "BIOME_TEMPERATE_FOREST", "BIOME_SETTLEMENT"]
+
+[stats]
+health_min = 50
+health_max = 75
+inventory_capacity = 10
+
+[faction]
+name = "free_settlements"
+
+[[equipment]]
+slot = "weapon"
+name = "Forged Iron Halberd"
+glyph = "/"
+color = [180, 180, 190]
+tags = ["METAL", "COMMON", "EQUIP_WEAPON", "MELEE"]
+chance = 0.9
+
+[[equipment]]
+slot = "armor"
+name = "Scavenged Plate"
+glyph = "["
+color = [160, 160, 170]
+tags = ["METAL", "UNCOMMON", "EQUIP_ARMOR", "HEAVY_ARMOR"]
+chance = 0.7
+
+[[equipment]]
+slot = "armor"
+name = "Salvage Shield"
+glyph = "["
+color = [180, 180, 180]
+tags = ["METAL", "UNCOMMON", "EQUIP_ARMOR", "SHIELD"]
+chance = 0.5

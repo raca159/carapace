@@ -1,0 +1,144 @@
+name: Demo Build
+
+on:
+  push:
+    tags:
+      - "demo-*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Demo version tag (e.g. demo-0.1.0)"
+        required: true
+        type: string
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Demo ${{ matrix.platform }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - platform: linux-x86_64
+            runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            archive: tar.gz
+
+          - platform: linux-aarch64
+            runner: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+            archive: tar.gz
+
+          - platform: windows-x86_64
+            runner: windows-latest
+            target: x86_64-pc-windows-msvc
+            archive: zip
+
+          - platform: macos-x86_64
+            runner: macos-13
+            target: x86_64-apple-darwin
+            archive: tar.gz
+
+          - platform: macos-arm64
+            runner: macos-latest
+            target: aarch64-apple-darwin
+            archive: tar.gz
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Strip debug symbols (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          if command -v llvm-strip &>/dev/null; then
+            llvm-strip target/${{ matrix.target }}/release/carapace
+          elif command -v strip &>/dev/null; then
+            strip --strip-all target/${{ matrix.target }}/release/carapace
+          fi
+
+      - name: Strip debug symbols (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          # Windows binaries compiled with MSVC; no strip needed by default
+          # But we keep it documented
+
+      - name: Package demo archive
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#demo-}"
+          DIST_NAME="carapace-demo-${VERSION}-${{ matrix.platform }}"
+          RELEASE_DIR="target/release-package"
+          mkdir -p "${RELEASE_DIR}/${DIST_NAME}"
+
+          if [ "${{ matrix.platform }}" = "windows-x86_64" ]; then
+            cp "target/${{ matrix.target }}/release/carapace.exe" "${RELEASE_DIR}/${DIST_NAME}/"
+          else
+            cp "target/${{ matrix.target }}/release/carapace" "${RELEASE_DIR}/${DIST_NAME}/"
+          fi
+          cp -r assets "${RELEASE_DIR}/${DIST_NAME}/"
+
+          {
+            echo "CARAPACE Demo v${VERSION} -- Procedural Terminal Roguelike"
+            echo ""
+            echo "Demo build for ${{ matrix.platform }}"
+            echo ""
+            echo "Runs with: ./carapace --seed 42"
+            echo ""
+            echo "Requires a terminal with 256-color support and a Unicode font."
+            echo ""
+            echo "Controls: WASD/arrows to move, I inventory, C crafting, T talk, J journal"
+            echo "Options:  --seed N --width N --height N"
+          } > "${RELEASE_DIR}/${DIST_NAME}/README.txt"
+
+          cd "${RELEASE_DIR}"
+          if [ "${{ matrix.archive }}" = "zip" ]; then
+            7z a "${DIST_NAME}.zip" "${DIST_NAME}"
+          else
+            tar czf "${DIST_NAME}.tar.gz" "${DIST_NAME}"
+          fi
+
+      - name: Upload demo artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: carapace-demo-${{ github.ref_name }}-${{ matrix.platform }}
+          path: target/release-package/carapace-demo-*.${{ matrix.archive }}
+
+  summarize:
+    name: Demo Build Summary
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all demo artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: carapace-demo-*
+          merge-multiple: true
+
+      - name: List artifacts
+        run: |
+          echo "## Demo Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          ls -lh carapace-demo-* 2>/dev/null | awk '{print " - " $NF " (" $5 ")"}' >> $GITHUB_STEP_SUMMARY || echo "No artifacts found"
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### How to run" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          echo 'tar xzf carapace-demo-<version>-<platform>.tar.gz' >> $GITHUB_STEP_SUMMARY
+          echo 'cd carapace-demo-<version>-<platform>' >> $GITHUB_STEP_SUMMARY
+          echo './carapace --seed 42' >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

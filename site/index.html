@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARAPACE — Procedural Simulation RPG</title>
+  <meta name="description" content="A procedurally generated simulation where deep systems collide with emergent narrative. No two runs share the same map, the same factions, or the same ending.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">CARAPACE</a>
+      <div class="nav-links">
+        <a href="#" aria-label="Discord">Discord</a>
+        <a href="#" aria-label="Dev Blog">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <pre class="ascii-hero" id="ascii-hero" aria-hidden="true"></pre>
+      <div class="hero-content">
+        <h1 class="hero-title reveal-text" id="hero-title">CARAPACE</h1>
+        <p class="hero-tagline reveal-text" id="hero-tagline">Every world is uncharted. Every story is yours.</p>
+        <p class="hero-desc reveal-text" id="hero-desc">A procedurally generated simulation where deep systems collide with emergent narrative. No two runs share the same map, the same factions, or the same ending.</p>
+      </div>
+      <div class="hero-cta">
+        <form class="cta-form" id="cta-top" onsubmit="return false;">
+          <div class="input-wrap">
+            <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+          </div>
+          <button type="submit" class="btn-cta">VENTURE IN</button>
+        </form>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">↓ SCROLL ↓</div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="features" id="features">
+      <div class="features-grid">
+
+        <article class="feature-card reveal">
+          <pre class="ascii-art">
+ ╔═══════════════╗
+ ║ ~ ~ ▒ █ ▓ ▓ ║
+ ║ ~ ▒ █ ▓ ▓ H ║
+ ║ ▒ █ ▓ ▓ H . ║
+ ║ █ ▓ ▓ H . . ║
+ ╚═══════════════╝</pre>
+          <h2 class="feature-title">INFINITE WORLDS</h2>
+          <p class="feature-copy">Every playthrough generates a new world from scratch — unique geography, factions, ecosystems, and histories. No templates. No hand-placed encounters. Pure procedural emergence.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <pre class="ascii-art">
+ ┌─ Faction Sphere ─┐
+ │  ╱╲   ╱╲   ╱╲  │
+ │ ╱  ╲ ╱  ╲ ╱  ╲ │
+ │╱ ▓▓ ╲╱ ▒▒ ╲╱ ░░│
+ │╲ ▓▓ ╱╲ ▒▒ ╱╲ ░░│
+ │ ╲  ╱ ╲  ╱ ╲  ╱ │
+ │  ╲╱   ╲╱   ╲╱  │
+ └──────────────────┘</pre>
+          <h2 class="feature-title">SIMULATION THAT BREATHES</h2>
+          <p class="feature-copy">Civilizations rise and fall without you. Economies shift. Factions war, trade, and betray. The world remembers every action — and consequences cascade in ways no designer scripted.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <pre class="ascii-art">
+ ╔══════ EVENT LOG ══════╗
+ ║ The merchant Kael     ║
+ ║ dies on the Ash Road. ║
+ ║                       ║
+ ║ → Ironhold embargo    ║
+ ║ → Salt Guild collapses║
+ ║ → War. Famine. Legend.║
+ ╚═══════════════════════╝</pre>
+          <h2 class="feature-title">STORIES NO ONE WROTE</h2>
+          <p class="feature-copy">A merchant's random death triggers a trade war. A rusted sword found in a cave becomes a civilization's sacred relic. Your choices matter because the simulation makes them matter.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <pre class="ascii-art">
+ ┌─── CHARACTER ──────────┐
+ │ Vesh, Ash-Walker       │
+ │ ────────────────────── │
+ │ STR: 14  DEX: 9        │
+ │ INT: 7   WIL: 18       │
+ │ ────────────────────── │
+ │ HP: 3/42  STA: ░░░░░   │
+ │ REP: ☠☠☠   GOLD: 2     │
+ │ Faction: None (exiled) │
+ │ Burden: Cursed blade   │
+ └────────────────────────┘</pre>
+          <h2 class="feature-title">LEARN EVERYTHING. MASTER NOTHING.</h2>
+          <p class="feature-copy">Permadeath. Complex crafting. Faction reputation that takes generations to rebuild. This is a game that respects your intelligence and punishes your assumptions.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <pre class="ascii-art">
+ ┌─ RAW ─────┐  ┌─ POLISHED ─┐
+ │ @.........│  │    @  ···   │
+ │ ...g.....│  │     g   ·   │
+ │ ....#....│  │      #      │
+ │ ...D.....│  │     D  ·    │
+ │ ........&│  │  ·      &   │
+ └───────────┘  └────────────┘</pre>
+          <h2 class="feature-title">BEAUTIFUL IN THE WAY MATH IS BEAUTIFUL</h2>
+          <p class="feature-copy">Crisp character-rendered visuals with modern polish. No pixel tax on your imagination — every glyph on screen represents a living system.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="heritage reveal">
+      <div class="heritage-inner">
+        <h2 class="heritage-title">FROM THE TRADITION OF</h2>
+        <div class="heritage-games">Dwarf Fortress · Caves of Qud · StarSector · Dungeon Crawl Stone Soup</div>
+        <pre class="ascii-panorama">
+ ╔══════════════════════════════════════════════════════════════════════════════╗
+ ║                                                                            ║
+ ║      ▲▲        ╱╲╱╲╱╲        ~ ~ ~ ~    ▓▓▓▓      ▲▲▲▲        ░░░░░     ║
+ ║     ▲▲▲▲      ╱ ╱╲╲ ╱╲      ~ ~ ~ ~   ▓▓▓▓▓▓    ▲▲▲▲▲▲     ░░░░░░░    ║
+ ║    ▲▲▲▲▲▲    ╱  ╱╲╲  ╱╲   ~ ~ ~ ~ ~ ▓▓▓▓▓▓▓▓  ▲▲▲▲▲▲▲▲   ░░░░░░░░░   ║
+ ║     ▲▲▲▲    ╱  █   ╲╲ ╱    ~ ~ ~ ~  ▓▓▓████▓▓▓ ▲▲▲ ███▲▲  ░░░ ███░░░  ║
+ ║      ▲▲    ╱  █ ▓▓  ╲╲    ~ ~ ~ ~  ▓▓▓██▓▓██▓▓▓  ▲██▓▓██▲ ░░██▓▓██░░  ║
+ ║   H  H    ╱  █ ▓▓▓   ╲╲   ~ ~ ~ ~ ▓▓▓██▓▓▓██▓▓▓ ▲██▓▓▓██▲░░██▓▓▓██░░  ║
+ ║  HH HH   ╱   █  ▓▓    ╲╲  ~ ~ ~ ~ ▓▓▓██▓▓▓▓██▓▓▓▲██▓▓▓▓██▲██▓▓▓▓██    ║
+ ║  HHHHH  ╱    █   ▓     ╲╲ ~ ~ ~ ~ ▓▓▓██▓▓▓▓▓██▓▓▓██▓▓▓▓▓████▓▓▓▓██     ║
+ ║                                                                            ║
+ ╚══════════════════════════════════════════════════════════════════════════════╝
+</pre>
+        <p class="heritage-tagline">Deep simulation. Emergent narrative. A game that creates itself.</p>
+      </div>
+    </section>
+
+    <section class="cta-block reveal">
+      <div class="cta-block-inner">
+        <h2 class="cta-block-title">WATCH THE WORLD BUILD ITSELF</h2>
+        <p class="cta-block-copy">Join the expedition. Weekly dev logs. Procedural world previews. Early access when the gates open.</p>
+        <form class="cta-form" id="cta-bottom" onsubmit="return false;">
+          <div class="input-wrap">
+            <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+          </div>
+          <button type="submit" class="btn-cta">SUBSCRIBE TO DISPATCHES</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">CARAPACE</div>
+      <p class="footer-tagline">A procedural simulation</p>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#">Discord</a>
+        <a href="#">Twitter / X</a>
+        <a href="#">Reddit</a>
+        <a href="#">GitHub</a>
+        <a href="#">Dev Blog</a>
+        <a href="#">Press Kit</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 CARAPACE. All worlds procedurally generated.<br>No actual civilizations were harmed in the making of this game.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

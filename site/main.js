@@ -1,0 +1,100 @@
+(function () {
+  'use strict';
+
+  var asciiHeroArt = [
+    '██╗   ██╗ ██████╗ ██╗██████╗ ',
+    '██║   ██║██╔═══██╗██║██╔══██╗',
+    '██║   ██║██║   ██║██║██║  ██║',
+    '╚██╗ ██╔╝██║   ██║██║██║  ██║',
+    ' ╚████╔╝ ╚██████╔╝██║██████╔╝',
+    '  ╚═══╝   ╚═════╝ ╚═╝╚═════╝ '
+  ].join('\n');
+
+  var voidshellArt = [
+    '██╗   ██╗ ██████╗ ██╗██████╗ ',
+    '██║   ██║██╔═══██╗██║██╔══██╗',
+    '██║   ██║██║   ██║██║██║  ██║',
+    '╚██╗ ██╔╝██║   ██║██║██║  ██║',
+    ' ╚████╔╝ ╚██████╔╝██║██████╔╝',
+    '  ╚═══╝   ╚═════╝ ╚═╝╚═════╝ '
+  ].join('\n');
+
+  var heroEl = document.getElementById('ascii-hero');
+  var heroTitle = document.getElementById('hero-title');
+  var heroTagline = document.getElementById('hero-tagline');
+  var heroDesc = document.getElementById('hero-desc');
+
+  function typeElement(el, text, speed, callback) {
+    el.textContent = '';
+    el.classList.add('typing');
+    var i = 0;
+    function step() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(step, speed);
+      } else if (callback) {
+        callback();
+      }
+    }
+    step();
+  }
+
+  function typeAsciiArt(el, art, speed, callback) {
+    el.textContent = '';
+    var fullText = art;
+    var i = 0;
+    function step() {
+      if (i < fullText.length) {
+        el.textContent += fullText.charAt(i);
+        i++;
+        setTimeout(step, speed);
+      } else {
+        if (callback) callback();
+      }
+    }
+    el.classList.add('visible');
+    step();
+  }
+
+  function initHero() {
+    typeAsciiArt(heroEl, voidshellArt, 8, function () {
+      typeElement(heroTitle, 'CARAPACE', 70, function () {
+        typeElement(heroTagline, 'Every world is uncharted. Every story is yours.', 35, function () {
+          typeElement(heroDesc, 'A procedurally generated simulation where deep systems collide with emergent narrative. No two runs share the same map, the same factions, or the same ending.', 20);
+        });
+      });
+    });
+  }
+
+  function initScrollReveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initHero();
+      initScrollReveal();
+    });
+  } else {
+    initHero();
+    initScrollReveal();
+  }
+})();

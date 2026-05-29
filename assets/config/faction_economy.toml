@@ -1,0 +1,73 @@
+[[faction]]
+id = "free_humanity"
+name = "Free Humanity"
+produces = [
+  { tag = "FOOD_WILD",      weight = 50.0 },
+  { tag = "WOOD_TIMBER",    weight = 40.0 },
+  { tag = "HERB_MEDICINAL", weight = 20.0 },
+]
+consumes = [
+  { tag = "METAL", weight = 40.0 },
+  { tag = "BONE",  weight = 10.0 },
+]
+
+[[faction]]
+id = "great_carapace"
+name = "Great Carapace"
+produces = [
+  { tag = "CHITIN",  weight = 60.0 },
+]
+consumes = [
+  { tag = "FOOD_WILD", weight = 50.0 },
+]
+
+[[faction]]
+id = "sanguine_elite"
+name = "Sanguine Elite"
+produces = [
+  { tag = "SANGUINE_GOODS", weight = 50.0 },
+]
+consumes = [
+  { tag = "FOOD_WILD", weight = 30.0 },
+  { tag = "HERB_MEDICINAL", weight = 20.0 },
+]
+
+[[faction]]
+id = "familiars"
+name = "Familiars"
+produces = [
+  { tag = "FAMILIAR_GOODS", weight = 40.0 },
+]
+consumes = [
+  { tag = "FOOD_WILD", weight = 40.0 },
+]
+
+[[faction]]
+id = "the_remnant"
+name = "The Remnant"
+produces = [
+  { tag = "TECH_GOODS", weight = 50.0 },
+  { tag = "METAL",      weight = 30.0 },
+]
+consumes = [
+  { tag = "FOOD_WILD", weight = 30.0 },
+]
+
+[[faction]]
+id = "ancient_machines"
+name = "Ancient Machines"
+produces = [
+  { tag = "TECH_GOODS", weight = 50.0 },
+  { tag = "METAL",      weight = 40.0 },
+]
+consumes = []
+
+[[faction]]
+id = "mutated_wildlife"
+name = "Mutated Wildlife"
+produces = [
+  { tag = "MUTATED_GOODS", weight = 40.0 },
+]
+consumes = [
+  { tag = "FOOD_WILD", weight = 50.0 },
+]

@@ -1,0 +1,124 @@
+name = "TrenchNest"
+description = "A flooded subterranean vault — ancient pre-collapse technology submerged in darkness, now infested with chitinous Carapace horrors"
+location_type = "dungeon"
+
+[[tile]]
+id = "EMPTY"
+glyph = " "
+color = [0, 0, 0]
+weight = 0.6
+tags = ["border"]
+
+[[tile]]
+id = "WALL"
+glyph = "#"
+color = [50, 50, 70]
+weight = 3.5
+tags = ["wall", "structure"]
+
+[[tile]]
+id = "WALL_RUIN"
+glyph = "#"
+color = [70, 60, 50]
+weight = 1.5
+tags = ["wall", "ruin"]
+
+[[tile]]
+id = "FLOOR"
+glyph = "."
+color = [60, 60, 80]
+weight = 3.0
+tags = ["floor", "interior"]
+
+[[tile]]
+id = "WATER"
+glyph = "~"
+color = [20, 30, 80]
+weight = 1.5
+tags = ["water", "hazard"]
+
+[[tile]]
+id = "CORRIDOR"
+glyph = "="
+color = [70, 70, 90]
+weight = 2.0
+tags = ["hall", "path"]
+
+[[tile]]
+id = "DOOR"
+glyph = "+"
+color = [100, 80, 60]
+weight = 0.4
+tags = ["door", "transition"]
+
+[[tile]]
+id = "TECH_TERMINAL"
+glyph = "¤"
+color = [0, 200, 200]
+weight = 0.08
+tags = ["special", "feature", "artifact"]
+
+[[tile]]
+id = "CARAPACE_NEST"
+glyph = "◊"
+color = [80, 20, 100]
+weight = 0.12
+tags = ["special", "feature", "spawn"]
+
+[conditions]
+biomes = ["BIOME_DUNGEON", "BIOME_TRENCH", "BIOME_CAVE"]
+factions = ["great_carapace"]
+
+[adjacency.EMPTY]
+up = ["EMPTY", "WALL", "WALL_RUIN"]
+down = ["EMPTY", "WALL", "WALL_RUIN"]
+left = ["EMPTY", "WALL", "WALL_RUIN"]
+right = ["EMPTY", "WALL", "WALL_RUIN"]
+
+[adjacency.WALL]
+up = ["EMPTY", "WALL", "WALL_RUIN", "DOOR", "FLOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+down = ["EMPTY", "WALL", "WALL_RUIN", "DOOR", "FLOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+left = ["EMPTY", "WALL", "WALL_RUIN", "DOOR", "FLOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+right = ["EMPTY", "WALL", "WALL_RUIN", "DOOR", "FLOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+
+[adjacency.WALL_RUIN]
+up = ["EMPTY", "WALL", "WALL_RUIN", "FLOOR", "WATER", "DOOR"]
+down = ["EMPTY", "WALL", "WALL_RUIN", "FLOOR", "WATER", "DOOR"]
+left = ["EMPTY", "WALL", "WALL_RUIN", "FLOOR", "WATER", "DOOR"]
+right = ["EMPTY", "WALL", "WALL_RUIN", "FLOOR", "WATER", "DOOR"]
+
+[adjacency.FLOOR]
+up = ["WALL", "WALL_RUIN", "FLOOR", "DOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+down = ["WALL", "WALL_RUIN", "FLOOR", "DOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+left = ["WALL", "WALL_RUIN", "FLOOR", "DOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+right = ["WALL", "WALL_RUIN", "FLOOR", "DOOR", "CORRIDOR", "WATER", "TECH_TERMINAL", "CARAPACE_NEST"]
+
+[adjacency.CORRIDOR]
+up = ["WALL", "CORRIDOR", "FLOOR", "DOOR", "WATER"]
+down = ["WALL", "CORRIDOR", "FLOOR", "DOOR", "WATER"]
+left = ["WALL", "CORRIDOR", "FLOOR", "DOOR", "WATER"]
+right = ["WALL", "CORRIDOR", "FLOOR", "DOOR", "WATER"]
+
+[adjacency.DOOR]
+up = ["WALL", "WALL_RUIN", "FLOOR", "CORRIDOR"]
+down = ["WALL", "WALL_RUIN", "FLOOR", "CORRIDOR"]
+left = ["WALL", "WALL_RUIN", "FLOOR", "CORRIDOR"]
+right = ["WALL", "WALL_RUIN", "FLOOR", "CORRIDOR"]
+
+[adjacency.WATER]
+up = ["WALL", "FLOOR", "WATER", "CARAPACE_NEST", "CORRIDOR", "WALL_RUIN"]
+down = ["WALL", "FLOOR", "WATER", "CARAPACE_NEST", "CORRIDOR", "WALL_RUIN"]
+left = ["WALL", "FLOOR", "WATER", "CARAPACE_NEST", "CORRIDOR", "WALL_RUIN"]
+right = ["WALL", "FLOOR", "WATER", "CARAPACE_NEST", "CORRIDOR", "WALL_RUIN"]
+
+[adjacency.TECH_TERMINAL]
+up = ["FLOOR", "WALL"]
+down = ["FLOOR", "WALL"]
+left = ["FLOOR", "WALL"]
+right = ["FLOOR", "WALL"]
+
+[adjacency.CARAPACE_NEST]
+up = ["FLOOR", "WATER", "WALL"]
+down = ["FLOOR", "WATER", "WALL"]
+left = ["FLOOR", "WATER", "WALL"]
+right = ["FLOOR", "WATER", "WALL"]

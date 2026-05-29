@@ -1,0 +1,1149 @@
+# Entity Templates — Carapace Biology-Driven Creature Definitions
+#
+# Each template defines an archetype grounded in the Carapace universe:
+# - The Great Carapace (giant crustacean monsters, pure telomerase producers)
+# - The Sanguine Elite (vampires, human-crustacean hybrids)
+# - The Familiars (infected human cultists, addicted to telomerase)
+# - Free Humans (remnant survivors, hunters, guards)
+# - Mutated Beasts (wildlife corrupted by the biological spill)
+# - Ancient Constructs (pre-collapse machines, broken security systems)
+
+# ─── THE GREAT CARAPACE ─────────────────────────────────────────────────────
+
+[[template]]
+name = "Trench Lobster"
+glyph = "L"
+color = [180, 40, 40]
+tags = ["CARAPACE", "LARGE", "AGGRESSIVE", "HAS_CHITIN", "COMPOUND_EYES", "AQUATIC"]
+description = "A juvenile crustacean horror from the deep trenches — armored, multi-limbed, endless hunger"
+
+[template.stats]
+health_min = 60
+health_max = 100
+inventory_capacity = 4
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Crushing Claw"
+glyph = "/"
+color = [200, 60, 60]
+tags = ["CHITIN", "UNCOMMON", "CRUSHING"]
+chance = 0.6
+
+[[template.equipment]]
+slot = "armor"
+name = "Carapace Plating"
+glyph = "["
+color = [160, 30, 30]
+tags = ["CHITIN", "UNCOMMON", "HARDENED"]
+chance = 0.8
+
+[[template]]
+name = "Abyssal Dreadclaw"
+glyph = "D"
+color = [120, 20, 50]
+tags = ["CARAPACE", "LARGE", "AGGRESSIVE", "HAS_CHITIN", "COMPOUND_EYES", "AQUATIC", "TERRITORIAL", "SILENT"]
+description = "A deep-trench apex predator — colossal crushing claws, bio-luminescent lure organs"
+
+[template.stats]
+health_min = 120
+health_max = 200
+inventory_capacity = 6
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Sonic Cavitator Claw"
+glyph = "/"
+color = [140, 30, 70]
+tags = ["CHITIN", "RARE", "SONIC", "CRUSHING"]
+chance = 0.7
+
+[[template.equipment]]
+slot = "armor"
+name = "Abyssal Chitin Plate"
+glyph = "["
+color = [100, 20, 40]
+tags = ["CHITIN", "RARE", "PRESSURE_RESISTANT"]
+chance = 0.9
+
+[[template]]
+name = "Spitter Crab"
+glyph = "C"
+color = [200, 100, 0]
+tags = ["CARAPACE", "MEDIUM", "AGGRESSIVE", "HAS_CHITIN", "EXOTHERMIC_SPRAY", "TERRITORIAL"]
+description = "A boiling chemical gland cluster on legs — sprays pressurized streams of corrosive enzymes"
+
+[template.stats]
+health_min = 45
+health_max = 75
+inventory_capacity = 3
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Acid Spray Gland"
+glyph = "~"
+color = [220, 130, 0]
+tags = ["CHEMICAL", "UNCOMMON", "CORROSIVE", "EXOTHERMIC"]
+chance = 0.8
+
+[[template]]
+name = "Molting Broodmother"
+glyph = "M"
+color = [100, 50, 80]
+tags = ["CARAPACE", "LARGE", "TERRITORIAL", "HAS_CHITIN", "COMPOUND_EYES", "REPRODUCTIVE", "SLOW"]
+description = "A gravid trench lobster spawning swarms of larval horrors — defended by a retinue of hatchlings"
+
+[template.stats]
+health_min = 180
+health_max = 300
+inventory_capacity = 10
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Broodmother Mandible"
+glyph = "/"
+color = [120, 60, 100]
+tags = ["CHITIN", "RARE", "TOXIC", "CRUSHING"]
+chance = 1.0
+
+[[template.equipment]]
+slot = "armor"
+name = "Gestation Carapace"
+glyph = "["
+color = [80, 40, 60]
+tags = ["CHITIN", "EPIC", "REGENERATIVE"]
+chance = 1.0
+
+[[template]]
+name = "Seismic Burrower"
+glyph = "B"
+color = [80, 60, 20]
+tags = ["CARAPACE", "LARGE", "AGGRESSIVE", "HAS_CHITIN", "SLOW", "TERRITORIAL", "MINDLESS"]
+description = "A heavily armored crustacean with massive shovel-like forelimbs — it carves tunnels through solid rock"
+
+[template.stats]
+health_min = 150
+health_max = 250
+inventory_capacity = 2
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Shovel Claw"
+glyph = "/"
+color = [100, 80, 30]
+tags = ["CHITIN", "UNCOMMON", "CRUSHING", "HEAVY"]
+chance = 0.9
+
+[[template.equipment]]
+slot = "armor"
+name = "Excavation Carapace"
+glyph = "["
+color = [80, 60, 30]
+tags = ["CHITIN", "RARE", "HARDENED", "HEAVY"]
+chance = 1.0
+
+[[template]]
+name = "Telomerase Spire"
+glyph = "T"
+color = [40, 180, 120]
+tags = ["CARAPACE", "LARGE", "HAS_CHITIN", "LUMINESCENT", "STATIONARY", "EXOTHERMIC_SPRAY", "TERRITORIAL"]
+description = "A living bio-tower that pulses with raw telomerase — it sprays enzyme clouds at anything that approaches"
+
+[template.stats]
+health_min = 100
+health_max = 160
+inventory_capacity = 0
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Enzyme Spout"
+glyph = "~"
+color = [50, 200, 140]
+tags = ["CHEMICAL", "RARE", "TELOMERASE_INFUSED", "EXOTHERMIC"]
+chance = 1.0
+
+[[template.equipment]]
+slot = "armor"
+name = "Chitinous Bark"
+glyph = "["
+color = [40, 160, 100]
+tags = ["CHITIN", "UNCOMMON", "THICK", "REGENERATIVE"]
+chance = 0.8
+
+[[template]]
+name = "Carapace Larva Swarm"
+glyph = "l"
+color = [140, 100, 60]
+tags = ["CARAPACE", "TINY", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "COWARDLY", "NOCTURNAL"]
+description = "A seething mass of newly hatched crustacean larvae — individually harmless, collectively a feeding frenzy"
+
+[template.stats]
+health_min = 8
+health_max = 15
+inventory_capacity = 0
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Larval Mandibles"
+glyph = ";"
+color = [120, 80, 40]
+tags = ["BONE", "COMMON", "CHITIN"]
+chance = 0.5
+
+[[template]]
+name = "Depth Stalker"
+glyph = "K"
+color = [60, 180, 200]
+tags = ["CARAPACE", "MEDIUM", "AGGRESSIVE", "HAS_CHITIN", "COMPOUND_EYES", "AQUATIC", "SILENT", "CURIOUS"]
+description = "A bioluminescent hunter from the lightless deep — fin-like limbs propel it silently through flooded tunnels"
+
+[template.stats]
+health_min = 50
+health_max = 80
+inventory_capacity = 3
+
+[template.faction]
+name = "great_carapace"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Phosphorescent Pincer"
+glyph = "/"
+color = [80, 200, 220]
+tags = ["CHITIN", "UNCOMMON", "LUMINESCENT", "TOXIC"]
+chance = 0.5
+
+[[template.equipment]]
+slot = "armor"
+name = "Hydrodynamic Chitin"
+glyph = "["
+color = [50, 160, 180]
+tags = ["CHITIN", "COMMON", "SLIPPERY"]
+chance = 0.6
+
+# ─── THE SANGUINE ELITE ──────────────────────────────────────────────────────
+
+[[template]]
+name = "Vampire Noble"
+glyph = "V"
+color = [180, 0, 0]
+tags = ["SANGUINE", "MEDIUM", "AGGRESSIVE", "SANGUIVORE", "DECEPTIVE", "HAS_CHITIN", "NOCTURNAL", "HUMANOID"]
+description = "A human-crustacean hybrid — passes as nobility, craves human blood to stabilize alien telomerase"
+
+[template.stats]
+health_min = 70
+health_max = 110
+inventory_capacity = 8
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Rite-Blade"
+glyph = "/"
+color = [200, 30, 30]
+tags = ["METAL", "RARE", "CEREMONIAL", "BLOOD_BONDED"]
+chance = 0.5
+
+[[template.equipment]]
+slot = "armor"
+name = "Subdermal Chitin Weave"
+glyph = "["
+color = [160, 40, 60]
+tags = ["CHITIN", "UNCOMMON", "CONCEALED"]
+chance = 0.4
+
+[[template]]
+name = "Vampire Enforcer"
+glyph = "E"
+color = [140, 20, 40]
+tags = ["SANGUINE", "MEDIUM", "AGGRESSIVE", "SANGUIVORE", "HAS_CHITIN", "NOCTURNAL", "HUMANOID"]
+description = "A brute-spliced vampire bred for physical dominance — subdermal plating visible through stretched skin"
+
+[template.stats]
+health_min = 100
+health_max = 150
+inventory_capacity = 6
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Enforcer Maul"
+glyph = "/"
+color = [120, 30, 50]
+tags = ["METAL", "UNCOMMON", "HEAVY", "CRUSHING"]
+chance = 0.6
+
+[[template.equipment]]
+slot = "armor"
+name = "Reinforced Chitin Guard"
+glyph = "["
+color = [140, 40, 70]
+tags = ["CHITIN", "UNCOMMON", "HEAVY"]
+chance = 0.5
+
+[[template]]
+name = "Vampire Courtesan"
+glyph = "C"
+color = [200, 80, 120]
+tags = ["SANGUINE", "MEDIUM", "DECEPTIVE", "SANGUIVORE", "HUMANOID", "NOCTURNAL", "SOCIAL"]
+description = "A velvet-tongued infiltrator — uses chromatophoric skin-shifts and pheromone manipulation to control human courts"
+
+[template.stats]
+health_min = 40
+health_max = 65
+inventory_capacity = 5
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Needle Stiletto"
+glyph = "/"
+color = [220, 100, 140]
+tags = ["METAL", "UNCOMMON", "POISON", "CONCEALED"]
+chance = 0.4
+
+[[template]]
+name = "Vampire Alchemist"
+glyph = "A"
+color = [160, 0, 80]
+tags = ["SANGUINE", "MEDIUM", "SANGUIVORE", "HAS_CHITIN", "NOCTURNAL", "HUMANOID", "DECEPTIVE"]
+description = "A hybrid researcher distilling concentrated telomerase — bubbling retorts and chitin-scalpel arrays line the lab"
+
+[template.stats]
+health_min = 55
+health_max = 85
+inventory_capacity = 10
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Telomerase Injector"
+glyph = "/"
+color = [180, 20, 100]
+tags = ["METAL", "RARE", "TELOMERASE_INFUSED", "TOXIC", "PRECISION"]
+chance = 0.5
+
+[[template.equipment]]
+slot = "armor"
+name = "Reagent-Stained Robe"
+glyph = "["
+color = [140, 10, 70]
+tags = ["CLOTH", "UNCOMMON", "CHEMICAL_RESISTANT"]
+chance = 0.3
+
+[[template]]
+name = "Vampire Scion"
+glyph = "Y"
+color = [200, 60, 100]
+tags = ["SANGUINE", "SMALL", "SANGUIVORE", "HAS_CHITIN", "NOCTURNAL", "HUMANOID", "FEARLESS"]
+description = "A young hybrid undergoing the change — chitin plates push through skin as the old human form sloughs away"
+
+[template.stats]
+health_min = 35
+health_max = 60
+inventory_capacity = 3
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Growing Claw"
+glyph = ";"
+color = [200, 80, 120]
+tags = ["BONE", "COMMON", "CHITIN", "GROWING"]
+chance = 0.6
+
+[[template]]
+name = "Vampire Bloodhound"
+glyph = "H"
+color = [100, 20, 40]
+tags = ["SANGUINE", "MEDIUM", "AGGRESSIVE", "SANGUIVORE", "HAS_CHITIN", "NOCTURNAL", "PACK_ANIMAL", "CARNIVORE"]
+description = "A mastiff-sized crustacean hybrid bred for tracking — olfactory organs exposed through gaping nasal slits"
+
+[template.stats]
+health_min = 60
+health_max = 90
+inventory_capacity = 1
+
+[template.faction]
+name = "sanguine_elite"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Rending Mandible"
+glyph = ";"
+color = [120, 30, 50]
+tags = ["BONE", "UNCOMMON", "BLOOD_BONDED", "CRUSHING"]
+chance = 0.7
+
+[[template.equipment]]
+slot = "armor"
+name = "Scent-Chitin Plates"
+glyph = "["
+color = [80, 20, 30]
+tags = ["CHITIN", "COMMON", "POROUS"]
+chance = 0.3
+
+# ─── THE FAMILIARS ───────────────────────────────────────────────────────────
+
+[[template]]
+name = "Familiar Zealot"
+glyph = "f"
+color = [100, 0, 80]
+tags = ["FAMILIAR", "MEDIUM", "AGGRESSIVE", "ADDICTED", "HUMANOID", "NOCTURNAL"]
+description = "A human addicted to vampire telomerase — fanatical, desperate, willing to kill for the next dose"
+
+[template.stats]
+health_min = 25
+health_max = 45
+inventory_capacity = 4
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Sacrificial Dagger"
+glyph = "/"
+color = [120, 20, 100]
+tags = ["METAL", "COMMON", "CEREMONIAL"]
+chance = 0.5
+
+[[template]]
+name = "Familiar Acolyte"
+glyph = "a"
+color = [80, 0, 60]
+tags = ["FAMILIAR", "MEDIUM", "ADDICTED", "DECEPTIVE", "HUMANOID", "SOCIAL"]
+description = "A cult priest who administers the communion — distributes diluted telomerase to keep the flock obedient"
+
+[template.stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 6
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Ceremonial Scepter"
+glyph = "/"
+color = [100, 30, 90]
+tags = ["METAL", "UNCOMMON", "CEREMONIAL", "TELOMERASE_INFUSED"]
+chance = 0.3
+
+[[template]]
+name = "Telomerase Ghoul"
+glyph = "G"
+color = [60, 0, 40]
+tags = ["FAMILIAR", "MEDIUM", "AGGRESSIVE", "ADDICTED", "HUMANOID", "FEARLESS", "SLOW"]
+description = "A familiar whose body has begun collapsing from tainted enzyme — shambling, painless, impossibly resilient"
+
+[template.stats]
+health_min = 60
+health_max = 90
+inventory_capacity = 2
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Clawed Hands"
+glyph = ";"
+color = [80, 20, 60]
+tags = ["BONE", "COMMON", "TOXIC"]
+chance = 0.7
+
+[[template]]
+name = "Penitent Pilgrim"
+glyph = "p"
+color = [120, 60, 40]
+tags = ["FAMILIAR", "MEDIUM", "ADDICTED", "HUMANOID", "SLOW", "COWARDLY"]
+description = "A familiar on a death-march toward the deep trenches — seeking absolution through self-sacrifice to the Great Carapace"
+
+[template.stats]
+health_min = 20
+health_max = 35
+inventory_capacity = 3
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Torn Prayer Beads"
+glyph = ";"
+color = [140, 80, 60]
+tags = ["WOOD", "COMMON", "FRAGILE"]
+chance = 0.2
+
+[[template]]
+name = "Enzyme Dealer"
+glyph = "d"
+color = [160, 0, 120]
+tags = ["FAMILIAR", "MEDIUM", "ADDICTED", "HUMANOID", "DECEPTIVE", "SOCIAL"]
+description = "A familiar who has clawed up the hierarchy — trades diluted telomerase to lesser addicts for information and favors"
+
+[template.stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 8
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Tainted Vial"
+glyph = "!"
+color = [180, 20, 140]
+tags = ["GLASS", "UNCOMMON", "TELOMERASE_INFUSED", "TOXIC", "THROWABLE"]
+chance = 0.5
+
+[[template]]
+name = "Flagellant Prophet"
+glyph = "P"
+color = [140, 0, 60]
+tags = ["FAMILIAR", "MEDIUM", "AGGRESSIVE", "ADDICTED", "HUMANOID", "FEARLESS", "LUMINESCENT"]
+description = "A fanatic whose skin glows with telomerase saturation — preaches the coming molt with bleeding fervor"
+
+[template.stats]
+health_min = 35
+health_max = 55
+inventory_capacity = 4
+
+[template.faction]
+name = "familiars"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Ritual Barb"
+glyph = "/"
+color = [160, 10, 80]
+tags = ["BONE", "UNCOMMON", "TELOMERASE_INFUSED", "CEREMONIAL"]
+chance = 0.4
+
+# ─── FREE HUMANS ─────────────────────────────────────────────────────────────
+
+[[template]]
+name = "Remnant Hunter"
+glyph = "H"
+color = [200, 180, 150]
+tags = ["HUMAN", "MEDIUM", "HUMANOID"]
+description = "A scavenger-turned-monster-hunter — carries pre-collapse tools and improvised weapons"
+
+[template.stats]
+health_min = 45
+health_max = 70
+inventory_capacity = 8
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Scrap Rifle"
+glyph = "/"
+color = [150, 150, 150]
+tags = ["METAL", "UNCOMMON", "ARTIFACT", "RANGED"]
+chance = 0.4
+
+[[template.equipment]]
+slot = "armor"
+name = "Salvaged Vest"
+glyph = "["
+color = [130, 130, 130]
+tags = ["METAL", "COMMON", "ARTIFACT"]
+chance = 0.3
+
+[[template]]
+name = "Settlement Guard"
+glyph = "G"
+color = [100, 150, 200]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "TERRITORIAL"]
+description = "A militia defender manning the barricades — holds the line against the night-stalkers"
+
+[template.stats]
+health_min = 50
+health_max = 80
+inventory_capacity = 6
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Guard Baton"
+glyph = "/"
+color = [120, 160, 200]
+tags = ["METAL", "COMMON", "SHOCK"]
+chance = 0.5
+
+[[template.equipment]]
+slot = "armor"
+name = "Reinforced Jerkin"
+glyph = "["
+color = [90, 130, 170]
+tags = ["LEATHER", "COMMON", "REINFORCED"]
+chance = 0.4
+
+[[template]]
+name = "Artifact Scavenger"
+glyph = "S"
+color = [180, 160, 140]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "TECH_WORSHIPPER"]
+description = "A ruin-delver obsessed with pre-collapse technology — carries salvaged gear and a reverence for the old world"
+
+[template.stats]
+health_min = 35
+health_max = 55
+inventory_capacity = 10
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Sonar Prod"
+glyph = "/"
+color = [200, 180, 100]
+tags = ["METAL", "UNCOMMON", "ARTIFACT", "ELECTRIC"]
+chance = 0.5
+
+[[template]]
+name = "Wasteland Doctor"
+glyph = "D"
+color = [200, 220, 200]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "HEALING"]
+description = "A field medic who stitches flesh with salvaged bio-gel and old-world antiseptics — treats anyone who can pay"
+
+[template.stats]
+health_min = 35
+health_max = 55
+inventory_capacity = 8
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Scalpel Lance"
+glyph = "/"
+color = [200, 240, 220]
+tags = ["METAL", "UNCOMMON", "PRECISION", "ARTIFACT"]
+chance = 0.3
+
+[[template.equipment]]
+slot = "armor"
+name = "Sterile Gown"
+glyph = "["
+color = [180, 200, 180]
+tags = ["CLOTH", "COMMON", "LIGHT"]
+chance = 0.2
+
+[[template]]
+name = "Radio Operator"
+glyph = "R"
+color = [120, 180, 120]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "TECH_WORSHIPPER", "CURIOUS"]
+description = "A scavenger who maintains crackling radio relays between settlements — always listening for old-world signals"
+
+[template.stats]
+health_min = 30
+health_max = 45
+inventory_capacity = 6
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Antenna Prod"
+glyph = "/"
+color = [140, 200, 140]
+tags = ["METAL", "COMMON", "ARTIFACT", "ELECTRIC"]
+chance = 0.4
+
+[[template]]
+name = "Trench Runner"
+glyph = "r"
+color = [180, 150, 100]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "LIGHT"]
+description = "A swift courier who carries messages and goods between human holds — knows the safe paths through monster territory"
+
+[template.stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 6
+
+[template.faction]
+name = "free_humanity"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Runner's Knife"
+glyph = "/"
+color = [200, 170, 120]
+tags = ["METAL", "COMMON", "LIGHT"]
+chance = 0.3
+
+[[template.equipment]]
+slot = "armor"
+name = "Light Scavenger Gear"
+glyph = "["
+color = [160, 130, 80]
+tags = ["LEATHER", "COMMON", "LIGHT"]
+chance = 0.3
+
+# ─── MUTATED BEASTS ──────────────────────────────────────────────────────────
+
+[[template]]
+name = "Chitin-Rat Swarm"
+glyph = "r"
+color = [100, 80, 60]
+tags = ["MUTANT", "SMALL", "AGGRESSIVE", "HAS_CHITIN", "SWARM", "NOCTURNAL"]
+description = "Vermin exposed to spilled telomerase — hardened carapace plates, unnervingly coordinated"
+
+[template.stats]
+health_min = 10
+health_max = 20
+inventory_capacity = 0
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Chitin Teeth"
+glyph = ";"
+color = [90, 70, 50]
+tags = ["BONE", "COMMON", "CHITIN"]
+chance = 0.4
+
+[[template]]
+name = "Bio-Electric Eel Hound"
+glyph = "e"
+color = [0, 150, 200]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "BIO_ELECTRIC", "AQUATIC", "TERRITORIAL"]
+description = "A canine mutated with electric eel tissue — arcs of current dance across exposed muscle fibers"
+
+[template.stats]
+health_min = 40
+health_max = 65
+inventory_capacity = 3
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Shock Jaws"
+glyph = ";"
+color = [0, 170, 220]
+tags = ["BONE", "UNCOMMON", "ELECTRIC", "BIO_ELECTRIC"]
+chance = 0.6
+
+[[template]]
+name = "Chromatophoric Stalker"
+glyph = "s"
+color = [60, 120, 80]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "CHROMATOPHORIC", "DECEPTIVE", "SILENT", "NOCTURNAL"]
+description = "A cuttlefish-spliced predator — skin shifts to match any surface, strikes from perfect camouflage"
+
+[template.stats]
+health_min = 35
+health_max = 55
+inventory_capacity = 2
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Camouflaged Talons"
+glyph = ";"
+color = [70, 130, 90]
+tags = ["BONE", "UNCOMMON", "CHROMATOPHORIC", "CONCEALED"]
+chance = 0.7
+
+[[template]]
+name = "Bombardier Hog"
+glyph = "b"
+color = [180, 120, 0]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "EXOTHERMIC_SPRAY", "TERRITORIAL"]
+description = "A boar with bombardier beetle glands — sprays boiling chemical jets when threatened"
+
+[template.stats]
+health_min = 55
+health_max = 85
+inventory_capacity = 4
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Exothermic Sprayer"
+glyph = "~"
+color = [200, 140, 0]
+tags = ["CHEMICAL", "UNCOMMON", "EXOTHERMIC", "CORROSIVE"]
+chance = 0.6
+
+[[template.equipment]]
+slot = "armor"
+name = "Thickened Hide"
+glyph = "["
+color = [160, 100, 0]
+tags = ["LEATHER", "COMMON", "THICK"]
+chance = 0.5
+
+[[template]]
+name = "Crystal-Wing Moth"
+glyph = "m"
+color = [180, 220, 255]
+tags = ["MUTANT", "LARGE", "CURIOUS", "LUMINESCENT", "FLIGHT", "NOCTURNAL", "HERBIVORE"]
+description = "A colossal moth whose wings are fused with crystalline chitin — it scatters prismatic scales that shimmer in the dark"
+
+[template.stats]
+health_min = 40
+health_max = 65
+inventory_capacity = 0
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Crystalline Wing-Slash"
+glyph = ";"
+color = [200, 240, 255]
+tags = ["CRYSTAL", "UNCOMMON", "LUMINESCENT", "LIGHT"]
+chance = 0.4
+
+[[template]]
+name = "Fungal Crawler"
+glyph = "F"
+color = [140, 80, 40]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "TERRITORIAL", "SLOW", "TOXIC"]
+description = "A crustacean overgrown with symbiotic fungus — spore clouds billow from cracks in the carapace"
+
+[template.stats]
+health_min = 45
+health_max = 70
+inventory_capacity = 2
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Spore Cluster"
+glyph = "~"
+color = [160, 100, 60]
+tags = ["CHEMICAL", "UNCOMMON", "TOXIC", "CORROSIVE"]
+chance = 0.6
+
+[[template.equipment]]
+slot = "armor"
+name = "Fungal Chitin"
+glyph = "["
+color = [120, 60, 30]
+tags = ["CHITIN", "COMMON", "POROUS"]
+chance = 0.5
+
+[[template]]
+name = "Corrosive Slime"
+glyph = "o"
+color = [60, 200, 80]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "EXOTHERMIC_SPRAY", "AQUATIC", "MINDLESS", "SWARM"]
+description = "A self-sustaining colony of enzyme-secreting amoebas — it flows as one corrosive tide over anything organic"
+
+[template.stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 0
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Dissolving Pseudopod"
+glyph = "~"
+color = [80, 220, 100]
+tags = ["CHEMICAL", "UNCOMMON", "CORROSIVE", "ACID"]
+chance = 0.8
+
+[[template]]
+name = "Phase Spider"
+glyph = "x"
+color = [100, 60, 180]
+tags = ["MUTANT", "MEDIUM", "AGGRESSIVE", "DECEPTIVE", "NOCTURNAL", "CARNIVORE", "SILENT"]
+description = "A spider with an unstable phase-shifting carapace — it flickers in and out of material existence during combat"
+
+[template.stats]
+health_min = 35
+health_max = 50
+inventory_capacity = 1
+
+[template.faction]
+name = "mutated_wildlife"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Phase-Shift Fang"
+glyph = ";"
+color = [120, 80, 200]
+tags = ["BONE", "RARE", "POISON", "CONCEALED"]
+chance = 0.6
+
+# ─── ANCIENT CONSTRUCTS ──────────────────────────────────────────────────────
+
+[[template]]
+name = "Security Drone"
+glyph = "D"
+color = [180, 180, 180]
+tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "LUMINESCENT", "FLIGHT"]
+description = "A pre-collapse automated sentry — damaged optics, erratic targeting, still lethal after centuries"
+
+[template.stats]
+health_min = 40
+health_max = 60
+inventory_capacity = 0
+
+[template.faction]
+name = "ancient_machines"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Laser Emitter"
+glyph = "~"
+color = [255, 50, 50]
+tags = ["ARTIFACT", "RARE", "ENERGY", "PRECISION"]
+chance = 0.6
+
+[[template]]
+name = "Trench Maintenance Unit"
+glyph = "U"
+color = [140, 140, 60]
+tags = ["CONSTRUCT", "LARGE", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "SLOW", "HEAVY"]
+description = "An industrial robot from the deep vaults — repurposed welding arms now crush intruders"
+
+[template.stats]
+health_min = 100
+health_max = 180
+inventory_capacity = 4
+
+[template.faction]
+name = "ancient_machines"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Industrial Clamp"
+glyph = "/"
+color = [160, 160, 80]
+tags = ["METAL", "UNCOMMON", "ARTIFACT", "CRUSHING", "HEAVY"]
+chance = 0.8
+
+[[template.equipment]]
+slot = "armor"
+name = "Reinforced Hull"
+glyph = "["
+color = [120, 120, 50]
+tags = ["METAL", "COMMON", "ARTIFACT", "HEAVY"]
+chance = 0.7
+
+[[template]]
+name = "Stasis Pod Guardian"
+glyph = "S"
+color = [100, 180, 200]
+tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "TERRITORIAL"]
+description = "A cryo-vault sentinel — programmed to protect the sleeping Remnants from any disturbance"
+
+[template.stats]
+health_min = 50
+health_max = 80
+inventory_capacity = 2
+
+[template.faction]
+name = "ancient_machines"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Stasis Field"
+glyph = "~"
+color = [120, 200, 220]
+tags = ["ARTIFACT", "RARE", "ENERGY", "SLOWING"]
+chance = 0.5
+
+[[template]]
+name = "Medical Sentinel"
+glyph = "M"
+color = [200, 220, 240]
+tags = ["CONSTRUCT", "MEDIUM", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "TERRITORIAL", "HEALING"]
+description = "A pre-collapse auto-doc gone haywire — forcibly diagnoses and treats anyone it catches, with outdated surgical protocols"
+
+[template.stats]
+health_min = 45
+health_max = 70
+inventory_capacity = 4
+
+[template.faction]
+name = "ancient_machines"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Surgical Laser"
+glyph = "~"
+color = [220, 240, 255]
+tags = ["ARTIFACT", "UNCOMMON", "ENERGY", "PRECISION"]
+chance = 0.5
+
+[[template.equipment]]
+slot = "armor"
+name = "Sterile Casing"
+glyph = "["
+color = [180, 200, 220]
+tags = ["METAL", "COMMON", "ARTIFACT", "LIGHT"]
+chance = 0.4
+
+[[template]]
+name = "Survey Probe"
+glyph = "P"
+color = [100, 180, 220]
+tags = ["CONSTRUCT", "SMALL", "CURIOUS", "ARTIFACT", "MINDLESS", "FLIGHT", "LUMINESCENT"]
+description = "A fast aerial reconnaissance drone — damaged sensor arrays still scan and catalog everything, including threats"
+
+[template.stats]
+health_min = 15
+health_max = 30
+inventory_capacity = 0
+
+[template.faction]
+name = "ancient_machines"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Scanning Pulse"
+glyph = "~"
+color = [120, 200, 240]
+tags = ["ARTIFACT", "COMMON", "ENERGY", "LUMINESCENT"]
+chance = 0.5
+
+[[template]]
+name = "Atmosphere Processor"
+glyph = "A"
+color = [60, 120, 100]
+tags = ["CONSTRUCT", "HUGE", "AGGRESSIVE", "ARTIFACT", "MINDLESS", "SLOW", "EXOTHERMIC_SPRAY", "STATIONARY"]
+description = "A colossal environmental control unit — vents superheated or cryogenic gases depending on which valve cluster is damaged"
+
+[template.stats]
+health_min = 250
+health_max = 400
+inventory_capacity = 0
+
+[template.faction]
+name = "ancient_machines"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Thermal Vent"
+glyph = "~"
+color = [80, 180, 160]
+tags = ["ARTIFACT", "EPIC", "ENERGY", "EXOTHERMIC"]
+chance = 1.0
+
+[[template.equipment]]
+slot = "armor"
+name = "Industrial Hull"
+glyph = "["
+color = [60, 100, 80]
+tags = ["METAL", "RARE", "ARTIFACT", "HEAVY", "HEAT_RESISTANT"]
+chance = 1.0
+
+# ─── THE REMNANT ─────────────────────────────────────────────────────────────
+
+[[template]]
+name = "Cryo Survivor"
+glyph = "C"
+color = [180, 220, 255]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "TECH_WORSHIPPER", "CURIOUS"]
+description = "An awakened pre-collapse human — disoriented, armed with advanced cryo-tech, seeking to understand the world that grew in their sleep"
+
+[template.stats]
+health_min = 50
+health_max = 80
+inventory_capacity = 8
+
+[template.faction]
+name = "the_remnant"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Cryo-Pistol"
+glyph = "/"
+color = [200, 240, 255]
+tags = ["ARTIFACT", "RARE", "ENERGY", "ICE", "RANGED"]
+chance = 0.6
+
+[[template.equipment]]
+slot = "armor"
+name = "Stasis-Adapted Suit"
+glyph = "["
+color = [160, 200, 240]
+tags = ["CLOTH", "RARE", "ARTIFACT", "COLD_RESISTANT"]
+chance = 0.5
+
+[[template]]
+name = "Remnant Archivist"
+glyph = "R"
+color = [140, 180, 220]
+tags = ["HUMAN", "MEDIUM", "HUMANOID", "PEACEFUL", "CURIOUS", "SOCIAL"]
+description = "A preserver of pre-collapse data — carries memory crystals filled with old-world histories and technical schematics"
+
+[template.stats]
+health_min = 30
+health_max = 50
+inventory_capacity = 10
+
+[template.faction]
+name = "the_remnant"
+
+[[template.equipment]]
+slot = "weapon"
+name = "Memory Crystal Shard"
+glyph = "/"
+color = [160, 200, 240]
+tags = ["CRYSTAL", "UNCOMMON", "ARTIFACT", "LUMINESCENT", "PRECISION"]
+chance = 0.3

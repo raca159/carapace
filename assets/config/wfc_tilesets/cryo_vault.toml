@@ -1,0 +1,124 @@
+name = "CryoVault"
+description = "A pre-collapse cryogenic facility — rusted metal corridors lined with failed preservation pods, power flickering in the depths"
+location_type = "dungeon"
+
+[[tile]]
+id = "EMPTY"
+glyph = " "
+color = [0, 0, 0]
+weight = 0.5
+tags = ["border"]
+
+[[tile]]
+id = "WALL"
+glyph = "#"
+color = [100, 110, 120]
+weight = 3.5
+tags = ["wall", "structure"]
+
+[[tile]]
+id = "FLOOR"
+glyph = "."
+color = [130, 140, 150]
+weight = 4.0
+tags = ["floor", "metal"]
+
+[[tile]]
+id = "CORRIDOR"
+glyph = "="
+color = [120, 130, 140]
+weight = 2.0
+tags = ["hall", "path"]
+
+[[tile]]
+id = "DOOR"
+glyph = "+"
+color = [180, 180, 190]
+weight = 0.4
+tags = ["door", "transition"]
+
+[[tile]]
+id = "CRYO_CHAMBER"
+glyph = "■"
+color = [0, 100, 200]
+weight = 0.15
+tags = ["special", "feature", "artifact"]
+
+[[tile]]
+id = "CONSOLE"
+glyph = "¤"
+color = [0, 200, 100]
+weight = 0.08
+tags = ["special", "feature", "artifact"]
+
+[[tile]]
+id = "PIPE"
+glyph = "║"
+color = [160, 90, 30]
+weight = 0.2
+tags = ["feature", "pipe"]
+
+[[tile]]
+id = "GENERATOR"
+glyph = "◊"
+color = [200, 200, 50]
+weight = 0.08
+tags = ["special", "feature", "artifact"]
+
+[conditions]
+biomes = ["BIOME_MOUNTAIN", "BIOME_TUNDRA", "BIOME_ICE_SHEET"]
+factions = ["remnant_awakened"]
+
+[adjacency.EMPTY]
+up = ["EMPTY", "WALL"]
+down = ["EMPTY", "WALL"]
+left = ["EMPTY", "WALL"]
+right = ["EMPTY", "WALL"]
+
+[adjacency.WALL]
+up = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+down = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+left = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+right = ["EMPTY", "WALL", "DOOR", "FLOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+
+[adjacency.FLOOR]
+up = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+down = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+left = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+right = ["WALL", "FLOOR", "DOOR", "CORRIDOR", "CRYO_CHAMBER", "CONSOLE", "PIPE", "GENERATOR"]
+
+[adjacency.CORRIDOR]
+up = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+down = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+left = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+right = ["WALL", "CORRIDOR", "FLOOR", "DOOR"]
+
+[adjacency.DOOR]
+up = ["WALL", "FLOOR", "CORRIDOR"]
+down = ["WALL", "FLOOR", "CORRIDOR"]
+left = ["WALL", "FLOOR", "CORRIDOR"]
+right = ["WALL", "FLOOR", "CORRIDOR"]
+
+[adjacency.CRYO_CHAMBER]
+up = ["FLOOR", "WALL", "CRYO_CHAMBER", "CONSOLE"]
+down = ["FLOOR", "WALL", "CRYO_CHAMBER", "CONSOLE"]
+left = ["FLOOR", "WALL", "CRYO_CHAMBER", "CONSOLE"]
+right = ["FLOOR", "WALL", "CRYO_CHAMBER", "CONSOLE"]
+
+[adjacency.CONSOLE]
+up = ["FLOOR", "WALL", "CONSOLE", "CRYO_CHAMBER"]
+down = ["FLOOR", "WALL", "CONSOLE", "CRYO_CHAMBER"]
+left = ["FLOOR", "WALL", "CONSOLE", "CRYO_CHAMBER"]
+right = ["FLOOR", "WALL", "CONSOLE", "CRYO_CHAMBER"]
+
+[adjacency.PIPE]
+up = ["WALL", "FLOOR", "PIPE"]
+down = ["WALL", "FLOOR", "PIPE"]
+left = ["WALL", "FLOOR", "PIPE"]
+right = ["WALL", "FLOOR", "PIPE"]
+
+[adjacency.GENERATOR]
+up = ["FLOOR", "WALL", "GENERATOR"]
+down = ["FLOOR", "WALL", "GENERATOR"]
+left = ["FLOOR", "WALL", "GENERATOR"]
+right = ["FLOOR", "WALL", "GENERATOR"]

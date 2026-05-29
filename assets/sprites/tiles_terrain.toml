@@ -1,0 +1,20 @@
+# Tiles spritesheet mapping
+# Companion to assets/sprites/tiles_terrain.png
+# Grid: 4 columns, 16x16 per sprite, 2px padding
+
+tile_size = 16
+padding = 2
+
+[sprites]
+grass = { col = 0, row = 0, x = 0, y = 0 }
+dirt = { col = 1, row = 0, x = 18, y = 0 }
+stone = { col = 2, row = 0, x = 36, y = 0 }
+sand = { col = 3, row = 0, x = 54, y = 0 }
+water = { col = 0, row = 1, x = 0, y = 18 }
+wall = { col = 1, row = 1, x = 18, y = 18 }
+floor = { col = 2, row = 1, x = 36, y = 18 }
+corridor = { col = 3, row = 1, x = 54, y = 18 }
+door = { col = 0, row = 2, x = 0, y = 36 }
+cryo_chamber = { col = 1, row = 2, x = 18, y = 36 }
+console = { col = 2, row = 2, x = 36, y = 36 }
+pipe = { col = 3, row = 2, x = 54, y = 36 }

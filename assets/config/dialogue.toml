@@ -1,0 +1,195 @@
+[[dialogue]]
+trigger_tags = ["AGGRESSIVE"]
+standing = "hostile"
+lines = ["What do you want?", "Make it quick.", "You're testing my patience."]
+
+[[dialogue]]
+trigger_tags = ["AGGRESSIVE"]
+standing = "neutral"
+lines = ["Stay out of my way.", "I don't have time for you.", "Keep walking."]
+
+[[dialogue]]
+trigger_tags = ["PEACEFUL"]
+standing = "ally"
+lines = ["Good to see you, friend!", "How can I help?", "Stay safe out there."]
+
+[[dialogue]]
+trigger_tags = ["PEACEFUL"]
+standing = "neutral"
+lines = ["Hello, traveler.", "Nice weather today.", "Welcome."]
+
+[[dialogue]]
+trigger_tags = ["TERRITORIAL"]
+lines = ["You're in my territory.", "Watch yourself.", "I don't know you."]
+
+[[dialogue]]
+trigger_tags = ["CURIOUS"]
+lines = ["What's that you're carrying?", "Interesting...", "I've never seen anything like that."]
+
+[[dialogue]]
+trigger_tags = ["COWARDLY"]
+lines = ["Please don't hurt me!", "I... I don't want any trouble.", "Go away!"]
+
+[[dialogue]]
+trigger_tags = ["CURIOUS", "PEACEFUL"]
+standing = "ally"
+lines = ["You look like you've been on quite the journey!", "Anything exciting happen lately?", "I'd love to hear your stories."]
+
+[[dialogue]]
+trigger_tags = ["AGGRESSIVE", "TERRITORIAL"]
+standing = "hostile"
+lines = ["You dare trespass here? Leave now!", "This is your only warning.", "You won't get another chance."]
+
+# ─── FACTION-SPECIFIC DIALOGUE ──────────────────────────────────────────────
+# Added per CAR-394: Faction voice (lens 3), density over volume (lens 5)
+
+[[dialogue]]
+trigger_tags = ["SANGUINE", "DECEPTIVE"]
+standing = "hostile"
+lines = [
+    "You carry the stench of mortality. Leave before I acquire a taste for you.",
+    "I've drained things far more interesting than you. Don't bore me.",
+    "Your blood would be adequate — but your company is not. Disappear."
+]
+
+[[dialogue]]
+trigger_tags = ["SANGUINE", "DECEPTIVE"]
+standing = "neutral"
+lines = [
+    "Ah. Another stray from the settlements. How refreshingly... brief.",
+    "You have that look — the one that says 'I have questions I'll regret asking.' Ask them.",
+    "I smell pre-Collapse on you. Untainted. Where did you find that?"
+]
+
+[[dialogue]]
+trigger_tags = ["SANGUINE", "DECEPTIVE"]
+standing = "ally"
+lines = [
+    "You've proven useful. I don't say that often. Don't let it go to your head.",
+    "There's a matter that requires your particular talent for... unsanctioned problem-solving.",
+    "I've taken an interest in your survival. That is both a blessing and a warning."
+]
+
+[[dialogue]]
+trigger_tags = ["FAMILIAR", "ZEALOT"]
+standing = "hostile"
+lines = [
+    "The Enzyme will consume you as it consumed us. There is no bargaining.",
+    "You reject the gift. You will burn for that ingratitude.",
+    "The Carapace speaks through us. Your denial is just static."
+]
+
+[[dialogue]]
+trigger_tags = ["FAMILIAR", "ZEALOT"]
+standing = "neutral"
+lines = [
+    "Have you felt it? That pull in your marrow? That's the Enzyme calling you home.",
+    "You're not one of us — not yet. But the hunger finds everyone eventually.",
+    "The old world is dead. The new one has teeth. Pick a side."
+]
+
+[[dialogue]]
+trigger_tags = ["FAMILIAR", "ZEALOT"]
+standing = "ally"
+lines = [
+    "The Enzyme recognizes you. You carry its favor.",
+    "The first Familiar was a miner who drank from a Carapace's severed limb. You carry that same potential.",
+    "We are not monsters. We are the next step. And you walk beside us."
+]
+
+[[dialogue]]
+trigger_tags = ["FAMILIAR", "ADDICTED"]
+lines = [
+    "Do you have it? The Enzyme? I need it. I *need* it.",
+    "The shaking won't stop. Please — just a drop. Just enough to quiet the screaming.",
+    "I can feel my cells forgetting what they're supposed to be."
+]
+
+[[dialogue]]
+trigger_tags = ["HUMAN", "PEACEFUL"]
+standing = "ally"
+lines = [
+    "Good to see a familiar face in all this madness. Stay for a meal if you can.",
+    "The walls held last night. That's a good night. You helped make that happen.",
+    "I used to pray for the old world to come back. Now I just pray for tomorrow."
+]
+
+[[dialogue]]
+trigger_tags = ["HUMAN", "PEACEFUL"]
+standing = "neutral"
+lines = [
+    "You're not from here. I can tell by how you move — too relaxed, too trusting.",
+    "Keep your weapon visible. Around here, politeness gets you killed.",
+    "The water's safe if you boil it. The food's safe if you cook it. Nothing else is safe."
+]
+
+[[dialogue]]
+trigger_tags = ["HUMAN", "CURIOUS"]
+standing = "ally"
+lines = [
+    "Where'd you get that gear? Don't recognize the make. Found it in the ruins?",
+    "You see a lot out there. I see these walls. Trade stories sometime?",
+    "I've been mapping the old tunnels beneath Sector 7. You'd make good company."
+]
+
+[[dialogue]]
+trigger_tags = ["HUMAN", "CURIOUS"]
+standing = "neutral"
+lines = [
+    "You carry interesting things. Did you *find* that, or did you *take* it from something that didn't want to give it up?",
+    "The ruins to the east — I've heard sounds from them. Not wind. Not animals. You should check it out.",
+    "That scar on your arm — that's from a Spitter Crab, isn't it? The necrosis pattern is unmistakable."
+]
+
+[[dialogue]]
+trigger_tags = ["CONSTRUCT", "MINDLESS"]
+lines = [
+    "CITIZEN DETECTED. PLEASE PRESENT IDENTIFICATION. ... IDENTIFICATION NOT FOUND. CONTINUING PATROL.",
+    "WARNING: UNAUTHORIZED BIOLOGICAL MATERIAL. ... ERROR: AUTHORIZATION PROTOCOLS OFFLINE. PROCEEDING.",
+    "UNIT-{log_id} STILL OPERATIONAL. MISSION: PRESERVE CIVILIAN LIFE. CIVILIANS REMAINING: ZERO. CONTINUING PATROL."
+]
+
+[[dialogue]]
+trigger_tags = ["COWARDLY"]
+standing = "hostile"
+lines = [
+    "Stay back! I swear I'll — I'll do something!",
+    "You're one of *them*, aren't you? I can see it in your eyes!",
+    "Don't come closer! I've seen what you people do!"
+]
+
+[[dialogue]]
+trigger_tags = ["COWARDLY"]
+standing = "ally"
+lines = [
+    "Thank you. Thank you. I thought I was dead when I saw you.",
+    "I owe you my life. It's not worth much, but it's yours.",
+    "The things out there — they don't stop. They don't tire. How do you live with that?"
+]
+
+[[dialogue]]
+trigger_tags = ["SANGUINE", "AGGRESSIVE"]
+standing = "hostile"
+lines = [
+    "I'm going to enjoy peeling that chitinous hide off you.",
+    "You have exactly three seconds to start running. One.",
+    "The Elite sends their regards. Specifically, my fists."
+]
+
+[[dialogue]]
+trigger_tags = ["AGGRESSIVE"]
+standing = "ally"
+lines = [
+    "You fight well. I respect that. Don't make me respect you less.",
+    "If anyone gives you trouble, point them out. I'll have a word.",
+    "We're not friends. But we're fighting the same things. That's enough."
+]
+
+[[dialogue]]
+trigger_tags = ["PEACEFUL"]
+standing = "hostile"
+lines = [
+    "I don't want trouble. But I will end you if you bring it.",
+    "Please leave. I don't want to have to hurt you.",
+    "You're making a mistake. Walk away before it's too late."
+]

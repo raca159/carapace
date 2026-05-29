@@ -1,0 +1,105 @@
+[[quest_template]]
+id = "hunt_creature"
+name_pattern = "Hunt the {target}"
+description_pattern = "A {target} has been terrorizing the area. Slay it."
+objective_type = "kill"
+target_tags = ["BEAST", "AGGRESSIVE"]
+reward_tags = ["HERB_MEDICINAL", "COMMON"]
+
+[[quest_template]]
+id = "gather_resource"
+name_pattern = "Gather {resource}"
+description_pattern = "We need {resource} for our supplies. Bring us some."
+objective_type = "collect"
+target_tags = ["ORE_IRON", "STONE_BLOCK", "HERB_MEDICINAL"]
+required_count = 3
+reward_tags = ["METAL", "UNCOMMON"]
+
+[[quest_template]]
+id = "clear_area"
+name_pattern = "Clear the {biome}"
+description_pattern = "Dangerous creatures infest the {biome}. Clear them out."
+objective_type = "kill_area"
+target_tags = ["UNDEAD", "BEAST"]
+biome_tags = ["BIOME_SWAMP", "BIOME_TUNDRA"]
+kill_count = 3
+reward_tags = ["EQUIP_ARMOR", "UNCOMMON"]
+
+[[quest_template]]
+id = "explore_biome"
+name_pattern = "Explore the {biome}"
+description_pattern = "Journey to the {biome} and discover its secrets."
+objective_type = "reach"
+target_tags = ["LANDMARK"]
+biome_tags = ["BIOME_ANCIENT_VAULT", "BIOME_CRYSTALLINE_CAVERN"]
+reward_tags = ["ARTIFACT", "RARE"]
+
+# ─── NEW: Narratively-driven quest templates ─────────────────────────────────
+# Added per CAR-394: Quest tension (lens 7), procedural templates (lens 6),
+# and faction-voice descriptions (lens 3).
+
+[[quest_template]]
+id = "eliminate_corrupted"
+name_pattern = "Put Down the {target}"
+description_pattern = "The {target} was human once — before the Enzyme rewrote them. Now they haunt the periphery, wearing an old friend's face. A clean death is more than they'd offer you."
+objective_type = "kill"
+target_tags = ["HUMANOID", "ADDICTED"]
+reward_tags = ["EQUIP_WEAPON", "UNCOMMON"]
+required_count = 1
+
+[[quest_template]]
+id = "rescue_captives"
+name_pattern = "Rescue Survivors from the {biome}"
+description_pattern = "A scavenger party was taken in the {biome}. Some may still be alive. The settlement has already written them off — but you haven't. Every hour you wait, the trail grows colder."
+objective_type = "kill_area"
+target_tags = ["SANGUINE", "AGGRESSIVE", "HUMANOID"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_SWAMP", "BIOME_MOUNTAIN"]
+kill_count = 5
+reward_tags = ["EQUIP_ARMOR", "RARE"]
+
+[[quest_template]]
+id = "recover_stolen_artifact"
+name_pattern = "Recover the {resource}"
+description_pattern = "A pre-Collapse {resource} was unearthed in the ruins, then stolen before it could be secured. It could change everything — or it could be worthless. Either way, it doesn't belong to the things that took it."
+objective_type = "collect"
+target_tags = ["ARTIFACT", "ENERGY", "RARE"]
+required_count = 1
+reward_tags = ["ARTIFACT", "EPIC"]
+
+[[quest_template]]
+id = "clear_nest"
+name_pattern = "Clear the {biome} Nest"
+description_pattern = "Something has been building in the {biome}. The scout described 'a cathedral of chitin and bone.' The structure is growing. Every day we wait, it spreads. Burn it before it takes root."
+objective_type = "kill_area"
+target_tags = ["CARAPACE", "HAS_CHITIN", "AGGRESSIVE"]
+biome_tags = ["BIOME_TEMPERATE_FOREST", "BIOME_BOREAL_FOREST", "BIOME_SWAMP"]
+kill_count = 4
+reward_tags = ["EQUIP_WEAPON", "RARE"]
+
+[[quest_template]]
+id = "scout_missing_patrol"
+name_pattern = "Scout the {biome}"
+description_pattern = "The patrol that watches the {biome} has gone silent. We don't know if it was Carapace, vampires, or something worse. Find out what happened — but don't engage unless you have to. Dead scouts tell no tales."
+objective_type = "reach"
+target_tags = ["LANDMARK"]
+biome_tags = ["BIOME_MOUNTAIN", "BIOME_TUNDRA", "BIOME_VOLCANIC"]
+reward_tags = ["EQUIP_ACCESSORY", "UNCOMMON"]
+
+[[quest_template]]
+id = "hunt_alpha_predator"
+name_pattern = "Hunt the Alpha {target}"
+description_pattern = "A pack of {target} has learned to hunt our hunting parties. They avoid traps, circle behind, wait for the weak. There's an alpha leading them — something smarter than the rest. Kill it. The pack will scatter or starve."
+objective_type = "kill"
+target_tags = ["CARNIVORE", "AGGRESSIVE"]
+reward_tags = ["HERB_MEDICINAL", "RARE"]
+required_count = 1
+
+[[quest_template]]
+id = "gather_fever_cure"
+name_pattern = "Gather Medicinal {resource}"
+description_pattern = "A fever is spreading through the settlement. The children are coughing blood. We need {resource} to make the tincture, but the only source grows deep in contaminated soil. Bring enough to treat everyone — and don't get scratched."
+objective_type = "collect"
+target_tags = ["HERB_MEDICINAL"]
+required_count = 5
+reward_tags = ["METAL", "COMMON"]
+

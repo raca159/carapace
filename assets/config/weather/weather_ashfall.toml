@@ -1,0 +1,6 @@
+name = "AshFall"
+weight = 3
+duration = [3, 8]
+visibility = 0.4
+modifiers = { light = -50 }
+tags = ["REDUCED_VISIBILITY"]
