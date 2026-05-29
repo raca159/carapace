@@ -16,6 +16,7 @@ pub enum AppScreen {
     InWorld,
     PauseMenu,
     Dead,
+    LoadGame,
 }
 
 impl AppScreen {
@@ -30,11 +31,12 @@ impl AppScreen {
                 | AppScreen::CreateWorld
                 | AppScreen::NewCharacter
                 | AppScreen::WorldOverview
+                | AppScreen::LoadGame
         )
     }
 
     pub fn transitions_to_gameplay(&self) -> bool {
-        matches!(self, AppScreen::NewCharacter | AppScreen::WorldOverview)
+        matches!(self, AppScreen::NewCharacter | AppScreen::WorldOverview | AppScreen::LoadGame)
     }
 
     pub fn transition_allowed(from: &AppScreen, to: &AppScreen) -> bool {
@@ -44,6 +46,7 @@ impl AppScreen {
                 | (AppScreen::MainMenu, AppScreen::CreateWorld)
                 | (AppScreen::MainMenu, AppScreen::NewCharacter)
                 | (AppScreen::MainMenu, AppScreen::WorldOverview)
+                | (AppScreen::MainMenu, AppScreen::LoadGame)
                 | (AppScreen::CreateWorld, AppScreen::WorldGenProgress)
                 | (AppScreen::CreateWorld, AppScreen::NewCharacter)
                 | (AppScreen::CreateWorld, AppScreen::MainMenu)
@@ -58,9 +61,12 @@ impl AppScreen {
                 | (AppScreen::WorldOverview, AppScreen::MainMenu)
                 | (AppScreen::InWorld, AppScreen::PauseMenu)
                 | (AppScreen::InWorld, AppScreen::Dead)
+                | (AppScreen::InWorld, AppScreen::WorldOverview)
                 | (AppScreen::InWorld, AppScreen::MainMenu)
                 | (AppScreen::PauseMenu, AppScreen::InWorld)
                 | (AppScreen::Dead, AppScreen::MainMenu)
+                | (AppScreen::LoadGame, AppScreen::InWorld)
+                | (AppScreen::LoadGame, AppScreen::MainMenu)
         )
     }
 }

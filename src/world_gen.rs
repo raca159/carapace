@@ -1,6 +1,7 @@
 use bevy_ecs::prelude::World;
+use bevy_ecs::resource::Resource;
 
-    use game_core::{Glyph, Health, Inventory, Player, Position, Equipment, WeatherSensitive};
+use game_core::{Glyph, Health, Inventory, Player, Position, Equipment, WeatherSensitive};
 use game_core::{WeatherState, WeatherContext};
 use game_core::crafting::load_crafting_recipes;
 use game_core::encounters::{Encounters, load_encounters};
@@ -14,7 +15,19 @@ use game_world::{
     WorldConfig, WorldMap, WorldPlugin, WorldSeed, BehaviorRules,
 };
 
+pub struct TileBiomes(pub Vec<Vec<game_tags::TagId>>);
+impl Resource for TileBiomes {}
+
 pub fn generate_world(ecs_world: &mut World, seed: WorldSeed, width: u32, height: u32) {
+    stage_load_configs(ecs_world, seed, width, height);
+    stage_terrain(ecs_world);
+    stage_locations(ecs_world);
+    stage_economy(ecs_world);
+    stage_game_data(ecs_world);
+    stage_finalize(ecs_world);
+}
+
+pub fn stage_load_configs(ecs_world: &mut World, seed: WorldSeed, width: u32, height: u32) {
     let tags_toml = include_str!("../assets/config/tags.toml");
     let registry = game_tags::load_tag_registry(tags_toml).expect("Failed to load tags");
     ecs_world.insert_resource(registry.clone());
@@ -38,7 +51,9 @@ pub fn generate_world(ecs_world: &mut World, seed: WorldSeed, width: u32, height
         height,
     };
     ecs_world.insert_resource(config);
+}
 
+pub fn stage_terrain(ecs_world: &mut World) {
     let gen_config =
         load_world_config_str(include_str!("../assets/config/world.toml")).expect("Failed to load world config");
     let biome_classifier =
@@ -47,12 +62,9 @@ pub fn generate_world(ecs_world: &mut World, seed: WorldSeed, width: u32, height
 
     WorldPlugin::generate_and_spawn(ecs_world, gen_config, biome_classifier);
 
-    // Stage 2a: Place locations on the map and compute economies
     let map = ecs_world.resource::<WorldMap>().clone();
     let width = map.width;
     let height = map.height;
-    let config = ecs_world.resource::<WorldConfig>();
-    let seed = config.seed;
 
     let mut tile_biomes: Vec<Vec<game_tags::TagId>> = Vec::with_capacity((width * height) as usize);
     let mut tile_query = ecs_world.query::<&game_tags::Tags>();
@@ -65,32 +77,51 @@ pub fn generate_world(ecs_world: &mut World, seed: WorldSeed, width: u32, height
         }
     }
 
+    ecs_world.insert_resource(TileBiomes(tile_biomes));
+}
+
+pub fn stage_locations(ecs_world: &mut World) {
     use rand::SeedableRng;
+    let map = ecs_world.resource::<WorldMap>();
+    let width = map.width;
+    let height = map.height;
+    let config = ecs_world.resource::<WorldConfig>();
+    let seed = config.seed;
+
     let mut rng = rand::rngs::StdRng::seed_from_u64(seed.0.wrapping_add(1000));
     let cascade = ecs_world.resource::<CascadeEngine>().clone();
     let registry = ecs_world.resource::<game_tags::TagRegistry>().clone();
+    let tile_biomes_data = ecs_world.resource::<TileBiomes>().0.clone();
+
     let locations = game_world::cascade::locations::place_locations(
-        &cascade, &registry, width, height, &tile_biomes, &mut rng,
+        &cascade, &registry, width, height, &tile_biomes_data, &mut rng,
     );
     ecs_world.insert_resource(game_world::cascade::LocationMap { locations: locations.clone() });
 
     let mut economies = std::collections::HashMap::new();
     for loc in &locations {
         let idx = (loc.y * width + loc.x) as usize;
-        let biome_tags = &tile_biomes[idx];
+        let biome_tags = &tile_biomes_data[idx];
         let pricing = game_world::cascade::economy::compute_location_economy(
             biome_tags, loc.faction.as_deref(), &loc.tags, &cascade, &registry,
         );
         economies.insert(loc.id, pricing);
     }
 
-    // Stage 2b: Trade routes between economies
-    use game_world::cascade::trade::{generate_trade_routes, apply_trade_to_economy, TradeRoutes};
-    let trade_routes = generate_trade_routes(&locations, 3);
-    apply_trade_to_economy(&trade_routes, &mut economies);
-    ecs_world.insert_resource(TradeRoutes(trade_routes));
     ecs_world.insert_resource(game_world::cascade::RegionEconomies { economies });
+}
 
+pub fn stage_economy(ecs_world: &mut World) {
+    use game_world::cascade::trade::{generate_trade_routes, apply_trade_to_economy, TradeRoutes};
+    let location_map = ecs_world.resource::<game_world::cascade::LocationMap>();
+
+    let trade_routes = generate_trade_routes(&location_map.locations, 3);
+    let mut economies = ecs_world.resource_mut::<game_world::cascade::RegionEconomies>();
+    apply_trade_to_economy(&trade_routes, &mut economies.economies);
+    ecs_world.insert_resource(TradeRoutes(trade_routes));
+}
+
+pub fn stage_game_data(ecs_world: &mut World) {
     let factions_toml = include_str!("../assets/config/factions.toml");
     let (_, faction_relationships) = load_factions(factions_toml).expect("Failed to load factions");
     ecs_world.insert_resource(faction_relationships);
@@ -136,7 +167,9 @@ pub fn generate_world(ecs_world: &mut World, seed: WorldSeed, width: u32, height
     let lore_toml = include_str!("../assets/config/lore_fragments.toml");
     let lore_fragments = load_lore_fragments(lore_toml).expect("Failed to load lore fragments");
     ecs_world.insert_resource(LoreFragmentsResource { fragments: lore_fragments });
+}
 
+pub fn stage_finalize(ecs_world: &mut World) {
     ecs_world.insert_resource(MapLayer::default());
     ecs_world.insert_resource(WeatherState::new());
     let ws = ecs_world.get_resource::<WeatherState>().unwrap();

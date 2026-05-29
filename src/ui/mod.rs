@@ -5,6 +5,7 @@ mod create_world;
 mod input;
 mod main_menu;
 mod new_character;
+pub mod world_gen_progress;
 
 #[derive(Resource, Default)]
 pub struct WorldGenParams {

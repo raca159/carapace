@@ -1,3 +1,5 @@
+use std::sync::OnceLock;
+
 use ratatui::layout::Rect;
 use ratatui::style::{Color, Style};
 use ratatui::symbols::border;
@@ -12,6 +14,26 @@ use game_core::{Glyph, Player, Position};
 use game_world::{Tile, TilePos, WorldMap};
 
 use crate::camera::Camera;
+use crate::GlyphRegistry;
+
+static SHARED_GLYPH_REGISTRY: OnceLock<GlyphRegistry> = OnceLock::new();
+
+/// Load (or return the cached) shared glyph registry from `assets/config/glyphs.toml`.
+pub fn load_glyph_registry() -> &'static GlyphRegistry {
+    SHARED_GLYPH_REGISTRY.get_or_init(|| GlyphRegistry::load("assets/config/glyphs.toml"))
+}
+
+/// Resolve a tile's glyph character, falling back to the registry fallback
+/// if the glyph is unknown.
+fn resolve_tile_char(tile: &Tile, registry: &GlyphRegistry) -> char {
+    registry.resolve_char(tile.glyph)
+}
+
+/// Resolve an entity's glyph character, falling back to the registry fallback
+/// if the glyph is unknown.
+fn resolve_entity_char(glyph: &Glyph, registry: &GlyphRegistry) -> char {
+    registry.resolve_char(glyph.char)
+}
 
 pub const PANEL_PADDING: Padding = Padding::new(1, 1, 1, 1);
 
@@ -53,6 +75,8 @@ pub fn draw_gameplay_world(
     ecs_world: &mut World,
     camera: &mut Camera,
 ) {
+    let registry = load_glyph_registry();
+
     camera.viewport_width = area.width as u32;
     camera.viewport_height = area.height as u32;
 
@@ -76,7 +100,7 @@ pub fn draw_gameplay_world(
         for (x, y, entity) in screen_entities {
             if let Ok(tile) = tile_query.get(ecs_world, entity)
                 && let Some(cell) = buf.cell_mut((x, y)) {
-                    cell.set_char(tile.glyph);
+                    cell.set_char(resolve_tile_char(tile, registry));
                     let dim = desaturate_color(tile.color, 0.35);
                     cell.set_fg(Color::Rgb(dim.0, dim.1, dim.2));
                 }
@@ -106,7 +130,8 @@ pub fn draw_gameplay_world(
 
         if sx >= 0 && sx < area.width as i64 && sy >= 0 && sy < area.height as i64 {
             let color = depth_dim(glyph.color, pos.z);
-            let entry = (area.x + sx as u16, area.y + sy as u16, color, glyph.char, pos.z);
+            let ch = resolve_entity_char(glyph, registry);
+            let entry = (area.x + sx as u16, area.y + sy as u16, color, ch, pos.z);
 
             if Some(entity) == player_entity {
                 player_screen = Some(entry);

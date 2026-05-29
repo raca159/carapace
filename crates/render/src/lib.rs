@@ -1,6 +1,7 @@
 pub mod camera;
 // pub mod debug;        // References deleted GameState — restored in Phase 4
 // pub mod headless;     // Depends on pipeline trait — restored in Phase 3
+pub mod glyphs;
 pub mod hud;
 pub mod menu;
 pub mod message_log;
@@ -17,6 +18,7 @@ pub mod style;
 
 // pub use bevy_pipeline::BevyPipeline;
 pub use camera::Camera;
+pub use glyphs::{GlyphDef, GlyphRegistry};
 // pub use headless::HeadlessPipeline;
 // pub use pipeline::{RenderPipeline, RenderResult, RenderState};
 // pub use terminal::TerminalPipeline;

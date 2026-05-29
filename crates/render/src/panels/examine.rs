@@ -11,7 +11,7 @@ use game_core::ExamineMode;
 use game_core::{Health, Player, Position};
 use game_world::WorldMap;
 
-use crate::world::{PANEL_PADDING, UNICODE_BORDER_SET};
+use crate::world::{load_glyph_registry, PANEL_PADDING, UNICODE_BORDER_SET};
 
 // const EXAMINE_PANEL_WIDTH: u16 = 34;
 
@@ -56,11 +56,22 @@ pub fn draw_examine_panel(frame: &mut Frame, area: Rect, ecs_world: &mut World) 
         }
     }
 
+    let registry = load_glyph_registry();
+    if let Some(default) = registry.entity_glyph("player") {
+        let valid = if registry.is_known(default.glyph) { "known" } else { "unknown" };
+        lines.push(Line::from(Span::styled(
+            format!(" Glyph: {} ({})", default.glyph, valid),
+            Style::default().fg(Color::DarkGray),
+        )));
+    }
+
     let mut entity_query = ecs_world.query_filtered::<(&Position, &game_core::Glyph), With<Player>>();
     if let Ok((pos, glyph)) = entity_query.single(ecs_world) {
         lines.push(Line::from(""));
+        let resolved = registry.resolve_char(glyph.char);
+        let ch = if resolved == glyph.char { glyph.char } else { resolved };
         lines.push(Line::from(Span::styled(
-            format!(" Player: {}", glyph.char),
+            format!(" Player: {}", ch),
             Style::default().fg(Color::Yellow).add_modifier(Modifier::BOLD),
         )));
         lines.push(Line::from(Span::styled(

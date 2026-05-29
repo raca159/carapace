@@ -756,6 +756,60 @@ These 12 creatures have full visual specs. When entity templates are added, thei
 | Free Humanity | Salvage-built, patchwork, functional | Wood, stone, leather, scrap metal | Daylight + lanterns, warm | Hopeful, fragile, stubborn | Signs of repair everywhere — nothing is thrown away |
 | Constructs | Pristine industrial, pre-Collapse preservation | Metal, plastic, glass, circuits | Fluorescent, cold, clinical | Lonely, precise, sad | They maintain a world that no longer exists |
 
+## Appendix C: 8×12 Glyph Bitmap Design Principles
+
+Established in CAR-12. The game uses 8×12 pixel bitmaps (upgraded from 7×5) for all glyph representations in the sprite pipeline, with 2× scaling (16×24 rendered px) centered in a 32×32 tile.
+
+### Anatomy of an 8×12 Glyph
+
+```
+Row  0: 0b00011000  ← 8 bits wide (bit 7 = left, bit 0 = right)
+Row  1: 0b00111100      1 = opaque pixel, 0 = transparent
+Row  2: 0b01111110      Only white pixels are defined in the bitmap;
+Row  3: 0b11111111      color is applied at render time from the entity/tile config.
+Row  4: 0b11111111
+Row  5: 0b00011000
+Row  6: 0b00011000
+Row  7: 0b00011000
+Row  8: 0b00011000
+Row  9: 0b00011000
+Row 10: 0b00011000
+Row 11: 0b00000000
+```
+
+### Design Rules
+
+1. **Center the silhouette.** Leave 1–2 px breathing room on each side (columns 0–1 and 6–7) and 1 row of padding at top and bottom when possible.
+
+2. **Symmetry preferred.** Most creature glyphs are symmetrical for readability at small scale. Asymmetry is used intentionally for specific faction voice (e.g., Chimeric Brute's distorted right side).
+
+3. **Silhouette over detail.** At 8×12, readable shape matters more than internal detail. Use internal pixels to add texture, not to define the form.
+
+4. **Faction silhouette language.** Each faction has a distinct glyph profile:
+   - **Great Carapace:** Wide base, horizontal emphasis (claws, carapace spread). Glyphs fill 7–8 columns.
+   - **Sanguine Elite:** Vertical, narrow-waisted with cape spread (V-shape). Glyphs occupy columns 2–6.
+   - **Familiars:** Hunched, uneven, human-proportioned but wrong. Glyphs occupy columns 1–6.
+   - **Free Humanity:** Upright, symmetrical, tool-bearing. Glyphs occupy columns 1–6.
+   - **Mutated Wildlife:** Mixed silhouettes — sinuous, spiky, or blobby.
+   - **Ancient Constructs:** Geometric, sharp, mechanical. Right angles and symmetry dominate.
+
+5. **Terrain glyphs tile.** Terrain bitmaps should tile conceptually — the edges of a grass glyph should suggest continuity with adjacent grass glyphs. Avoid hard borders.
+
+6. **Entity glyphs center.** Entity glyphs should be self-contained silhouettes that work in isolation. Leave breathing room on all sides.
+
+7. **Items are compact.** Item glyphs (weapons, potions, armor) should fit within a 6×8 sub-grid centered in the 8×12 canvas.
+
+8. **Readability under constraints.** Test every glyph at 16×24 rendered px — if two glyphs look similar at that size, redesign one.
+
+### Shared Character Convention
+
+Some glyph characters serve multiple entity/tile types with different colors. For example:
+- `^` is used for both forest tiles (green) and mountain tiles (grey) — same triangle/peak shape
+- `#` is used for stone terrain and wall tiles — same brickwork pattern
+- `h` is used for Blood Hound creatures and health pickup items — same heart/cross shape
+
+This is intentional. Color differentiation carries faction/type identity; the bitmap provides the silhouette anchor.
+
 ## Appendix B: Recommended Sprite Creation Order
 
 Per implementation priority from CAR-271:
