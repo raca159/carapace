@@ -21,6 +21,11 @@ fn main() {
             primary_window: Some(Window {
                 title: "Carapace".to_string(),
                 resolution: (1280.0, 960.0).into(),
+                resize_constraints: WindowResizeConstraints {
+                    min_width: 800.0,
+                    min_height: 600.0,
+                    ..default()
+                },
                 ..default()
             }),
             ..default()

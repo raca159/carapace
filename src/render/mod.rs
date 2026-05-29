@@ -1,12 +1,17 @@
 use bevy::prelude::*;
+use bevy::window::WindowResized;
 use game_core::screen::AppScreen;
 use game_core::components::{Player, Position, Glyph, Health, Name};
 use game_core::{MessageLog, ExamineMode};
 use game_core::color_theme::desaturate_color;
 use game_world::{Tile, TilePos, WorldMap};
 use game_render::spritesheet::{self, SpriteAtlas};
+use crate::interact::overview::OverviewOverlay;
 
 const TILE_SIZE: f32 = 16.0;
+const MINIMAP_TILE_SIZE: f32 = 5.0;
+const MINIMAP_W: u32 = 20;
+const MINIMAP_H: u32 = 15;
 
 #[derive(Resource, Default)]
 pub struct GameCamera {
@@ -40,6 +45,9 @@ pub struct HudEntities {
 }
 
 #[derive(Resource, Default)]
+pub struct MinimapTiles(pub Vec<Entity>);
+
+#[derive(Resource, Default)]
 pub struct ExaminePanel(pub Option<Entity>);
 
 #[derive(Resource, Default)]
@@ -65,13 +73,14 @@ impl Plugin for RenderPlugin {
             .init_resource::<PauseOverlay>()
             .init_resource::<DeathOverlay>()
             .init_resource::<DisambiguationPanel>()
+            .init_resource::<MinimapTiles>()
             .init_resource::<crate::interact::consume::ConsumeOverlay>()
             .init_resource::<crate::interact::talk::TalkPanel>()
             .init_resource::<crate::interact::throw::ThrowOverlay>()
             .init_resource::<crate::interact::craft::CraftPanel>()
             .init_resource::<crate::interact::quest_board::QuestBoardPanel>()
             .init_resource::<crate::interact::loot::LootPanel>()
-            .init_resource::<crate::interact::overview::OverviewOverlay>()
+            .init_resource::<OverviewOverlay>()
             .add_systems(OnEnter(AppScreen::PauseMenu), spawn_pause_overlay)
             .add_systems(OnExit(AppScreen::PauseMenu), despawn_pause_overlay)
             .add_systems(OnEnter(AppScreen::Dead), spawn_death_screen)
@@ -80,6 +89,7 @@ impl Plugin for RenderPlugin {
             .add_systems(Startup, setup_camera)
             .add_systems(OnEnter(AppScreen::Boot), boot_sequence)
             .add_systems(Startup, setup_hud)
+            .add_systems(Update, handle_window_resize)
             .add_systems(Update, (
                 boot_to_main_menu,
                 render_terrain,
@@ -108,6 +118,16 @@ fn setup_atlas(
 
 fn boot_sequence(mut next_state: ResMut<NextState<AppScreen>>) {
     next_state.set(AppScreen::Boot);
+}
+
+fn handle_window_resize(
+    mut resize_events: EventReader<WindowResized>,
+) {
+    for ev in resize_events.read() {
+        // Bevy's flexbox layout recalculates automatically for UI children
+        // with Val::Percent, so this is mainly a hook for future use.
+        let _ = ev;
+    }
 }
 
 fn boot_to_main_menu(
@@ -330,6 +350,7 @@ pub fn setup_hud(mut commands: Commands) {
     let mut pos_text = Entity::from_raw(0);
     let mut biome_text = Entity::from_raw(0);
     let mut msg_text = Entity::from_raw(0);
+    let mut tile_entities = Vec::with_capacity((MINIMAP_W * MINIMAP_H) as usize);
 
     commands
         .spawn((
@@ -342,62 +363,108 @@ pub fn setup_hud(mut commands: Commands) {
             Visibility::Visible,
         ))
         .with_children(|parent| {
-            hp_text = parent.spawn((
-                Text("HP: 100/100".to_string()),
-                TextFont { font_size: 14.0, ..default() },
-                TextColor(Color::srgb(0.0, 1.0, 0.0)),
+            // Top bar panel — flex row with semi-transparent background
+            parent.spawn((
                 Node {
-                    position_type: PositionType::Absolute,
-                    top: Val::Px(4.0),
-                    left: Val::Px(8.0),
+                    width: Val::Percent(100.0),
+                    height: Val::Px(24.0),
+                    flex_direction: FlexDirection::Row,
+                    align_items: AlignItems::Center,
+                    padding: UiRect::horizontal(Val::Px(8.0)),
+                    border: UiRect::bottom(Val::Px(1.0)),
                     ..default()
                 },
-            )).id();
+                BackgroundColor(Color::srgba(0.0, 0.0, 0.0, 0.65)),
+                BorderColor(Color::srgba(0.2, 0.2, 0.2, 0.5)),
+            ))
+            .with_children(|bar| {
+                hp_text = bar.spawn((
+                    Text("HP: 100/100".to_string()),
+                    TextFont { font_size: 14.0, ..default() },
+                    TextColor(Color::srgb(0.0, 1.0, 0.0)),
+                    Node { margin: UiRect::right(Val::Px(24.0)), ..default() },
+                )).id();
 
-            pos_text = parent.spawn((
-                Text("(0, 0)".to_string()),
-                TextFont { font_size: 14.0, ..default() },
-                TextColor(Color::srgb(0.0, 1.0, 1.0)),
-                Node {
-                    position_type: PositionType::Absolute,
-                    top: Val::Px(4.0),
-                    left: Val::Px(200.0),
-                    ..default()
-                },
-            )).id();
+                pos_text = bar.spawn((
+                    Text("(0, 0)".to_string()),
+                    TextFont { font_size: 14.0, ..default() },
+                    TextColor(Color::srgb(0.0, 1.0, 1.0)),
+                    Node { margin: UiRect::right(Val::Px(24.0)), ..default() },
+                )).id();
 
-            biome_text = parent.spawn((
-                Text("".to_string()),
-                TextFont { font_size: 14.0, ..default() },
-                TextColor(Color::srgb(1.0, 0.0, 1.0)),
-                Node {
-                    position_type: PositionType::Absolute,
-                    top: Val::Px(4.0),
-                    left: Val::Px(400.0),
-                    ..default()
-                },
-            )).id();
+                biome_text = bar.spawn((
+                    Text("".to_string()),
+                    TextFont { font_size: 14.0, ..default() },
+                    TextColor(Color::srgb(1.0, 0.0, 1.0)),
+                    Node { ..default() },
+                )).id();
+            });
 
+            // Message log panel — bottom-left with semi-transparent background
             msg_text = parent.spawn((
                 Text("".to_string()),
-                TextFont { font_size: 13.0, ..default() },
+                TextFont { font_size: 12.0, ..default() },
                 TextColor(Color::srgb(0.8, 0.8, 0.8)),
                 Node {
                     position_type: PositionType::Absolute,
-                    bottom: Val::Px(4.0),
+                    bottom: Val::Px(6.0),
                     left: Val::Px(8.0),
+                    padding: UiRect::all(Val::Px(4.0)),
+                    border: UiRect::all(Val::Px(1.0)),
+                    max_width: Val::Px(420.0),
                     ..default()
                 },
+                BackgroundColor(Color::srgba(0.0, 0.0, 0.0, 0.6)),
+                BorderColor(Color::srgba(0.2, 0.2, 0.2, 0.5)),
             )).id();
+
+            // Minimap panel — bottom-right with semi-transparent background
+            let minimap_w = MINIMAP_W as f32 * MINIMAP_TILE_SIZE + 2.0;
+            let minimap_h = MINIMAP_H as f32 * MINIMAP_TILE_SIZE + 2.0;
+            parent.spawn((
+                Node {
+                    position_type: PositionType::Absolute,
+                    bottom: Val::Px(6.0),
+                    right: Val::Px(8.0),
+                    width: Val::Px(minimap_w),
+                    height: Val::Px(minimap_h),
+                    padding: UiRect::all(Val::Px(1.0)),
+                    border: UiRect::all(Val::Px(1.0)),
+                    ..default()
+                },
+                BackgroundColor(Color::srgba(0.0, 0.0, 0.0, 0.7)),
+                BorderColor(Color::srgba(0.3, 0.3, 0.3, 0.6)),
+            ))
+            .with_children(|minimap| {
+                for y in 0..MINIMAP_H {
+                    for x in 0..MINIMAP_W {
+                        let tile = minimap.spawn((
+                            Node {
+                                position_type: PositionType::Absolute,
+                                left: Val::Px(1.0 + x as f32 * MINIMAP_TILE_SIZE),
+                                top: Val::Px(1.0 + y as f32 * MINIMAP_TILE_SIZE),
+                                width: Val::Px(MINIMAP_TILE_SIZE),
+                                height: Val::Px(MINIMAP_TILE_SIZE),
+                                ..default()
+                            },
+                            BackgroundColor(Color::srgb(0.05, 0.05, 0.05)),
+                        )).id();
+                        tile_entities.push(tile);
+                    }
+                }
+            });
         });
 
     commands.insert_resource(HudEntities { hp_text, pos_text, biome_text, msg_text });
+    commands.insert_resource(MinimapTiles(tile_entities));
 }
 
 pub fn update_hud(
     mut game_world: ResMut<GameWorld>,
     hud: Res<HudEntities>,
+    minimap: Res<MinimapTiles>,
     mut text_query: Query<&mut Text>,
+    mut bg_query: Query<&mut BackgroundColor>,
 ) {
     let gw = &mut game_world.0;
 
@@ -425,11 +492,47 @@ pub fn update_hud(
         text.0 = biome;
     }
 
-    let last_msg = gw.get_resource::<MessageLog>()
-        .and_then(|log| log.messages.last().cloned())
+    // Message log — show last 5 messages
+    let msg_text_val = gw.get_resource::<MessageLog>()
+        .map(|log| {
+            let start = log.messages.len().saturating_sub(5);
+            log.messages[start..].join("\n")
+        })
         .unwrap_or_default();
     if let Ok(mut text) = text_query.get_mut(hud.msg_text) {
-        text.0 = last_msg;
+        text.0 = msg_text_val;
+    }
+
+    // Minimap — update tile colors from terrain around player
+    let map = match gw.get_resource::<WorldMap>() {
+        Some(m) => m,
+        None => return,
+    };
+
+    let half_w = MINIMAP_W as i64 / 2;
+    let half_h = MINIMAP_H as i64 / 2;
+    let cx = pos.x as i64;
+    let cy = pos.y as i64;
+
+    for (i, entity) in minimap.0.iter().enumerate() {
+        let mx = (i as u32 % MINIMAP_W) as i64 - half_w;
+        let my = (i as u32 / MINIMAP_W) as i64 - half_h;
+        let wx = cx + mx;
+        let wy = cy + my;
+
+        let color = if wx >= 0 && wy >= 0 && (wx as u32) < map.width && (wy as u32) < map.height {
+            let te = map.get_unchecked(TilePos::new(wx as u32, wy as u32));
+            gw.get::<Tile>(te).map(|t| {
+                let (r, g, b) = t.color;
+                Color::srgb(r as f32 / 255.0, g as f32 / 255.0, b as f32 / 255.0)
+            }).unwrap_or(Color::srgb(0.05, 0.05, 0.05))
+        } else {
+            Color::srgb(0.02, 0.02, 0.02)
+        };
+
+        if let Ok(mut bg) = bg_query.get_mut(*entity) {
+            bg.0 = color;
+        }
     }
 }
 
